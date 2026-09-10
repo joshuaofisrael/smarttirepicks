@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Generate Smart Tire Picks static HTML pages."""
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 BASE = "https://smarttirepicks.com"
+DATE_PUB = "2026-09-08"
+DATE_MOD = "2026-09-10"
 
 PER_PAGE = (
     '<aside class="disclaimer-box" role="note">'
@@ -28,6 +31,7 @@ NAV_ITEMS = [
     ("Comparisons", "/comparisons/all-season-vs-winter/"),
     ("Guides", "/guides/placard/"),
     ("About", "/about.html"),
+    ("Contact", "/contact/"),
 ]
 
 
@@ -44,10 +48,133 @@ def nav_html(current_path: str) -> str:
             cur = ' aria-current="page"'
         elif current_path.startswith("/guides") and href.startswith("/guides"):
             cur = ' aria-current="page"'
+        elif current_path.startswith("/contact") and href.startswith("/contact"):
+            cur = ' aria-current="page"'
         elif current_path == href or (href.endswith(".html") and current_path.endswith(href)):
             cur = ' aria-current="page"'
         items.append(f'<li><a href="{href}"{cur}>{label}</a></li>')
     return "\n          ".join(items)
+
+
+
+def canonical_for(path: str) -> str:
+    if path == "/index.html":
+        return BASE + "/"
+    if path.endswith("/index.html"):
+        return BASE + path[: -len("index.html")]
+    return BASE + path
+
+
+def json_ld_script(objs: list) -> str:
+    parts = []
+    for obj in objs:
+        payload = json.dumps(obj, ensure_ascii=False, indent=2)
+        parts.append(f'<script type="application/ld+json">\n{payload}\n  </script>')
+    return "\n  ".join(parts)
+
+
+def schema_organization_website() -> list:
+    return [
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Smart Tire Picks",
+            "url": BASE + "/",
+            "description": "Educational tire fitment guides and editorial reviews for US drivers.",
+            "parentOrganization": {
+                "@type": "Organization",
+                "name": "Joshua Israel Ventures LLC",
+            },
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Smart Tire Picks",
+            "url": BASE + "/",
+            "description": "Learn tire fitment, door placards, load index, and category trade-offs.",
+            "publisher": {"@type": "Organization", "name": "Smart Tire Picks"},
+        },
+    ]
+
+
+def schema_article_breadcrumb(*, headline: str, description: str, canonical: str, breadcrumbs: list) -> list:
+    crumb_items = []
+    for i, (name, url) in enumerate(breadcrumbs, start=1):
+        item_url = url if url.startswith("http") else BASE + url
+        crumb_items.append({"@type": "ListItem", "position": i, "name": name, "item": item_url})
+    return [
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumb_items},
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": headline,
+            "description": description,
+            "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
+            "author": {"@type": "Organization", "name": "Smart Tire Picks"},
+            "publisher": {
+                "@type": "Organization",
+                "name": "Smart Tire Picks",
+                "parentOrganization": {"@type": "Organization", "name": "Joshua Israel Ventures LLC"},
+            },
+            "datePublished": DATE_PUB,
+            "dateModified": DATE_MOD,
+        },
+    ]
+
+
+def schema_faq(faqs: list) -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": q,
+                "acceptedAnswer": {"@type": "Answer", "text": a},
+            }
+            for q, a in faqs
+        ],
+    }
+
+
+def related_block(items: list) -> str:
+    lis = "\n".join(f'          <li><a href="{href}">{label}</a></li>' for href, label in items)
+    return f"""
+      <nav class="related-links" aria-label="Keep reading">
+        <h2>Keep reading</h2>
+        <ul>
+{lis}
+        </ul>
+      </nav>"""
+
+
+def sources_block(items: list) -> str:
+    lis = "\n".join(
+        f'          <li><a href="{url}" rel="noopener noreferrer" target="_blank">{title}</a> — {note}</li>'
+        for url, title, note in items
+    )
+    return f"""
+      <section class="sources-block" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Sources</h2>
+        <p class="note">Outbound links to public references. We paraphrase; visit the source for full wording and updates.</p>
+        <ul>
+{lis}
+        </ul>
+      </section>"""
+
+
+def faq_html(faqs: list) -> str:
+    parts = [
+        '      <section class="faq-block" aria-labelledby="faq-heading">',
+        '        <h2 id="faq-heading">FAQ</h2>',
+    ]
+    for q, a in faqs:
+        parts.append("        <details>")
+        parts.append(f"          <summary>{q}</summary>")
+        parts.append(f"          <p>{a}</p>")
+        parts.append("        </details>")
+    parts.append("      </section>")
+    return "\n".join(parts)
 
 
 def page(
@@ -61,14 +188,13 @@ def page(
     lede: str | None = None,
     hero: bool = False,
     hero_html: str = "",
+    schema_objs: list | None = None,
 ):
-    canonical = BASE + (path if path != "/index.html" else "/")
-    if path.endswith("/index.html"):
-        canonical = BASE + path[: -len("index.html")]
-    elif path == "/index.html":
-        canonical = BASE + "/"
+    canonical = canonical_for(path)
 
     head_extra = ""
+    if schema_objs:
+        head_extra = "\n  " + json_ld_script(schema_objs)
     disclaimer = PER_PAGE if include_disclaimer else ""
     title_block = ""
     if not hero:
@@ -99,7 +225,7 @@ def page(
   <meta property="og:url" content="{canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Smart Tire Picks">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">{head_extra}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -137,7 +263,7 @@ def page(
           <h2>Company</h2>
           <ul>
             <li><a href="/about.html">About</a></li>
-            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/contact/">Contact</a></li>
             <li><a href="/disclaimer/">Disclaimer</a></li>
             <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
           </ul>
@@ -159,6 +285,28 @@ def page(
     print("wrote", out.relative_to(ROOT))
 
 
+
+NHTSA_TIRES = (
+    "https://www.nhtsa.gov/vehicle-safety/tires",
+    "NHTSA — Tires (TireWise)",
+    "Public guidance on tire inflation, the Tire and Loading Information label/placard, maintenance, and UTQG consumer grades.",
+)
+NHTSA_SAVINGS = (
+    "https://www.nhtsa.gov/tires/safety-and-savings-ride-your-tires",
+    "NHTSA — Safety and savings ride on your tires",
+    "Overview of why tire maintenance and labeling matter for everyday drivers.",
+)
+USTMA_REPLACE = (
+    "https://www.ustires.org/tire-care-safety/replacing-tires",
+    "USTMA — Replacing tires",
+    "Industry consumer notes on matching size, load index, and speed rating when replacing tires.",
+)
+USTMA_CARE = (
+    "https://www.ustires.org/tire-care-safety",
+    "USTMA — Tire care & safety",
+    "Trade-association hub for passenger/light-truck tire care topics for consumers.",
+)
+
 # ---------- PAGES ----------
 
 page(
@@ -167,6 +315,7 @@ page(
     description="Learn how to choose tire size, read your door placard, and compare all-season vs winter tires. Educational guides from Smart Tire Picks.",
     include_disclaimer=True,
     hero=True,
+    schema_objs=schema_organization_website(),
     hero_html="""
     <section class="hero">
       <div class="wrap">
@@ -189,9 +338,9 @@ page(
           <a class="card-link" href="/fitment/choose-tire-size/">Fitment guide →</a>
         </article>
         <article class="card">
-          <h2>All-season vs winter vs summer</h2>
-          <p>Understand climate categories and when a dedicated winter set may be worth considering.</p>
-          <a class="card-link" href="/fitment/all-season-vs-winter-vs-summer/">Category guide →</a>
+          <h2>Tire placard checklist</h2>
+          <p>A printable-style walkthrough of what to copy from your door label before you shop.</p>
+          <a class="card-link" href="/guides/tire-placard-checklist/">Placard checklist →</a>
         </article>
         <article class="card">
           <h2>When to replace tires</h2>
@@ -243,44 +392,46 @@ page(
           <li>Licensed installer recommended for mounting and balancing</li>
         </ul>
         <h2>Contact</h2>
-        <p>Questions or corrections? Visit our <a href="/contact.html">contact page</a>.</p>
+        <p>Questions or corrections? Visit our <a href="/contact/">contact page</a>.</p>
       </div>
     """,
 )
 
-page(
-    path="/contact.html",
-    title="Contact Smart Tire Picks",
-    description="Contact Joshua Israel Ventures LLC about Smart Tire Picks — editorial questions, corrections, or partnership inquiries.",
-    h1="Contact",
-    lede="Reach Joshua Israel Ventures LLC about Smart Tire Picks. We read messages as time allows; we cannot provide vehicle-specific safety advice.",
-    body="""
-      <div class="content-block">
-        <p>For editorial feedback, corrections, or business inquiries related to Smart Tire Picks, email:</p>
-        <p><strong>hello@smarttirepicks.com</strong></p>
-        <p class="form-note">Please include enough context for us to respond. Do not send payment details or sensitive personal documents.</p>
-        <h2>What we cannot do by email</h2>
-        <ul>
-          <li>Approve a tire size or load rating for your specific vehicle</li>
-          <li>Diagnose vibration, TPMS faults, or uneven wear remotely</li>
-          <li>Provide legal, insurance, or professional safety advice</li>
-        </ul>
-        <p>For fitment and install decisions, use your door placard, OEM documentation, and a licensed tire installer.</p>
-        <div class="cta-box">
-          <h2>Partnerships</h2>
-          <p>Affiliate and advertising programs may be added later. See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a> for how we handle compensation transparency.</p>
-        </div>
-      </div>
-    """,
-)
+# Contact FormSubmit lives at /contact/ (not generated here).
 
 # GUIDES
+PLACARD_FAQS = [
+    (
+        "Where is the tire information placard on most US vehicles?",
+        "On many passenger vehicles it is on the driver’s door jamb (B-pillar area). Some models also list tire data in the owner’s manual. If labels differ, follow the vehicle manufacturer’s guidance and ask a qualified technician.",
+    ),
+    (
+        "Should I inflate to the big PSI number on the tire sidewall?",
+        "No. The sidewall figure is typically a maximum cold pressure for the tire’s construction. Use the vehicle placard (or OEM manual) recommended cold pressure unless a manufacturer service document says otherwise.",
+    ),
+    (
+        "Can I change tire size from what the placard lists?",
+        "Alternate sizes can affect load capacity, clearance, speedometer accuracy, and related systems. Confirm compatibility with OEM documentation and a licensed installer rather than relying only on an online picker.",
+    ),
+]
+
 page(
     path="/guides/placard/index.html",
     title="How to Read Your Tire Door Placard — Smart Tire Picks",
     description="Find and read your vehicle’s tire information placard: size, pressure, load, and why OEM specs matter before you buy tires.",
     h1="How to read your tire door placard",
     lede="Your door-jamb placard is the primary reference for OEM tire size and cold inflation pressure — start here before shopping.",
+    schema_objs=schema_article_breadcrumb(
+        headline="How to read your tire door placard",
+        description="Find and read your vehicle’s tire information placard: size, pressure, load, and why OEM specs matter before you buy tires.",
+        canonical=canonical_for("/guides/placard/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("Door placard", "/guides/placard/"),
+        ],
+    )
+    + [schema_faq(PLACARD_FAQS)],
     body="""
       <div class="content-block">
         <h2>Where to find it</h2>
@@ -297,9 +448,75 @@ page(
         <p>Plus-sizing or alternate sizes can affect speedometer accuracy, load capacity, clearance, and driver-assistance calibration. Confirm compatibility with OEM documentation and a licensed installer — do not rely solely on an online size picker.</p>
         <p class="note">Also verify load index and speed rating meet or exceed OEM requirements for your trim and options package.</p>
       </div>
+""" + faq_html(PLACARD_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_REPLACE]) + related_block([
+    ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+    ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
+    ("/fitment/choose-tire-size/", "How to choose tire size"),
+    ("/guides/when-to-replace/", "When to replace tires"),
+]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Continue with <a href="/guides/load-index-speed-rating/">load index &amp; speed rating</a> or <a href="/fitment/choose-tire-size/">choosing tire size</a>. Retailer links coming soon — check retailers and confirm with your installer.</p>
+        <p>Use the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm <a href="/guides/load-index-speed-rating/">load index &amp; speed rating</a>. Retailer links coming soon — check retailers and confirm with your installer.</p>
+      </div>
+    """,
+)
+
+
+CHECKLIST_FAQS = [
+    (
+        "What should I write down from the placard before shopping?",
+        "At minimum: OEM tire size(s), recommended cold inflation pressures (front/rear/spare if listed), and any notes about temporary spares. Also record the load index and speed rating from a correctly fitted OEM tire or from OEM documentation.",
+    ),
+    (
+        "Is the placard enough by itself?",
+        "It is the usual starting point for size and pressure. Still cross-check your owner’s manual for trim-specific notes, and have a licensed installer confirm final fitment, TPMS needs, and mounting.",
+    ),
+]
+
+page(
+    path="/guides/tire-placard-checklist/index.html",
+    title="Tire Placard Checklist — What to Copy Before You Buy | Smart Tire Picks",
+    description="A practical checklist for recording OEM tire size, cold pressures, and related specs from your vehicle door placard before shopping.",
+    h1="Tire placard checklist",
+    lede="Copy the right details from your door label first — then shop. This checklist is educational, not a substitute for OEM docs or a licensed installer.",
+    schema_objs=schema_article_breadcrumb(
+        headline="Tire placard checklist",
+        description="A practical checklist for recording OEM tire size, cold pressures, and related specs from your vehicle door placard before shopping.",
+        canonical=canonical_for("/guides/tire-placard-checklist/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("Placard checklist", "/guides/tire-placard-checklist/"),
+        ],
+    )
+    + [schema_faq(CHECKLIST_FAQS)],
+    body="""
+      <div class="content-block">
+        <h2>Before you start</h2>
+        <p>Park safely, open the driver’s door, and locate the Tire and Loading Information label (placard). Have a phone camera or notepad ready. Soft reminder: this list helps you organize facts — it does not approve a tire for your vehicle.</p>
+        <h2>Checklist</h2>
+        <ol>
+          <li><strong>Vehicle identity</strong> — year, make, model, and trim (options packages can change OE tire specs).</li>
+          <li><strong>OE tire size</strong> — copy the size string exactly (for example, 225/65R17). Note if front and rear differ.</li>
+          <li><strong>Cold inflation pressure</strong> — record front and rear PSI/kPa from the placard, not the sidewall maximum.</li>
+          <li><strong>Spare notes</strong> — temporary spares often have different size and pressure limits.</li>
+          <li><strong>Load index &amp; speed rating</strong> — from a correct OE tire sidewall or OEM documentation; replacements should meet vehicle requirements.</li>
+          <li><strong>Owner’s manual cross-check</strong> — look for trim-specific tire tables or warnings.</li>
+          <li><strong>Installer questions</strong> — TPMS service, mounting/balancing, and whether any alternate size was previously fitted.</li>
+        </ol>
+        <h2>After you shop</h2>
+        <p>Ask the seller for the DOT week/year on the set you will receive, and confirm the service description (load index/speed symbol) matches what you planned. Have a licensed professional mount and balance the tires.</p>
+        <p class="note">We do not claim this checklist makes any tire choice “safe” for every vehicle. Verify against your placard, OEM materials, and installer guidance.</p>
+      </div>
+""" + faq_html(CHECKLIST_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_REPLACE]) + related_block([
+    ("/guides/placard/", "How to read your door placard"),
+    ("/fitment/choose-tire-size/", "How to choose tire size"),
+    ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
+    ("/guides/dot-date-codes/", "DOT date codes"),
+]) + """
+      <div class="cta-box">
+        <h2>Related tools</h2>
+        <p>Continue with <a href="/guides/placard/">placard reading</a> and <a href="/fitment/choose-tire-size/">size selection</a>. Retailer CTAs coming soon.</p>
       </div>
     """,
 )
@@ -310,6 +527,16 @@ page(
     description="Understand tire load index and speed rating codes, why they matter for fitment, and how to verify them against OEM requirements.",
     h1="Load index and speed rating explained",
     lede="Those numbers and letters after the size code are not optional fine print — they describe capacity and rated capability.",
+    schema_objs=schema_article_breadcrumb(
+        headline="Load index and speed rating explained",
+        description="Understand tire load index and speed rating codes, why they matter for fitment, and how to verify them against OEM requirements.",
+        canonical=canonical_for("/guides/load-index-speed-rating/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("Load index & speed rating", "/guides/load-index-speed-rating/"),
+        ],
+    ),
     body="""
       <div class="content-block">
         <h2>Where they appear</h2>
@@ -335,6 +562,7 @@ page(
         <h2>TPMS and electronics</h2>
         <p>Changing wheels or tire constructions can interact with tire-pressure monitoring and other systems. Plan sensor service with your installer.</p>
       </div>
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/placard/', 'Door placard guide'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/reviews/michelin-crossclimate2/', 'Editorial review example')]) + """
       <div class="cta-box">
         <h2>Related reading</h2>
         <p><a href="/guides/placard/">Door placard guide</a> · <a href="/fitment/choose-tire-size/">Choose tire size</a>. Affiliate CTAs coming soon — check retailers.</p>
@@ -348,6 +576,16 @@ page(
     description="Learn how to read the DOT tire date code (week and year of manufacture) and why tire age matters alongside tread depth.",
     h1="DOT date codes and tire age",
     lede="Tread depth is only one aging signal. The DOT code helps you identify when a tire was manufactured.",
+    schema_objs=schema_article_breadcrumb(
+        headline="DOT date codes and tire age",
+        description="Learn how to read the DOT tire date code (week and year of manufacture) and why tire age matters alongside tread depth.",
+        canonical=canonical_for("/guides/dot-date-codes/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("DOT date codes", "/guides/dot-date-codes/"),
+        ],
+    ),
     body="""
       <div class="content-block">
         <h2>What “DOT” means here</h2>
@@ -363,6 +601,7 @@ page(
         <p>Ask the retailer for the date codes on the specific set you will receive. Prefer transparent sellers who will confirm week/year before mounting. Storage history also matters; a licensed installer can help inspect for cracking, flat-spotting, and other issues.</p>
         <p class="note">We do not set a universal “must replace by” age on this site. Use OEM guidance, tire-manufacturer guidance, and professional inspection.</p>
       </div>
+""" + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/comparisons/all-season-vs-winter/', 'All-season vs winter')]) + """
       <div class="cta-box">
         <h2>Also see</h2>
         <p><a href="/guides/when-to-replace/">When to replace tires</a>. Retailer links coming soon.</p>
@@ -376,6 +615,16 @@ page(
     description="Practical signs it may be time to replace tires: tread depth, uneven wear, damage, age, and seasonal considerations — verify with a pro.",
     h1="When to replace your tires",
     lede="Replacement timing depends on tread, damage, age, use case, and climate — not a single marketing slogan.",
+    schema_objs=schema_article_breadcrumb(
+        headline="When to replace your tires",
+        description="Practical signs it may be time to replace tires: tread depth, uneven wear, damage, age, and seasonal considerations — verify with a pro.",
+        canonical=canonical_for("/guides/when-to-replace/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("When to replace", "/guides/when-to-replace/"),
+        ],
+    ),
     body="""
       <div class="content-block">
         <h2>Tread depth</h2>
@@ -393,6 +642,7 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
       </div>
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/placard/', 'Door placard guide'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/fitment/all-season-vs-winter-vs-summer/', 'All-season vs winter vs summer')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -407,10 +657,20 @@ page(
     description="A step-by-step approach to choosing tire size: door placard first, then load index, speed rating, and installer confirmation.",
     h1="How to choose the right tire size",
     lede="Start with the vehicle — not the sale rack. Size, load, and speed rating must fit your OEM requirements.",
+    schema_objs=schema_article_breadcrumb(
+        headline="How to choose the right tire size",
+        description="A step-by-step approach to choosing tire size: door placard first, then load index, speed rating, and installer confirmation.",
+        canonical=canonical_for("/fitment/choose-tire-size/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Fitment", "/fitment/choose-tire-size/"),
+            ("Choose tire size", "/fitment/choose-tire-size/"),
+        ],
+    ),
     body="""
       <div class="content-block">
         <h2>Step 1 — Read the placard</h2>
-        <p>Locate the tire information placard and note the OEM size and cold pressures. Cross-check the owner’s manual for your trim. Details: <a href="/guides/placard/">placard guide</a>.</p>
+        <p>Locate the tire information placard and note the OEM size and cold pressures. Cross-check the owner’s manual for your trim. Details: <a href="/guides/placard/">placard guide</a> · <a href="/guides/tire-placard-checklist/">placard checklist</a>.</p>
         <h2>Step 2 — Decode the current sidewall</h2>
         <p>Compare what is on the car today with the placard. Previous owners may have installed a different size. Matching “what’s already on it” is not always correct.</p>
         <h2>Step 3 — Confirm load index and speed rating</h2>
@@ -422,6 +682,7 @@ page(
         <h2>Optional plus-sizing</h2>
         <p>Larger wheels with lower-profile tires change ride, risk of wheel damage, and gearing feel. Treat plus-sizing as an engineering change — verify clearance, load capacity, and OEM guidance rather than copying a forum setup.</p>
       </div>
+""" + sources_block([NHTSA_TIRES, USTMA_REPLACE, NHTSA_SAVINGS]) + related_block([('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/load-index-speed-rating/', 'Load index &amp; speed rating'), ('/reviews/michelin-crossclimate2/', 'Editorial review: CrossClimate 2'), ('/comparisons/all-season-vs-winter/', 'All-season vs winter comparison')]) + """
       <div class="cta-box">
         <h2>Check retailers</h2>
         <p>Purchase CTAs coming soon. Until then, compare availability at major tire retailers and confirm final specs with your installer.</p>
@@ -632,7 +893,7 @@ page(
         <h2>Affiliate relationships</h2>
         <p>Some links may be affiliate links. See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>. Commissions do not change our editorial standards, and they do not constitute a recommendation that a product is right for your vehicle.</p>
         <h2>Contact</h2>
-        <p>Questions about this disclaimer: contact via the site’s <a href="/contact.html">contact page</a> (Joshua Israel Ventures LLC).</p>
+        <p>Questions about this disclaimer: contact via the site’s <a href="/contact/">contact page</a> (Joshua Israel Ventures LLC).</p>
         <p>If you do not agree with these terms, do not use this website.</p>
       </div>
     """,
@@ -661,5 +922,31 @@ page(
       </div>
     """,
 )
+
+
+SITEMAP_URLS = [
+    ("/", "weekly", "1.0"),
+    ("/about.html", "monthly", "0.6"),
+    ("/contact/", "monthly", "0.5"),
+    ("/guides/placard/", "monthly", "0.8"),
+    ("/guides/tire-placard-checklist/", "monthly", "0.8"),
+    ("/guides/load-index-speed-rating/", "monthly", "0.8"),
+    ("/guides/dot-date-codes/", "monthly", "0.8"),
+    ("/guides/when-to-replace/", "monthly", "0.8"),
+    ("/fitment/choose-tire-size/", "monthly", "0.8"),
+    ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
+    ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
+    ("/reviews/bridgestone-turanza-quiettrack/", "monthly", "0.7"),
+    ("/comparisons/all-season-vs-winter/", "monthly", "0.7"),
+    ("/comparisons/touring-vs-performance-all-season/", "monthly", "0.7"),
+    ("/disclaimer/", "yearly", "0.3"),
+    ("/affiliate-disclosure/", "yearly", "0.3"),
+]
+_lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+for _loc, _freq, _pri in SITEMAP_URLS:
+    _lines.append(f'  <url><loc>{BASE}{_loc}</loc><changefreq>{_freq}</changefreq><priority>{_pri}</priority></url>')
+_lines.append("</urlset>")
+(ROOT / "sitemap.xml").write_text("\n".join(_lines) + "\n", encoding="utf-8")
+print("wrote sitemap.xml")
 
 print("HTML generation complete")

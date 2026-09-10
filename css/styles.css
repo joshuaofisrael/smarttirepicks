@@ -331,3 +331,38 @@ textarea { min-height: 140px; resize: vertical; }
   .site-nav a { display: block; padding: 0.55rem 0; width: 100%; }
   .footer-grid { grid-template-columns: 1fr; }
 }
+
+
+/* SEO / content extras */
+.related-links, .sources-block, .faq-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem;
+  box-shadow: var(--shadow);
+  margin-top: 1.5rem;
+}
+.related-links h2, .sources-block h2, .faq-block h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.015em;
+}
+.related-links ul, .sources-block ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+}
+.related-links li, .sources-block li { margin-bottom: 0.4rem; }
+.faq-block details {
+  border-top: 1px solid var(--border);
+  padding: 0.65rem 0;
+}
+.faq-block details:first-of-type { border-top: none; }
+.faq-block summary {
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--text);
+}
+.faq-block details p {
+  margin: 0.5rem 0 0.15rem;
+  color: #2a3444;
+}
