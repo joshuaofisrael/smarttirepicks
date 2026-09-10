@@ -358,7 +358,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational Flippa-style resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, load index &amp; speed rating, DOT date codes, replacement timing</li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, load index &amp; speed rating, DOT date codes, replacement timing</li>
           <li><strong>Fitment</strong> — size selection and climate-category basics</li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -450,9 +450,9 @@ page(
       </div>
 """ + faq_html(PLACARD_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_REPLACE]) + related_block([
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
     ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
-    ("/guides/when-to-replace/", "When to replace tires"),
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
@@ -510,13 +510,80 @@ page(
       </div>
 """ + faq_html(CHECKLIST_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_REPLACE]) + related_block([
     ("/guides/placard/", "How to read your door placard"),
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
     ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
-    ("/guides/dot-date-codes/", "DOT date codes"),
 ]) + """
       <div class="cta-box">
         <h2>Related tools</h2>
         <p>Continue with <a href="/guides/placard/">placard reading</a> and <a href="/fitment/choose-tire-size/">size selection</a>. Retailer CTAs coming soon.</p>
+      </div>
+    """,
+)
+
+
+PRESSURE_FAQS = [
+    (
+        "Is the PSI on my tire sidewall the pressure I should use?",
+        "Usually no. The large number molded on the sidewall is typically a maximum cold pressure for that tire’s construction. Your vehicle’s door placard (Tire and Loading Information label) or owner’s manual lists the recommended cold inflation pressures for that vehicle. Confirm with OEM materials and a licensed installer if anything is unclear.",
+    ),
+    (
+        "How often should I check cold tire pressure?",
+        "Many public safety resources encourage checking inflation regularly — for example monthly and before long trips — when tires are cold (before significant driving heats them). Exact habits can vary by vehicle and climate; follow your owner’s manual and ask a licensed installer if you are unsure how to measure accurately.",
+    ),
+    (
+        "What does a TPMS warning light mean at a high level?",
+        "A tire pressure monitoring system (TPMS) light generally indicates that the system detected a tire pressure condition outside its programmed threshold, or that the system itself needs service. It is a prompt to investigate safely — not a complete diagnosis. Check pressures with a quality gauge when cold if it is safe to do so, and have a licensed professional inspect the tires, valves, and sensors when needed.",
+    ),
+]
+
+page(
+    path="/guides/tire-pressure/index.html",
+    title="Recommended Cold Tire Pressure (PSI) — Placard vs Sidewall | Smart Tire Picks",
+    description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, and how to check inflation with soft, educational guidance.",
+    h1="Recommended cold tire pressure (PSI): placard vs sidewall",
+    lede="Cold inflation pressure is vehicle-specific. Start with your door placard and owner’s manual — not the big number molded on the tire sidewall.",
+    schema_objs=schema_article_breadcrumb(
+        headline="Recommended cold tire pressure (PSI): placard vs sidewall",
+        description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, and how to check inflation with soft, educational guidance.",
+        canonical=canonical_for("/guides/tire-pressure/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("Cold tire pressure", "/guides/tire-pressure/"),
+        ],
+    )
+    + [schema_faq(PRESSURE_FAQS)],
+    body="""
+      <div class="content-block">
+        <h2>What “cold” tire pressure means</h2>
+        <p>Recommended inflation figures on US vehicles are typically stated as <strong>cold</strong> pressures — meaning the tire has not been warmed by recent driving or hot ambient conditions that raise pressure. Driving heats air inside the tire, so a reading taken after a long trip can look higher than a true cold reading. This page is educational only; it does not prescribe a universal PSI for every vehicle.</p>
+        <h2>Use the placard (or OEM manual), not a one-size rule</h2>
+        <p>Your vehicle’s Tire and Loading Information label (door-jamb placard) usually lists recommended cold inflation pressures for the front and rear (and sometimes a spare). Trims and options packages can differ, so also cross-check the owner’s manual. We do not publish a single “correct” PSI that applies to all cars, trucks, or SUVs.</p>
+        <h2>Placard recommendation vs sidewall maximum</h2>
+        <p>The large PSI number on a tire sidewall is commonly a <strong>maximum cold pressure</strong> for that tire’s construction — not the everyday operating pressure your vehicle was designed around. Inflating only to a sidewall maximum without OEM guidance can be inappropriate for ride, wear, and load context. Soft rule of thumb for shoppers: copy the placard first, then confirm with a licensed installer if the vehicle has been modified or if labels conflict.</p>
+        <h2>Practical checking habits (not a safety guarantee)</h2>
+        <ul>
+          <li>Use a quality pressure gauge and compare each tire to the placard values for that axle (including the spare if your setup uses one).</li>
+          <li>Check when tires are cold when practical — for example before a day’s first drive — and follow any timing notes in your owner’s manual.</li>
+          <li>After adding or releasing air, re-check and reseat valve caps; ask an installer about TPMS service if sensors or valve stems need attention.</li>
+          <li>Uneven wear, repeated underinflation warnings, or visible damage are reasons to stop and have a licensed professional inspect the set — this site cannot diagnose your vehicle remotely.</li>
+        </ul>
+        <h2>Load, temperature, and “set it and forget it”</h2>
+        <p>Pressure changes with temperature, and load (passengers, cargo, towing) can matter for how a vehicle manufacturer frames inflation guidance. Some manuals include alternate tables for heavy load. Treat brochure shortcuts and forum “run X PSI” posts cautiously; verify against OEM materials for your exact vehicle.</p>
+        <h2>Before you buy or remount tires</h2>
+        <p>Record placard pressures alongside size, load index, and speed rating (see our <a href="/guides/tire-placard-checklist/">placard checklist</a>). Have a licensed installer mount and balance tires, confirm TPMS function, and advise if an alternate size changes any service considerations. We do not claim lab tests, and we do not label any inflation practice as the “safest” for every driver.</p>
+        <p class="note">Informational only — not professional, safety, or legal advice. Always verify placard/OEM specs for your vehicle and use a licensed installer for mounting, balancing, and related service.</p>
+      </div>
+""" + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
+    ("/guides/placard/", "How to read your door placard"),
+    ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+    ("/fitment/choose-tire-size/", "How to choose tire size"),
+    ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
+]) + """
+      <div class="cta-box">
+        <h2>Next steps</h2>
+        <p>Copy pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm size and ratings via <a href="/fitment/choose-tire-size/">choose tire size</a>. Retailer links coming soon — check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -682,7 +749,7 @@ page(
         <h2>Optional plus-sizing</h2>
         <p>Larger wheels with lower-profile tires change ride, risk of wheel damage, and gearing feel. Treat plus-sizing as an engineering change — verify clearance, load capacity, and OEM guidance rather than copying a forum setup.</p>
       </div>
-""" + sources_block([NHTSA_TIRES, USTMA_REPLACE, NHTSA_SAVINGS]) + related_block([('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/load-index-speed-rating/', 'Load index &amp; speed rating'), ('/reviews/michelin-crossclimate2/', 'Editorial review: CrossClimate 2'), ('/comparisons/all-season-vs-winter/', 'All-season vs winter comparison')]) + """
+""" + sources_block([NHTSA_TIRES, USTMA_REPLACE, NHTSA_SAVINGS]) + related_block([('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/load-index-speed-rating/', 'Load index &amp; speed rating'), ('/guides/placard/', 'Door placard guide')]) + """
       <div class="cta-box">
         <h2>Check retailers</h2>
         <p>Purchase CTAs coming soon. Until then, compare availability at major tire retailers and confirm final specs with your installer.</p>
@@ -930,6 +997,7 @@ SITEMAP_URLS = [
     ("/contact/", "monthly", "0.5"),
     ("/guides/placard/", "monthly", "0.8"),
     ("/guides/tire-placard-checklist/", "monthly", "0.8"),
+    ("/guides/tire-pressure/", "monthly", "0.8"),
     ("/guides/load-index-speed-rating/", "monthly", "0.8"),
     ("/guides/dot-date-codes/", "monthly", "0.8"),
     ("/guides/when-to-replace/", "monthly", "0.8"),
