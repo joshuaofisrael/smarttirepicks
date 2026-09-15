@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 BASE = "https://smarttirepicks.com"
 DATE_PUB = "2026-09-08"
-DATE_MOD = "2026-09-10"
+DATE_MOD = "2026-09-15"
 
 PER_PAGE = (
     '<aside class="disclaimer-box" role="note">'
@@ -348,6 +348,11 @@ page(
           <a class="card-link" href="/guides/when-to-replace/">Replacement guide →</a>
         </article>
         <article class="card">
+          <h2>How to check tread depth</h2>
+          <p>Wear bars, gauges, and rough coin heuristics — with soft, educational caveats and when to see a pro.</p>
+          <a class="card-link" href="/guides/tread-depth/">Tread depth guide →</a>
+        </article>
+        <article class="card">
           <h2>Editorial review: CrossClimate 2</h2>
           <p>Public manufacturer positioning summarized in soft language — no independent lab tests by us.</p>
           <a class="card-link" href="/reviews/michelin-crossclimate2/">Read review →</a>
@@ -358,7 +363,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational Flippa-style resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, load index &amp; speed rating, DOT date codes, replacement timing</li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing</li>
           <li><strong>Fitment</strong> — size selection and climate-category basics</li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -578,8 +583,8 @@ page(
 """ + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+    ("/guides/tread-depth/", "How to check tread depth"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
-    ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
@@ -668,7 +673,7 @@ page(
         <p>Ask the retailer for the date codes on the specific set you will receive. Prefer transparent sellers who will confirm week/year before mounting. Storage history also matters; a licensed installer can help inspect for cracking, flat-spotting, and other issues.</p>
         <p class="note">We do not set a universal “must replace by” age on this site. Use OEM guidance, tire-manufacturer guidance, and professional inspection.</p>
       </div>
-""" + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/comparisons/all-season-vs-winter/', 'All-season vs winter')]) + """
+""" + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Also see</h2>
         <p><a href="/guides/when-to-replace/">When to replace tires</a>. Retailer links coming soon.</p>
@@ -695,7 +700,7 @@ page(
     body="""
       <div class="content-block">
         <h2>Tread depth</h2>
-        <p>Many US jurisdictions reference 2/32 inch as a legal minimum for passenger tires, but wet and winter traction can decline before that. Use a gauge; wear bars are a visual backup, not a complete inspection.</p>
+        <p>Many US consumer safety materials discuss remaining tread around <strong>2/32 inch</strong> as a point of elevated wet-traction risk, and tires include molded wear bars near that depth — but state rules and vehicle use can differ. Use a gauge; wear bars are a visual backup, not a complete inspection. See our dedicated <a href="/guides/tread-depth/">how to check tread depth</a> guide.</p>
         <h2>Damage and irregular wear</h2>
         <ul>
           <li>Sidewall bulges, cuts, or exposed cords — have a professional evaluate immediately</li>
@@ -709,10 +714,85 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/placard/', 'Door placard guide'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/fitment/all-season-vs-winter-vs-summer/', 'All-season vs winter vs summer')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
+      </div>
+    """,
+)
+
+
+TREAD_FAQS = [
+    (
+        "What are treadwear indicators (wear bars)?",
+        "Most modern passenger tires have molded treadwear indicators — raised bars across the tread grooves. When the surrounding tread wears down so it is level with those bars, public safety materials commonly treat that as a signal that remaining depth is near a widely cited minimum (often discussed as about 2/32 inch / 1.6 mm). Wear bars are a visual cue, not a full inspection of every groove or of damage elsewhere on the tire.",
+    ),
+    (
+        "Is 2/32 inch the legal minimum everywhere?",
+        "Not necessarily as a single nationwide “law for every vehicle.” Many US consumer guidance materials and state inspection practices discuss about 2/32 inch remaining tread as a critical wet-traction risk threshold, and federal tire standards require wear indicators near that depth. Individual states and vehicle uses can differ. Treat 2/32 inch as an educational benchmark from public safety materials — verify local rules, OEM guidance, and have a licensed professional measure and advise for your set.",
+    ),
+    (
+        "Are the penny and quarter tests accurate?",
+        "Coin tests are rough, free heuristics — not calibrated measurements. A common penny-test description places Lincoln’s head upside down in a groove; if you can see the top of his head, tread may be near a widely discussed replacement threshold. Quarters are sometimes used as a more conservative heuristic. Prefer a dedicated tread-depth gauge across multiple locations on each tire, and ask a licensed installer to confirm readings, especially if wear looks uneven.",
+    ),
+    (
+        "When should I see a licensed professional about tread?",
+        "See a licensed tire installer or qualified shop if wear bars are exposed, a gauge shows low remaining depth, you notice uneven wear, cuts, bulges, vibrations, or repeated underinflation warnings, or before a long trip or seasonal change. This site cannot diagnose your vehicle remotely and does not replace professional inspection, mounting, or balancing.",
+    ),
+]
+
+page(
+    path="/guides/tread-depth/index.html",
+    title="How to Check Tire Tread Depth — Wear Bars &amp; Gauges | Smart Tire Picks",
+    description="Learn how to check tire tread depth with wear bars, a tread gauge, and rough coin heuristics. Educational NHTSA-cited guidance with soft caveats — verify with a licensed installer.",
+    h1="How to check tire tread depth",
+    lede="Tread depth affects wet-road grip. Learn what wear bars mean, how gauges and coin heuristics work, and when to have a licensed professional confirm your readings.",
+    schema_objs=schema_article_breadcrumb(
+        headline="How to check tire tread depth",
+        description="Learn how to check tire tread depth with wear bars, a tread gauge, and rough coin heuristics. Educational NHTSA-cited guidance with soft caveats — verify with a licensed installer.",
+        canonical=canonical_for("/guides/tread-depth/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("Tread depth", "/guides/tread-depth/"),
+        ],
+    )
+    + [schema_faq(TREAD_FAQS)],
+    body="""
+      <div class="content-block">
+        <h2>Why tread depth matters (educational overview)</h2>
+        <p>Tire tread helps channel water and maintain grip on wet or slippery roads. As grooves wear down, traction can decline — especially in rain. Public US safety materials (including NHTSA TireWise consumer guidance) discuss remaining tread around <strong>2/32 of an inch</strong> as a point where tires are widely described as unsafe to continue using and due for replacement. That figure is an educational benchmark from consumer safety materials, not a substitute for your state’s rules, your vehicle manufacturer’s guidance, or a hands-on inspection by a licensed installer.</p>
+        <h2>Wear bars / treadwear indicators</h2>
+        <p>Most passenger tires include molded <strong>treadwear indicators</strong> (often called wear bars) — raised sections spaced across the tread grooves. When the tread surface wears down so it is roughly even with those bars, remaining depth is near the depth those indicators were designed around (commonly discussed as about 2/32 inch / 1.6 mm). Soft practice: look across multiple grooves around each tire; one visible bar does not replace measuring other areas or checking for damage, cracking, or uneven wear.</p>
+        <h2>Minimum tread concepts — phrase carefully</h2>
+        <ul>
+          <li>Many US consumer guides and inspection practices treat about <strong>2/32 inch</strong> remaining tread as a critical wet-traction risk threshold.</li>
+          <li>Some drivers and regions prefer replacing earlier (for example nearer 4/32 inch) for wet or winter driving confidence — that is a judgment call to discuss with a licensed professional, not a universal rule we mandate here.</li>
+          <li>We do not claim a single depth is “legal everywhere” or “safest for every vehicle.” Confirm local requirements and OEM recommendations.</li>
+        </ul>
+        <h2>How to measure (with caveats)</h2>
+        <ol>
+          <li><strong>Tread-depth gauge</strong> — The most practical DIY method. Insert the probe into the main grooves at several points across the tread and around the circumference. Record the lowest readings; uneven wear can matter as much as the average.</li>
+          <li><strong>Wear-bar visual check</strong> — If tread is flush with the wear bars in places you can see, treat that as a strong prompt to measure carefully and book a professional inspection.</li>
+          <li><strong>Penny / quarter heuristics</strong> — Rough, free checks only. A commonly cited penny test places Lincoln’s head upside down in a groove; if the top of his head is visible, public materials often say it is time to replace. A quarter (Washington’s head) is sometimes used as a more conservative heuristic. These are <em>not</em> calibrated instruments and can mislead on uneven wear or siped winter tires.</li>
+        </ol>
+        <p>Check monthly habits alongside cold pressure checks when practical, and inspect before long trips. This page does not diagnose your tires remotely.</p>
+        <h2>When to see a licensed professional</h2>
+        <p>Have a licensed tire installer measure tread, inspect for cuts, bulges, exposed cord, irregular wear, and advise on repair vs replacement. Also ask them to confirm inflation against your door placard, and to review age via the <a href="/guides/dot-date-codes/">DOT date code</a> if the set is older inventory. Mounting, balancing, and TPMS service belong with qualified shops — not DIY curb-side guesses.</p>
+        <h2>How this ties to replacement timing</h2>
+        <p>Tread depth is one replacement signal among several. Damage, age, storage history, and climate use also matter. Continue with our <a href="/guides/when-to-replace/">when to replace tires</a> overview after you understand how to measure depth.</p>
+        <p class="note">Informational only — not professional, safety, or legal advice. We have not lab-tested your tires. Always verify OEM guidance and use a licensed installer for measurement confirmation, mounting, and related service.</p>
+      </div>
+""" + faq_html(TREAD_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE, USTMA_REPLACE]) + related_block([
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/guides/dot-date-codes/", "DOT date codes"),
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+]) + """
+      <div class="cta-box">
+        <h2>Next steps</h2>
+        <p>Measure tread, then review <a href="/guides/when-to-replace/">when to replace</a> and confirm cold pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>. Retailer links coming soon — check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1001,6 +1081,7 @@ SITEMAP_URLS = [
     ("/guides/load-index-speed-rating/", "monthly", "0.8"),
     ("/guides/dot-date-codes/", "monthly", "0.8"),
     ("/guides/when-to-replace/", "monthly", "0.8"),
+    ("/guides/tread-depth/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
