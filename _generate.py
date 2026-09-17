@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 BASE = "https://smarttirepicks.com"
 DATE_PUB = "2026-09-08"
-DATE_MOD = "2026-09-15"
+DATE_MOD = "2026-09-17"
 
 PER_PAGE = (
     '<aside class="disclaimer-box" role="note">'
@@ -177,6 +177,46 @@ def faq_html(faqs: list) -> str:
     return "\n".join(parts)
 
 
+
+
+def suitability_block(may_suit: list, may_not: list) -> str:
+    suit_lis = "\n".join(f"          <li>{item}</li>" for item in may_suit)
+    not_lis = "\n".join(f"          <li>{item}</li>" for item in may_not)
+    return f"""
+      <div class="suitability-grid" aria-label="Suitability notes">
+        <section class="suit-card" aria-labelledby="suit-yes">
+          <h2 id="suit-yes">Who this tire may suit</h2>
+          <ul>
+{suit_lis}
+          </ul>
+          <p class="note">Soft guidance only. Your placard, climate, and a licensed installer still decide fitment.</p>
+        </section>
+        <section class="suit-card" aria-labelledby="suit-no">
+          <h2 id="suit-no">Who this tire may not suit</h2>
+          <ul>
+{not_lis}
+          </ul>
+          <p class="note">These are common mismatch patterns, not a ban list. Confirm with OEM docs and an installer.</p>
+        </section>
+      </div>"""
+
+
+def retailer_cta(*, product_label: str, search_hint: str) -> str:
+    """Placeholder retailer CTAs — no invented affiliate tracking URLs."""
+    return f"""
+      <div class="cta-box retailer-cta" id="check-prices">
+        <h2>Check current prices at retailers</h2>
+        <p>Affiliate purchase links with tracking IDs are <strong>coming soon</strong>. Until they go live, use your preferred retailer and search for <strong>{product_label}</strong> in your exact size. Confirm load index, speed rating, and DOT week/year before you buy.</p>
+        <ul class="cta-list">
+          <li><span class="cta-soon">Coming soon</span> — Tire Rack product page (affiliate)</li>
+          <li><span class="cta-soon">Coming soon</span> — Discount Tire product page (affiliate)</li>
+          <li><span class="cta-soon">Coming soon</span> — Amazon tire listing (affiliate)</li>
+          <li><strong>Search intent for now:</strong> look up “{search_hint}” plus your placard size at major US tire retailers, then verify with a licensed installer.</li>
+        </ul>
+        <p class="note">See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>. Commissions (when enabled) do not change fitment rules or our soft editorial language.</p>
+      </div>"""
+
+
 def page(
     *,
     path: str,
@@ -307,12 +347,29 @@ USTMA_CARE = (
     "Trade-association hub for passenger/light-truck tire care topics for consumers.",
 )
 
+ECFR_UTQG = (
+    "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part-575/subpart-B/section-575.104",
+    "eCFR — 49 CFR § 575.104 Uniform tire quality grading standards",
+    "Federal consumer-information rule describing UTQG treadwear, traction, and temperature grading for many passenger-car tires.",
+)
+NHTSA_UTQG_PDF = (
+    "https://www.nhtsa.gov/sites/nhtsa.gov/files/documents/10961_2014uniformtirequalitygrading_080714_v1_tag.pdf",
+    "NHTSA — Uniform Tire Quality Grading (consumer PDF)",
+    "Public NHTSA handout summarizing comparative treadwear/traction/temperature grades and key warnings.",
+)
+NHTSA_UTQG_SEARCH = (
+    "https://www.nhtsa.gov/tire/utqg-tire-grading",
+    "NHTSA — UTQG tire grading information",
+    "NHTSA TireWise / grading entry point for consumers researching UTQG grades.",
+)
+
+
 # ---------- PAGES ----------
 
 page(
     path="/index.html",
-    title="Smart Tire Picks — Tire Fitment Guides & Editorial Reviews",
-    description="Learn how to choose tire size, read your door placard, and compare all-season vs winter tires. Educational guides from Smart Tire Picks.",
+    title="Smart Tire Picks — Tire Fitment Guides, UTQG & Editorial Reviews",
+    description="Educational tire fitment for US drivers: door placards, UTQG grades, cold PSI, load index, and calm editorial reviews. Soft language, public citations, no fake lab tests.",
     include_disclaimer=True,
     hero=True,
     schema_objs=schema_organization_website(),
@@ -321,15 +378,39 @@ page(
       <div class="wrap">
         <p class="section-label" style="color:#a8e6df;">Educational tire site</p>
         <h1>Choose tires with clarity, not guesswork</h1>
-        <p>Smart Tire Picks helps US drivers understand fitment, load and speed ratings, and category trade-offs — so you can verify the right size against your door placard before you buy.</p>
+        <p>Smart Tire Picks helps US drivers understand fitment, load and speed ratings, UTQG consumer grades, and category trade-offs — so you can verify the right size against your door placard before you buy.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/fitment/choose-tire-size/">Start with fitment</a>
-          <a class="btn btn-ghost" href="/guides/placard/">Read your door placard</a>
+          <a class="btn btn-ghost" href="/guides/utqg/">New: UTQG grades explained</a>
         </div>
       </div>
     </section>
     """,
     body="""
+      <div class="trust-strip" aria-label="How we work">
+        <div class="trust-item">
+          <h2>What we do</h2>
+          <p>Original educational guides, fitment explainers, and editorial model overviews for US drivers. We prioritize placard literacy over hype.</p>
+        </div>
+        <div class="trust-item">
+          <h2>How we cite</h2>
+          <p>Where we reference public rules or agency guidance, we link sources (often .gov) and paraphrase. We do not invent lab results.</p>
+        </div>
+        <div class="trust-item">
+          <h2>Your responsibility</h2>
+          <p>Informational only. Verify size, load index, and speed rating on your placard, then use a licensed installer. Read our <a href="/disclaimer/">Disclaimer</a>.</p>
+        </div>
+      </div>
+
+      <p class="section-label">Featured guide</p>
+      <div class="card-grid">
+        <article class="card" style="grid-column: 1 / -1; border-color:#9ec5ff;">
+          <h2>UTQG explained: treadwear, traction &amp; temperature</h2>
+          <p>Decode the Uniform Tire Quality Grading marks on many passenger-car sidewalls — with soft language, NHTSA/.gov citations, and clear limits on what grades do <em>not</em> mean.</p>
+          <a class="card-link" href="/guides/utqg/">Read the UTQG guide →</a>
+        </article>
+      </div>
+
       <p class="section-label">Popular starting points</p>
       <div class="card-grid">
         <article class="card">
@@ -357,22 +438,27 @@ page(
           <p>Public manufacturer positioning summarized in soft language — no independent lab tests by us.</p>
           <a class="card-link" href="/reviews/michelin-crossclimate2/">Read review →</a>
         </article>
+        <article class="card">
+          <h2>Touring vs performance all-season</h2>
+          <p>A clearer decision framework for comfort-oriented versus response-oriented all-season priorities.</p>
+          <a class="card-link" href="/comparisons/touring-vs-performance-all-season/">Compare categories →</a>
+        </article>
       </div>
 
       <div class="content-block" style="margin-top:1.5rem;">
         <h2>What we publish</h2>
-        <p>Smart Tire Picks is an educational Flippa-style resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
+        <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing</li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
           <li><strong>Fitment</strong> — size selection and climate-category basics</li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
-        <p class="note">We do not claim any tire is the “safest” or guarantee outcomes for your vehicle. Always verify specs and use a licensed installer.</p>
+        <p class="note">We do not claim any tire is the “safest” or guarantee outcomes for your vehicle. Always verify specs and use a licensed installer. Full legal text: <a href="/disclaimer/">Disclaimer</a> · <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
       </div>
 
-      <div class="cta-box">
-        <h2>Retailer links</h2>
-        <p>Affiliate purchase links are coming soon. Until then, check major tire retailers and confirm fitment with your installer.</p>
+      <div class="cta-box retailer-cta">
+        <h2>Check current prices at retailers</h2>
+        <p>Live affiliate purchase links are <strong>coming soon</strong>. Until then, search major US tire retailers for your exact placard size, compare current pricing and warranties, and confirm fitment with a licensed installer. We will not invent tracking URLs.</p>
       </div>
     """,
 )
@@ -457,6 +543,7 @@ page(
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
     ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
     ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
+    ("/guides/utqg/", "UTQG grades explained"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
 ]) + """
       <div class="cta-box">
@@ -584,6 +671,7 @@ page(
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
     ("/guides/tread-depth/", "How to check tread depth"),
+    ("/guides/utqg/", "UTQG grades explained"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
 ]) + """
       <div class="cta-box">
@@ -634,7 +722,7 @@ page(
         <h2>TPMS and electronics</h2>
         <p>Changing wheels or tire constructions can interact with tire-pressure monitoring and other systems. Plan sensor service with your installer.</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/placard/', 'Door placard guide'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/reviews/michelin-crossclimate2/', 'Editorial review example')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/placard/', 'Door placard guide'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/utqg/', 'UTQG grades explained'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/reviews/michelin-crossclimate2/', 'Editorial review example')]) + """
       <div class="cta-box">
         <h2>Related reading</h2>
         <p><a href="/guides/placard/">Door placard guide</a> · <a href="/fitment/choose-tire-size/">Choose tire size</a>. Affiliate CTAs coming soon — check retailers.</p>
@@ -788,6 +876,7 @@ page(
     ("/guides/when-to-replace/", "When to replace tires"),
     ("/guides/dot-date-codes/", "DOT date codes"),
     ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/utqg/", "UTQG grades explained"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
 ]) + """
       <div class="cta-box">
@@ -798,6 +887,132 @@ page(
 )
 
 # FITMENT
+
+# UTQG GUIDE (17 Sep 2026)
+UTQG_FAQS = [
+    (
+        "Is a higher UTQG treadwear number a guarantee of longer life on my car?",
+        "No. UTQG treadwear is a comparative grade from controlled testing relative to a reference. Real-world wear depends on vehicle alignment, inflation, load, roads, climate, and driving style. Treat the number as one shopping clue, not a mileage promise for your vehicle.",
+    ),
+    (
+        "Does a Traction AA grade mean the tire is safest in rain?",
+        "No. Traction grades (AA, A, B, C) reflect straight-ahead wet-braking tests on specified government surfaces. They do not cover cornering, acceleration, hydroplaning, or peak traction characteristics. Soft reminder: grades are comparative consumer information, not a safety ranking for every situation.",
+    ),
+    (
+        "What does Temperature grade C mean?",
+        "Temperature grades (A, B, C) relate to heat resistance under controlled laboratory wheel testing. Grade C corresponds to a federal minimum performance level referenced in the UTQG materials; A and B indicate higher levels on that test. Grades assume proper inflation and loading — excessive speed, underinflation, or overload can still cause dangerous heat buildup.",
+    ),
+    (
+        "Do all tires carry UTQG grades?",
+        "UTQG requirements in 49 CFR § 575.104 apply to many new pneumatic passenger-car tires, with stated exceptions (for example, certain deep-tread winter/snow tires, temporary/space-saver spares, very small rim diameters, and limited-production tires as defined in the rule). Always read the sidewall and current manufacturer information for the specific tire.",
+    ),
+    (
+        "Should UTQG override my door placard?",
+        "Never. Size, load index, and speed rating must still satisfy your vehicle’s door placard and OEM guidance. UTQG grades do not approve an alternate size or replace a licensed installer’s fitment check.",
+    ),
+]
+
+page(
+    path="/guides/utqg/index.html",
+    title="UTQG Tire Grades Explained: Treadwear, Traction & Temperature | Smart Tire Picks",
+    description="Plain-English UTQG guide: how treadwear numbers and traction/temperature letter grades work, what they do not mean, plus NHTSA and eCFR citations for US drivers.",
+    h1="UTQG explained: treadwear, traction &amp; temperature grades",
+    lede="The Uniform Tire Quality Grading (UTQG) system gives comparative consumer marks on many passenger-car tires sold in the US. Use them as one informed-shopping tool — not a guarantee, and never ahead of your door placard.",
+    schema_objs=schema_article_breadcrumb(
+        headline="UTQG explained: treadwear, traction and temperature grades",
+        description="Plain-English UTQG guide: how treadwear numbers and traction/temperature letter grades work, what they do not mean, plus NHTSA and eCFR citations for US drivers.",
+        canonical=canonical_for("/guides/utqg/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("UTQG grades", "/guides/utqg/"),
+        ],
+    )
+    + [schema_faq(UTQG_FAQS)],
+    body="""
+      <div class="content-block">
+        <h2>What UTQG is</h2>
+        <p>UTQG (Uniform Tire Quality Grading) is a <strong>federal consumer-information</strong> program. Under <a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part-575/subpart-B/section-575.104" rel="noopener noreferrer" target="_blank">49 CFR § 575.104</a>, manufacturers and brand-name owners must provide relative performance information for covered passenger-car tires in three areas: <strong>treadwear</strong>, <strong>traction</strong>, and <strong>temperature resistance</strong>.</p>
+        <p>NHTSA’s public TireWise materials describe the same three grades as tools to help shoppers compare tires — while stressing that maintenance, roads, climate, and driving habits strongly affect real results.</p>
+        <p class="note">Soft language: UTQG grades are <em>not</em> a government “safety rating” that declares one tire safest for every driver or vehicle. All covered passenger-car tires must still meet applicable federal motor vehicle safety standards in addition to carrying these comparative grades.</p>
+
+        <h2>Where to find the grades</h2>
+        <ul>
+          <li>Molded on the sidewall of many passenger-car tires (often between maximum section width and shoulder).</li>
+          <li>On required paper/tread labels for many replacement tires offered for sale.</li>
+          <li>Summarized in many vehicle owner’s manuals as an explanation of the grading system, with a pointer to the sidewall for the grades on the tires your vehicle carries.</li>
+        </ul>
+        <p>A typical sidewall presentation looks like: <strong>Treadwear 400 Traction A Temperature A</strong> (example only — read your tire).</p>
+
+        <h2>Treadwear (numeric grade)</h2>
+        <p>Treadwear is a <strong>comparative</strong> number based on wear rate under controlled conditions on a specified government test course. Grades are expressed in multiples of 20 (for example, 80, 120, 160, 400).</p>
+        <ul>
+          <li>In the regulatory explanation, a tire graded 150 would wear one and one-half times as well on the government course as a tire graded 100 (relative to the nominal reference used in the grading system).</li>
+          <li>NHTSA consumer materials similarly note that a higher treadwear number generally indicates a longer relative wear rate under the test method — for example, a grade of 400 should wear about twice as long as a grade of 200 <em>on that comparative basis</em>.</li>
+        </ul>
+        <p><strong>What shoppers should remember:</strong> your miles will differ. Alignment, rotation habits, inflation, load, road texture, climate, and driving style can make real-world wear depart significantly from the test norm. A high treadwear grade does not promise a manufacturer warranty result, and a warranty booklet is a separate document.</p>
+
+        <h2>Traction (AA, A, B, or C)</h2>
+        <p>Traction grades, from highest to lowest, are <strong>AA</strong>, <strong>A</strong>, <strong>B</strong>, and <strong>C</strong>. They represent the tire’s ability to stop on wet pavement as measured under controlled conditions on specified government asphalt and concrete surfaces.</p>
+        <table>
+          <thead><tr><th>Grade</th><th>Plain-English shopping note</th></tr></thead>
+          <tbody>
+            <tr><td>AA</td><td>Highest traction grade letter under the UTQG wet-braking test method</td></tr>
+            <tr><td>A</td><td>Common high grade; still comparative, not a personal “rain guarantee”</td></tr>
+            <tr><td>B</td><td>Mid grade on the UTQG scale</td></tr>
+            <tr><td>C</td><td>Lowest grade; federal consumer text warns a C-marked tire may have poor traction performance on the graded test</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Critical limit (paraphrased from the official grade explanation):</strong> the traction grade is based on <em>straight-ahead braking</em> traction tests. It does <strong>not</strong> include acceleration, cornering, hydroplaning, or peak traction characteristics. Soft takeaway: do not treat Traction AA as proof a tire will handle every wet corner or storm the same way on your vehicle.</p>
+
+        <h2>Temperature (A, B, or C)</h2>
+        <p>Temperature grades, from highest to lowest, are <strong>A</strong>, <strong>B</strong>, and <strong>C</strong>. They represent resistance to heat generation and ability to dissipate heat when tested under controlled conditions on a specified indoor laboratory test wheel.</p>
+        <ul>
+          <li>Sustained high temperature can degrade tire materials and shorten tire life; excessive temperature can lead to sudden tire failure.</li>
+          <li>Grade <strong>C</strong> corresponds to a level of performance all passenger-car tires must meet under the federal safety standard referenced in the UTQG explanation (commonly cited as FMVSS No. 109 in the consumer grade text). Grades <strong>B</strong> and <strong>A</strong> represent higher levels on that laboratory test wheel than the minimum required by law.</li>
+        </ul>
+        <p><strong>Critical limit:</strong> the temperature grade is established for a tire that is properly inflated and not overloaded. Excessive speed, underinflation, or excessive loading — separately or together — can cause heat buildup and possible tire failure. Soft reminder: keep cold pressures at placard values and respect load limits.</p>
+
+        <h2>What UTQG does <em>not</em> do</h2>
+        <ul>
+          <li>It does not replace matching <a href="/guides/load-index-speed-rating/">load index and speed rating</a> to your vehicle.</li>
+          <li>It does not approve plus-sizing or ignoring the <a href="/guides/placard/">door placard</a>.</li>
+          <li>It does not grade every tire category the same way; the regulation lists exclusions (including certain deep-tread winter-type snow tires, temporary/space-saver spares, very small rim diameters, and limited-production tires as defined in § 575.104).</li>
+          <li>It does not measure winter ice performance, cabin noise, or “best tire for my commute” in editorial ranking form.</li>
+          <li>Smart Tire Picks does not treat UTQG as a lab test we personally ran — we explain the public grading system.</li>
+        </ul>
+
+        <h2>How to use UTQG when you shop (soft workflow)</h2>
+        <ol>
+          <li>Copy size, cold PSI, and related notes from your <a href="/guides/tire-placard-checklist/">placard checklist</a>.</li>
+          <li>Shortlist tires that meet size, load index, and speed rating for your vehicle.</li>
+          <li>Compare UTQG grades among those candidates as one relative signal — especially treadwear expectations and wet-braking grade letters — without treating any grade as a personal safety certificate.</li>
+          <li>Read current manufacturer warranty and sidewall marks (including winter symbols if relevant).</li>
+          <li>Have a licensed installer confirm fitment, TPMS service, and mounting/balancing.</li>
+        </ol>
+        <p class="note">Related category context: <a href="/fitment/all-season-vs-winter-vs-summer/">all-season vs winter vs summer</a> and <a href="/comparisons/touring-vs-performance-all-season/">touring vs performance all-season</a>.</p>
+      </div>
+""" + faq_html(UTQG_FAQS) + sources_block([
+    ECFR_UTQG,
+    NHTSA_TIRES,
+    NHTSA_UTQG_PDF,
+    NHTSA_UTQG_SEARCH,
+    NHTSA_SAVINGS,
+]) + related_block([
+    ("/guides/placard/", "How to read your door placard"),
+    ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
+    ("/guides/tread-depth/", "How to check tread depth"),
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/fitment/choose-tire-size/", "How to choose tire size"),
+    ("/reviews/michelin-crossclimate2/", "Editorial review: CrossClimate 2"),
+]) + """
+      <div class="cta-box retailer-cta">
+        <h2>Check current prices at retailers</h2>
+        <p>When you compare candidate tires, look up each model’s current UTQG marks and pricing at major retailers. Affiliate tracking links are <strong>coming soon</strong> — we will not invent URLs. Confirm placard specs with a licensed installer before purchase.</p>
+      </div>
+    """,
+)
+
 page(
     path="/fitment/choose-tire-size/index.html",
     title="How to Choose the Right Tire Size — Smart Tire Picks",
@@ -870,57 +1085,166 @@ page(
 )
 
 # REVIEWS
+CC2_FAQS = [
+    (
+        "Did Smart Tire Picks lab-test the CrossClimate 2?",
+        "No. This page is an editorial overview based on public manufacturer positioning and category context only. We have not performed independent laboratory, track, or instrumented testing unless a page explicitly says otherwise.",
+    ),
+    (
+        "Is the CrossClimate 2 a dedicated winter tire?",
+        "Michelin positions it in an all-weather / grand-touring oriented space, and many sizes carry severe-snow service markings such as 3PMSF — always verify on the exact tire you buy. It is still not identical to a dual-set dedicated winter strategy for every climate. Compare against your roads, temperatures, and placard requirements.",
+    ),
+    (
+        "What must I verify before buying?",
+        "Match size, load index, and speed rating to your door placard and OEM guidance; confirm TPMS and mounting with a licensed installer; check DOT date codes on the set you receive; and read the current manufacturer warranty for your size.",
+    ),
+]
+
 page(
     path="/reviews/michelin-crossclimate2/index.html",
-    title="Michelin CrossClimate 2 — Editorial Overview | Smart Tire Picks",
-    description="Editorial overview of the Michelin CrossClimate 2 based on public manufacturer positioning. No independent lab test by Smart Tire Picks.",
+    title="Michelin CrossClimate 2 Review (Editorial) — Fitment Notes & Who It May Suit | Smart Tire Picks",
+    description="Editorial overview of the Michelin CrossClimate 2: category context, comparison points, who it may or may not suit, and retailer price-check CTAs. No independent lab test by us.",
     h1="Michelin CrossClimate 2 — editorial overview",
-    lede="A nominative, educational summary of how Michelin publicly positions this model — not a lab test or safety ranking.",
+    lede="A nominative, educational summary of how Michelin publicly positions this model — not a lab test, ranking, or safety guarantee.",
+    schema_objs=schema_article_breadcrumb(
+        headline="Michelin CrossClimate 2 — editorial overview",
+        description="Editorial overview of the Michelin CrossClimate 2: category context, comparison points, who it may or may not suit, and retailer price-check CTAs. No independent lab test by us.",
+        canonical=canonical_for("/reviews/michelin-crossclimate2/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Reviews", "/reviews/michelin-crossclimate2/"),
+            ("Michelin CrossClimate 2", "/reviews/michelin-crossclimate2/"),
+        ],
+    )
+    + [schema_faq(CC2_FAQS)],
     body="""
       <div class="content-block">
         <p><strong>Important:</strong> Smart Tire Picks has <em>not</em> performed independent laboratory, track, or instrumented testing of the CrossClimate 2. Comments below reflect publicly available manufacturer positioning and category context only. Brand names are used for identification.</p>
+
         <h2>Category context</h2>
         <p>Michelin markets the CrossClimate 2 in the grand-touring / all-weather-oriented space, emphasizing year-round capability and winter-oriented branding cues (including 3PMSF marking on applicable sizes — verify on the specific tire). Always confirm the exact size’s load index, speed rating, and sidewall marks for your vehicle.</p>
+
+        <h2>Clearer comparison points</h2>
+        <p>Use this table as a shopping framework — not a lab ranking. Outcomes vary by vehicle, alignment, climate, and driving style.</p>
+        <table>
+          <thead><tr><th>Decision factor</th><th>CrossClimate 2 (editorial framing)</th><th>Conventional touring all-season</th><th>Dedicated winter + summer/all-season dual set</th></tr></thead>
+          <tbody>
+            <tr><td>Cold / snow positioning</td><td>Often marketed with stronger cold-weather cues than a basic all-season; check 3PMSF on your size</td><td>Broad year-round compromise; winter limits vary widely by model</td><td>Winter set prioritized for packed snow/ice when temperatures stay low</td></tr>
+            <tr><td>Logistics</td><td>Typically one mounted set</td><td>One mounted set</td><td>Seasonal swaps, storage, extra mount/balance cycles</td></tr>
+            <tr><td>Warm dry “sport” feel</td><td>Touring / all-weather priorities; not a track tire</td><td>Comfort touring is common; performance all-seasons differ — see our comparison</td><td>Summer or performance set can prioritize warm grip when winters are off</td></tr>
+            <tr><td>UTQG / labels</td><td>Read sidewall UTQG and warranty for <em>your</em> size — grades are comparative, not a safety certificate</td><td>Same: compare <a href="/guides/utqg/">UTQG</a> among candidates that already fit the placard</td><td>Winter-type tires may follow different labeling rules; verify each set</td></tr>
+            <tr><td>Fitment gate</td><td colspan="3">Size, load index, and speed rating must still meet the <a href="/guides/placard/">door placard</a> / OEM docs — category marketing never overrides that</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Also compare category trade-offs in <a href="/comparisons/all-season-vs-winter/">all-season vs winter</a> and <a href="/comparisons/touring-vs-performance-all-season/">touring vs performance all-season</a>. Comfort-oriented touring example: <a href="/reviews/bridgestone-turanza-quiettrack/">Turanza QuietTrack</a>.</p>
+
         <h2>What buyers typically evaluate</h2>
         <ul>
           <li>Whether an all-weather-oriented touring tire fits their climate better than a conventional all-season or a dual-set winter strategy</li>
           <li>Warranty mileage statements published by the manufacturer (read the current warranty booklet; terms change)</li>
           <li>Noise, wear, and wet-braking expectations relative to other touring options — which vary by vehicle, alignment, and driving style</li>
+          <li>Sidewall marks (including UTQG and any severe-snow symbols) on the exact size purchased</li>
         </ul>
+
         <h2>Fitment checklist</h2>
         <ol>
-          <li>Match size to door placard / OEM guidance</li>
-          <li>Meet or exceed required load index and speed rating</li>
+          <li>Match size to door placard / OEM guidance (<a href="/fitment/choose-tire-size/">size guide</a>)</li>
+          <li>Meet or exceed required <a href="/guides/load-index-speed-rating/">load index and speed rating</a></li>
           <li>Confirm TPMS and install plan with a licensed installer</li>
-          <li>Check DOT date codes on the set you receive</li>
+          <li>Check <a href="/guides/dot-date-codes/">DOT date codes</a> on the set you receive</li>
         </ol>
+
         <h2>Soft takeaway</h2>
         <p>The CrossClimate 2 is frequently discussed as an option for drivers who want stronger cold-weather positioning than a basic all-season without running a dedicated winter set. That does not mean it is the right — or “safest” — choice for every vehicle or climate. Compare against your placard requirements and local conditions.</p>
       </div>
-      <div class="cta-box">
-        <h2>Where to buy</h2>
-        <p>Affiliate links coming soon. Check major tire retailers for current sizing and pricing, then verify fitment with your installer.</p>
-      </div>
-    """,
+"""
+    + suitability_block(
+        [
+            "Drivers in mixed climates who prefer one mounted set and want stronger cold-weather marketing cues than a basic all-season (verify 3PMSF and other marks on the exact size).",
+            "Shoppers willing to prioritize placard-correct load/speed ratings and then compare UTQG and warranties among shortlisted sizes.",
+            "Owners comparing grand-touring / all-weather positioning against a dual winter set’s extra logistics.",
+        ],
+        [
+            "Drivers who regularly face deep packed snow or ice and already plan a dedicated winter set — a dual strategy may still fit better for those conditions.",
+            "Anyone whose placard size, load index, or speed rating is not available or not met by the CrossClimate 2 in current inventory.",
+            "Buyers seeking instrumented “best wet tire” proof from this site — we do not publish lab rankings here.",
+        ],
+    )
+    + faq_html(CC2_FAQS)
+    + related_block([
+        ("/reviews/bridgestone-turanza-quiettrack/", "Bridgestone Turanza QuietTrack (editorial)"),
+        ("/comparisons/all-season-vs-winter/", "All-season vs winter"),
+        ("/comparisons/touring-vs-performance-all-season/", "Touring vs performance all-season"),
+        ("/guides/utqg/", "UTQG treadwear / traction / temperature"),
+        ("/guides/placard/", "Door placard guide"),
+        ("/fitment/choose-tire-size/", "How to choose tire size"),
+    ])
+    + retailer_cta(
+        product_label="Michelin CrossClimate 2",
+        search_hint="Michelin CrossClimate 2",
+    ),
 )
+
+QT_FAQS = [
+    (
+        "Did you instrument-test the Turanza QuietTrack?",
+        "No. This page paraphrases public manufacturer positioning and general touring-category expectations. We have not lab-tested QuietTrack unless a page explicitly says otherwise.",
+    ),
+    (
+        "Is QuietTrack aimed at maximum winter traction?",
+        "Bridgestone presents it as a comfort-focused touring all-season for everyday wet/dry usability in typical US climates. Drivers with frequent snow/ice may still compare 3PMSF winter or all-weather products — verify sidewall marks and local conditions.",
+    ),
+    (
+        "How should I compare it to CrossClimate 2?",
+        "Use category intent: QuietTrack is commonly framed around quiet comfort touring; CrossClimate 2 is often discussed for stronger all-weather / cold-weather positioning. Neither page is a lab head-to-head. Always filter by placard size, load index, and speed rating first.",
+    ),
+]
 
 page(
     path="/reviews/bridgestone-turanza-quiettrack/index.html",
-    title="Bridgestone Turanza QuietTrack — Editorial Overview | Smart Tire Picks",
-    description="Editorial overview of the Bridgestone Turanza QuietTrack from public manufacturer positioning. No independent lab test by us.",
+    title="Bridgestone Turanza QuietTrack Review (Editorial) — Comfort Touring Notes | Smart Tire Picks",
+    description="Editorial overview of the Bridgestone Turanza QuietTrack: comfort-touring context, comparison points, suitability notes, and retailer price-check CTAs. No independent lab test by us.",
     h1="Bridgestone Turanza QuietTrack — editorial overview",
-    lede="Educational summary of public positioning for this touring all-season line — not an instrumented review.",
+    lede="Educational summary of public positioning for this touring all-season line — not an instrumented review or safety ranking.",
+    schema_objs=schema_article_breadcrumb(
+        headline="Bridgestone Turanza QuietTrack — editorial overview",
+        description="Editorial overview of the Bridgestone Turanza QuietTrack: comfort-touring context, comparison points, suitability notes, and retailer price-check CTAs. No independent lab test by us.",
+        canonical=canonical_for("/reviews/bridgestone-turanza-quiettrack/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Reviews", "/reviews/michelin-crossclimate2/"),
+            ("Bridgestone Turanza QuietTrack", "/reviews/bridgestone-turanza-quiettrack/"),
+        ],
+    )
+    + [schema_faq(QT_FAQS)],
     body="""
       <div class="content-block">
         <p><strong>Important:</strong> We have <em>not</em> lab-tested the Turanza QuietTrack. This page paraphrases public manufacturer positioning and general touring-category expectations. Nominative brand use only.</p>
+
         <h2>Category context</h2>
         <p>Bridgestone presents the Turanza QuietTrack as a passenger touring all-season tire with emphasis on comfortable, quiet on-road manners and everyday wet/dry usability in typical US climates. Exact features, warranties, and available sizes should be confirmed on current manufacturer materials for your size.</p>
+
+        <h2>Clearer comparison points</h2>
+        <table>
+          <thead><tr><th>Decision factor</th><th>QuietTrack (editorial framing)</th><th>Performance-oriented all-season</th><th>All-weather / stronger winter cues (e.g. CrossClimate 2 class)</th></tr></thead>
+          <tbody>
+            <tr><td>Primary priority</td><td>Cabin comfort and quiet commuting manners</td><td>Sharper steering / warm response emphasis</td><td>Year-round set with stronger cold-weather marketing cues</td></tr>
+            <tr><td>Ride &amp; noise</td><td>Often a shopping reason to consider this line</td><td>May trade some comfort for response</td><td>Varies by model; do not assume identical NVH</td></tr>
+            <tr><td>Winter needs</td><td>Touring all-season compromise — not a dedicated winter tire</td><td>Still not a dedicated winter tire</td><td>May carry 3PMSF on applicable sizes — verify sidewall</td></tr>
+            <tr><td>Wear expectations</td><td>Often discussed vs more aggressive performance compounds; check warranty for your size</td><td>Can wear faster depending on compound and use</td><td>Compare manufacturer warranty and <a href="/guides/utqg/">UTQG treadwear</a> as relative clues only</td></tr>
+            <tr><td>Fitment gate</td><td colspan="3">Confirm size, load index, and speed rating on the <a href="/guides/tire-placard-checklist/">placard checklist</a> before comparing comfort claims</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Decision framework: <a href="/comparisons/touring-vs-performance-all-season/">touring vs performance all-season</a>. Editorial contrast: <a href="/reviews/michelin-crossclimate2/">CrossClimate 2</a>. Climate categories: <a href="/fitment/all-season-vs-winter-vs-summer/">all-season vs winter vs summer</a>.</p>
+
         <h2>What buyers typically evaluate</h2>
         <ul>
           <li>Cabin noise sensitivity on highway commutes</li>
           <li>Treadwear expectations versus performance-oriented all-seasons</li>
           <li>Whether winter traction needs call for a 3PMSF winter or all-weather product instead</li>
+          <li>Current warranty terms and available sizes for the vehicle’s placard</li>
         </ul>
+
         <h2>Fitment checklist</h2>
         <ol>
           <li>Verify size, load index, and speed rating against the door placard</li>
@@ -928,14 +1252,36 @@ page(
           <li>Confirm TPMS service during mount/balance</li>
           <li>Inspect DOT week/year on delivery</li>
         </ol>
+
         <h2>Soft takeaway</h2>
         <p>QuietTrack is commonly considered in the comfort-focused touring all-season segment. Comfort priorities can trade against maximum warm-weather grip or dedicated winter performance. Choose based on verified specs and your climate — not headline adjectives.</p>
       </div>
-      <div class="cta-box">
-        <h2>Where to buy</h2>
-        <p>Affiliate CTAs coming soon — check retailers and confirm with a licensed installer.</p>
-      </div>
-    """,
+"""
+    + suitability_block(
+        [
+            "Drivers who prioritize a quieter, comfort-oriented touring all-season for paved commuting in mild to moderate climates.",
+            "Shoppers comparing touring comfort against performance all-season response after placard specs already match.",
+            "Owners replacing worn touring tires who want to read current warranties and UTQG marks without treating them as personal guarantees.",
+        ],
+        [
+            "Drivers who need dedicated winter traction for frequent ice or deep snow — consider a winter or verified all-weather strategy instead.",
+            "Buyers hunting maximum warm dry “performance” feel — a performance all-season or summer tire may align better with that priority (still verify placard ratings).",
+            "Anyone who cannot find QuietTrack in a size/load/speed combination that meets OEM requirements.",
+        ],
+    )
+    + faq_html(QT_FAQS)
+    + related_block([
+        ("/reviews/michelin-crossclimate2/", "Michelin CrossClimate 2 (editorial)"),
+        ("/comparisons/touring-vs-performance-all-season/", "Touring vs performance all-season"),
+        ("/comparisons/all-season-vs-winter/", "All-season vs winter"),
+        ("/guides/utqg/", "UTQG grades explained"),
+        ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+        ("/fitment/choose-tire-size/", "How to choose tire size"),
+    ])
+    + retailer_cta(
+        product_label="Bridgestone Turanza QuietTrack",
+        search_hint="Bridgestone Turanza QuietTrack",
+    ),
 )
 
 # COMPARISONS
@@ -976,17 +1322,38 @@ page(
 
 page(
     path="/comparisons/touring-vs-performance-all-season/index.html",
-    title="Touring vs Performance All-Season Tires — Smart Tire Picks",
-    description="Touring all-season vs performance all-season: ride comfort, handling priorities, wear expectations, and fitment checks.",
+    title="Touring vs Performance All-Season Tires: Decision Framework | Smart Tire Picks",
+    description="Clear decision framework for touring vs performance all-season tires: ride, handling, wear, winter limits, suitability, and retailer price-check CTAs. Soft educational language only.",
     h1="Touring vs performance all-season",
-    lede="Both may be labeled “all-season,” but the design priorities — comfort versus sharper response — usually differ.",
+    lede="Both may be labeled “all-season,” but design priorities — comfort versus sharper response — usually differ. Use this framework after you confirm placard size, load index, and speed rating.",
+    schema_objs=schema_article_breadcrumb(
+        headline="Touring vs performance all-season tires",
+        description="Clear decision framework for touring vs performance all-season tires: ride, handling, wear, winter limits, suitability, and retailer price-check CTAs.",
+        canonical=canonical_for("/comparisons/touring-vs-performance-all-season/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Comparisons", "/comparisons/all-season-vs-winter/"),
+            ("Touring vs performance all-season", "/comparisons/touring-vs-performance-all-season/"),
+        ],
+    ),
     body="""
       <div class="content-block">
+        <h2>Decision framework (start here)</h2>
+        <ol>
+          <li><strong>Fitment gate:</strong> copy size and cold PSI from the <a href="/guides/placard/">door placard</a>; confirm <a href="/guides/load-index-speed-rating/">load index and speed rating</a>.</li>
+          <li><strong>Climate gate:</strong> if you regularly need dedicated snow/ice performance, read <a href="/comparisons/all-season-vs-winter/">all-season vs winter</a> before optimizing for touring comfort or performance response.</li>
+          <li><strong>Priority gate:</strong> choose whether cabin comfort/noise or sharper warm response matters more for most of your miles.</li>
+          <li><strong>Relative clues:</strong> compare warranties and <a href="/guides/utqg/">UTQG grades</a> among placard-correct candidates — comparative only, not a safety certificate.</li>
+          <li><strong>Install gate:</strong> licensed installer for mount, balance, and TPMS service.</li>
+        </ol>
+
         <h2>Touring all-season</h2>
         <p>Typically oriented toward comfort, even wear, and everyday wet/dry manners. Often chosen for sedans, crossovers, and high-mileage commuting. Noise reduction and warranty mileage claims are common marketing themes — verify current manufacturer details per size.</p>
+
         <h2>Performance all-season</h2>
         <p>Usually prioritizes steering response and warm/dry grip closer to performance tires while retaining some all-season usability. Ride may feel firmer; tread life and cold-weather manners can differ from touring products.</p>
-        <h2>Decision factors</h2>
+
+        <h2>Side-by-side factors</h2>
         <table>
           <thead><tr><th>Factor</th><th>Touring lean</th><th>Performance lean</th></tr></thead>
           <tbody>
@@ -994,17 +1361,39 @@ page(
             <tr><td>Handling feel</td><td>Adequate for daily driving</td><td>Sharper emphasis</td></tr>
             <tr><td>Winter capability</td><td>Varies widely by model</td><td>Still not a dedicated winter tire</td></tr>
             <tr><td>Wear</td><td>Often marketed for longevity</td><td>Can wear faster depending on compound/use</td></tr>
+            <tr><td>Editorial examples on this site</td><td><a href="/reviews/bridgestone-turanza-quiettrack/">Turanza QuietTrack</a> (comfort touring positioning)</td><td>No separate performance-AS review yet — compare manufacturer sheets after placard match</td></tr>
           </tbody>
         </table>
+
         <h2>Fitment reminder</h2>
-        <p>Speed rating and load index still must satisfy OEM requirements. A “performance” label does not override placard specs or install quality.</p>
-        <p class="note">Editorial examples on this site: <a href="/reviews/bridgestone-turanza-quiettrack/">Turanza QuietTrack</a> (touring comfort positioning) — not a lab ranking.</p>
+        <p>Speed rating and load index still must satisfy OEM requirements. A “performance” label does not override placard specs or install quality. Soft reminder: we do not claim either category is safest for every driver.</p>
+        <p class="note">Related: <a href="/reviews/michelin-crossclimate2/">CrossClimate 2</a> (all-weather / grand-touring oriented editorial) · <a href="/fitment/all-season-vs-winter-vs-summer/">three-category climate overview</a>.</p>
       </div>
-      <div class="cta-box">
-        <h2>Check retailers</h2>
-        <p>Coming soon: affiliate purchase placeholders. For now, compare current specs at major retailers with your installer.</p>
-      </div>
-    """,
+"""
+    + suitability_block(
+        [
+            "Touring lean: long highway commutes where cabin quietness and predictable everyday manners matter most.",
+            "Performance lean: drivers who accept a firmer ride for sharper warm/dry response and still want all-season labeling — after placard specs match.",
+            "Shoppers who will compare two to three placard-correct models using warranty text and UTQG as relative clues only.",
+        ],
+        [
+            "Anyone whose winter exposure calls for a dedicated winter set — do not treat either all-season subcategory as a snow specialist.",
+            "Buyers who have not yet confirmed size, load index, and speed rating — category labels cannot fix a fitment mismatch.",
+            "Readers looking for a lab-ranked “winner” on this page — we publish a decision framework, not instrumented scores.",
+        ],
+    )
+    + related_block([
+        ("/reviews/bridgestone-turanza-quiettrack/", "Turanza QuietTrack editorial"),
+        ("/reviews/michelin-crossclimate2/", "CrossClimate 2 editorial"),
+        ("/comparisons/all-season-vs-winter/", "All-season vs winter"),
+        ("/guides/utqg/", "UTQG grades explained"),
+        ("/fitment/choose-tire-size/", "How to choose tire size"),
+        ("/guides/tire-placard-checklist/", "Placard checklist"),
+    ])
+    + retailer_cta(
+        product_label="your shortlisted touring or performance all-season model",
+        search_hint="touring all season tires",
+    ),
 )
 
 # LEGAL
@@ -1082,6 +1471,7 @@ SITEMAP_URLS = [
     ("/guides/dot-date-codes/", "monthly", "0.8"),
     ("/guides/when-to-replace/", "monthly", "0.8"),
     ("/guides/tread-depth/", "monthly", "0.8"),
+    ("/guides/utqg/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
