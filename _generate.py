@@ -381,7 +381,7 @@ page(
         <p>Smart Tire Picks helps US drivers understand fitment, load and speed ratings, UTQG consumer grades, and category trade-offs — so you can verify the right size against your door placard before you buy.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/fitment/choose-tire-size/">Start with fitment</a>
-          <a class="btn btn-ghost" href="/guides/utqg/">New: UTQG grades explained</a>
+          <a class="btn btn-ghost" href="/guides/tpms/">New: TPMS warning light explained</a>
         </div>
       </div>
     </section>
@@ -434,6 +434,11 @@ page(
           <a class="card-link" href="/guides/tread-depth/">Tread depth guide →</a>
         </article>
         <article class="card">
+          <h2>TPMS warning light explained</h2>
+          <p>What the tire pressure monitoring system light means, solid vs flash-then-solid patterns, and why monthly cold checks still matter.</p>
+          <a class="card-link" href="/guides/tpms/">TPMS guide →</a>
+        </article>
+        <article class="card">
           <h2>Editorial review: CrossClimate 2</h2>
           <p>Public manufacturer positioning summarized in soft language — no independent lab tests by us.</p>
           <a class="card-link" href="/reviews/michelin-crossclimate2/">Read review →</a>
@@ -449,7 +454,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
           <li><strong>Fitment</strong> — size selection and climate-category basics</li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -542,6 +547,7 @@ page(
 """ + faq_html(PLACARD_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_REPLACE]) + related_block([
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
     ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tpms/", "TPMS warning light"),
     ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
     ("/guides/utqg/", "UTQG grades explained"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
@@ -603,6 +609,7 @@ page(
 """ + faq_html(CHECKLIST_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_REPLACE]) + related_block([
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tpms/", "TPMS warning light"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
     ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
 ]) + """
@@ -625,7 +632,7 @@ PRESSURE_FAQS = [
     ),
     (
         "What does a TPMS warning light mean at a high level?",
-        "A tire pressure monitoring system (TPMS) light generally indicates that the system detected a tire pressure condition outside its programmed threshold, or that the system itself needs service. It is a prompt to investigate safely — not a complete diagnosis. Check pressures with a quality gauge when cold if it is safe to do so, and have a licensed professional inspect the tires, valves, and sensors when needed.",
+        "A tire pressure monitoring system (TPMS) light generally indicates that the system detected a tire pressure condition outside its programmed threshold, or that the system itself needs service. It is a prompt to investigate safely — not a complete diagnosis. Check pressures with a quality gauge when cold if it is safe to do so, and have a licensed professional inspect the tires, valves, and sensors when needed. See our dedicated <a href=\"/guides/tpms/\">TPMS warning light guide</a> for solid vs flash-then-solid patterns and related caveats.",
     ),
 ]
 
@@ -670,6 +677,7 @@ page(
 """ + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+    ("/guides/tpms/", "TPMS warning light"),
     ("/guides/tread-depth/", "How to check tread depth"),
     ("/guides/utqg/", "UTQG grades explained"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
@@ -802,7 +810,7 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -1012,6 +1020,107 @@ page(
       </div>
     """,
 )
+
+
+# TPMS GUIDE (17 Sep 2026)
+TPMS_FAQS = [
+    (
+        "What does a solid TPMS light usually mean?",
+        "On many US vehicles, a solid (steady) TPMS warning light indicates that the system detected at least one tire significantly underinflated relative to the system’s programmed threshold. Soft practice: when it is safe to do so, check each tire with a quality gauge when cold, inflate to the door-placard cold PSI (not the sidewall maximum), and have a licensed shop inspect if the light returns, a tire looks damaged, or you cannot identify a simple pressure issue. Always verify the meaning for your vehicle in the owner’s manual.",
+    ),
+    (
+        "What does a TPMS light that flashes then stays on mean?",
+        "Many vehicles use a flash-then-solid pattern to signal a TPMS malfunction (for example a sensor or system fault) rather than only a low-pressure detection. A commonly described pattern is flashing for roughly 60 to 90 seconds at vehicle start, then remaining illuminated. That is educational framing from public consumer materials, not a diagnosis of your car. Check the owner’s manual and have a licensed installer or qualified shop test the system.",
+    ),
+    (
+        "Can cold weather turn the TPMS light on?",
+        "Yes. Tire pressure drops as ambient temperature falls, so a cold snap can push a borderline tire below the TPMS threshold even if nothing “went flat” overnight. Soft response: check cold pressures with a gauge, inflate to placard values, and reassess after the tires and system have had a short drive opportunity to update — still verify with your manual and a shop if the light persists or behavior seems abnormal.",
+    ),
+    (
+        "Is TPMS a substitute for monthly pressure checks?",
+        "No. Public safety guidance treats TPMS as a helpful alert system, not a replacement for regularly checking cold inflation with a gauge against the door placard. Sensors and thresholds vary by vehicle; a light may not catch every gradual loss or every condition a manual check would reveal.",
+    ),
+    (
+        "Who should service TPMS sensors when I rotate or replace tires?",
+        "Have a licensed tire installer handle sensor service, valve hardware, programming/relearn steps when required, and confirmation that the system functions after mounting, balancing, or rotation. DIY sensor work can damage components or leave the system in a fault state. This site does not provide install procedures.",
+    ),
+]
+
+page(
+    path="/guides/tpms/index.html",
+    title="TPMS Warning Light Explained — Tire Pressure Monitoring | Smart Tire Picks",
+    description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
+    h1="TPMS warning light explained",
+    lede="A tire pressure monitoring system (TPMS) warning light is a prompt to investigate inflation or system health — not a full diagnosis. Learn common solid vs flash-then-solid patterns, why cold weather matters, and how TPMS relates to monthly cold-pressure checks.",
+    schema_objs=schema_article_breadcrumb(
+        headline="TPMS warning light explained",
+        description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
+        canonical=canonical_for("/guides/tpms/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("TPMS warning light", "/guides/tpms/"),
+        ],
+    )
+    + [schema_faq(TPMS_FAQS)],
+    body="""
+      <div class="content-block">
+        <h2>What TPMS is</h2>
+        <p>A <strong>tire pressure monitoring system (TPMS)</strong> watches tire inflation (directly or indirectly, depending on the vehicle) and alerts the driver when a monitored condition falls outside the system’s programmed thresholds, or when the system itself reports a fault. On many US light vehicles sold after federal TPMS requirements took effect, a dashboard warning light is the primary driver-facing signal.</p>
+        <p>NHTSA TireWise consumer materials describe TPMS as an important alert tool while still urging drivers to check tire pressure regularly with a gauge. Soft framing: TPMS helps you notice problems; it does not replace placard-based cold inflation habits or a licensed shop inspection when something looks wrong.</p>
+
+        <h2>Dashboard symbols (high level)</h2>
+        <p>Many vehicles show a yellow icon that resembles a cross-section of a tire with an exclamation mark inside — the common TPMS telltale. Some vehicles also display individual tire pressures or messages on a driver information screen. Symbol artwork and message wording vary by make and model, so treat this page as general education and confirm details in <em>your</em> owner’s manual.</p>
+
+        <h2>Solid light vs flash-then-solid</h2>
+        <ul>
+          <li><strong>Solid (steady) light:</strong> Often indicates the system detected at least one tire that is significantly underinflated relative to its threshold. When it is safe to stop and check, measure each tire cold with a quality gauge and compare to the door-placard cold PSI values.</li>
+          <li><strong>Flash, then solid:</strong> Many vehicles flash the TPMS light for about <strong>60–90 seconds</strong> after start (or when a fault is detected), then leave it illuminated to indicate a <em>malfunction</em> in the TPMS itself (sensor, wiring, or related electronics) rather than only a low-pressure detection. Exact timing and behavior are vehicle-specific.</li>
+        </ul>
+        <p>These patterns are educational summaries of common US consumer guidance — not a remote diagnosis of your car. If the light behavior does not match what your manual describes, or you are unsure whether you have a pressure issue vs a system fault, have a licensed installer or qualified shop investigate.</p>
+
+        <h2>TPMS is not a substitute for monthly cold checks</h2>
+        <p>Public safety materials emphasize that TPMS does <strong>not</strong> replace regularly checking cold tire pressure. Soft practice aligned with that guidance:</p>
+        <ul>
+          <li>Check pressures monthly and before long trips when practical, with tires cold.</li>
+          <li>Inflate to the <a href="/guides/tire-pressure/">door-placard cold PSI</a> for your vehicle — not the large maximum molded on the tire sidewall.</li>
+          <li>Use the <a href="/guides/tire-placard-checklist/">placard checklist</a> so size, load index, speed rating, and pressures stay together in one place.</li>
+        </ul>
+        <p>TPMS thresholds, reset behavior, and sensor placement differ by vehicle. A light may not catch every gradual leak or every condition a careful gauge check would reveal.</p>
+
+        <h2>Cold weather and sudden lights</h2>
+        <p>Air pressure in tires falls as ambient temperature drops. A cold front can therefore trip a TPMS light even when the set was “fine” the day before. Soft response when it is safe: verify cold pressures with a gauge, inflate to placard values, reseat valve caps, and allow a short drive after correction — many systems need driving time before the light clears. If the light returns quickly, a tire looks damaged, or pressures will not hold, stop relying on DIY guesses and see a licensed professional.</p>
+
+        <h2>After you correct pressure</h2>
+        <p>Once tires are at placard cold PSI, the warning light may not extinguish immediately. Many systems need a period of driving for sensors or monitoring logic to update. If the light stays on after a reasonable drive, or if you saw a flash-then-solid malfunction pattern, schedule system service. Do not ignore a persistent light just because pressures “looked okay” once.</p>
+
+        <h2>Direct vs indirect TPMS (high level)</h2>
+        <ul>
+          <li><strong>Direct TPMS</strong> typically uses pressure sensors in each wheel/tire assembly to report inflation (and often temperature-related context) to the vehicle.</li>
+          <li><strong>Indirect TPMS</strong> typically infers underinflation from wheel-speed or related ABS signals (a tire with lower pressure may rotate differently) rather than measuring PSI at each wheel with a dedicated pressure sensor.</li>
+        </ul>
+        <p>Both approaches can warn you — and both have limits. Soft takeaway for shoppers and owners: know which style your vehicle uses only as context; service, relearn procedures, and spare-tire behavior still belong with the owner’s manual and a licensed installer.</p>
+
+        <h2>Rotation, replacement, and sensor service</h2>
+        <p>When you rotate tires or install a new set, TPMS sensors, valve stems, batteries (where applicable), and relearn/programming steps may need attention. Have a <strong>licensed installer</strong> handle mount/balance, sensor service, and confirmation that the system functions afterward. Improper handling can damage sensors or leave a malfunction light. This site does not publish DIY sensor replacement procedures.</p>
+        <p>Related reading: <a href="/guides/when-to-replace/">when to replace tires</a>, <a href="/guides/tread-depth/">how to check tread depth</a>, and <a href="/guides/placard/">how to read your door placard</a>.</p>
+
+        <p class="note">Informational only — not professional, safety, or legal advice. We have not lab-tested your vehicle’s TPMS. Always verify symbols, reset notes, and service procedures in your owner’s manual, and use a licensed shop for sensor work, mounting, and related diagnosis. We do not claim any single practice is the “safest” for every driver.</p>
+      </div>
+""" + faq_html(TPMS_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+    ("/guides/placard/", "How to read your door placard"),
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/guides/tread-depth/", "How to check tread depth"),
+]) + """
+      <div class="cta-box">
+        <h2>Next steps</h2>
+        <p>Confirm cold pressures with the <a href="/guides/tire-pressure/">PSI guide</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer address sensors or persistent lights. Retailer links coming soon — check retailers and confirm with your installer.</p>
+      </div>
+    """,
+)
+
 
 page(
     path="/fitment/choose-tire-size/index.html",
@@ -1472,6 +1581,7 @@ SITEMAP_URLS = [
     ("/guides/when-to-replace/", "monthly", "0.8"),
     ("/guides/tread-depth/", "monthly", "0.8"),
     ("/guides/utqg/", "monthly", "0.8"),
+    ("/guides/tpms/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
