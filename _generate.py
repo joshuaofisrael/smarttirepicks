@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 BASE = "https://smarttirepicks.com"
 DATE_PUB = "2026-09-08"
-DATE_MOD = "2026-09-17"
+DATE_MOD = "2026-09-22"
 
 PER_PAGE = (
     '<aside class="disclaimer-box" role="note">'
@@ -346,6 +346,11 @@ USTMA_CARE = (
     "USTMA — Tire care & safety",
     "Trade-association hub for passenger/light-truck tire care topics for consumers.",
 )
+USTMA_STORAGE = (
+    "https://www.ustires.org/system/files/files/2024-09/TISB_23%20No%205.pdf",
+    "USTMA — Tire Information Service Bulletin 23/5 (tire storage)",
+    "Industry bulletin with indoor/outdoor storage dos and don’ts for unmounted and vehicle-mounted tires.",
+)
 
 ECFR_UTQG = (
     "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part-575/subpart-B/section-575.104",
@@ -381,7 +386,7 @@ page(
         <p>Smart Tire Picks helps US drivers understand fitment, load and speed ratings, UTQG consumer grades, and category trade-offs — so you can verify the right size against your door placard before you buy.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/fitment/choose-tire-size/">Start with fitment</a>
-          <a class="btn btn-ghost" href="/guides/tpms/">New: TPMS warning light explained</a>
+          <a class="btn btn-ghost" href="/guides/seasonal-tire-storage/">New: Seasonal tire storage</a>
         </div>
       </div>
     </section>
@@ -405,9 +410,9 @@ page(
       <p class="section-label">Featured guide</p>
       <div class="card-grid">
         <article class="card" style="grid-column: 1 / -1; border-color:#9ec5ff;">
-          <h2>UTQG explained: treadwear, traction &amp; temperature</h2>
-          <p>Decode the Uniform Tire Quality Grading marks on many passenger-car sidewalls — with soft language, NHTSA/.gov citations, and clear limits on what grades do <em>not</em> mean.</p>
-          <a class="card-link" href="/guides/utqg/">Read the UTQG guide →</a>
+          <h2>Seasonal tire storage: protect the set you took off</h2>
+          <p>Cool, dry indoor storage, stacked vs upright habits, ozone and sunlight risks, and a soft checklist before the next seasonal swap — with USTMA storage bulletin citations.</p>
+          <a class="card-link" href="/guides/seasonal-tire-storage/">Read the storage guide →</a>
         </article>
       </div>
 
@@ -439,6 +444,11 @@ page(
           <a class="card-link" href="/guides/tpms/">TPMS guide →</a>
         </article>
         <article class="card">
+          <h2>Seasonal tire storage</h2>
+          <p>Where and how to store the set you swap off each season, including indoor tips and vehicle-storage caveats from industry guidance.</p>
+          <a class="card-link" href="/guides/seasonal-tire-storage/">Storage guide →</a>
+        </article>
+        <article class="card">
           <h2>Editorial review: CrossClimate 2</h2>
           <p>Public manufacturer positioning summarized in soft language — no independent lab tests by us.</p>
           <a class="card-link" href="/reviews/michelin-crossclimate2/">Read review →</a>
@@ -454,7 +464,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
           <li><strong>Fitment</strong> — size selection and climate-category basics</li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -769,7 +779,7 @@ page(
         <p>Ask the retailer for the date codes on the specific set you will receive. Prefer transparent sellers who will confirm week/year before mounting. Storage history also matters; a licensed installer can help inspect for cracking, flat-spotting, and other issues.</p>
         <p class="note">We do not set a universal “must replace by” age on this site. Use OEM guidance, tire-manufacturer guidance, and professional inspection.</p>
       </div>
-""" + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Also see</h2>
         <p><a href="/guides/when-to-replace/">When to replace tires</a>. Retailer links coming soon.</p>
@@ -810,7 +820,7 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -1113,10 +1123,122 @@ page(
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/when-to-replace/", "When to replace tires"),
     ("/guides/tread-depth/", "How to check tread depth"),
+    ("/guides/seasonal-tire-storage/", "Seasonal tire storage"),
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
         <p>Confirm cold pressures with the <a href="/guides/tire-pressure/">PSI guide</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer address sensors or persistent lights. Retailer links coming soon — check retailers and confirm with your installer.</p>
+      </div>
+    """,
+)
+
+
+# SEASONAL TIRE STORAGE GUIDE (22 Sep 2026)
+STORAGE_FAQS = [
+    (
+        "Should I store tires indoors or outdoors?",
+        "Industry storage guidance prefers indoor storage in a clean, dry, temperate area that is well ventilated but with limited circulating air, and away from direct sunlight. Outdoor storage is a weaker option and needs raised placement plus an opaque, waterproof cover with vent openings so moisture does not trap like a steam bath. Soft takeaway: indoor is the default when you have the space.",
+    ),
+    (
+        "Should off-season tires be stacked or stood upright?",
+        "USTMA storage bulletin guidance for unmounted tires includes storing sidewall to sidewall, for example stacked horizontally (stovepipe style) without over-stacking, or racked sidewall to sidewall. Keep whitewalls facing whitewalls if staining is a concern. Soft practice: do not crush the bottom tires under too much weight, and raise tires off a wet or damaging floor surface on a sound pallet or rack.",
+    ),
+    (
+        "What should I keep tires away from in the garage?",
+        "Public industry guidance warns against petroleum products and other volatile solvents, extreme heat or cold, direct sunlight, and ozone-generating equipment such as electric motors, battery chargers, generators, or welding gear. Soft garage habit: pick a shaded, dry corner away from the furnace, compressor, and chemical shelf.",
+    ),
+    (
+        "What if the vehicle itself is stored for months?",
+        "If a vehicle sits for a long time, industry guidance prefers removing weight from the tires when practical. If that is not possible, unload the vehicle, maintain recommended inflation including the spare, park on a firm clean surface, and move the vehicle at least every three months so the sidewall flex area and contact patch change. High-performance nylon-overlay tires may need more frequent movement and temporary inflation adjustments per the bulletin — always return to placard PSI before normal driving and confirm in your manuals.",
+    ),
+    (
+        "What should I do before putting stored tires back on the car?",
+        "Have a tire service professional inspect stored tires visually and by touch before they return to service: clean, dry, free of foreign objects, and free of damage signs such as severe weather checking. Inflate to the vehicle placard cold PSI after mounting (compact temporary spares may list a higher operating pressure). Confirm age via the DOT week/year code and replace any tire that fails a professional inspection.",
+    ),
+]
+
+page(
+    path="/guides/seasonal-tire-storage/index.html",
+    title="Seasonal Tire Storage Guide — How to Store Summer & Winter Sets | Smart Tire Picks",
+    description="Educational guide to storing seasonal tires for US drivers: indoor vs outdoor, stacked vs racked unmounted sets, ozone and sunlight risks, and vehicle-storage caveats. USTMA-cited, soft language.",
+    h1="Seasonal tire storage guide",
+    lede="When you swap to winter or summer tires, the set you take off still needs care. Cool, dry indoor storage, sensible stacking, and distance from ozone and chemicals help protect rubber until the next changeover.",
+    schema_objs=schema_article_breadcrumb(
+        headline="Seasonal tire storage guide",
+        description="Educational guide to storing seasonal tires for US drivers: indoor vs outdoor, stacked vs racked unmounted sets, ozone and sunlight risks, and vehicle-storage caveats. USTMA-cited, soft language.",
+        canonical=canonical_for("/guides/seasonal-tire-storage/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Guides", "/guides/placard/"),
+            ("Seasonal tire storage", "/guides/seasonal-tire-storage/"),
+        ],
+    )
+    + [schema_faq(STORAGE_FAQS)],
+    body="""
+      <div class="content-block">
+        <h2>Why storage conditions matter</h2>
+        <p>Tire materials age with heat, sunlight, ozone, and contact with petroleum products. Poor storage can contribute to damage that later shows up as cracking or other service problems. Soft framing from industry bulletins: storage will not freeze a tire in “new” condition forever, but it can reduce unnecessary environmental damage while a seasonal set sits for months.</p>
+        <p>This page paraphrases public U.S. Tire Manufacturers Association (USTMA) storage recommendations for passenger and light-truck style use cases. Specialty racing tires and some manufacturer-specific products may need different rules — follow the tire maker’s instructions when they differ.</p>
+
+        <h2>Preferred environment (indoor first)</h2>
+        <ul>
+          <li><strong>Clean, dry, temperate:</strong> Mild temperatures, shaded or dark, well ventilated but with a minimum of circulating air.</li>
+          <li><strong>Raised off the floor:</strong> Use a sound pallet or storage rack so tires are not sitting in moisture or on damaging debris. Avoid damaged pallets with nails or sharp metal, and avoid grated surfaces that can imprint the tire over long periods.</li>
+          <li><strong>Away from sunlight and extreme temperatures:</strong> Direct sun and extreme heat or cold are called out as don’ts in industry storage guidance.</li>
+          <li><strong>Away from ozone sources:</strong> Electric motors, battery chargers, generators, welding equipment, and similar gear can generate ozone that cracks rubber.</li>
+          <li><strong>Away from petroleum and solvents:</strong> Gasoline, oil, and other volatile chemicals do not belong next to stored tires.</li>
+        </ul>
+
+        <h2>Unmounted seasonal sets</h2>
+        <p>For tires that are <strong>not</strong> mounted on wheels, USTMA storage guidance includes storing them <strong>sidewall to sidewall</strong> to help maintain shape. Examples described in the bulletin:</p>
+        <ul>
+          <li><strong>Horizontal “stovepipe” stacks:</strong> Do not over-stack. Too much weight can damage tires at the bottom and make the pile unstable.</li>
+          <li><strong>Racked sidewall to sidewall:</strong> Pallet or rack arrangements that keep sidewalls facing each other.</li>
+          <li><strong>Whitewall note:</strong> Store whitewall to whitewall when staining is a concern.</li>
+        </ul>
+        <p>Soft consumer habit many shops also describe: keep tires clean and dry before they go away, and use opaque bags or covers intended for tire storage when they help block dust and light — without creating a sealed moisture trap. If you bag tires, leave a path for humidity to escape rather than building a steam-bath environment.</p>
+
+        <h2>Mounted on wheels (common for seasonal swaps)</h2>
+        <p>Many drivers store a full winter or summer set already mounted. Industry bulletins focus heavily on unmounted stock and on vehicles that sit, so treat wheel-mounted off-car storage as a practical extension of the same environment rules: cool, dry, raised, away from ozone and chemicals. Soft practices widely used by retailers include keeping mounted sets inflated and stacking only to a stable height, or hanging on purpose-built racks when available. Confirm any height or hanging limits with your installer if you are unsure.</p>
+
+        <h2>If outdoor storage is unavoidable</h2>
+        <p>Indoor storage is preferred. When tires must sit outdoors, industry guidance says to raise them off the ground, use an opaque waterproof cover with vent openings (to avoid a heat-box or steam-bath effect), avoid contact with black asphalt or other heat-absorbent surfaces, and avoid highly reflective surfaces such as sand or snow-covered ground. Do not leave tires unprotected on open decks or fields.</p>
+
+        <h2>Vehicles that sit for months</h2>
+        <p>If the <em>vehicle</em> is stored rather than just an off-season tire set:</p>
+        <ul>
+          <li>Prefer removing weight from the tires when practical.</li>
+          <li>If weight cannot be removed, unload the vehicle, maintain recommended inflation including the spare, and park on a firm, reasonably level, well-drained, clean surface.</li>
+          <li>Move the vehicle at least every three months so the sidewall flex area and contact patch change (helps with ozone cracking at the flex point and temporary flat spots).</li>
+          <li>For some high-performance tires with nylon belt overlays, the bulletin recommends moving about every 30 days and temporarily using the maximum sidewall inflation while stored — then returning to the <a href="/guides/tire-pressure/">door-placard cold PSI</a> before normal service. Soft caveat: that temporary higher pressure is a storage note from the bulletin, not everyday driving advice.</li>
+        </ul>
+
+        <h2>Seasonal swap checklist</h2>
+        <ol>
+          <li>Confirm the on-car set matches placard size, load index, and speed rating (<a href="/guides/tire-placard-checklist/">placard checklist</a>).</li>
+          <li>Clean and dry the off-season set; note DOT week/year (<a href="/guides/dot-date-codes/">DOT date codes</a>) and any cuts, bulges, or weathering.</li>
+          <li>Store indoors when possible, raised, away from sun, ozone sources, and chemicals.</li>
+          <li>Label which corner each tire came from if you rotate positions across seasons.</li>
+          <li>Before remounting next season, have a licensed installer inspect, mount/balance, and confirm TPMS function (<a href="/guides/tpms/">TPMS guide</a>).</li>
+        </ol>
+        <p>Related climate context: <a href="/fitment/all-season-vs-winter-vs-summer/">all-season vs winter vs summer</a> and <a href="/comparisons/all-season-vs-winter/">all-season vs winter comparison</a>.</p>
+
+        <h2>Returning stored tires to service</h2>
+        <p>Before stored tires go back on the road, a tire service professional should inspect them to confirm they are clean, dry, free of foreign objects, and free of damage. Inflate mounted tires to the vehicle placard cold PSI. Compact temporary (T-type) spares may require a higher operating pressure — check the spare’s markings and the owner’s manual. Soft reminder: storage does not reset age; use DOT date codes and professional judgment together with <a href="/guides/when-to-replace/">when to replace tires</a> and <a href="/guides/tread-depth/">tread depth</a> checks.</p>
+
+        <p class="note">Informational only — not professional, safety, or legal advice. We have not inspected your garage or tires. Follow current USTMA/manufacturer guidance, your vehicle owner’s manual, and a licensed installer. We do not claim any single storage method is the “safest” for every set.</p>
+      </div>
+""" + faq_html(STORAGE_FAQS) + sources_block([USTMA_STORAGE, USTMA_CARE, NHTSA_TIRES, NHTSA_SAVINGS]) + related_block([
+    ("/fitment/all-season-vs-winter-vs-summer/", "All-season vs winter vs summer"),
+    ("/comparisons/all-season-vs-winter/", "All-season vs winter comparison"),
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/guides/dot-date-codes/", "DOT date codes"),
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tpms/", "TPMS warning light"),
+]) + """
+      <div class="cta-box">
+        <h2>Next steps</h2>
+        <p>Plan the next changeover with the <a href="/fitment/all-season-vs-winter-vs-summer/">category guide</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer mount and balance. Retailer links coming soon — check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1172,7 +1294,7 @@ page(
         <h2>All-season</h2>
         <p>Positioned for year-round use in many temperate US climates. Compounds and siping aim to balance dry, wet, and light winter performance. They remain a compromise: dedicated winter tires are typically designed for colder temperatures and snow/ice surfaces.</p>
         <h2>Winter (snow) tires</h2>
-        <p>Winter tires use compounds that stay more flexible in cold weather and tread patterns intended for snow and ice. Many carry the three-peak mountain snowflake (3PMSF) symbol. They are not a substitute for careful driving, and local studded-tire rules vary.</p>
+        <p>Winter tires use compounds that stay more flexible in cold weather and tread patterns intended for snow and ice. Many carry the three-peak mountain snowflake (3PMSF) symbol. They are not a substitute for careful driving, and local studded-tire rules vary. When you swap seasonally, store the off-season set carefully — see our <a href="/guides/seasonal-tire-storage/">seasonal tire storage guide</a>.</p>
         <h2>Summer tires</h2>
         <p>Summer / performance-summer tires prioritize warm-weather grip and handling. In cold temperatures, compounds can harden and traction may fall off sharply — they are generally a poor choice for freezing climates or snow.</p>
         <h2>Quick comparison</h2>
@@ -1420,7 +1542,7 @@ page(
         <p>A winter set adds tire (and sometimes wheel) cost plus storage and mount/balance cycles. Some drivers keep winters on dedicated wheels to simplify swaps and preserve TPMS sensors — discuss options with your installer.</p>
         <h2>Symbols and labels</h2>
         <p>Look for the three-peak mountain snowflake (3PMSF) on tires marketed for severe snow service. M+S alone is a mud-and-snow designation with a different meaning — read manufacturer explanations for your model.</p>
-        <p class="note">Related: <a href="/fitment/all-season-vs-winter-vs-summer/">three-category overview</a>.</p>
+        <p class="note">Related: <a href="/fitment/all-season-vs-winter-vs-summer/">three-category overview</a> · <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>.</p>
       </div>
       <div class="cta-box">
         <h2>Next</h2>
@@ -1582,6 +1704,7 @@ SITEMAP_URLS = [
     ("/guides/tread-depth/", "monthly", "0.8"),
     ("/guides/utqg/", "monthly", "0.8"),
     ("/guides/tpms/", "monthly", "0.8"),
+    ("/guides/seasonal-tire-storage/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
