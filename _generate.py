@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 BASE = "https://smarttirepicks.com"
 DATE_PUB = "2026-09-08"
-DATE_MOD = "2026-09-22"
+DATE_MOD = "2026-09-24"
 
 PER_PAGE = (
     '<aside class="disclaimer-box" role="note">'
@@ -699,51 +699,152 @@ page(
     """,
 )
 
+LOAD_INDEX_FAQS = [
+    (
+        "What does load index mean?",
+        "Load index is a numeric code on the tire’s service description that maps to a maximum load capacity per tire under standardized industry conditions (including specified inflation). A higher index generally means higher capacity. Soft reminder: the chart value assumes proper inflation and loading per the applicable standards. It is not a substitute for your vehicle’s placard, the tire maker’s load and inflation tables, or a licensed installer’s fitment check.",
+    ),
+    (
+        "Can I use a lower load index than OEM?",
+        "Generally no. Public industry consumer guidance on replacing tires emphasizes matching size and meeting or exceeding the original equipment load index and appropriate speed rating for your vehicle. Choosing a lower load index than OEM specifies can leave the set under capacity for the vehicle’s design loads. Confirm placard and OEM documentation, then have a licensed installer verify the service description on the tires you buy.",
+    ),
+    (
+        "What does speed rating mean, and must I match it?",
+        "Speed rating is a letter symbol (for example T, H, or V) that corresponds to a standardized maximum speed under specified test conditions. It is not a license to drive that fast, and law, vehicle capability, tire condition, and inflation still limit you. Soft practice: replacements should meet or exceed the OEM-appropriate speed rating for your vehicle. Mixing different speed ratings across an axle is generally discouraged; follow OEM and installer guidance.",
+    ),
+    (
+        "What is XL / Extra Load (or Reinforced)?",
+        "XL (Extra Load) or Reinforced marks usually indicate a construction that can carry a higher load at a higher inflation than a standard-load tire in a comparable size family. Soft takeaway: XL is not a free pass to ignore OEM requirements. Confirm whether your vehicle needs XL or standard load, meet or exceed the required load index, and use placard cold PSI plus the tire maker’s tables. Do not invent pressure numbers from a blog post.",
+    ),
+    (
+        "Where do I find the required load index and speed rating for my vehicle?",
+        "Start with the door jamb tire information placard and the owner’s manual. Record the OEM size and any notes, then read the service description on a correctly fitted OEM tire (or OEM documentation) for load index and speed symbol. Use our placard guide and placard checklist, and have a licensed installer confirm the sidewall markings on the set you purchase before mounting.",
+    ),
+]
+
 page(
     path="/guides/load-index-speed-rating/index.html",
-    title="Tire Load Index & Speed Rating Explained — Smart Tire Picks",
-    description="Understand tire load index and speed rating codes, why they matter for fitment, and how to verify them against OEM requirements.",
+    title="Tire Load Index &amp; Speed Rating Chart Explained | Smart Tire Picks",
+    description="Educational load index chart (common passenger indexes with approximate max load in lb) and speed rating symbols with mph. Soft XL vs standard load notes, shopping checklist, and placard-first fitment guidance for US drivers.",
     h1="Load index and speed rating explained",
-    lede="Those numbers and letters after the size code are not optional fine print — they describe capacity and rated capability.",
+    lede="The numbers and letters after the size code describe capacity and rated speed under industry standards. Learn how to read them, compare common chart values, and verify replacements against your door placard.",
     schema_objs=schema_article_breadcrumb(
         headline="Load index and speed rating explained",
-        description="Understand tire load index and speed rating codes, why they matter for fitment, and how to verify them against OEM requirements.",
+        description="Educational load index chart (common passenger indexes with approximate max load in lb) and speed rating symbols with mph. Soft XL vs standard load notes, shopping checklist, and placard-first fitment guidance for US drivers.",
         canonical=canonical_for("/guides/load-index-speed-rating/index.html"),
         breadcrumbs=[
             ("Home", "/"),
             ("Guides", "/guides/placard/"),
             ("Load index & speed rating", "/guides/load-index-speed-rating/"),
         ],
-    ),
+    )
+    + [schema_faq(LOAD_INDEX_FAQS)],
     body="""
       <div class="content-block">
         <h2>Where they appear</h2>
-        <p>On a typical sidewall service description you might see something like <strong>225/65R17 102H</strong>. Here, <strong>102</strong> is the load index and <strong>H</strong> is the speed rating symbol. Always confirm the exact marking on the tire you buy.</p>
+        <p>On a typical sidewall service description you might see something like <strong>225/65R17 102H</strong>. Here, <strong>102</strong> is the load index and <strong>H</strong> is the speed rating symbol. Always confirm the exact marking on the tire you buy, not only the listing text.</p>
+        <p>Related fitment steps: start with the <a href="/guides/placard/">door placard</a>, fill out the <a href="/guides/tire-placard-checklist/">placard checklist</a>, and keep <a href="/guides/tire-pressure/">cold PSI</a> correct after mounting. <a href="/guides/tpms/">TPMS</a> service may also be needed when wheels or constructions change.</p>
+
         <h2>Load index (plain English)</h2>
-        <p>Load index maps to a maximum load capacity per tire at a specified inflation condition defined by industry standards. A higher index generally means higher capacity — but you still must meet your vehicle’s requirements and set pressure correctly.</p>
+        <p>Load index maps to a maximum load capacity per tire at a specified inflation condition defined by industry standards (TRA/ISO style tables used across the tire industry). A higher index generally means higher capacity, but you still must meet your vehicle’s requirements and set pressure correctly.</p>
         <ul>
           <li>Do not choose a lower load index than OEM specifies for your vehicle.</li>
           <li>Replacing only two tires? Match load capability and follow installer guidance on axle placement.</li>
-          <li>Heavy vehicles, towing packages, and some EV trims may require XL / reinforced constructions — check OEM docs.</li>
+          <li>Heavy vehicles, towing packages, and some EV trims may require XL / reinforced constructions. Check OEM docs.</li>
         </ul>
-        <h2>Speed rating (plain English)</h2>
-        <p>Speed symbols (such as T, H, V, W) correspond to rated speeds under standardized conditions. They are not a license to drive at those speeds, and real-world limits include road law, tire condition, inflation, and vehicle capability.</p>
+
+        <h2>Common passenger load indexes (educational excerpt)</h2>
+        <p class="note">The table below is a <strong>common-index excerpt</strong> for educational reference (approximate maximum load per tire). Values follow widely published TRA/ISO-style load-index charts. They are <em>not</em> a substitute for the tire maker’s load and inflation tables for your exact size and construction. Capacity assumes proper inflation and loading per the applicable standards. Confirm sidewall marks and OEM requirements with a licensed installer.</p>
         <table>
-          <thead><tr><th>Symbol (examples)</th><th>Editorial note</th></tr></thead>
+          <thead>
+            <tr><th>Load index</th><th>Approx. max load (lb)</th><th>Approx. max load (kg)</th></tr>
+          </thead>
           <tbody>
-            <tr><td>S, T</td><td>Common on many touring / all-season passenger applications</td></tr>
-            <tr><td>H, V</td><td>Often seen on higher-performance touring fitments</td></tr>
-            <tr><td>W, Y</td><td>Typically associated with higher-rated performance tires</td></tr>
+            <tr><td>85</td><td>1,135</td><td>515</td></tr>
+            <tr><td>86</td><td>1,168</td><td>530</td></tr>
+            <tr><td>87</td><td>1,201</td><td>545</td></tr>
+            <tr><td>88</td><td>1,235</td><td>560</td></tr>
+            <tr><td>89</td><td>1,279</td><td>580</td></tr>
+            <tr><td>90</td><td>1,323</td><td>600</td></tr>
+            <tr><td>91</td><td>1,356</td><td>615</td></tr>
+            <tr><td>92</td><td>1,389</td><td>630</td></tr>
+            <tr><td>93</td><td>1,433</td><td>650</td></tr>
+            <tr><td>94</td><td>1,477</td><td>670</td></tr>
+            <tr><td>95</td><td>1,521</td><td>690</td></tr>
+            <tr><td>96</td><td>1,565</td><td>710</td></tr>
+            <tr><td>97</td><td>1,609</td><td>730</td></tr>
+            <tr><td>98</td><td>1,653</td><td>750</td></tr>
+            <tr><td>99</td><td>1,709</td><td>775</td></tr>
+            <tr><td>100</td><td>1,764</td><td>800</td></tr>
+            <tr><td>101</td><td>1,819</td><td>825</td></tr>
+            <tr><td>102</td><td>1,874</td><td>850</td></tr>
+            <tr><td>103</td><td>1,929</td><td>875</td></tr>
+            <tr><td>104</td><td>1,984</td><td>900</td></tr>
+            <tr><td>105</td><td>2,039</td><td>925</td></tr>
+            <tr><td>106</td><td>2,094</td><td>950</td></tr>
+            <tr><td>107</td><td>2,149</td><td>975</td></tr>
+            <tr><td>108</td><td>2,205</td><td>1,000</td></tr>
+            <tr><td>109</td><td>2,271</td><td>1,030</td></tr>
+            <tr><td>110</td><td>2,337</td><td>1,060</td></tr>
+            <tr><td>111</td><td>2,403</td><td>1,090</td></tr>
+            <tr><td>112</td><td>2,469</td><td>1,120</td></tr>
           </tbody>
         </table>
-        <p>Mixing speed ratings across an axle is generally discouraged; follow OEM and installer guidance.</p>
+        <p>Example for illustration only: a tire marked <strong>102H</strong> pairs load index 102 (about 1,874 lb / 850 kg on the common chart) with speed symbol H. Always read the actual sidewall and vehicle documentation.</p>
+
+        <h2>Speed rating (plain English)</h2>
+        <p>Speed symbols correspond to rated speeds under standardized conditions. They are not a license to drive at those speeds. Real-world limits include road law, tire condition, inflation, load, and vehicle capability.</p>
+        <table>
+          <thead>
+            <tr><th>Symbol</th><th>Approx. max rated speed (mph)</th><th>Approx. (km/h)</th><th>Shopping note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Q</td><td>99</td><td>160</td><td>Often seen on some winter or specialty applications</td></tr>
+            <tr><td>R</td><td>106</td><td>170</td><td>Less common on modern passenger all-seasons</td></tr>
+            <tr><td>S</td><td>112</td><td>180</td><td>Common on many touring / all-season applications</td></tr>
+            <tr><td>T</td><td>118</td><td>190</td><td>Very common passenger / touring fitment</td></tr>
+            <tr><td>H</td><td>130</td><td>210</td><td>Often on higher-performance touring fitments</td></tr>
+            <tr><td>V</td><td>149</td><td>240</td><td>Performance-oriented passenger applications</td></tr>
+            <tr><td>W</td><td>168</td><td>270</td><td>Higher-rated performance tires</td></tr>
+            <tr><td>Y</td><td>186</td><td>300</td><td>High-rated performance category</td></tr>
+          </tbody>
+        </table>
+        <p>Mixing speed ratings across an axle is generally discouraged. Follow OEM and installer guidance, including when you replace only two tires.</p>
+
+        <h2>XL / Extra Load (or Reinforced) vs standard load</h2>
+        <p><strong>XL</strong> (Extra Load) or <strong>Reinforced</strong> sidewall marks usually indicate a construction that can carry a higher load at a higher inflation than a standard-load (SL) tire in a comparable size family. Soft shopping notes:</p>
+        <ul>
+          <li>XL is still tied to a specific load index and inflation schedule. It is not a vague “stronger tire” claim you can invent numbers for.</li>
+          <li>Replacement tires must still meet or exceed OEM load index and appropriate speed rating for your vehicle.</li>
+          <li>Do not invent cold PSI from a blog. Use the <a href="/guides/tire-pressure/">door-placard cold PSI</a>, the tire maker’s load/inflation tables for that size and construction, and a licensed installer.</li>
+          <li>Some trims (including certain towing or EV packages) specify XL. Confirm in the owner’s manual and placard notes before you buy.</li>
+        </ul>
+
+        <h2>How to verify when shopping (checklist)</h2>
+        <ol>
+          <li>Copy size, cold PSI, and related notes from the <a href="/guides/placard/">door placard</a> and owner’s manual. Use the <a href="/guides/tire-placard-checklist/">placard checklist</a>.</li>
+          <li>Match or exceed the OEM load index. Choose an appropriate speed rating that meets OEM guidance for your vehicle.</li>
+          <li>Confirm the sidewall service description on the actual tires (for example 102H), not only the catalog title.</li>
+          <li>Ask the installer about mixed ratings, two-tire replacements, axle placement, and <a href="/guides/tpms/">TPMS</a> sensor service.</li>
+          <li>Treat <a href="/guides/utqg/">UTQG grades</a> as a secondary shopping clue after size, load index, and speed rating clear the fitment gate. See also <a href="/fitment/choose-tire-size/">how to choose tire size</a>.</li>
+        </ol>
+
         <h2>TPMS and electronics</h2>
-        <p>Changing wheels or tire constructions can interact with tire-pressure monitoring and other systems. Plan sensor service with your installer.</p>
+        <p>Changing wheels or tire constructions can interact with tire-pressure monitoring and other systems. Plan sensor service with your installer. Soft reminder: TPMS alerts are not a substitute for monthly cold-pressure checks against the placard.</p>
+
+        <p class="note">Informational only. We have not lab-tested your tires or vehicle. Always verify size, load index, speed rating, and inflation against the placard, OEM docs, and the tire maker’s tables, and use a licensed professional for mounting and balancing.</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/placard/', 'Door placard guide'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/utqg/', 'UTQG grades explained'), ('/fitment/choose-tire-size/', 'Choose tire size'), ('/reviews/michelin-crossclimate2/', 'Editorial review example')]) + """
+""" + faq_html(LOAD_INDEX_FAQS) + sources_block([NHTSA_TIRES, USTMA_REPLACE, USTMA_CARE]) + related_block([
+    ("/guides/placard/", "Door placard guide"),
+    ("/guides/tire-placard-checklist/", "Placard checklist"),
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tpms/", "TPMS warning light"),
+    ("/guides/utqg/", "UTQG grades explained"),
+    ("/fitment/choose-tire-size/", "Choose tire size"),
+]) + """
       <div class="cta-box">
         <h2>Related reading</h2>
-        <p><a href="/guides/placard/">Door placard guide</a> · <a href="/fitment/choose-tire-size/">Choose tire size</a>. Affiliate CTAs coming soon — check retailers.</p>
+        <p><a href="/guides/placard/">Door placard guide</a> · <a href="/fitment/choose-tire-size/">Choose tire size</a>. Affiliate CTAs coming soon. Check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1112,7 +1213,7 @@ page(
         <p>Both approaches can warn you — and both have limits. Soft takeaway for shoppers and owners: know which style your vehicle uses only as context; service, relearn procedures, and spare-tire behavior still belong with the owner’s manual and a licensed installer.</p>
 
         <h2>Rotation, replacement, and sensor service</h2>
-        <p>When you rotate tires or install a new set, TPMS sensors, valve stems, batteries (where applicable), and relearn/programming steps may need attention. Have a <strong>licensed installer</strong> handle mount/balance, sensor service, and confirmation that the system functions afterward. Improper handling can damage sensors or leave a malfunction light. This site does not publish DIY sensor replacement procedures.</p>
+        <p>When you rotate tires or install a new set, TPMS sensors, valve stems, batteries (where applicable), and relearn/programming steps may need attention. Have a <strong>licensed installer</strong> handle mount/balance, sensor service, and confirmation that the system functions afterward. Improper handling can damage sensors or leave a malfunction light. This site does not publish DIY sensor replacement procedures. When you shop a new set, also confirm the sidewall service description matches required <a href="/guides/load-index-speed-rating/">load index and speed rating</a> for your vehicle.</p>
         <p>Related reading: <a href="/guides/when-to-replace/">when to replace tires</a>, <a href="/guides/tread-depth/">how to check tread depth</a>, and <a href="/guides/placard/">how to read your door placard</a>.</p>
 
         <p class="note">Informational only — not professional, safety, or legal advice. We have not lab-tested your vehicle’s TPMS. Always verify symbols, reset notes, and service procedures in your owner’s manual, and use a licensed shop for sensor work, mounting, and related diagnosis. We do not claim any single practice is the “safest” for every driver.</p>
@@ -1121,9 +1222,9 @@ page(
     ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
     ("/guides/placard/", "How to read your door placard"),
+    ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
     ("/guides/when-to-replace/", "When to replace tires"),
     ("/guides/tread-depth/", "How to check tread depth"),
-    ("/guides/seasonal-tire-storage/", "Seasonal tire storage"),
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
