@@ -25,6 +25,14 @@ FOOTER_BLURB = (
     '<a href="/disclaimer/">Disclaimer</a> · <a href="/affiliate-disclosure/">Affiliate Disclosure</a>'
 )
 
+# Cloudflare Web Analytics (site id 9edc255e29a148cdb9868ac59e7cc9f7). Exact snippet, once per page.
+CF_BEACON = (
+    "<!-- Cloudflare Web Analytics --><script type='module' "
+    "src='https://static.cloudflareinsights.com/beacon.min.js' "
+    "data-cf-beacon='{\"token\": \"7ba062bee5a448f985d3f68ae13cc4ae\"}'></script>"
+    "<!-- End Cloudflare Web Analytics -->"
+)
+
 NAV_ITEMS = [
     ("Fitment", "/fitment/choose-tire-size/"),
     ("Reviews", "/reviews/michelin-crossclimate2/"),
@@ -316,6 +324,7 @@ def page(
     </div>
   </footer>
   <script src="/js/main.js" defer></script>
+  {CF_BEACON}
 </body>
 </html>
 """
