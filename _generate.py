@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 BASE = "https://smarttirepicks.com"
 DATE_PUB = "2026-09-08"
-DATE_MOD = "2026-09-24"
+DATE_MOD = "2026-09-29"
 
 PER_PAGE = (
     '<aside class="disclaimer-box" role="note">'
@@ -839,7 +839,7 @@ page(
         </ol>
 
         <h2>TPMS and electronics</h2>
-        <p>Changing wheels or tire constructions can interact with tire-pressure monitoring and other systems. Plan sensor service with your installer. Soft reminder: TPMS alerts are not a substitute for monthly cold-pressure checks against the placard.</p>
+        <p>Changing wheels or tire constructions can interact with tire-pressure monitoring and other systems. Plan sensor service with your installer. Soft reminder: TPMS alerts are not a substitute for monthly cold-pressure checks against the placard. Temporary spare caveats are covered in the <a href="/guides/tpms/#spare-tire-tpms">TPMS spare tire section</a>.</p>
 
         <p class="note">Informational only. We have not lab-tested your tires or vehicle. Always verify size, load index, speed rating, and inflation against the placard, OEM docs, and the tire maker’s tables, and use a licensed professional for mounting and balancing.</p>
       </div>
@@ -1154,7 +1154,7 @@ TPMS_FAQS = [
     ),
     (
         "Can cold weather turn the TPMS light on?",
-        "Yes. Tire pressure drops as ambient temperature falls, so a cold snap can push a borderline tire below the TPMS threshold even if nothing “went flat” overnight. Soft response: check cold pressures with a gauge, inflate to placard values, and reassess after the tires and system have had a short drive opportunity to update — still verify with your manual and a shop if the light persists or behavior seems abnormal.",
+        "Yes. Tire pressure drops as ambient temperature falls, so a cold snap can push a borderline tire below the TPMS threshold even if nothing “went flat” overnight. Soft response: check cold pressures with a gauge, inflate to placard values, and reassess after the tires and system have had a short drive opportunity to update. Still verify with your manual and a shop if the light persists or behavior seems abnormal.",
     ),
     (
         "Is TPMS a substitute for monthly pressure checks?",
@@ -1164,17 +1164,29 @@ TPMS_FAQS = [
         "Who should service TPMS sensors when I rotate or replace tires?",
         "Have a licensed tire installer handle sensor service, valve hardware, programming/relearn steps when required, and confirmation that the system functions after mounting, balancing, or rotation. DIY sensor work can damage components or leave the system in a fault state. This site does not provide install procedures.",
     ),
+    (
+        "Does my spare tire have a TPMS sensor?",
+        "It depends on the vehicle and spare type. Some full-size matching spares carry a sensor and are monitored like a road tire. Many compact or temporary “donut” spares do not have a sensor, or are not monitored the same way. Soft practice: read the owner’s manual for spare and TPMS notes, and ask a licensed installer what your vehicle expects when a temporary spare is mounted.",
+    ),
+    (
+        "Why does the TPMS light stay on with a temporary spare?",
+        "Common educational reasons include a temporary spare that has no sensor, a sensor that is not registered for that wheel position, a pressure that does not match what the system expects, or a temporary spare mounted while the flat road tire’s sensor is still reporting low pressure in the trunk or cargo area. Exact behavior is vehicle-specific. Treat a persistent light as a prompt to check the manual and have a shop confirm the system after you return to a normal four-tire set.",
+    ),
+    (
+        "What pressure should a compact spare use?",
+        "Compact temporary spares often require a much higher cold operating pressure than the road tires listed on the door placard. Use the spare’s own sidewall markings and the owner’s manual or placard spare line when one is printed. Soft reminder: do not invent a PSI from a blog post, and do not treat the road-tire placard number as automatic for a T-type spare.",
+    ),
 ]
 
 page(
     path="/guides/tpms/index.html",
     title="TPMS Warning Light Explained — Tire Pressure Monitoring | Smart Tire Picks",
-    description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
+    description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, spare tire and temporary spare caveats, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
     h1="TPMS warning light explained",
-    lede="A tire pressure monitoring system (TPMS) warning light is a prompt to investigate inflation or system health — not a full diagnosis. Learn common solid vs flash-then-solid patterns, why cold weather matters, and how TPMS relates to monthly cold-pressure checks.",
+    lede="A tire pressure monitoring system (TPMS) warning light is a prompt to investigate inflation or system health, not a full diagnosis. Learn common solid vs flash-then-solid patterns, spare tire caveats, why cold weather matters, and how TPMS relates to monthly cold-pressure checks.",
     schema_objs=schema_article_breadcrumb(
         headline="TPMS warning light explained",
-        description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
+        description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, spare tire and temporary spare caveats, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
         canonical=canonical_for("/guides/tpms/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1221,11 +1233,49 @@ page(
         </ul>
         <p>Both approaches can warn you — and both have limits. Soft takeaway for shoppers and owners: know which style your vehicle uses only as context; service, relearn procedures, and spare-tire behavior still belong with the owner’s manual and a licensed installer.</p>
 
+        <h2 id="spare-tire-tpms">Spare tires and TPMS caveats</h2>
+        <p>Spare tire behavior is one of the most common TPMS surprises after a roadside change. Soft framing: this section is general education for US drivers. Your owner’s manual and a licensed installer still decide what your vehicle expects.</p>
+
+        <h3>When spare sensors apply</h3>
+        <ul>
+          <li><strong>Full-size matching spare:</strong> Some vehicles include a spare that matches the road-tire size and may carry its own TPMS sensor. In those setups the spare can be monitored like a fifth road wheel, once it is mounted and the system has updated.</li>
+          <li><strong>Compact / temporary (“donut”) spare:</strong> Many T-type or space-saver spares do <em>not</em> include a TPMS sensor, or are not monitored the same way as the four road tires. Mounting one can leave the TPMS light on even when the spare itself is correctly inflated for temporary use.</li>
+          <li><strong>Run-flat or inflator kit setups:</strong> Some vehicles omit a traditional spare. TPMS still watches the road tires; follow OEM notes for mobility kits and speed or distance limits after a puncture.</li>
+        </ul>
+        <p>Soft takeaway: do not assume the spare is “on the system.” Check the manual for spare and TPMS notes before you need them in the dark.</p>
+
+        <h3>Pressure differences on temporary spares</h3>
+        <p>Compact temporary spares often need a <strong>much higher</strong> cold operating pressure than the front/rear road-tire numbers on the door placard. Look for:</p>
+        <ul>
+          <li>A spare PSI line on the <a href="/guides/placard/">Tire and Loading Information label</a> when printed.</li>
+          <li>The pressure molded on the spare sidewall and restated in the owner’s manual.</li>
+          <li>Temporary-use limits (speed and distance) that apply even when pressure is correct.</li>
+        </ul>
+        <p>Soft practice: keep a quality gauge in the vehicle and verify spare pressure on a schedule, not only after a puncture. A flat spare helps no one. Record spare notes on the <a href="/guides/tire-placard-checklist/">placard checklist</a> next to road-tire PSI.</p>
+
+        <h3>How the TPMS light can behave with a temporary spare</h3>
+        <ul>
+          <li><strong>Light stays on after a change:</strong> Common when the temporary spare has no sensor, or when the system still sees the deflated road tire’s sensor (for example in the cargo area) as underinflated.</li>
+          <li><strong>Flash-then-solid after mounting:</strong> May indicate a malfunction or unrecognized sensor state rather than only low pressure. Treat that as a shop prompt, not a DIY reset challenge.</li>
+          <li><strong>Light clears only after a normal set returns:</strong> Many vehicles expect four matching monitored positions. Returning to a repaired or replaced road tire, then completing any OEM relearn steps at a licensed shop, is often what restores normal monitoring.</li>
+        </ul>
+        <p>Exact timing and messages vary by make and model. Do not ignore a persistent light just because the temporary spare “feels firm.”</p>
+
+        <h3>Checklist before you rely on a spare</h3>
+        <ol>
+          <li>Confirm the spare is the correct type for your vehicle (full-size vs temporary) and is free of obvious damage, dry rot, or a missing valve core.</li>
+          <li>Inflate to the spare’s specified cold pressure from the sidewall, manual, or placard spare line. Do not copy the road-tire PSI by habit for a T-type spare.</li>
+          <li>Read OEM temporary-use limits (speed, distance, and axle placement notes) before driving farther than necessary.</li>
+          <li>Expect TPMS to behave differently until a normal road tire is back on and the system is confirmed.</li>
+          <li>Have a licensed installer repair or replace the road tire promptly, remount a proper set, and verify TPMS function. Confirm the repaired or new tire still meets required <a href="/guides/load-index-speed-rating/">load index and speed rating</a>.</li>
+        </ol>
+        <p>Related pressure context: <a href="/guides/tire-pressure/">cold tire pressure / PSI</a>. Soft reminder: a temporary spare is a short-term mobility tool, not a long-term fifth tire.</p>
+
         <h2>Rotation, replacement, and sensor service</h2>
         <p>When you rotate tires or install a new set, TPMS sensors, valve stems, batteries (where applicable), and relearn/programming steps may need attention. Have a <strong>licensed installer</strong> handle mount/balance, sensor service, and confirmation that the system functions afterward. Improper handling can damage sensors or leave a malfunction light. This site does not publish DIY sensor replacement procedures. When you shop a new set, also confirm the sidewall service description matches required <a href="/guides/load-index-speed-rating/">load index and speed rating</a> for your vehicle.</p>
         <p>Related reading: <a href="/guides/when-to-replace/">when to replace tires</a>, <a href="/guides/tread-depth/">how to check tread depth</a>, and <a href="/guides/placard/">how to read your door placard</a>.</p>
 
-        <p class="note">Informational only — not professional, safety, or legal advice. We have not lab-tested your vehicle’s TPMS. Always verify symbols, reset notes, and service procedures in your owner’s manual, and use a licensed shop for sensor work, mounting, and related diagnosis. We do not claim any single practice is the “safest” for every driver.</p>
+        <p class="note">Informational only. Not professional, safety, or legal advice. We have not lab-tested your vehicle’s TPMS or spare. Always verify symbols, reset notes, spare limits, and service procedures in your owner’s manual, and use a licensed shop for sensor work, mounting, and related diagnosis. We do not claim any single practice is the “safest” for every driver.</p>
       </div>
 """ + faq_html(TPMS_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
     ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
