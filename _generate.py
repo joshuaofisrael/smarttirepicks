@@ -5,6 +5,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 BASE = "https://smarttirepicks.com"
+# Google Search Console HTML tag verification (homepage only)
+GSC_META = '\n  <meta name="google-site-verification" content="xDiZJYeCHKuPhdWgqcywnRcO1c06PQ-R7JcS-NR0KD4">'
 DATE_PUB = "2026-09-08"
 DATE_MOD = "2026-09-29"
 
@@ -273,7 +275,7 @@ def page(
   <meta property="og:url" content="{canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Smart Tire Picks">
-  <link rel="stylesheet" href="/css/styles.css">{head_extra}
+  <link rel="stylesheet" href="/css/styles.css">{head_extra}{GSC_META if canonical == BASE + "/" else ""}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
