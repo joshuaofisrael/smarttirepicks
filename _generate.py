@@ -8,7 +8,7 @@ BASE = "https://smarttirepicks.com"
 # Google Search Console HTML tag verification (homepage only)
 GSC_META = '\n  <meta name="google-site-verification" content="xDiZJYeCHKuPhdWgqcywnRcO1c06PQ-R7JcS-NR0KD4">'
 DATE_PUB = "2026-09-08"
-DATE_MOD = "2026-09-29"
+DATE_MOD = "2026-10-01"
 
 PER_PAGE = (
     '<aside class="disclaimer-box" role="note">'
@@ -649,23 +649,35 @@ PRESSURE_FAQS = [
     ),
     (
         "How often should I check cold tire pressure?",
-        "Many public safety resources encourage checking inflation regularly — for example monthly and before long trips — when tires are cold (before significant driving heats them). Exact habits can vary by vehicle and climate; follow your owner’s manual and ask a licensed installer if you are unsure how to measure accurately.",
+        "Many public safety resources encourage checking inflation regularly, for example monthly and before long trips, when tires are cold (before significant driving heats them). Exact habits can vary by vehicle and climate. Follow your owner’s manual and ask a licensed installer if you are unsure how to measure accurately.",
     ),
     (
         "What does a TPMS warning light mean at a high level?",
-        "A tire pressure monitoring system (TPMS) light generally indicates that the system detected a tire pressure condition outside its programmed threshold, or that the system itself needs service. It is a prompt to investigate safely — not a complete diagnosis. Check pressures with a quality gauge when cold if it is safe to do so, and have a licensed professional inspect the tires, valves, and sensors when needed. See our dedicated <a href=\"/guides/tpms/\">TPMS warning light guide</a> for solid vs flash-then-solid patterns and related caveats.",
+        "A tire pressure monitoring system (TPMS) light generally indicates that the system detected a tire pressure condition outside its programmed threshold, or that the system itself needs service. It is a prompt to investigate safely, not a complete diagnosis. Check pressures with a quality gauge when cold if it is safe to do so, and have a licensed professional inspect the tires, valves, and sensors when needed. See our dedicated <a href=\"/guides/tpms/\">TPMS warning light guide</a> for solid vs flash then solid patterns and related caveats.",
+    ),
+    (
+        "Is spare tire PSI the same as my road tire placard PSI?",
+        "Not always. Front and rear road tire numbers on the door placard are for the tires you drive on every day. A compact temporary spare often lists a much higher cold operating pressure on its own sidewall, and sometimes on a separate spare line on the placard or in the owner’s manual. A full size matching spare may use the same pressure as a road tire when the manual says so. Soft practice: read the spare marking and OEM notes. Do not copy the road tire PSI by habit for a T type spare.",
+    ),
+    (
+        "Where do I find the correct pressure for a temporary spare?",
+        "Check three places in order of practicality: the pressure molded on the spare sidewall, any spare PSI line on the Tire and Loading Information label (door placard), and the owner’s manual temporary spare section. Soft reminder: this site does not publish a universal spare PSI. Confirm for your vehicle and ask a licensed installer if labels conflict.",
+    ),
+    (
+        "Should I keep the spare inflated even when I am not using it?",
+        "Yes, as a soft habit. Spares lose pressure over time just like road tires. A flat spare in the trunk helps nobody on the shoulder. Check it on a schedule with a quality gauge, inflate to the spare’s specified cold pressure, and inspect for obvious damage or dry rot. For TPMS behavior after a roadside change, see <a href=\"/guides/tpms/#spare-tire-tpms\">spare tires and TPMS caveats</a>.",
     ),
 ]
 
 page(
     path="/guides/tire-pressure/index.html",
     title="Recommended Cold Tire Pressure (PSI) — Placard vs Sidewall | Smart Tire Picks",
-    description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, and how to check inflation with soft, educational guidance.",
+    description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, how spare PSI can differ from road tire PSI, and how to check inflation with soft, educational guidance.",
     h1="Recommended cold tire pressure (PSI): placard vs sidewall",
-    lede="Cold inflation pressure is vehicle-specific. Start with your door placard and owner’s manual — not the big number molded on the tire sidewall.",
+    lede="Cold inflation pressure is vehicle specific. Start with your door placard and owner’s manual, not the big number molded on the tire sidewall. Spare pressure can differ from road tire PSI.",
     schema_objs=schema_article_breadcrumb(
         headline="Recommended cold tire pressure (PSI): placard vs sidewall",
-        description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, and how to check inflation with soft, educational guidance.",
+        description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, how spare PSI can differ from road tire PSI, and how to check inflation with soft, educational guidance.",
         canonical=canonical_for("/guides/tire-pressure/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -677,35 +689,64 @@ page(
     body="""
       <div class="content-block">
         <h2>What “cold” tire pressure means</h2>
-        <p>Recommended inflation figures on US vehicles are typically stated as <strong>cold</strong> pressures — meaning the tire has not been warmed by recent driving or hot ambient conditions that raise pressure. Driving heats air inside the tire, so a reading taken after a long trip can look higher than a true cold reading. This page is educational only; it does not prescribe a universal PSI for every vehicle.</p>
-        <h2>Use the placard (or OEM manual), not a one-size rule</h2>
-        <p>Your vehicle’s Tire and Loading Information label (door-jamb placard) usually lists recommended cold inflation pressures for the front and rear (and sometimes a spare). Trims and options packages can differ, so also cross-check the owner’s manual. We do not publish a single “correct” PSI that applies to all cars, trucks, or SUVs.</p>
+        <p>Recommended inflation figures on US vehicles are typically stated as <strong>cold</strong> pressures, meaning the tire has not been warmed by recent driving or hot ambient conditions that raise pressure. Driving heats air inside the tire, so a reading taken after a long trip can look higher than a true cold reading. This page is educational only. It does not prescribe a universal PSI for every vehicle.</p>
+        <h2>Use the placard (or OEM manual), not a one size rule</h2>
+        <p>Your vehicle’s Tire and Loading Information label (door jamb placard) usually lists recommended cold inflation pressures for the front and rear (and sometimes a spare). Trims and options packages can differ, so also cross check the owner’s manual. We do not publish a single “correct” PSI that applies to all cars, trucks, or SUVs.</p>
         <h2>Placard recommendation vs sidewall maximum</h2>
-        <p>The large PSI number on a tire sidewall is commonly a <strong>maximum cold pressure</strong> for that tire’s construction — not the everyday operating pressure your vehicle was designed around. Inflating only to a sidewall maximum without OEM guidance can be inappropriate for ride, wear, and load context. Soft rule of thumb for shoppers: copy the placard first, then confirm with a licensed installer if the vehicle has been modified or if labels conflict.</p>
+        <p>The large PSI number on a tire sidewall is commonly a <strong>maximum cold pressure</strong> for that tire’s construction, not the everyday operating pressure your vehicle was designed around. Inflating only to a sidewall maximum without OEM guidance can be inappropriate for ride, wear, and load context. Soft rule of thumb for shoppers: copy the placard first, then confirm with a licensed installer if the vehicle has been modified or if labels conflict.</p>
         <h2>Practical checking habits (not a safety guarantee)</h2>
         <ul>
           <li>Use a quality pressure gauge and compare each tire to the placard values for that axle (including the spare if your setup uses one).</li>
-          <li>Check when tires are cold when practical — for example before a day’s first drive — and follow any timing notes in your owner’s manual.</li>
-          <li>After adding or releasing air, re-check and reseat valve caps; ask an installer about TPMS service if sensors or valve stems need attention.</li>
-          <li>Uneven wear, repeated underinflation warnings, or visible damage are reasons to stop and have a licensed professional inspect the set — this site cannot diagnose your vehicle remotely.</li>
+          <li>Check when tires are cold when practical, for example before a day’s first drive, and follow any timing notes in your owner’s manual.</li>
+          <li>After adding or releasing air, re check and reseat valve caps. Ask an installer about TPMS service if sensors or valve stems need attention.</li>
+          <li>Uneven wear, repeated underinflation warnings, or visible damage are reasons to stop and have a licensed professional inspect the set. This site cannot diagnose your vehicle remotely.</li>
         </ul>
+
+        <h2 id="spare-psi">Spare PSI vs road (placard) PSI</h2>
+        <p>Many drivers assume the spare uses the same cold PSI as the front or rear road tires. That is often wrong for compact temporary spares, and it is a common roadside mistake. Soft framing: use OEM labels for your vehicle. This section is general education, not a universal number.</p>
+
+        <h3>Road tire PSI (placard front and rear)</h3>
+        <p>The door placard cold pressures for front and rear are the everyday targets for the tires mounted for normal driving. Check those with a gauge when cold. TPMS thresholds on many vehicles relate to those road tire expectations. Details vary by make and model. See the <a href="/guides/tpms/">TPMS warning light guide</a> for alert patterns.</p>
+
+        <h3>Temporary spare notes</h3>
+        <p>Compact temporary spares (often called donut or T type spares) frequently need a <strong>much higher</strong> cold operating pressure than the road tire placard numbers. Look for:</p>
+        <ul>
+          <li>Pressure molded on the spare sidewall.</li>
+          <li>A spare PSI line on the <a href="/guides/placard/">Tire and Loading Information label</a> when one is printed.</li>
+          <li>Owner’s manual notes on temporary use limits (speed, distance, and where the spare may be mounted).</li>
+        </ul>
+        <p>A full size matching spare may follow the same cold PSI as a road tire when the manual or placard says so. Soft practice: read the spare type first, then the number. Do not invent a PSI from a blog post.</p>
+
+        <h3>Quick checklist before you need the spare</h3>
+        <ol>
+          <li>Confirm you have a spare (or an OEM mobility kit) and that it matches what the manual describes.</li>
+          <li>Gauge the spare cold pressure on a schedule, not only after a puncture.</li>
+          <li>Inflate to the spare’s specified cold pressure from the sidewall, placard spare line, or manual.</li>
+          <li>Inspect for obvious damage, dry rot, a missing valve core, or a soft tire that will not hold air.</li>
+          <li>Read temporary use limits before driving farther than necessary on a compact spare.</li>
+          <li>Expect <a href="/guides/tpms/#spare-tire-tpms">TPMS behavior to differ</a> until a normal road tire is back on and a licensed shop confirms the system.</li>
+        </ol>
+        <p>Record spare PSI next to road tire PSI on the <a href="/guides/tire-placard-checklist/">placard checklist</a>. Soft reminder: a temporary spare is a short term mobility tool, not a long term fifth tire.</p>
+
         <h2>Load, temperature, and “set it and forget it”</h2>
-        <p>Pressure changes with temperature, and load (passengers, cargo, towing) can matter for how a vehicle manufacturer frames inflation guidance. Some manuals include alternate tables for heavy load. Treat brochure shortcuts and forum “run X PSI” posts cautiously; verify against OEM materials for your exact vehicle.</p>
+        <p>Pressure changes with temperature, and load (passengers, cargo, towing) can matter for how a vehicle manufacturer frames inflation guidance. Some manuals include alternate tables for heavy load. Treat brochure shortcuts and forum “run X PSI” posts cautiously. Verify against OEM materials for your exact vehicle.</p>
         <h2>Before you buy or remount tires</h2>
         <p>Record placard pressures alongside size, load index, and speed rating (see our <a href="/guides/tire-placard-checklist/">placard checklist</a>). Have a licensed installer mount and balance tires, confirm TPMS function, and advise if an alternate size changes any service considerations. We do not claim lab tests, and we do not label any inflation practice as the “safest” for every driver.</p>
-        <p class="note">Informational only — not professional, safety, or legal advice. Always verify placard/OEM specs for your vehicle and use a licensed installer for mounting, balancing, and related service.</p>
+        <p class="note">Informational only. Not professional, safety, or legal advice. Always verify placard and OEM specs for your vehicle and use a licensed installer for mounting, balancing, and related service.</p>
       </div>
 """ + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
+    ("/guides/tpms/#spare-tire-tpms", "TPMS spare tire caveats"),
     ("/guides/tpms/", "TPMS warning light"),
+    ("/guides/seasonal-tire-storage/", "Seasonal tire storage"),
     ("/guides/tread-depth/", "How to check tread depth"),
     ("/guides/utqg/", "UTQG grades explained"),
     ("/fitment/choose-tire-size/", "How to choose tire size"),
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Copy pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm size and ratings via <a href="/fitment/choose-tire-size/">choose tire size</a>. Retailer links coming soon — check retailers and confirm with your installer.</p>
+        <p>Copy pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm size and ratings via <a href="/fitment/choose-tire-size/">choose tire size</a>. Retailer links coming soon. Check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1271,7 +1312,7 @@ page(
           <li>Expect TPMS to behave differently until a normal road tire is back on and the system is confirmed.</li>
           <li>Have a licensed installer repair or replace the road tire promptly, remount a proper set, and verify TPMS function. Confirm the repaired or new tire still meets required <a href="/guides/load-index-speed-rating/">load index and speed rating</a>.</li>
         </ol>
-        <p>Related pressure context: <a href="/guides/tire-pressure/">cold tire pressure / PSI</a>. Soft reminder: a temporary spare is a short-term mobility tool, not a long-term fifth tire.</p>
+        <p>Related pressure context: <a href="/guides/tire-pressure/#spare-psi">spare PSI vs road PSI</a> on the cold tire pressure guide. Soft reminder: a temporary spare is a short-term mobility tool, not a long-term fifth tire.</p>
 
         <h2>Rotation, replacement, and sensor service</h2>
         <p>When you rotate tires or install a new set, TPMS sensors, valve stems, batteries (where applicable), and relearn/programming steps may need attention. Have a <strong>licensed installer</strong> handle mount/balance, sensor service, and confirmation that the system functions afterward. Improper handling can damage sensors or leave a malfunction light. This site does not publish DIY sensor replacement procedures. When you shop a new set, also confirm the sidewall service description matches required <a href="/guides/load-index-speed-rating/">load index and speed rating</a> for your vehicle.</p>
@@ -1280,7 +1321,7 @@ page(
         <p class="note">Informational only. Not professional, safety, or legal advice. We have not lab-tested your vehicle’s TPMS or spare. Always verify symbols, reset notes, spare limits, and service procedures in your owner’s manual, and use a licensed shop for sensor work, mounting, and related diagnosis. We do not claim any single practice is the “safest” for every driver.</p>
       </div>
 """ + faq_html(TPMS_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
-    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tire-pressure/#spare-psi", "Spare PSI vs road PSI"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/load-index-speed-rating/", "Load index &amp; speed rating"),
@@ -1289,7 +1330,7 @@ page(
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Confirm cold pressures with the <a href="/guides/tire-pressure/">PSI guide</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer address sensors or persistent lights. Retailer links coming soon — check retailers and confirm with your installer.</p>
+        <p>Confirm cold pressures with the <a href="/guides/tire-pressure/#spare-psi">PSI guide (including spare notes)</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer address sensors or persistent lights. Retailer links coming soon — check retailers and confirm with your installer.</p>
       </div>
     """,
 )
