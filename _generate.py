@@ -321,7 +321,7 @@ def page(
       </div>
       <div class="footer-legal">
         <p>{FOOTER_BLURB}</p>
-        <p class="footer-meta">&copy; 2026 Joshua Israel Ventures LLC. Brand names used for identification only.</p>
+        <p class="footer-meta">Operated by Joshua Israel Ventures LLC. &copy; 2026 Joshua Israel Ventures LLC. Brand names used for identification only.</p>
       </div>
     </div>
   </footer>
