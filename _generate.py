@@ -2052,7 +2052,7 @@ def _legal_schema(path: str, name: str, description: str) -> list:
     ]
 
 
-TERMS_DESC = "Terms of Use for Smart Tire Picks, a brand owned by Joshua Israel Ventures LLC: general information only, as is disclaimer, limitation of liability, and Michigan governing law."
+TERMS_DESC = "Terms of Use for Smart Tire Picks, a brand owned by Joshua Israel Ventures LLC: general information only, as is disclaimer, limitation of liability, and Florida governing law."
 
 page(
     path="/terms/index.html",
@@ -2098,7 +2098,7 @@ page(
         <p>You agree to hold harmless and indemnify Joshua Israel Ventures LLC from claims, losses and costs (including reasonable attorney fees) that arise from your misuse of the Site or your breach of these Terms.</p>
 
         <h2>11. Governing law</h2>
-        <p>These Terms are governed by the laws of the State of Michigan, United States, without regard to its conflict of law rules. You agree that any dispute about the Site or these Terms will be brought in the state or federal courts located in Michigan, unless the law where you live requires otherwise.</p>
+        <p>These Terms are governed by the laws of the State of Florida, United States, without regard to its conflict of law rules. You agree that any dispute about the Site or these Terms will be brought in the state or federal courts located in Florida, unless the law where you live requires otherwise.</p>
 
         <h2>12. Changes to these Terms</h2>
         <p>We may update these Terms from time to time. The date at the top of this page shows when they last changed. If you keep using the Site after a change, you accept the updated Terms.</p>
