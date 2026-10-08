@@ -1,0 +1,40 @@
+# Smart Tire Picks
+
+> Smart Tire Picks is an educational tire site for US drivers. It explains how to read the door placard, set cold tire pressure, understand load index, speed rating, UTQG grades, DOT date codes, tread depth, and TPMS warnings, and how to compare tire categories. Reviews are editorial summaries of public manufacturer positioning, not lab tests.
+
+Operated by Joshua Israel Ventures LLC. Content is general information only and is not professional or safety advice. Always confirm tire size, load index, speed rating, and pressure against your vehicle's door placard and owner's manual, and have tires installed by a licensed professional. The site does not publish lab results, ratings, or safety rankings.
+
+## Guides
+
+- [How to read your tire door placard](https://smarttirepicks.com/guides/placard/): Where the placard is, what each line means including the spare tire line, how it differs from the certification label, and what to do if it is missing.
+- [Tire placard checklist](https://smarttirepicks.com/guides/tire-placard-checklist/): A checklist of what to copy from your door label before shopping for tires.
+- [Recommended cold tire pressure (PSI)](https://smarttirepicks.com/guides/tire-pressure/): Why the placard PSI, not the sidewall maximum, is the target, what cold pressure means, and how spare PSI can differ from road tire PSI.
+- [Load index and speed rating explained](https://smarttirepicks.com/guides/load-index-speed-rating/): How to read the service description, a chart of common passenger load indexes and speed symbols, and XL versus standard load notes.
+- [DOT date codes and tire age](https://smarttirepicks.com/guides/dot-date-codes/): How the four digit DOT date code shows the week and year a tire was made, and why age matters alongside tread.
+- [When to replace your tires](https://smarttirepicks.com/guides/when-to-replace/): Replacement signals including tread depth, damage, irregular wear, age, and seasonal sets.
+- [How to check tire tread depth](https://smarttirepicks.com/guides/tread-depth/): Wear bars, tread depth gauges, the limits of coin tests, and when to see a licensed professional.
+- [UTQG tire grades explained](https://smarttirepicks.com/guides/utqg/): What UTQG treadwear, traction, and temperature grades mean and what they do not mean, with NHTSA and eCFR citations.
+- [TPMS warning light explained](https://smarttirepicks.com/guides/tpms/): Solid versus flash then solid TPMS lights, cold weather pressure drops, spare tire caveats, and why monthly pressure checks still matter.
+- [Seasonal tire storage](https://smarttirepicks.com/guides/seasonal-tire-storage/): How to store an off season set indoors, stacking versus upright, ozone and sunlight risks, and steps before reinstalling.
+
+## Reviews
+
+- [Michelin CrossClimate 2 editorial overview](https://smarttirepicks.com/reviews/michelin-crossclimate2/): Category context, comparison points, and who it may or may not suit, based on public manufacturer positioning with no lab testing.
+- [Bridgestone Turanza QuietTrack editorial overview](https://smarttirepicks.com/reviews/bridgestone-turanza-quiettrack/): Comfort touring context, comparison points, and suitability notes, based on public manufacturer positioning with no lab testing.
+
+## Comparisons
+
+- [All-season vs winter tires](https://smarttirepicks.com/comparisons/all-season-vs-winter/): When all-season tires may be enough, when winter tires are often considered, cost and logistics of a second set, and 3PMSF versus M+S symbols.
+- [Touring vs performance all-season tires](https://smarttirepicks.com/comparisons/touring-vs-performance-all-season/): A decision framework comparing ride, noise, handling, wear, and winter limits, with suitability notes.
+
+## Fitment
+
+- [How to choose the right tire size](https://smarttirepicks.com/fitment/choose-tire-size/): A step by step process starting with the door placard, then load index, speed rating, climate category, and installation.
+- [All-season vs winter vs summer tires](https://smarttirepicks.com/fitment/all-season-vs-winter-vs-summer/): How the three tire categories differ by climate, with a quick comparison table.
+
+## About and policies
+
+- [About Smart Tire Picks](https://smarttirepicks.com/about.html): Who runs the site, what it is not, and its editorial approach.
+- [Contact](https://smarttirepicks.com/contact/): A form for editorial questions, corrections, and partnership inquiries.
+- [Disclaimer](https://smarttirepicks.com/disclaimer/): Informational use terms, what readers must verify before buying, and limitation of liability.
+- [Affiliate Disclosure](https://smarttirepicks.com/affiliate-disclosure/): How the site may earn affiliate commissions and how that relates to editorial content.

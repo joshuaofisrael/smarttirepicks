@@ -83,14 +83,24 @@ def json_ld_script(objs: list) -> str:
     return "\n  ".join(parts)
 
 
+ORG_ID = BASE + "/#organization"
+SITE_ID = BASE + "/#website"
+
+
 def schema_organization_website() -> list:
     return [
         {
             "@context": "https://schema.org",
             "@type": "Organization",
+            "@id": ORG_ID,
             "name": "Smart Tire Picks",
             "url": BASE + "/",
             "description": "Educational tire fitment guides and editorial reviews for US drivers.",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "url": BASE + "/contact/",
+            },
             "parentOrganization": {
                 "@type": "Organization",
                 "name": "Joshua Israel Ventures LLC",
@@ -99,20 +109,22 @@ def schema_organization_website() -> list:
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
+            "@id": SITE_ID,
             "name": "Smart Tire Picks",
             "url": BASE + "/",
+            "inLanguage": "en-US",
             "description": "Learn tire fitment, door placards, load index, and category trade-offs.",
-            "publisher": {"@type": "Organization", "name": "Smart Tire Picks"},
+            "publisher": {"@id": ORG_ID},
         },
     ]
 
 
-def schema_article_breadcrumb(*, headline: str, description: str, canonical: str, breadcrumbs: list, date_mod: str | None = None) -> list:
+def schema_article_breadcrumb(*, headline: str, description: str, canonical: str, breadcrumbs: list, date_mod: str | None = None, about: dict | None = None) -> list:
     crumb_items = []
     for i, (name, url) in enumerate(breadcrumbs, start=1):
         item_url = url if url.startswith("http") else BASE + url
         crumb_items.append({"@type": "ListItem", "position": i, "name": name, "item": item_url})
-    return [
+    objs = [
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumb_items},
         {
             "@context": "https://schema.org",
@@ -128,8 +140,18 @@ def schema_article_breadcrumb(*, headline: str, description: str, canonical: str
             },
             "datePublished": DATE_PUB,
             "dateModified": date_mod or DATE_MOD,
+            "inLanguage": "en-US",
+            "isPartOf": {"@type": "WebSite", "@id": SITE_ID, "name": "Smart Tire Picks"},
         },
     ]
+    if about:
+        objs[1]["about"] = about
+    return objs
+
+
+def schema_product_ref(name: str, brand: str) -> dict:
+    """Plain product identification only. No ratings, reviews, or offers."""
+    return {"@type": "Product", "name": name, "brand": {"@type": "Brand", "name": brand}}
 
 
 def schema_faq(faqs: list) -> dict:
@@ -495,6 +517,22 @@ page(
     description="Learn about Smart Tire Picks, an educational tire fitment and review site operated by Joshua Israel Ventures LLC.",
     h1="About Smart Tire Picks",
     lede="An educational site focused on tire fitment literacy and calm, original editorial content for US drivers.",
+    schema_objs=[
+        {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Smart Tire Picks",
+            "url": BASE + "/about.html",
+            "inLanguage": "en-US",
+            "isPartOf": {"@type": "WebSite", "@id": SITE_ID, "name": "Smart Tire Picks"},
+            "about": {
+                "@type": "Organization",
+                "@id": ORG_ID,
+                "name": "Smart Tire Picks",
+                "parentOrganization": {"@type": "Organization", "name": "Joshua Israel Ventures LLC"},
+            },
+        }
+    ],
     body="""
       <div class="content-block">
         <h2>Who we are</h2>
@@ -946,7 +984,7 @@ page(
     title="Tire DOT Date Codes: How to Read Tire Age — Smart Tire Picks",
     description="Learn how to read the DOT tire date code (week and year of manufacture) and why tire age matters alongside tread depth.",
     h1="DOT date codes and tire age",
-    lede="Tread depth is only one aging signal. The DOT code helps you identify when a tire was manufactured.",
+    lede="The last four digits of a tire’s DOT code show when it was made. The first two digits are the week and the last two are the year, so 2424 would mean the 24th week of 2024. Tire age matters alongside tread depth.",
     schema_objs=schema_article_breadcrumb(
         headline="DOT date codes and tire age",
         description="Learn how to read the DOT tire date code (week and year of manufacture) and why tire age matters alongside tread depth.",
@@ -956,6 +994,7 @@ page(
             ("Guides", "/guides/placard/"),
             ("DOT date codes", "/guides/dot-date-codes/"),
         ],
+        date_mod="2026-10-08",
     ),
     body="""
       <div class="content-block">
@@ -985,7 +1024,7 @@ page(
     title="When to Replace Tires: Tread, Age & Damage — Smart Tire Picks",
     description="Practical signs it may be time to replace tires: tread depth, uneven wear, damage, age, and seasonal considerations — verify with a pro.",
     h1="When to replace your tires",
-    lede="Replacement timing depends on tread, damage, age, use case, and climate — not a single marketing slogan.",
+    lede="It may be time to replace a tire when tread nears about 2/32 inch, when you see sidewall bulges, cuts, or irregular wear, or when an inspection flags an older tire by its DOT date code. Timing also depends on use and climate, so have a licensed installer confirm.",
     schema_objs=schema_article_breadcrumb(
         headline="When to replace your tires",
         description="Practical signs it may be time to replace tires: tread depth, uneven wear, damage, age, and seasonal considerations — verify with a pro.",
@@ -995,6 +1034,7 @@ page(
             ("Guides", "/guides/placard/"),
             ("When to replace", "/guides/when-to-replace/"),
         ],
+        date_mod="2026-10-08",
     ),
     body="""
       <div class="content-block">
@@ -1046,7 +1086,7 @@ page(
     title="How to Check Tire Tread Depth — Wear Bars &amp; Gauges | Smart Tire Picks",
     description="Learn how to check tire tread depth with wear bars, a tread gauge, and rough coin heuristics. Educational NHTSA-cited guidance with soft caveats — verify with a licensed installer.",
     h1="How to check tire tread depth",
-    lede="Tread depth affects wet-road grip. Learn what wear bars mean, how gauges and coin heuristics work, and when to have a licensed professional confirm your readings.",
+    lede="Check tread depth with a tread depth gauge at several spots on each tire, and look at the molded wear bars in the grooves. Coin tests are only rough heuristics. Many public safety materials treat about 2/32 inch as a widely cited minimum, so have a licensed professional confirm low or uneven readings.",
     schema_objs=schema_article_breadcrumb(
         headline="How to check tire tread depth",
         description="Learn how to check tire tread depth with wear bars, a tread gauge, and rough coin heuristics. Educational NHTSA-cited guidance with soft caveats — verify with a licensed installer.",
@@ -1492,7 +1532,7 @@ page(
     title="How to Choose the Right Tire Size — Smart Tire Picks",
     description="A step-by-step approach to choosing tire size: door placard first, then load index, speed rating, and installer confirmation.",
     h1="How to choose the right tire size",
-    lede="Start with the vehicle — not the sale rack. Size, load, and speed rating must fit your OEM requirements.",
+    lede="The right tire size is the one listed on your door placard and in your owner’s manual. Match that size, meet or exceed the OEM load index and speed rating guidance, then confirm with a licensed installer.",
     schema_objs=schema_article_breadcrumb(
         headline="How to choose the right tire size",
         description="A step-by-step approach to choosing tire size: door placard first, then load index, speed rating, and installer confirmation.",
@@ -1502,6 +1542,7 @@ page(
             ("Fitment", "/fitment/choose-tire-size/"),
             ("Choose tire size", "/fitment/choose-tire-size/"),
         ],
+        date_mod="2026-10-08",
     ),
     body="""
       <div class="content-block">
@@ -1531,7 +1572,18 @@ page(
     title="All-Season vs Winter vs Summer Tires — Smart Tire Picks",
     description="Compare all-season, winter, and summer tire categories: climate fit, trade-offs, and what to verify before you buy.",
     h1="All-season vs winter vs summer tires",
-    lede="Tire categories are about compound and tread design priorities — not marketing adjectives alone.",
+    lede="All-season tires balance dry, wet, and light winter use in many temperate US climates. Winter tires use compounds that stay flexible in the cold and treads meant for snow and ice. Summer tires prioritize warm weather grip and handling and are generally a poor choice in freezing temperatures.",
+    schema_objs=schema_article_breadcrumb(
+        headline="All-season vs winter vs summer tires",
+        description="Compare all-season, winter, and summer tire categories: climate fit, trade-offs, and what to verify before you buy.",
+        canonical=canonical_for("/fitment/all-season-vs-winter-vs-summer/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Fitment", "/fitment/choose-tire-size/"),
+            ("All-season vs winter vs summer", "/fitment/all-season-vs-winter-vs-summer/"),
+        ],
+        date_mod="2026-10-08",
+    ),
     body="""
       <div class="content-block">
         <h2>All-season</h2>
@@ -1579,7 +1631,7 @@ page(
     title="Michelin CrossClimate 2 Review (Editorial) — Fitment Notes & Who It May Suit | Smart Tire Picks",
     description="Editorial overview of the Michelin CrossClimate 2: category context, comparison points, who it may or may not suit, and retailer price-check CTAs. No independent lab test by us.",
     h1="Michelin CrossClimate 2 — editorial overview",
-    lede="A nominative, educational summary of how Michelin publicly positions this model — not a lab test, ranking, or safety guarantee.",
+    lede="Michelin positions the CrossClimate 2 as an all-weather oriented grand touring tire for drivers who want stronger cold weather cues than a basic all-season while keeping one mounted set. This is an editorial summary of public positioning, not a lab test, ranking, or safety guarantee.",
     schema_objs=schema_article_breadcrumb(
         headline="Michelin CrossClimate 2 — editorial overview",
         description="Editorial overview of the Michelin CrossClimate 2: category context, comparison points, who it may or may not suit, and retailer price-check CTAs. No independent lab test by us.",
@@ -1589,6 +1641,8 @@ page(
             ("Reviews", "/reviews/michelin-crossclimate2/"),
             ("Michelin CrossClimate 2", "/reviews/michelin-crossclimate2/"),
         ],
+        date_mod="2026-10-08",
+        about=schema_product_ref("CrossClimate 2", "Michelin"),
     )
     + [schema_faq(CC2_FAQS)],
     body="""
@@ -1679,7 +1733,7 @@ page(
     title="Bridgestone Turanza QuietTrack Review (Editorial) — Comfort Touring Notes | Smart Tire Picks",
     description="Editorial overview of the Bridgestone Turanza QuietTrack: comfort-touring context, comparison points, suitability notes, and retailer price-check CTAs. No independent lab test by us.",
     h1="Bridgestone Turanza QuietTrack — editorial overview",
-    lede="Educational summary of public positioning for this touring all-season line — not an instrumented review or safety ranking.",
+    lede="Bridgestone presents the Turanza QuietTrack as a touring all-season tire focused on quiet, comfortable commuting and everyday wet and dry use in typical US climates. This is an editorial summary of public positioning, not an instrumented review or safety ranking.",
     schema_objs=schema_article_breadcrumb(
         headline="Bridgestone Turanza QuietTrack — editorial overview",
         description="Editorial overview of the Bridgestone Turanza QuietTrack: comfort-touring context, comparison points, suitability notes, and retailer price-check CTAs. No independent lab test by us.",
@@ -1689,6 +1743,8 @@ page(
             ("Reviews", "/reviews/michelin-crossclimate2/"),
             ("Bridgestone Turanza QuietTrack", "/reviews/bridgestone-turanza-quiettrack/"),
         ],
+        date_mod="2026-10-08",
+        about=schema_product_ref("Turanza QuietTrack", "Bridgestone"),
     )
     + [schema_faq(QT_FAQS)],
     body="""
@@ -1764,7 +1820,18 @@ page(
     title="All-Season vs Winter Tires Comparison — Smart Tire Picks",
     description="Compare all-season and winter tires: temperature, snow/ice priorities, cost of dual sets, and what to verify before switching.",
     h1="All-season vs winter tires",
-    lede="A practical comparison for drivers deciding between one all-season set and a dedicated winter strategy.",
+    lede="All-season tires may be enough for mild winters with rare ice and light snow. Winter tires are often considered where sub-freezing temperatures and packed snow or ice are regular, at the cost of a second set, storage, and seasonal swaps.",
+    schema_objs=schema_article_breadcrumb(
+        headline="All-season vs winter tires",
+        description="Compare all-season and winter tires: temperature, snow/ice priorities, cost of dual sets, and what to verify before switching.",
+        canonical=canonical_for("/comparisons/all-season-vs-winter/index.html"),
+        breadcrumbs=[
+            ("Home", "/"),
+            ("Comparisons", "/comparisons/all-season-vs-winter/"),
+            ("All-season vs winter", "/comparisons/all-season-vs-winter/"),
+        ],
+        date_mod="2026-10-08",
+    ),
     body="""
       <div class="content-block">
         <h2>Core difference</h2>
@@ -1956,7 +2023,11 @@ SITEMAP_URLS = [
     ("/comparisons/touring-vs-performance-all-season/", "monthly", "0.7"),
     ("/disclaimer/", "yearly", "0.3"),
     ("/affiliate-disclosure/", "yearly", "0.3"),
+    ("/llms.txt", "monthly", "0.3"),
 ]
+# Static files kept by hand and never written or deleted here:
+# robots.txt, llms.txt, CNAME, contact/, contact.html, and the IndexNow key file
+# df4a0d3d21dcab6c5b5e47393747f2b2.txt.
 _lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for _loc, _freq, _pri in SITEMAP_URLS:
     _lines.append(f'  <url><loc>{BASE}{_loc}</loc><changefreq>{_freq}</changefreq><priority>{_pri}</priority></url>')
