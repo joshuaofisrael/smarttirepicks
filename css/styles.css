@@ -293,10 +293,17 @@ main { min-height: 55vh; }
   color: #9aa3b5;
   line-height: 1.55;
 }
-.footer-meta {
+.footer-owner {
   margin-top: 0.9rem;
-  color: #7b8496;
-  font-size: 0.85rem;
+  color: #eef1f6;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.footer-links { color: #c5cddb; font-size: 0.95rem; }
+.footer-meta {
+  margin-top: 0.6rem;
+  color: #c5cddb;
+  font-size: 0.9rem;
 }
 
 .form-grid { display: grid; gap: 0.9rem; max-width: 32rem; }

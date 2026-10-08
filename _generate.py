@@ -27,6 +27,22 @@ FOOTER_BLURB = (
     '<a href="/disclaimer/">Disclaimer</a> · <a href="/affiliate-disclosure/">Affiliate Disclosure</a>'
 )
 
+LEGAL_NAME = "Joshua Israel Ventures LLC"
+CONTACT_EMAIL = "joshuaofisrael@gmail.com"
+FOOTER_OWNER = (
+    "&copy; 2026 Joshua Israel Ventures LLC. All rights reserved. "
+    "Smart Tire Picks is owned and operated by Joshua Israel Ventures LLC."
+)
+FOOTER_META = (
+    "Operated by Joshua Israel Ventures LLC. Smart Tire Picks is a brand name, not a separate company. "
+    "Tire and retailer brand names are used for identification only."
+)
+FOOTER_LINKS = (
+    '<a href="/terms/">Terms of Use</a> · <a href="/privacy/">Privacy Policy</a> · '
+    '<a href="/disclaimer/">Disclaimer</a> · <a href="/affiliate-disclosure/">Affiliate Disclosure</a> · '
+    '<a href="/contact/">Contact</a>'
+)
+
 # Cloudflare Web Analytics (site id 9edc255e29a148cdb9868ac59e7cc9f7). Exact snippet, once per page.
 CF_BEACON = (
     "<!-- Cloudflare Web Analytics --><script type='module' "
@@ -85,6 +101,8 @@ def json_ld_script(objs: list) -> str:
 
 ORG_ID = BASE + "/#organization"
 SITE_ID = BASE + "/#website"
+BRAND_OBJ = {"@type": "Brand", "name": "Smart Tire Picks", "url": BASE + "/"}
+ORG_REF = {"@type": "Organization", "@id": ORG_ID, "name": LEGAL_NAME, "brand": BRAND_OBJ}
 
 
 def schema_organization_website() -> list:
@@ -93,17 +111,16 @@ def schema_organization_website() -> list:
             "@context": "https://schema.org",
             "@type": "Organization",
             "@id": ORG_ID,
-            "name": "Smart Tire Picks",
+            "name": LEGAL_NAME,
+            "legalName": LEGAL_NAME,
             "url": BASE + "/",
-            "description": "Educational tire fitment guides and editorial reviews for US drivers.",
+            "description": "Joshua Israel Ventures LLC owns and operates Smart Tire Picks, an educational tire fitment and editorial review brand for US drivers.",
+            "brand": BRAND_OBJ,
             "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer support",
+                "email": CONTACT_EMAIL,
                 "url": BASE + "/contact/",
-            },
-            "parentOrganization": {
-                "@type": "Organization",
-                "name": "Joshua Israel Ventures LLC",
             },
         },
         {
@@ -114,7 +131,7 @@ def schema_organization_website() -> list:
             "url": BASE + "/",
             "inLanguage": "en-US",
             "description": "Learn tire fitment, door placards, load index, and category trade-offs.",
-            "publisher": {"@id": ORG_ID},
+            "publisher": ORG_REF,
         },
     ]
 
@@ -132,12 +149,8 @@ def schema_article_breadcrumb(*, headline: str, description: str, canonical: str
             "headline": headline,
             "description": description,
             "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
-            "author": {"@type": "Organization", "name": "Smart Tire Picks"},
-            "publisher": {
-                "@type": "Organization",
-                "name": "Smart Tire Picks",
-                "parentOrganization": {"@type": "Organization", "name": "Joshua Israel Ventures LLC"},
-            },
+            "author": ORG_REF,
+            "publisher": ORG_REF,
             "datePublished": DATE_PUB,
             "dateModified": date_mod or DATE_MOD,
             "inLanguage": "en-US",
@@ -336,6 +349,8 @@ def page(
           <ul>
             <li><a href="/about.html">About</a></li>
             <li><a href="/contact/">Contact</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
             <li><a href="/disclaimer/">Disclaimer</a></li>
             <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
           </ul>
@@ -343,7 +358,9 @@ def page(
       </div>
       <div class="footer-legal">
         <p>{FOOTER_BLURB}</p>
-        <p class="footer-meta">Operated by Joshua Israel Ventures LLC. &copy; 2026 Joshua Israel Ventures LLC. Brand names used for identification only.</p>
+        <p class="footer-owner">{FOOTER_OWNER}</p>
+        <p class="footer-links">{FOOTER_LINKS}</p>
+        <p class="footer-meta">{FOOTER_META}</p>
       </div>
     </div>
   </footer>
@@ -525,17 +542,14 @@ page(
             "url": BASE + "/about.html",
             "inLanguage": "en-US",
             "isPartOf": {"@type": "WebSite", "@id": SITE_ID, "name": "Smart Tire Picks"},
-            "about": {
-                "@type": "Organization",
-                "@id": ORG_ID,
-                "name": "Smart Tire Picks",
-                "parentOrganization": {"@type": "Organization", "name": "Joshua Israel Ventures LLC"},
-            },
+            "about": ORG_REF,
+            "publisher": ORG_REF,
         }
     ],
     body="""
       <div class="content-block">
         <h2>Who we are</h2>
+        <p><strong>Smart Tire Picks is a brand of Joshua Israel Ventures LLC.</strong> It is a brand name only, not a separate company, and all business connected with this site is done by Joshua Israel Ventures LLC.</p>
         <p><strong>Smart Tire Picks</strong> is owned and operated by <strong>Joshua Israel Ventures LLC</strong>. We publish guides, fitment explainers, comparisons, and editorial product overviews to help drivers ask better questions before buying tires.</p>
         <h2>What we are not</h2>
         <p>We are not a tire lab, installer network, or manufacturer. We do not perform independent instrumented testing unless a page explicitly says otherwise. Brand names appear for nominative identification only.</p>
@@ -547,7 +561,9 @@ page(
           <li>Licensed installer recommended for mounting and balancing</li>
         </ul>
         <h2>Contact</h2>
-        <p>Questions or corrections? Visit our <a href="/contact/">contact page</a>.</p>
+        <p>Questions or corrections? Visit our <a href="/contact/">contact page</a> or email <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>.</p>
+        <h2>Policies</h2>
+        <p>Use of this site is governed by our <a href="/terms/">Terms of Use</a>. See also our <a href="/privacy/">Privacy Policy</a>, <a href="/disclaimer/">Disclaimer</a>, and <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
       </div>
     """,
 )
@@ -1941,14 +1957,15 @@ page(
 page(
     path="/disclaimer/index.html",
     title="Disclaimer — Smart Tire Picks",
-    description="Informational-use disclaimer for Smart Tire Picks: verify placard and OEM specs; no lab tests unless stated; licensed installer recommended.",
+    description="Disclaimer for Smart Tire Picks, a brand of Joshua Israel Ventures LLC: general information only, accuracy limits, no professional relationship, and affiliate and advertising disclosure.",
     include_disclaimer=False,
     h1="Disclaimer",
-    lede="Last updated: September 8, 2026",
+    lede="Last updated: October 8, 2026",
     body="""
       <div class="content-block">
+        <p><strong>Short answer:</strong> Smart Tire Picks is a brand of Joshua Israel Ventures LLC. Everything on this site is general information only. Always check your vehicle’s door placard and owner’s manual and use a licensed tire installer. This Disclaimer is part of our <a href="/terms/">Terms of Use</a>.</p>
         <h2>Informational use only</h2>
-        <p>Content on this website (including fitment notes, size charts, reviews, comparisons, and buying guides) is provided for <strong>general informational and educational purposes only</strong>. It is <strong>not</strong> professional advice of any kind — including automotive, safety, engineering, legal, or insurance advice — and it is <strong>not</strong> a substitute for the vehicle manufacturer’s specifications, a licensed tire technician, or a qualified mechanic.</p>
+        <p>Content on this website (including fitment notes, size charts, reviews, comparisons, and buying guides) is provided for <strong>general informational and educational purposes only</strong>. It is <strong>not</strong> professional advice of any kind, including automotive, safety, engineering, legal, or insurance advice, and it is <strong>not</strong> a substitute for the vehicle manufacturer’s specifications, a licensed tire technician, or a qualified mechanic.</p>
         <h2>You must verify before buying or installing</h2>
         <p>Before purchasing, mounting, or using any tire, <strong>you</strong> are solely responsible for confirming that the tire is correct and safe for <strong>your</strong> vehicle and use case. At a minimum, verify:</p>
         <ul>
@@ -1959,18 +1976,22 @@ page(
           <li>Tire age (DOT date code), condition, inflation pressure, and torque specs at install</li>
         </ul>
         <p><strong>Do not rely solely on this website</strong> when choosing tires. Specs published by manufacturers can change; always cross-check current manufacturer data and your vehicle documentation.</p>
+        <h2>Accuracy</h2>
+        <p>We try to keep our content accurate and current, and we cite public sources such as NHTSA, USTMA and the eCFR where we can. We do not promise that any page is complete, correct, or up to date. Manufacturer specifications, prices, warranties, product lines and regulations change, and a page may contain errors or outdated information. If you spot a mistake, please tell us through our <a href="/contact/">contact page</a> so we can review it.</p>
+        <h2>No professional relationship</h2>
+        <p>Reading this site, using its checklists, or contacting us does not create a professional, advisory, mechanic, installer, or client relationship of any kind between you and Joshua Israel Ventures LLC. We cannot inspect your vehicle or your tires, and we do not give vehicle specific safety, legal, insurance, or financial advice by email or otherwise.</p>
         <h2>No lab tests, rankings, or safety guarantees</h2>
         <p>Unless a page <strong>explicitly</strong> states that we performed a named test under described conditions, we have <strong>not</strong> conducted laboratory, track, or instrumented safety testing. Phrases such as “best,” “top,” or “recommended” reflect editorial opinion and publicly available information only. We <strong>do not</strong> guarantee that any tire is the safest, most durable, or most appropriate choice for any driver, vehicle, road, or weather condition.</p>
         <h2>Installation</h2>
         <p>Tire mounting, balancing, and related service should be performed by a <strong>licensed, qualified tire installer</strong>. Improper installation, inflation, or maintenance can cause tire failure, loss of vehicle control, property damage, injury, or death.</p>
         <h2>Limitation of liability</h2>
-        <p>To the fullest extent permitted by law, Joshua Israel Ventures LLC and its owners, operators, writers, and affiliates are <strong>not liable</strong> for any loss, damage, injury, claim, or cost arising from your use of this site or from any tire selection, purchase, installation, or use made in connection with information on this site — whether based on warranty, contract, tort (including negligence), or otherwise. Your use of this site is at your own risk.</p>
+        <p>To the fullest extent permitted by law, Joshua Israel Ventures LLC and its owners, operators, writers, and affiliates are <strong>not liable</strong> for any loss, damage, injury, claim, or cost arising from your use of this site or from any tire selection, purchase, installation, or use made in connection with information on this site, whether based on warranty, contract, tort (including negligence), or otherwise. Your use of this site is at your own risk.</p>
         <h2>No endorsement</h2>
         <p>Brand names and model names are used for identification and nominative reference only. Mentions of manufacturers or retailers do <strong>not</strong> imply affiliation, sponsorship, or endorsement unless clearly stated.</p>
-        <h2>Affiliate relationships</h2>
-        <p>Some links may be affiliate links. See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>. Commissions do not change our editorial standards, and they do not constitute a recommendation that a product is right for your vehicle.</p>
+        <h2>Affiliate and advertising disclosure (FTC)</h2>
+        <p>Joshua Israel Ventures LLC may earn money from this site in the future through affiliate links or advertising. As of the date above, the site has no live affiliate links and shows no paid advertising. The retailer buttons on our pages are labeled coming soon and do not earn a commission. When we add affiliate links or ads, we will disclose them clearly and close to the link, in line with the US Federal Trade Commission guidance on endorsements. If you buy through an affiliate link, we may earn a commission at no extra cost to you. Commissions will not change our editorial standards, and they are not a recommendation that a product is right for your vehicle. Details are in our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
         <h2>Contact</h2>
-        <p>Questions about this disclaimer: contact via the site’s <a href="/contact/">contact page</a> (Joshua Israel Ventures LLC).</p>
+        <p>Questions about this disclaimer: use our <a href="/contact/">contact page</a> or email Joshua Israel Ventures LLC at <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>.</p>
         <p>If you do not agree with these terms, do not use this website.</p>
       </div>
     """,
@@ -1982,12 +2003,13 @@ page(
     description="How Smart Tire Picks (Joshua Israel Ventures LLC) may earn affiliate commissions and how that relates to editorial content.",
     include_disclaimer=False,
     h1="Affiliate Disclosure",
-    lede="Last updated: September 8, 2026",
+    lede="Last updated: October 8, 2026",
     body="""
       <div class="content-block">
-        <p>This website is owned and operated by <strong>Joshua Israel Ventures LLC</strong>.</p>
+        <p>This website is owned and operated by <strong>Joshua Israel Ventures LLC</strong>. Smart Tire Picks is a brand of Joshua Israel Ventures LLC.</p>
         <h2>How we may earn money</h2>
-        <p>Some links on this site are <strong>affiliate links</strong>. If you click a link and purchase a product or service, we may earn a commission at <strong>no additional cost to you</strong>. We may also participate in display advertising or similar programs in the future.</p>
+        <p><strong>Current status:</strong> as of October 8, 2026, this site has no live affiliate links and shows no paid advertising, so no link on this site currently earns money. The retailer buttons on our pages are labeled coming soon.</p>
+        <p>In the future, some links may become <strong>affiliate links</strong>. If you click such a link and purchase a product or service, we may earn a commission at <strong>no additional cost to you</strong>. We may also participate in display advertising or similar programs in the future, and we will update this page and our <a href="/privacy/">Privacy Policy</a> when we do.</p>
         <p>Affiliate partners may include online tire retailers and related networks (for example, programs associated with major tire retailers). Partner lists can change; when a specific page uses affiliate links, we aim to make that clear in context.</p>
         <h2>Editorial independence</h2>
         <p>Affiliate relationships do <strong>not</strong> mean a manufacturer or retailer endorses us, and they do <strong>not</strong> mean we endorse a product as safe or suitable for your vehicle. Commissions do not determine our conclusions. We may link to products we discuss critically or comparatively.</p>
@@ -1996,6 +2018,152 @@ page(
         <h2>FTC note</h2>
         <p>This disclosure is provided in accordance with applicable guidance on endorsements and affiliate marketing (including FTC guidelines in the United States). We aim to be transparent whenever compensation may be involved.</p>
         <p class="note">Retailer CTAs on content pages are currently labeled coming soon / check retailers — no live affiliate URLs yet.</p>
+      </div>
+    """,
+)
+
+
+LEGAL_UPDATED = "October 8, 2026"
+
+
+def _legal_schema(path: str, name: str, description: str) -> list:
+    canonical = canonical_for(path)
+    return [
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+                {"@type": "ListItem", "position": 2, "name": name, "item": canonical},
+            ],
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": canonical + "#webpage",
+            "url": canonical,
+            "name": name,
+            "description": description,
+            "inLanguage": "en-US",
+            "isPartOf": {"@id": SITE_ID},
+            "publisher": ORG_REF,
+            "dateModified": "2026-10-08",
+        },
+    ]
+
+
+TERMS_DESC = "Terms of Use for Smart Tire Picks, a brand owned by Joshua Israel Ventures LLC: general information only, as is disclaimer, limitation of liability, and Michigan governing law."
+
+page(
+    path="/terms/index.html",
+    title="Terms of Use | Smart Tire Picks (Joshua Israel Ventures LLC)",
+    description=TERMS_DESC,
+    include_disclaimer=False,
+    h1="Terms of Use",
+    lede="Last updated: " + LEGAL_UPDATED,
+    schema_objs=_legal_schema("/terms/index.html", "Terms of Use", TERMS_DESC),
+    body="""
+      <div class="content-block">
+        <p><strong>Short answer:</strong> by using smarttirepicks.com you agree to these Terms with Joshua Israel Ventures LLC. The site gives general tire information only. It is provided as is, and you should always follow your vehicle’s door placard and use a licensed tire installer.</p>
+
+        <h2>1. Who you are dealing with</h2>
+        <p>Smart Tire Picks is a brand owned by Joshua Israel Ventures LLC. It is not a separate company or a registered trade name. The website smarttirepicks.com (the “Site”) is owned and operated by Joshua Israel Ventures LLC (“we,” “us,” or “our”). When you use the Site, your agreement is with Joshua Israel Ventures LLC.</p>
+
+        <h2>2. Accepting these Terms</h2>
+        <p>By using the Site you agree to these Terms of Use, our <a href="/privacy/">Privacy Policy</a>, our <a href="/disclaimer/">Disclaimer</a>, and our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>. If you do not agree, please do not use the Site.</p>
+
+        <h2>3. General information only</h2>
+        <p>All content on the Site, including guides, checklists, charts, reviews and comparisons, is general information for education only. It is not professional automotive, mechanical, engineering, safety, legal, insurance, or financial advice, and it is not a substitute for your vehicle manufacturer’s specifications or for a qualified professional who can inspect your vehicle.</p>
+        <p>Before you buy, mount, inflate or use any tire, check the tire size, load index, speed rating and cold inflation pressure on your vehicle’s door placard and in your owner’s manual, and have the work done by a licensed, qualified tire installer. You are responsible for the decisions you make about your vehicle.</p>
+
+        <h2>4. Using the Site</h2>
+        <p>You may read and share links to the Site for your own personal, non commercial use. You agree not to copy or republish our content in bulk without permission, not to use the Site for any unlawful purpose, and not to interfere with the Site or try to access it in ways that could harm it or other users.</p>
+
+        <h2>5. Intellectual property</h2>
+        <p>The Site’s original text, layout and design are owned by Joshua Israel Ventures LLC and protected by copyright and other laws. Tire, vehicle and retailer brand names belong to their owners and are used only to identify products. Their use does not mean those companies sponsor or endorse us.</p>
+
+        <h2>6. Links to other websites</h2>
+        <p>The Site links to outside websites, such as public safety agencies, manufacturers and retailers. We do not control those websites and are not responsible for their content, products, prices or privacy practices. Any purchase you make from a retailer is between you and that retailer.</p>
+
+        <h2>7. Affiliate links and advertising</h2>
+        <p>The Site may include affiliate links or advertising in the future. As of the date above, it has no live affiliate links and shows no paid ads. Our <a href="/affiliate-disclosure/">Affiliate Disclosure</a> explains how this works and will be updated if that changes.</p>
+
+        <h2>8. “As is” and no warranties</h2>
+        <p>The Site and all of its content are provided “as is” and “as available,” without warranties of any kind, whether express or implied. To the fullest extent the law allows, Joshua Israel Ventures LLC disclaims all warranties, including any implied warranties of merchantability, fitness for a particular purpose, accuracy, and non infringement. We do not promise that the Site will be error free, complete, current, secure, or always available.</p>
+
+        <h2>9. Limitation of liability</h2>
+        <p>To the fullest extent the law allows, Joshua Israel Ventures LLC and its owners, members, managers, writers and contractors will not be liable for any indirect, incidental, special, consequential or punitive damages, or for any loss, damage, injury, claim or cost of any kind, that arises from your use of the Site or from any tire selection, purchase, installation or use connected with information on the Site. This applies whether the claim is based on contract, warranty, tort (including negligence), or any other legal theory. If we are found liable despite these Terms, our total liability to you will not exceed one hundred US dollars (US$100). Some places do not allow certain limits on liability, so some of these limits may not apply to you.</p>
+
+        <h2>10. Indemnity</h2>
+        <p>You agree to hold harmless and indemnify Joshua Israel Ventures LLC from claims, losses and costs (including reasonable attorney fees) that arise from your misuse of the Site or your breach of these Terms.</p>
+
+        <h2>11. Governing law</h2>
+        <p>These Terms are governed by the laws of the State of Michigan, United States, without regard to its conflict of law rules. You agree that any dispute about the Site or these Terms will be brought in the state or federal courts located in Michigan, unless the law where you live requires otherwise.</p>
+
+        <h2>12. Changes to these Terms</h2>
+        <p>We may update these Terms from time to time. The date at the top of this page shows when they last changed. If you keep using the Site after a change, you accept the updated Terms.</p>
+
+        <h2>13. Other terms</h2>
+        <p>If any part of these Terms is found unenforceable, the rest stays in effect. If we do not enforce a part of these Terms, that does not waive our right to enforce it later. These Terms, together with the policies linked above, are the full agreement between you and Joshua Israel Ventures LLC about the Site.</p>
+
+        <h2>14. Contact</h2>
+        <p>Questions about these Terms can be sent to Joshua Israel Ventures LLC at <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a> or through our <a href="/contact/">contact page</a>.</p>
+      </div>
+    """,
+)
+
+
+PRIVACY_DESC = "Privacy Policy for Smart Tire Picks: Joshua Israel Ventures LLC is the data controller. What the contact form, Cloudflare Web Analytics and GitHub Pages hosting collect, and your choices."
+
+page(
+    path="/privacy/index.html",
+    title="Privacy Policy | Smart Tire Picks (Joshua Israel Ventures LLC)",
+    description=PRIVACY_DESC,
+    include_disclaimer=False,
+    h1="Privacy Policy",
+    lede="Last updated: " + LEGAL_UPDATED,
+    schema_objs=_legal_schema("/privacy/index.html", "Privacy Policy", PRIVACY_DESC),
+    body="""
+      <div class="content-block">
+        <p><strong>Short answer:</strong> we collect very little. If you use our contact form, we receive what you type. We use Cloudflare Web Analytics, which does not use cookies, to count visits in aggregate. Our host, GitHub Pages, keeps standard server logs. We do not sell your personal information.</p>
+
+        <h2>Who is responsible for your data</h2>
+        <p>Smart Tire Picks is a brand of Joshua Israel Ventures LLC. Joshua Israel Ventures LLC is the data controller for personal information collected through smarttirepicks.com (the “Site”). You can reach us at <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>.</p>
+
+        <h2>Information you give us: the contact form</h2>
+        <p>Our <a href="/contact/">contact form</a> asks for your name, your email address, an optional phone number, and your message. When you submit it, the form is processed by FormSubmit (formsubmit.co), a third party form service, which sends the submission to our email inbox at joshuaofisrael@gmail.com. FormSubmit handles the data under its own privacy terms.</p>
+        <p>We use what you send only to read and reply to your message, to handle corrections or partnership questions, and to keep a record of our correspondence. Please do not send payment details or sensitive documents through the form.</p>
+
+        <h2>Analytics: Cloudflare Web Analytics</h2>
+        <p>We use Cloudflare Web Analytics to understand how many people visit the Site and which pages they read. It loads a small script from Cloudflare. It does not set cookies or use local storage to track you, and it gives us aggregate statistics only, such as page views, visits, referring websites, browser and device type, and country. We do not use it to identify individual visitors. Cloudflare processes this data under its own privacy policy.</p>
+
+        <h2>Hosting: GitHub Pages server logs</h2>
+        <p>The Site is hosted on GitHub Pages, a service of GitHub, Inc. Like most web hosts, GitHub may automatically log technical information when you visit, such as your IP address, the page requested, the date and time, and your browser type, for example to keep the service secure. GitHub handles this under its own privacy statement. We do not receive these logs.</p>
+
+        <h2>Cookies</h2>
+        <p>The Site itself does not set cookies. We do not currently use advertising cookies, Google Analytics, or Google AdSense.</p>
+        <p>The Site has no live affiliate links today. If we add affiliate links in the future, a retailer or affiliate network may set a cookie on your device when you click one of those links, so that a purchase can be credited to us. If we add affiliate links or advertising, we will update this policy and our <a href="/affiliate-disclosure/">Affiliate Disclosure</a> before or when they go live.</p>
+
+        <h2>Links to other websites</h2>
+        <p>The Site links to outside websites such as public safety agencies, manufacturers and retailers. Their privacy practices are their own, so please read their policies when you visit them.</p>
+
+        <h2>Sharing and sale of data</h2>
+        <p>We do not sell your personal information, and we do not share it for targeted advertising. We share it only with the service providers named above as needed to run the Site, or when the law requires it.</p>
+
+        <h2>How long we keep information</h2>
+        <p>We keep contact form messages for as long as we need them to respond and to keep reasonable records, and then we delete them. You can ask us to delete your messages sooner.</p>
+
+        <h2>Your choices and rights</h2>
+        <p>You can ask us to access, correct, or delete personal information you sent us by emailing <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>. Depending on where you live, you may have additional rights under local privacy laws, and we will respond to requests as those laws require.</p>
+
+        <h2>Children</h2>
+        <p>The Site is meant for adult drivers and is not directed to children under 13. We do not knowingly collect personal information from children.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>We may update this Privacy Policy when our practices change. The date at the top of this page shows the latest version.</p>
+
+        <h2>Contact</h2>
+        <p>Privacy questions or requests: Joshua Israel Ventures LLC, <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>. See also our <a href="/terms/">Terms of Use</a>.</p>
       </div>
     """,
 )
@@ -2134,7 +2302,7 @@ def _guides_hub_schema() -> list:
             "description": GUIDES_HUB_DESC,
             "inLanguage": "en-US",
             "isPartOf": {"@id": SITE_ID},
-            "publisher": {"@id": ORG_ID},
+            "publisher": ORG_REF,
             "dateModified": "2026-10-08",
             "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": items},
         },
@@ -2173,6 +2341,8 @@ SITEMAP_URLS = [
     ("/reviews/bridgestone-turanza-quiettrack/", "monthly", "0.7"),
     ("/comparisons/all-season-vs-winter/", "monthly", "0.7"),
     ("/comparisons/touring-vs-performance-all-season/", "monthly", "0.7"),
+    ("/terms/", "yearly", "0.3"),
+    ("/privacy/", "yearly", "0.3"),
     ("/disclaimer/", "yearly", "0.3"),
     ("/affiliate-disclosure/", "yearly", "0.3"),
     ("/llms.txt", "monthly", "0.3"),
