@@ -6,6 +6,7 @@ Operated by Joshua Israel Ventures LLC. Content is general information only and 
 
 ## Guides
 
+- [All tire guides](https://smarttirepicks.com/guides/): Hub listing every guide grouped by task (pressure and placard, tread and age, ratings, seasons and storage), a question to guide lookup table, and a simple tire check routine.
 - [How to read your tire door placard](https://smarttirepicks.com/guides/placard/): Where the placard is, what each line means including the spare tire line, how it differs from the certification label, and what to do if it is missing.
 - [Tire placard checklist](https://smarttirepicks.com/guides/tire-placard-checklist/): A checklist of what to copy from your door label before shopping for tires.
 - [Recommended cold tire pressure (PSI)](https://smarttirepicks.com/guides/tire-pressure/): Why the placard PSI, not the sidewall maximum, is the target, what cold pressure means, and how spare PSI can differ from road tire PSI.

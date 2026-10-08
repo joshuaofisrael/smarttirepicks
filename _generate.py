@@ -39,7 +39,7 @@ NAV_ITEMS = [
     ("Fitment", "/fitment/choose-tire-size/"),
     ("Reviews", "/reviews/michelin-crossclimate2/"),
     ("Comparisons", "/comparisons/all-season-vs-winter/"),
-    ("Guides", "/guides/placard/"),
+    ("Guides", "/guides/"),
     ("About", "/about.html"),
     ("Contact", "/contact/"),
 ]
@@ -328,7 +328,7 @@ def page(
             <li><a href="/fitment/choose-tire-size/">Fitment</a></li>
             <li><a href="/reviews/michelin-crossclimate2/">Reviews</a></li>
             <li><a href="/comparisons/all-season-vs-winter/">Comparisons</a></li>
-            <li><a href="/guides/placard/">Guides</a></li>
+            <li><a href="/guides/">Guides</a></li>
           </ul>
         </div>
         <div>
@@ -598,7 +598,7 @@ page(
         canonical=canonical_for("/guides/placard/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("Door placard", "/guides/placard/"),
         ],
         date_mod="2026-10-06",
@@ -682,7 +682,7 @@ page(
         canonical=canonical_for("/guides/tire-placard-checklist/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("Placard checklist", "/guides/tire-placard-checklist/"),
         ],
     )
@@ -759,7 +759,7 @@ page(
         canonical=canonical_for("/guides/tire-pressure/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("Cold tire pressure", "/guides/tire-pressure/"),
         ],
     )
@@ -864,7 +864,7 @@ page(
         canonical=canonical_for("/guides/load-index-speed-rating/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("Load index & speed rating", "/guides/load-index-speed-rating/"),
         ],
     )
@@ -991,7 +991,7 @@ page(
         canonical=canonical_for("/guides/dot-date-codes/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("DOT date codes", "/guides/dot-date-codes/"),
         ],
         date_mod="2026-10-08",
@@ -1031,7 +1031,7 @@ page(
         canonical=canonical_for("/guides/when-to-replace/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("When to replace", "/guides/when-to-replace/"),
         ],
         date_mod="2026-10-08",
@@ -1093,7 +1093,7 @@ page(
         canonical=canonical_for("/guides/tread-depth/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("Tread depth", "/guides/tread-depth/"),
         ],
     )
@@ -1175,7 +1175,7 @@ page(
         canonical=canonical_for("/guides/utqg/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("UTQG grades", "/guides/utqg/"),
         ],
     )
@@ -1313,7 +1313,7 @@ page(
         canonical=canonical_for("/guides/tpms/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("TPMS warning light", "/guides/tpms/"),
         ],
     )
@@ -1452,7 +1452,7 @@ page(
         canonical=canonical_for("/guides/seasonal-tire-storage/index.html"),
         breadcrumbs=[
             ("Home", "/"),
-            ("Guides", "/guides/placard/"),
+            ("Guides", "/guides/"),
             ("Seasonal tire storage", "/guides/seasonal-tire-storage/"),
         ],
     )
@@ -2001,10 +2001,162 @@ page(
 )
 
 
+# ---------- GUIDES HUB (/guides/) ----------
+GUIDES_HUB_GROUPS = [
+    ("Pressure, placard and TPMS", "hub-pressure", [
+        ("/guides/placard/", "How to read your tire door placard", "Every line of the Tire and Loading Information label: original size, cold PSI front, rear and spare, seating and load limits, and what to do if it is missing."),
+        ("/guides/tire-placard-checklist/", "Tire placard checklist", "What to copy from the door label before you shop, so a quote or a store visit starts from the right size and specs."),
+        ("/guides/tire-pressure/", "Recommended cold tire pressure (PSI)", "Why the placard PSI, not the sidewall maximum, is the usual target, what cold means, and why spare PSI can differ."),
+        ("/guides/tpms/", "TPMS warning light explained", "Solid versus flash then solid lights, cold weather pressure drops, spare tire caveats, and why monthly gauge checks still matter."),
+    ]),
+    ("Tread, age and replacement", "hub-replace", [
+        ("/guides/tread-depth/", "How to check tire tread depth", "Wear bars, tread depth gauges, the limits of coin tests, and when to have a licensed installer look."),
+        ("/guides/dot-date-codes/", "DOT date codes and tire age", "How to read the four digit week and year code on the sidewall and why age matters alongside tread."),
+        ("/guides/when-to-replace/", "When to replace your tires", "Tread, irregular wear, damage, age, and seasonal sets as replacement signals, with soft caveats."),
+    ]),
+    ("Ratings and sidewall specs", "hub-ratings", [
+        ("/guides/load-index-speed-rating/", "Load index and speed rating chart", "How to read the service description, a chart of common passenger load indexes and speed symbols, and XL versus standard load notes."),
+        ("/guides/utqg/", "UTQG tire grades explained", "What treadwear, traction and temperature grades do and do not tell you, with NHTSA and eCFR citations."),
+        ("/fitment/choose-tire-size/", "How to choose the right tire size", "A placard first process for size, load index, speed rating and climate category before you buy."),
+    ]),
+    ("Seasons and storage", "hub-seasons", [
+        ("/guides/seasonal-tire-storage/", "Seasonal tire storage", "How to store an off season set: indoor versus outdoor, stacked versus upright, ozone and sunlight risks, and checks before reinstalling."),
+        ("/fitment/all-season-vs-winter-vs-summer/", "All-season vs winter vs summer tires", "How the three categories differ by climate, with a quick comparison table."),
+        ("/comparisons/all-season-vs-winter/", "All-season vs winter tires", "When all-season tires may be enough, when winter tires are often considered, and 3PMSF versus M+S symbols."),
+    ]),
+]
+
+GUIDES_HUB_QUESTIONS = [
+    ("What PSI should my tires be?", "/guides/tire-pressure/", "Cold tire pressure guide"),
+    ("Where is the tire placard and what does each line mean?", "/guides/placard/", "Door placard guide"),
+    ("My tire pressure light is on. What does it mean?", "/guides/tpms/", "TPMS warning light guide"),
+    ("Is my tread too low?", "/guides/tread-depth/", "Tread depth guide"),
+    ("How old are my tires?", "/guides/dot-date-codes/", "DOT date code guide"),
+    ("Do I need new tires yet?", "/guides/when-to-replace/", "When to replace guide"),
+    ("What do 94V or 91H mean on the sidewall?", "/guides/load-index-speed-rating/", "Load index and speed rating chart"),
+    ("What does a 500 AA A UTQG grade mean?", "/guides/utqg/", "UTQG guide"),
+    ("What size tire fits my car?", "/fitment/choose-tire-size/", "Tire size guide"),
+    ("How should I store my winter or summer set?", "/guides/seasonal-tire-storage/", "Seasonal storage guide"),
+]
+
+GUIDES_HUB_ROUTINE = [
+    ("Monthly", "Check cold pressure on all four tires and the spare with a gauge, against the door placard, not the sidewall maximum.", "/guides/tire-pressure/", "Pressure guide"),
+    ("Monthly", "Look at tread across the full width of each tire. Wear bars or uneven wear are a reason to look closer.", "/guides/tread-depth/", "Tread depth guide"),
+    ("When a light comes on", "Note whether the TPMS light is solid or flashes then stays on, then check pressures with a gauge.", "/guides/tpms/", "TPMS guide"),
+    ("Before buying tires", "Copy the placard size and pressures, then match load index and speed rating at or above OEM.", "/guides/tire-placard-checklist/", "Placard checklist"),
+    ("At each seasonal swap", "Read the DOT date code, inspect for damage, and store the off season set clean, cool and out of sunlight.", "/guides/seasonal-tire-storage/", "Storage guide"),
+]
+
+
+def _guides_hub_body() -> str:
+    q_rows = "\n".join(
+        f'            <tr><td>{q}</td><td><a href="{href}">{label}</a></td></tr>'
+        for q, href, label in GUIDES_HUB_QUESTIONS
+    )
+    r_rows = "\n".join(
+        f'            <tr><td>{when}</td><td>{what}</td><td><a href="{href}">{label}</a></td></tr>'
+        for when, what, href, label in GUIDES_HUB_ROUTINE
+    )
+    jump = " · ".join(f'<a href="#{gid}">{name}</a>' for name, gid, _ in GUIDES_HUB_GROUPS)
+    groups = []
+    for name, gid, items in GUIDES_HUB_GROUPS:
+        cards = "\n".join(
+            f"""        <article class="card">
+          <h3>{t}</h3>
+          <p>{d}</p>
+          <a class="card-link" href="{href}">Read the guide →</a>
+        </article>"""
+            for href, t, d in items
+        )
+        groups.append(f"""
+      <h2 id="{gid}">{name}</h2>
+      <div class="card-grid">
+{cards}
+      </div>""")
+    return f"""
+      <div class="content-block">
+        <p><strong>Short answer:</strong> start with your vehicle’s door placard. It lists the original tire size and the cold pressures the vehicle maker recommends, and most other tire questions (pressure, TPMS lights, replacement size, load index) build on it. The guides below are grouped by the job you are doing, and the table maps common questions to the page that answers them.</p>
+        <p class="note">Jump to: {jump} · <a href="#hub-questions">Find a guide by question</a> · <a href="#hub-routine">Simple tire check routine</a></p>
+      </div>
+{"".join(groups)}
+
+      <div class="content-block">
+        <h2 id="hub-questions">Find a guide by question</h2>
+        <table>
+          <thead>
+            <tr><th>Your question</th><th>Where it is answered</th></tr>
+          </thead>
+          <tbody>
+{q_rows}
+          </tbody>
+        </table>
+
+        <h2 id="hub-routine">A simple tire check routine</h2>
+        <p>A general habit many drivers use, based on NHTSA consumer guidance to check pressure monthly with a gauge. Your owner’s manual and installer take priority.</p>
+        <table>
+          <thead>
+            <tr><th>When</th><th>What to check</th><th>Guide</th></tr>
+          </thead>
+          <tbody>
+{r_rows}
+          </tbody>
+        </table>
+      </div>
+"""
+
+
+GUIDES_HUB_DESC = "All Smart Tire Picks tire guides in one place: door placard, cold PSI, TPMS lights, tread depth, DOT date codes, load index and speed rating, UTQG, and seasonal storage, grouped by task."
+
+
+def _guides_hub_schema() -> list:
+    canonical = canonical_for("/guides/index.html")
+    items = []
+    pos = 1
+    for _name, _gid, group in GUIDES_HUB_GROUPS:
+        for href, t, _d in group:
+            items.append({"@type": "ListItem", "position": pos, "name": t, "url": BASE + href})
+            pos += 1
+    return [
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+                {"@type": "ListItem", "position": 2, "name": "Guides", "item": canonical},
+            ],
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": canonical + "#webpage",
+            "url": canonical,
+            "name": "Tire guides",
+            "description": GUIDES_HUB_DESC,
+            "inLanguage": "en-US",
+            "isPartOf": {"@id": SITE_ID},
+            "publisher": {"@id": ORG_ID},
+            "dateModified": "2026-10-08",
+            "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": items},
+        },
+    ]
+
+
+page(
+    path="/guides/index.html",
+    title="Tire Guides: Placard, PSI, TPMS, Tread, Age & Ratings | Smart Tire Picks",
+    description=GUIDES_HUB_DESC,
+    h1="Tire guides",
+    lede="Plain English guides for US drivers, grouped by task, with public NHTSA, USTMA and eCFR citations on each page.",
+    body=_guides_hub_body(),
+    schema_objs=_guides_hub_schema(),
+)
+
+
 SITEMAP_URLS = [
     ("/", "weekly", "1.0"),
     ("/about.html", "monthly", "0.6"),
     ("/contact/", "monthly", "0.5"),
+    ("/guides/", "weekly", "0.9"),
     ("/guides/placard/", "monthly", "0.8"),
     ("/guides/tire-placard-checklist/", "monthly", "0.8"),
     ("/guides/tire-pressure/", "monthly", "0.8"),
