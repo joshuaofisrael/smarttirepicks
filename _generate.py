@@ -497,6 +497,11 @@ page(
           <a class="card-link" href="/tools/tire-size-calculator/">Open the calculator →</a>
         </article>
         <article class="card">
+          <h2>DOT date code decoder</h2>
+          <p>Type the last four digits of the DOT code on your sidewall to see the week and year it was made and how old the tire is today.</p>
+          <a class="card-link" href="/tools/dot-date-code/">Open the decoder →</a>
+        </article>
+        <article class="card">
           <h2>TPMS warning light explained</h2>
           <p>What the tire pressure monitoring system light means, solid vs flash-then-solid patterns, and why monthly cold checks still matter.</p>
           <a class="card-link" href="/guides/tpms/">TPMS guide →</a>
@@ -1027,6 +1032,7 @@ page(
         <h2>What “DOT” means here</h2>
         <p>US-bound tires carry a Department of Transportation identification sequence. Toward the end of that sequence is a <strong>four-digit date code</strong> on tires made in recent decades: the first two digits are the week (01–52/53), the last two are the year.</p>
         <p>Example for illustration only: <strong>2424</strong> would indicate the 24th week of 2024. Always read the actual sidewall on the tire in front of you.</p>
+        <p><strong>Quick check:</strong> type your four digits into our free <a href="/tools/dot-date-code/">DOT date code decoder</a> to see the exact week and the tire’s age today.</p>
         <h2>Why age matters</h2>
         <ul>
           <li>Rubber compounds change over time with heat, UV, ozone, and storage conditions</li>
@@ -1037,7 +1043,7 @@ page(
         <p>Ask the retailer for the date codes on the specific set you will receive. Prefer transparent sellers who will confirm week/year before mounting. Storage history also matters; a licensed installer can help inspect for cracking, flat-spotting, and other issues.</p>
         <p class="note">We do not set a universal “must replace by” age on this site. Use OEM guidance, tire-manufacturer guidance, and professional inspection.</p>
       </div>
-""" + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Also see</h2>
         <p><a href="/guides/when-to-replace/">When to replace tires</a>. Retailer links coming soon.</p>
@@ -1079,7 +1085,7 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -2366,6 +2372,7 @@ GUIDES_HUB_GROUPS = [
     ("Tread, age and replacement", "hub-replace", [
         ("/guides/tread-depth/", "How to check tire tread depth", "Wear bars, tread depth gauges, the limits of coin tests, and when to have a licensed installer look."),
         ("/guides/dot-date-codes/", "DOT date codes and tire age", "How to read the four digit week and year code on the sidewall and why age matters alongside tread."),
+        ("/tools/dot-date-code/", "DOT date code decoder", "Enter the last four digits of the DOT code to see the week and year a tire was made and its age today."),
         ("/guides/when-to-replace/", "When to replace your tires", "Tread, irregular wear, damage, age, and seasonal sets as replacement signals, with soft caveats."),
     ]),
     ("Ratings and sidewall specs", "hub-ratings", [
@@ -2388,6 +2395,7 @@ GUIDES_HUB_QUESTIONS = [
     ("My tire pressure light is on. What does it mean?", "/guides/tpms/", "TPMS warning light guide"),
     ("Is my tread too low?", "/guides/tread-depth/", "Tread depth guide"),
     ("How old are my tires?", "/guides/dot-date-codes/", "DOT date code guide"),
+    ("What does my 4 digit DOT code mean?", "/tools/dot-date-code/", "DOT date code decoder"),
     ("Do I need new tires yet?", "/guides/when-to-replace/", "When to replace guide"),
     ("What do 94V or 91H mean on the sidewall?", "/guides/load-index-speed-rating/", "Load index and speed rating chart"),
     ("What does a 500 AA A UTQG grade mean?", "/guides/utqg/", "UTQG guide"),
@@ -2639,10 +2647,117 @@ page(
     ],
 )
 
+# ---------- DOT DATE CODE DECODER ----------
+ECFR_TIN = ("https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part-574/section-574.5", "eCFR, 49 CFR 574.5 Tire identification requirements", "the date code is the final four digits: week (01 is the first full Sunday to Saturday calendar week) then the last two digits of the year; 0109 means the week of January 4 to 10, 2009")
+FR_TIN_2015 = ("https://www.federalregister.gov/documents/2015/04/13/2015-08418/tire-identification-and-recordkeeping", "Federal Register, Tire Identification and Recordkeeping (13 Apr 2015)", "notes the date code was originally three symbols, with one symbol for the year, before it expanded to four")
+NHTSA_AGE = ("https://www.nhtsa.gov/vehicle-safety/tires", "NHTSA, Tires (TireWise)", "the last four digits of the TIN give the week and year; some vehicle and tire manufacturers recommend replacing tires that are six to 10 years old, regardless of treadwear; look on both sides of the tire")
+MICHELIN_AGE = ("https://www.michelinman.com/auto/auto-tips-and-advice/tire-buying-guide/when-do-i-need-new-tires", "Michelin USA, When to replace tires", "recommends a professional inspection after five years of use and replacement ten years after the date of manufacture, spares included, regardless of tread")
+DOT_DESC = "Free DOT date code decoder. Enter the last 4 digits of the tire TIN (like 2219) to see the week, year, date range and how old your tires are today."
+DOT_FAQS = [
+    ("How do I read a tire DOT date code?", "Find the code that starts with DOT on the sidewall. The last four digits are the date code: the first two are the week and the last two are the year. 2219 means the 22nd week of 2019. Federal rule 49 CFR 574.5 defines week 01 as the first full Sunday to Saturday week of the year."),
+    ("How old is too old for a tire?", "NHTSA says some vehicle and tire manufacturers recommend replacing tires that are six to 10 years old, regardless of tread. Michelin, for example, recommends replacement ten years after the date of manufacture, spares included, and a professional inspection after five years of use. Check your own vehicle and tire maker’s guidance, which may be stricter."),
+    ("What if my code has only three digits?", "Tires made before 2000 used a three digit code: two digits for the week and one for the year, so the decade cannot be read from the code alone. Any such tire is more than 25 years old and is well past the 10 year guidance tire makers publish."),
+    ("I cannot find four digits on my tire. Why?", "The full TIN is often printed on only one side of the tire, so check the other sidewall. NHTSA notes the TIN may not be on both sides. The date code is usually in a small oval at the end of the sequence."),
+    ("Do you store what I enter?", "No. The decoder runs entirely in your browser and nothing is sent or saved."),
+]
+DOT_BODY = r"""
+      <div class="content-block">
+        <p><strong>Short answer:</strong> the last four digits of the DOT code on your sidewall are the week and year the tire was made. <strong>2219</strong> means week 22 of 2019. Enter those four digits, or paste the whole code, and the decoder shows the date range and how old the tire is today.</p>
+
+        <form id="dotf" class="calc" novalidate>
+          <label for="dotin">DOT code or last 4 digits</label>
+          <input id="dotin" type="text" inputmode="text" autocomplete="off" placeholder="2219 or DOT U2LL LMLR 2219" value="2219" aria-describedby="dothelp">
+          <p id="dothelp" class="form-note">Spaces and letters are fine. We read the final group of digits.</p>
+          <button type="submit" class="btn btn-primary">Decode date</button>
+        </form>
+        <div id="dotout" aria-live="polite"><p id="dotres"></p><p id="dotage" role="status"></p></div>
+        <noscript><p>The decoder needs JavaScript. By hand: the first two of the last four digits are the week, the last two are the year.</p></noscript>
+
+        <h2 id="format">What the DOT code means</h2>
+        <p>Federal rule <strong>49 CFR 574.5</strong> sets the format of the Tire Identification Number (TIN). The date code is the final group of four digits. The first two give the week, where 01 is the first full calendar week of the year, running Sunday to Saturday. The last two are the year. The rule’s own example: 0109 means the week of Sunday January 4 to Saturday January 10, 2009. The earlier groups identify the plant and the tire maker’s own codes, and they do not tell you age.</p>
+        <p>NHTSA notes the full TIN may be on only one side of the tire, so check both sidewalls.</p>
+
+        <h2 id="three-digit">Three digit codes (before 2000)</h2>
+        <p>Before 2000 the date code had three digits, with one digit for the year, as the 2015 Federal Register notice on tire identification explains. A code like 239 means week 23 of a year ending in 9, but the decade is not stated. Any such tire is now more than 25 years old.</p>
+
+        <h2 id="age">How old is too old?</h2>
+        <ul>
+          <li><strong>NHTSA:</strong> tires are more prone to failure as they age, and some vehicle and tire manufacturers recommend replacing tires that are six to 10 years old, regardless of treadwear.</li>
+          <li><strong>Michelin:</strong> recommends a professional inspection after five years of use and replacing tires ten years after the date of manufacture, spares included, regardless of tread depth or appearance.</li>
+          <li>Your vehicle maker may say less, so check your owner’s manual. Spares age too, even if never used.</li>
+        </ul>
+        <p class="note">Age is one signal among several. Tread depth, cracks, bulges and vibration can mean a tire needs replacing much sooner. See <a href="/guides/when-to-replace/">when to replace tires</a> and the <a href="/guides/dot-date-codes/">DOT date code guide</a>, and have a licensed shop inspect anything you are unsure about.</p>
+      </div>
+<script>
+(function(){
+  var f=document.getElementById('dotf'); if(!f) return;
+  function g(i){return document.getElementById(i);}
+  var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmt(d){return M[d.getUTCMonth()]+' '+d.getUTCDate()+', '+d.getUTCFullYear();}
+  function weekStart(y,w){var j=new Date(Date.UTC(y,0,1)),dow=j.getUTCDay(),first=dow===0?1:8-dow;return new Date(Date.UTC(y,0,first+7*(w-1)));}
+  function age(from,now){var m=(now.getUTCFullYear()-from.getUTCFullYear())*12+(now.getUTCMonth()-from.getUTCMonth());if(now.getUTCDate()<from.getUTCDate())m--;return m;}
+  function decode(txt,now){
+    var groups=String(txt).replace(/[^0-9A-Za-z]+/g,' ').trim().split(' ').filter(function(x){return /^\d+$/.test(x);});
+    var s=groups.length?groups[groups.length-1]:'';
+    if(s.length>4) s=s.slice(-4);
+    if(s.length===3){var w3=+s.slice(0,2);if(w3<1||w3>53)return {err:'Week '+s.slice(0,2)+' is not valid. Weeks run 01 to 53.'};return {old:true,week:w3,yd:s[2]};}
+    if(s.length!==4)return {err:'Enter the last 4 digits of the DOT code, for example 2219.'};
+    var w=+s.slice(0,2),yy=+s.slice(2);
+    if(w<1||w>53)return {err:'Week '+s.slice(0,2)+' is not valid. Weeks run 01 to 53.'};
+    var nowY=now.getUTCFullYear(),y=2000+yy; if(y>nowY)return {err:'20'+s.slice(2)+' is in the future. Check the digits, or it may be a pre 2000 code read wrongly.'};
+    var st=weekStart(y,w),en=new Date(st.getTime()+6*864e5);
+    if(st>now)return {err:'That week has not happened yet. Check the digits.'};
+    var m=age(st,now);return {week:w,year:y,start:st,end:en,months:m};
+  }
+  function run(){
+    var r=decode(g('dotin').value,new Date());
+    if(r.err){g('dotres').textContent=r.err;g('dotage').textContent='';return;}
+    if(r.old){g('dotres').innerHTML='<strong>Three digit code:</strong> week '+r.week+' of a year ending in '+r.yd+', made before 2000.';g('dotage').textContent='This tire is more than 25 years old, far beyond the 10 year limit tire makers such as Michelin publish. Have it replaced.';return;}
+    var y=Math.floor(r.months/12),mo=r.months%12;
+    g('dotres').innerHTML='<strong>Made in week '+r.week+' of '+r.year+'</strong>, the week of '+fmt(r.start)+' to '+fmt(r.end)+'. Age today: about <strong>'+y+' year'+(y===1?'':'s')+' and '+mo+' month'+(mo===1?'':'s')+'</strong>.';
+    g('dotage').textContent=y>=10?'Ten years or older. Michelin recommends replacing tires ten years after manufacture regardless of tread, and NHTSA notes makers recommend replacement between six and 10 years. Plan to replace this tire.':y>=6?'Six years or older. NHTSA notes some vehicle and tire makers recommend replacement from six years, so check your owner’s manual and have a licensed shop inspect it, at least yearly.':y>=5?'Five years or older. Michelin recommends a professional inspection after five years of use.':'Under five years old by date. Keep checking tread, pressure and the sidewalls.';
+  }
+  f.addEventListener('submit',function(e){e.preventDefault();run();});
+  run();
+  if(typeof module!=='undefined')module.exports={decode:decode,weekStart:weekStart};
+})();
+</script>
+<style>#dotin{max-width:22rem;width:100%;box-sizing:border-box}#dotage{font-weight:600}</style>
+""" + faq_html(DOT_FAQS) + sources_block([ECFR_TIN, NHTSA_AGE, MICHELIN_AGE, FR_TIN_2015]) + related_block([
+    ("/guides/dot-date-codes/", "DOT date codes and tire age"),
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/guides/tread-depth/", "How to check tread depth"),
+    ("/tools/tire-size-calculator/", "Tire size comparison calculator"),
+    ("/tools/", "All free tire tools"),
+])
+_dot_canon = canonical_for("/tools/dot-date-code/index.html")
+page(
+    path="/tools/dot-date-code/index.html",
+    title="DOT Date Code Decoder: How Old Are My Tires?",
+    description=DOT_DESC,
+    h1="DOT date code decoder",
+    lede="Enter the last four digits of the DOT code on your tire to see when it was made and how old it is today. Free, runs in your browser, nothing is stored.",
+    body=DOT_BODY,
+    schema_objs=[
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": BASE + "/tools/"},
+            {"@type": "ListItem", "position": 3, "name": "DOT date code decoder", "item": _dot_canon},
+        ]},
+        {"@context": "https://schema.org", "@type": "WebApplication", "name": "DOT date code decoder",
+         "url": _dot_canon, "description": DOT_DESC, "applicationCategory": "UtilitiesApplication",
+         "operatingSystem": "Any (runs in a web browser)", "browserRequirements": "Requires JavaScript",
+         "isAccessibleForFree": True, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+         "inLanguage": "en-US", "publisher": ORG_REF, "creator": ORG_REF, "dateModified": "2026-10-12",
+         "isPartOf": {"@type": "WebSite", "@id": SITE_ID, "name": "Smart Tire Picks"}},
+        schema_faq(DOT_FAQS),
+    ],
+)
+
 page(
     path="/tools/index.html",
     title="Free Tire Tools and Calculators | Smart Tire Picks",
-    description="Free tire tools from Smart Tire Picks. Compare tire sizes, diameter and speedometer difference in your browser, with nothing stored.",
+    description="Free tire tools from Smart Tire Picks. Compare tire sizes and speedometer difference, or decode a DOT date code to see tire age, in your browser with nothing stored.",
     h1="Free tire tools",
     lede="Simple calculators that run in your browser. Nothing you type is sent or saved.",
     body="""
@@ -2651,6 +2766,11 @@ page(
           <h2>Tire size comparison calculator</h2>
           <p>Compare two sizes such as 225/65R17 and 235/60R18: overall diameter, sidewall, revs per mile, and how far your speedometer would be off.</p>
           <a class="card-link" href="/tools/tire-size-calculator/">Open the calculator →</a>
+        </article>
+        <article class="card">
+          <h2>DOT date code decoder</h2>
+          <p>Type the last four digits of the DOT code on your sidewall to see the week and year it was made and how old the tire is today.</p>
+          <a class="card-link" href="/tools/dot-date-code/">Open the decoder →</a>
         </article>
       </div>
       <div class="content-block"><p>More tools are on the way. Meanwhile, see all <a href="/guides/">tire guides</a>.</p></div>
@@ -2686,6 +2806,7 @@ SITEMAP_URLS = [
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/tools/", "monthly", "0.7"),
     ("/tools/tire-size-calculator/", "monthly", "0.9"),
+    ("/tools/dot-date-code/", "monthly", "0.9"),
     ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
     ("/reviews/bridgestone-turanza-quiettrack/", "monthly", "0.7"),
     ("/comparisons/all-season-vs-winter/", "monthly", "0.7"),

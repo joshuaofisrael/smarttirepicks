@@ -23,6 +23,7 @@ Operated by Joshua Israel Ventures LLC. Smart Tire Picks is a brand of Joshua Is
 
 - [Free tire tools](https://smarttirepicks.com/tools/): Hub of free in browser tire calculators.
 - [Tire size comparison calculator](https://smarttirepicks.com/tools/tire-size-calculator/): Compare two sizes such as 225/65R17 and 235/60R18 for overall diameter, sidewall height, width, circumference, revs per mile, percent diameter difference and speedometer error at 30 and 60 mph, with a caution above about 3 percent per Continental and General Tire plus sizing guidance. Explains how to read a tire size. Runs client side, stores nothing.
+- [DOT date code decoder](https://smarttirepicks.com/tools/dot-date-code/): Enter the last four digits of a tire TIN (or the full DOT code) to get the manufacture week and year, the Sunday to Saturday date range per 49 CFR 574.5, and tire age today, with age guidance from NHTSA and Michelin. Handles three digit pre 2000 codes. Runs client side, stores nothing.
 
 ## Reviews
 
