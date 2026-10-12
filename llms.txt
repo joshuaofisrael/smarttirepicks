@@ -16,6 +16,7 @@ Operated by Joshua Israel Ventures LLC. Smart Tire Picks is a brand of Joshua Is
 - [How to check tire tread depth](https://smarttirepicks.com/guides/tread-depth/): Wear bars, tread depth gauges, the limits of coin tests, and when to see a licensed professional.
 - [UTQG tire grades explained](https://smarttirepicks.com/guides/utqg/): What UTQG treadwear, traction, and temperature grades mean and what they do not mean, with NHTSA and eCFR citations.
 - [TPMS warning light explained](https://smarttirepicks.com/guides/tpms/): Solid versus flash then solid TPMS lights, cold weather pressure drops, spare tire caveats, and why monthly pressure checks still matter.
+- [Winter tires: when to switch and what to buy](https://smarttirepicks.com/guides/winter-tires/): Switch once temperatures stay around 45°F (7°C), 3PMSF versus M+S markings, all season versus all weather versus winter tires, studded tire rules by state, tread depth for snow, and why to fit four. Cites Transport Canada, USTMA, TRAC, CAA, WSDOT and British Columbia.
 - [Seasonal tire storage](https://smarttirepicks.com/guides/seasonal-tire-storage/): How to store an off season set indoors, stacking versus upright, ozone and sunlight risks, and steps before reinstalling.
 
 ## Reviews
@@ -38,6 +39,6 @@ Operated by Joshua Israel Ventures LLC. Smart Tire Picks is a brand of Joshua Is
 - [About Smart Tire Picks](https://smarttirepicks.com/about.html): Smart Tire Picks is a brand of Joshua Israel Ventures LLC; who runs the site, what it is not, and its editorial approach.
 - [Contact](https://smarttirepicks.com/contact/): A form for editorial questions, corrections, and partnership inquiries.
 - [Terms of Use](https://smarttirepicks.com/terms/): The agreement with Joshua Israel Ventures LLC, general information only, as is disclaimer, limitation of liability, and Florida governing law.
-- [Privacy Policy](https://smarttirepicks.com/privacy/): Joshua Israel Ventures LLC as data controller, what the contact form, Cloudflare Web Analytics and GitHub Pages hosting collect, and how to make requests.
-- [Disclaimer](https://smarttirepicks.com/disclaimer/): Informational use, accuracy limits, no professional relationship, what readers must verify before buying, limitation of liability, and affiliate and advertising disclosure.
+- [Privacy Policy](https://smarttirepicks.com/privacy/): Joshua Israel Ventures LLC as data controller, what the contact form, Cloudflare Web Analytics and GitHub Pages hosting collect, how to make requests, and Florida governing law.
+- [Disclaimer](https://smarttirepicks.com/disclaimer/): Informational use, accuracy limits, no professional relationship, what readers must verify before buying, limitation of liability, affiliate and advertising disclosure, and Florida governing law.
 - [Affiliate Disclosure](https://smarttirepicks.com/affiliate-disclosure/): How the site may earn affiliate commissions in the future (no live affiliate links yet) and how that relates to editorial content.

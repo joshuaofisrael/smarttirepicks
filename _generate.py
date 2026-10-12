@@ -514,7 +514,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
           <li><strong>Fitment</strong> — size selection and climate-category basics</li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -829,6 +829,7 @@ page(
         <p class="note">Informational only. Not professional, safety, or legal advice. Always verify placard and OEM specs for your vehicle and use a licensed installer for mounting, balancing, and related service.</p>
       </div>
 """ + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
+    ("/guides/winter-tires/", "Winter tires: when to switch and what to buy"),
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
     ("/guides/tpms/#spare-tire-tpms", "TPMS spare tire caveats"),
@@ -1361,6 +1362,7 @@ page(
 
         <h2>Cold weather and sudden lights</h2>
         <p>Air pressure in tires falls as ambient temperature drops. A cold front can therefore trip a TPMS light even when the set was “fine” the day before. Soft response when it is safe: verify cold pressures with a gauge, inflate to placard values, reseat valve caps, and allow a short drive after correction — many systems need driving time before the light clears. If the light returns quickly, a tire looks damaged, or pressures will not hold, stop relying on DIY guesses and see a licensed professional.</p>
+        <p>Getting ready for cold months? Our <a href="/guides/winter-tires/">winter tires guide</a> covers when to switch, the snow symbols, and fitting a full set of four.</p>
 
         <h2>After you correct pressure</h2>
         <p>Once tires are at placard cold PSI, the warning light may not extinguish immediately. Many systems need a period of driving for sensors or monitoring logic to update. If the light stays on after a reasonable drive, or if you saw a flash-then-solid malfunction pattern, schedule system service. Do not ignore a persistent light just because pressures “looked okay” once.</p>
@@ -1417,6 +1419,7 @@ page(
         <p class="note">Informational only. Not professional, safety, or legal advice. We have not lab-tested your vehicle’s TPMS or spare. Always verify symbols, reset notes, spare limits, and service procedures in your owner’s manual, and use a licensed shop for sensor work, mounting, and related diagnosis. We do not claim any single practice is the “safest” for every driver.</p>
       </div>
 """ + faq_html(TPMS_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
+    ("/guides/winter-tires/", "Winter tires: when to switch and what to buy"),
     ("/guides/tire-pressure/#spare-psi", "Spare PSI vs road PSI"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
     ("/guides/placard/", "How to read your door placard"),
@@ -1520,7 +1523,7 @@ page(
           <li>Label which corner each tire came from if you rotate positions across seasons.</li>
           <li>Before remounting next season, have a licensed installer inspect, mount/balance, and confirm TPMS function (<a href="/guides/tpms/">TPMS guide</a>).</li>
         </ol>
-        <p>Related climate context: <a href="/fitment/all-season-vs-winter-vs-summer/">all-season vs winter vs summer</a> and <a href="/comparisons/all-season-vs-winter/">all-season vs winter comparison</a>.</p>
+        <p>Before the swap, see our <a href="/guides/winter-tires/">winter tires guide</a> for when to switch and what the sidewall symbols mean. Related climate context: <a href="/fitment/all-season-vs-winter-vs-summer/">all-season vs winter vs summer</a> and <a href="/comparisons/all-season-vs-winter/">all-season vs winter comparison</a>.</p>
 
         <h2>Returning stored tires to service</h2>
         <p>Before stored tires go back on the road, a tire service professional should inspect them to confirm they are clean, dry, free of foreign objects, and free of damage. Inflate mounted tires to the vehicle placard cold PSI. Compact temporary (T-type) spares may require a higher operating pressure — check the spare’s markings and the owner’s manual. Soft reminder: storage does not reset age; use DOT date codes and professional judgment together with <a href="/guides/when-to-replace/">when to replace tires</a> and <a href="/guides/tread-depth/">tread depth</a> checks.</p>
@@ -1528,6 +1531,7 @@ page(
         <p class="note">Informational only — not professional, safety, or legal advice. We have not inspected your garage or tires. Follow current USTMA/manufacturer guidance, your vehicle owner’s manual, and a licensed installer. We do not claim any single storage method is the “safest” for every set.</p>
       </div>
 """ + faq_html(STORAGE_FAQS) + sources_block([USTMA_STORAGE, USTMA_CARE, NHTSA_TIRES, NHTSA_SAVINGS]) + related_block([
+    ("/guides/winter-tires/", "Winter tires: when to switch and what to buy"),
     ("/fitment/all-season-vs-winter-vs-summer/", "All-season vs winter vs summer"),
     ("/comparisons/all-season-vs-winter/", "All-season vs winter comparison"),
     ("/guides/when-to-replace/", "When to replace tires"),
@@ -1605,7 +1609,7 @@ page(
         <h2>All-season</h2>
         <p>Positioned for year-round use in many temperate US climates. Compounds and siping aim to balance dry, wet, and light winter performance. They remain a compromise: dedicated winter tires are typically designed for colder temperatures and snow/ice surfaces.</p>
         <h2>Winter (snow) tires</h2>
-        <p>Winter tires use compounds that stay more flexible in cold weather and tread patterns intended for snow and ice. Many carry the three-peak mountain snowflake (3PMSF) symbol. They are not a substitute for careful driving, and local studded-tire rules vary. When you swap seasonally, store the off-season set carefully — see our <a href="/guides/seasonal-tire-storage/">seasonal tire storage guide</a>.</p>
+        <p>Winter tires use compounds that stay more flexible in cold weather and tread patterns intended for snow and ice. Many carry the three-peak mountain snowflake (3PMSF) symbol. They are not a substitute for careful driving, and local studded-tire rules vary. When you swap seasonally, store the off-season set carefully — see our <a href="/guides/seasonal-tire-storage/">seasonal tire storage guide</a>. For timing, symbols and studded tire rules, read our <a href="/guides/winter-tires/">winter tires guide</a>.</p>
         <h2>Summer tires</h2>
         <p>Summer / performance-summer tires prioritize warm-weather grip and handling. In cold temperatures, compounds can harden and traction may fall off sharply — they are generally a poor choice for freezing climates or snow.</p>
         <h2>Quick comparison</h2>
@@ -1868,7 +1872,7 @@ page(
         <p>A winter set adds tire (and sometimes wheel) cost plus storage and mount/balance cycles. Some drivers keep winters on dedicated wheels to simplify swaps and preserve TPMS sensors — discuss options with your installer.</p>
         <h2>Symbols and labels</h2>
         <p>Look for the three-peak mountain snowflake (3PMSF) on tires marketed for severe snow service. M+S alone is a mud-and-snow designation with a different meaning — read manufacturer explanations for your model.</p>
-        <p class="note">Related: <a href="/fitment/all-season-vs-winter-vs-summer/">three-category overview</a> · <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>.</p>
+        <p class="note">Related: <a href="/guides/winter-tires/">winter tires guide</a> · <a href="/fitment/all-season-vs-winter-vs-summer/">three-category overview</a> · <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>.</p>
       </div>
       <div class="cta-box">
         <h2>Next</h2>
@@ -1953,6 +1957,165 @@ page(
     ),
 )
 
+# ---------- WINTER TIRES GUIDE (/guides/winter-tires/) ----------
+TC_WINTER = (
+    "https://tc.canada.ca/en/road-transportation/stay-safe-when-driving/winter-driving/using-winter-tires",
+    "Transport Canada: Using winter tires",
+    "Government guidance on the 7°C point, the peaked mountain with snowflake symbol, and installing winter tires in sets of four.",
+)
+TRAC_WINTER = (
+    "https://tracanada.ca/consumers/when-to-install-winter-tires/",
+    "Tire and Rubber Association of Canada: When to install winter tires",
+    "Industry consumer guidance on switching when temperatures stay below 7°C and on never fitting winter tires to the front axle only.",
+)
+CAA_WINTER = (
+    "https://www.caa.ca/driving-safely/winter-driving/winter-tires/",
+    "CAA: Winter tires",
+    "Motoring association guidance on the 3PMSF symbol versus M and S markings, four matching tires, and inspecting tires before mounting.",
+)
+USTMA_TISB37 = (
+    "https://www.ustires.org/resources/tisb-37-ustma-definition-passenger-and-light-truck-tires-use-severe-snow-conditions",
+    "USTMA: TISB 37, tires for use in severe snow conditions",
+    "Industry definition of the three peak mountain snowflake marking and the packed snow traction test behind it.",
+)
+USTMA_TISB10 = (
+    "https://www.ustires.org/resources/tisb-10-ustma-snow-tire-definition-passenger-and-light-truck-tires",
+    "USTMA: TISB 10, snow tire (M+S) definition",
+    "Industry definition of the M+S style markings on passenger and light truck tires.",
+)
+WSDOT_STUDS = (
+    "https://wsdot.wa.gov/about/news/2026/clock-ticking-washingtons-studded-tire-deadline-march-31",
+    "Washington State DOT: studded tire deadline",
+    "An example of state studded tire rules: legal in Washington from November 1 to March 31, with no out of state waivers.",
+)
+BC_WINTER = (
+    "https://www2.gov.bc.ca/gov/content/transportation/driving-and-cycling/traveller-information/seasonal/winter-driving/about-winter-tires",
+    "Government of British Columbia: tire and chain requirements",
+    "An example of a minimum tread depth rule for winter tires (3.5 mm) and guidance to fit four matched tires.",
+)
+
+WINTER_FAQS = [
+    (
+        "When should I put winter tires on?",
+        "Plan the swap once daytime temperatures stay at about 45°F (7°C) or lower, not when the first snow arrives. Transport Canada says all season and summer tires begin to lose elasticity and traction below 7°C, while winter tires keep their grip at much lower temperatures. Booking early also helps, because shops get busy after the first storm.",
+    ),
+    (
+        "Is an M+S tire a winter tire?",
+        "Not by itself. M+S is a mud and snow marking based on a USTMA definition. The three peak mountain snowflake (3PMSF) symbol is only allowed on tires that pass a packed snow traction test against a reference tire. Canadian motoring association CAA states plainly that tires marked only M and S are not winter tires.",
+    ),
+    (
+        "Are all weather tires the same as winter tires?",
+        "No. All weather tires are year round tires that also carry the 3PMSF symbol, so they have passed the same snow traction test. Dedicated winter tires are built around cold weather compounds and ice grip and are meant to be swapped off in spring. Where winters bring regular ice, deep snow, or long stretches below freezing, dedicated winter tires are the usual choice.",
+    ),
+    (
+        "Can I put winter tires on just the front wheels?",
+        "Transport Canada and the Tire and Rubber Association of Canada both advise fitting winter tires in sets of four. Two winter tires on the front only give the front much more grip than the rear, which can make the back of the car slide out (oversteer) when braking or turning.",
+    ),
+    (
+        "Are studded tires legal where I live?",
+        "It depends on your state, and some states set allowed dates or restrict studs. Washington, for example, allows studded tires only from November 1 to March 31 with no out of state waivers. Check your state DOT or DMV, and every state you plan to drive through, before buying studs. Studless winter tires with the 3PMSF symbol avoid these date limits in states like Washington.",
+    ),
+    (
+        "Does the 3PMSF symbol mean a tire is good on ice?",
+        "Not directly. The test behind the symbol measures traction on medium packed snow. It does not rate ice grip, so a tire can carry the symbol and still be weaker on ice than a dedicated winter tire. Read the maker's own description of ice performance for the exact model.",
+    ),
+]
+
+_WINTER_DESC = "When to put on winter tires (about 45°F or 7°C), what the 3PMSF snowflake and M+S marks mean, all season vs all weather vs winter, studded tire rules, tread depth for snow, and why to fit four."
+_winter_schema = schema_article_breadcrumb(
+    headline="Winter tires: when to switch and what to buy",
+    description=_WINTER_DESC,
+    canonical=canonical_for("/guides/winter-tires/index.html"),
+    breadcrumbs=[
+        ("Home", "/"),
+        ("Guides", "/guides/"),
+        ("Winter tires", "/guides/winter-tires/"),
+    ],
+    date_mod="2026-10-12",
+) + [schema_faq(WINTER_FAQS)]
+_winter_schema[1]["datePublished"] = "2026-10-12"
+
+page(
+    path="/guides/winter-tires/index.html",
+    title="Winter Tires Guide: When to Switch, 3PMSF vs M+S, Studs | Smart Tire Picks",
+    description=_WINTER_DESC,
+    h1="Winter tires: when to switch and what to buy",
+    lede="Short answer: fit winter tires once daytime temperatures stay around 45°F (7°C) or lower, choose tires with the three peak mountain snowflake (3PMSF) symbol, put them on all four wheels, and check your state’s rules before buying studs.",
+    schema_objs=_winter_schema,
+    body="""
+      <div class="content-block">
+        <p class="note">Jump to: <a href="#when">When to switch</a> · <a href="#symbols">3PMSF vs M+S</a> · <a href="#types">All season vs all weather vs winter</a> · <a href="#studs">Studded tires</a> · <a href="#tread">Tread depth for snow</a> · <a href="#four">Fit four</a> · <a href="#pressure">Cold weather pressure</a> · <a href="#checklist">Swap checklist</a></p>
+
+        <h2 id="when">When to switch: the 45°F (7°C) rule</h2>
+        <p>Temperature matters more than the calendar or the first snowfall. Transport Canada explains that below 7°C (about 45°F) all season and summer tires begin to lose elasticity, which means less traction, while winter tires keep their elasticity and grip at much lower temperatures. The Tire and Rubber Association of Canada gives the same trigger: change over once the temperature <em>consistently</em> stays below 7°C.</p>
+        <ul>
+          <li><strong>Fall:</strong> book the swap when daytime highs start sitting near 45°F. Cold, dry pavement is part of the reason, not only snow.</li>
+          <li><strong>Spring:</strong> swap back once temperatures stay above that point. Soft winter compounds are designed for the cold, so follow your tire maker’s guidance on warm weather use.</li>
+          <li><strong>Plan ahead:</strong> shops often get busy after the first storm, so an early appointment is easier than a last minute one.</li>
+        </ul>
+
+        <h2 id="symbols">Reading the sidewall: 3PMSF vs M+S</h2>
+        <p>Two markings cause most of the confusion. They are not the same thing.</p>
+        <table>
+          <thead><tr><th>Marking</th><th>What it means</th><th>What it does not tell you</th></tr></thead>
+          <tbody>
+            <tr><td><strong>M+S</strong> (also M/S, M&amp;S, MS)</td><td>Meets the USTMA “snow tire” definition. Common on all season tires.</td><td>It is not a snow traction test result. CAA says tires marked only M and S are not winter tires.</td></tr>
+            <tr><td><strong>3PMSF</strong> (three peak mountain with a snowflake)</td><td>The tire reached a minimum snow grip index against a standard reference tire in a packed snow traction test (USTMA TISB 37). USTMA places it next to the M+S marking.</td><td>The test is on medium packed snow, so it does not rate ice grip, wear, or dry braking.</td></tr>
+          </tbody>
+        </table>
+        <p>USTMA describes tires that qualify for the mountain snowflake as having superior snow performance compared with tires that only meet its basic M+S snow tire definition. When you shop, look for the symbol on the sidewall of the exact size you buy, since markings can vary by size within one model line.</p>
+
+        <h2 id="types">All season vs all weather vs winter</h2>
+        <table>
+          <thead><tr><th>Type</th><th>Typical markings</th><th>Best fit</th><th>Trade off</th></tr></thead>
+          <tbody>
+            <tr><td>All season</td><td>Usually M+S, often no 3PMSF</td><td>Mild winters with rare snow, one set all year</td><td>Loses grip as temperatures fall below about 45°F</td></tr>
+            <tr><td>All weather</td><td>M+S plus 3PMSF</td><td>Changeable winters with some snow, drivers who want one set</td><td>A compromise; not built around ice and deep cold like a dedicated winter tire</td></tr>
+            <tr><td>Winter (studless or studdable)</td><td>3PMSF, often M+S too</td><td>Regular ice, packed snow, long stretches below freezing</td><td>Needs a second set, seasonal swaps, and storage</td></tr>
+          </tbody>
+        </table>
+        <p>The Government of British Columbia notes that 3PMSF tires, which include all weather tires, offer better traction on snow and ice, and recommends them for cold weather driving. For a wider look at trade offs, see <a href="/comparisons/all-season-vs-winter/">all season vs winter</a> and <a href="/fitment/all-season-vs-winter-vs-summer/">all season vs winter vs summer</a>.</p>
+
+        <h2 id="studs">Studded tires: check your state first</h2>
+        <p>Studded tire rules are set by each state, and they differ. Some states allow studs only between set dates, and some restrict them further. Washington is a clear example: studded tires are legal there only from November 1 to March 31, the dates apply to visitors too, and there are no individual or out of state waivers. WSDOT also notes that Washington and Oregon share the March 31 removal date while other states may follow different timelines.</p>
+        <ul>
+          <li>Look up the rules on your state DOT or DMV website, and on the sites of any state you will drive through.</li>
+          <li>Studless winter tires with the 3PMSF symbol are an option where studs are restricted.</li>
+          <li>Studs are not the same as chains. In Washington, studded tires do not satisfy a posted chain requirement.</li>
+        </ul>
+
+        <h2 id="tread">Tread depth for snow</h2>
+        <p>Snow grip depends on tread depth, so a winter tire that is legal for summer roads may already be weak in snow. As one government benchmark, British Columbia requires at least 3.5 mm of tread (about 4/32 inch) for a tire to count as a legal winter tire on its posted routes. Check depth across the full width of each tire before the season starts, and see our <a href="/guides/tread-depth/">tread depth guide</a> for how to measure. Also read the <a href="/guides/dot-date-codes/">DOT date code</a>, because a stored set ages even when the tread looks fine.</p>
+
+        <h2 id="four">Fit four winter tires, not two</h2>
+        <p>Transport Canada advises installing winter tires in sets of four, ideally with the same type, size, speed rating, and load index on every wheel, and not mixing tread patterns or construction. The Tire and Rubber Association of Canada warns never to fit winter tires on the front axle only, because the extra front grip can make the rear slide out (oversteer).</p>
+        <p>Before you buy, copy the size, load index, and speed rating from your <a href="/guides/placard/">door placard</a> and confirm the winter tire you choose with your installer. See <a href="/guides/load-index-speed-rating/">load index and speed rating</a> for how to read the service description.</p>
+
+        <h2 id="pressure">Cold weather tire pressure</h2>
+        <p>Tire pressure falls as the air gets colder, so the first cold snap often brings a <a href="/guides/tpms/">TPMS warning light</a>. Check cold pressure with a gauge at least monthly, and again after a big temperature drop, and set it to the <a href="/guides/tire-pressure/">door placard cold PSI</a>, not the maximum on the sidewall.</p>
+
+        <h2 id="checklist">Seasonal swap checklist</h2>
+        <ol>
+          <li>Watch the forecast. Book the swap when highs settle around 45°F (7°C).</li>
+          <li>Inspect the winter set for tread depth, cracks, bulges, and age before mounting.</li>
+          <li>Fit all four, matched in size, type, load index, and speed rating as your installer advises.</li>
+          <li>Ask about TPMS sensors if the winter set is on its own wheels.</li>
+          <li>Set cold pressure to the placard value after mounting, and recheck after the first cold week.</li>
+          <li>Clean and store the off season set properly. See our <a href="/guides/seasonal-tire-storage/">seasonal tire storage guide</a>.</li>
+        </ol>
+        <p class="note">Informational only, not professional, safety, or legal advice. Local laws and your vehicle’s documents take priority, and a licensed installer should mount and balance your tires.</p>
+      </div>
+""" + faq_html(WINTER_FAQS) + sources_block([TC_WINTER, TRAC_WINTER, USTMA_TISB37, USTMA_TISB10, CAA_WINTER, WSDOT_STUDS, BC_WINTER]) + related_block([
+    ("/guides/seasonal-tire-storage/", "Seasonal tire storage"),
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tpms/", "TPMS warning light"),
+    ("/guides/tread-depth/", "How to check tread depth"),
+    ("/comparisons/all-season-vs-winter/", "All season vs winter comparison"),
+    ("/guides/", "All tire guides"),
+]),
+)
+
+
 # LEGAL
 page(
     path="/disclaimer/index.html",
@@ -1960,7 +2123,7 @@ page(
     description="Disclaimer for Smart Tire Picks, a brand of Joshua Israel Ventures LLC: general information only, accuracy limits, no professional relationship, and affiliate and advertising disclosure.",
     include_disclaimer=False,
     h1="Disclaimer",
-    lede="Last updated: October 8, 2026",
+    lede="Last updated: October 12, 2026",
     body="""
       <div class="content-block">
         <p><strong>Short answer:</strong> Smart Tire Picks is a brand of Joshua Israel Ventures LLC. Everything on this site is general information only. Always check your vehicle’s door placard and owner’s manual and use a licensed tire installer. This Disclaimer is part of our <a href="/terms/">Terms of Use</a>.</p>
@@ -1990,6 +2153,8 @@ page(
         <p>Brand names and model names are used for identification and nominative reference only. Mentions of manufacturers or retailers do <strong>not</strong> imply affiliation, sponsorship, or endorsement unless clearly stated.</p>
         <h2>Affiliate and advertising disclosure (FTC)</h2>
         <p>Joshua Israel Ventures LLC may earn money from this site in the future through affiliate links or advertising. As of the date above, the site has no live affiliate links and shows no paid advertising. The retailer buttons on our pages are labeled coming soon and do not earn a commission. When we add affiliate links or ads, we will disclose them clearly and close to the link, in line with the US Federal Trade Commission guidance on endorsements. If you buy through an affiliate link, we may earn a commission at no extra cost to you. Commissions will not change our editorial standards, and they are not a recommendation that a product is right for your vehicle. Details are in our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
+        <h2>Governing law</h2>
+        <p>This Disclaimer is governed by the laws of the State of Florida, United States, the same as our <a href="/terms/">Terms of Use</a>.</p>
         <h2>Contact</h2>
         <p>Questions about this disclaimer: use our <a href="/contact/">contact page</a> or email Joshua Israel Ventures LLC at <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>.</p>
         <p>If you do not agree with these terms, do not use this website.</p>
@@ -2026,7 +2191,7 @@ page(
 LEGAL_UPDATED = "October 8, 2026"
 
 
-def _legal_schema(path: str, name: str, description: str) -> list:
+def _legal_schema(path: str, name: str, description: str, date_mod: str = "2026-10-08") -> list:
     canonical = canonical_for(path)
     return [
         {
@@ -2047,7 +2212,7 @@ def _legal_schema(path: str, name: str, description: str) -> list:
             "inLanguage": "en-US",
             "isPartOf": {"@id": SITE_ID},
             "publisher": ORG_REF,
-            "dateModified": "2026-10-08",
+            "dateModified": date_mod,
         },
     ]
 
@@ -2121,8 +2286,8 @@ page(
     description=PRIVACY_DESC,
     include_disclaimer=False,
     h1="Privacy Policy",
-    lede="Last updated: " + LEGAL_UPDATED,
-    schema_objs=_legal_schema("/privacy/index.html", "Privacy Policy", PRIVACY_DESC),
+    lede="Last updated: October 12, 2026",
+    schema_objs=_legal_schema("/privacy/index.html", "Privacy Policy", PRIVACY_DESC, "2026-10-12"),
     body="""
       <div class="content-block">
         <p><strong>Short answer:</strong> we collect very little. If you use our contact form, we receive what you type. We use Cloudflare Web Analytics, which does not use cookies, to count visits in aggregate. Our host, GitHub Pages, keeps standard server logs. We do not sell your personal information.</p>
@@ -2159,6 +2324,9 @@ page(
         <h2>Children</h2>
         <p>The Site is meant for adult drivers and is not directed to children under 13. We do not knowingly collect personal information from children.</p>
 
+        <h2>Governing law</h2>
+        <p>This Privacy Policy is governed by the laws of the State of Florida, United States, the same as our <a href="/terms/">Terms of Use</a>.</p>
+
         <h2>Changes to this policy</h2>
         <p>We may update this Privacy Policy when our practices change. The date at the top of this page shows the latest version.</p>
 
@@ -2188,6 +2356,7 @@ GUIDES_HUB_GROUPS = [
         ("/fitment/choose-tire-size/", "How to choose the right tire size", "A placard first process for size, load index, speed rating and climate category before you buy."),
     ]),
     ("Seasons and storage", "hub-seasons", [
+        ("/guides/winter-tires/", "Winter tires: when to switch and what to buy", "Switch around 45°F (7°C), 3PMSF versus M+S, all season versus all weather versus winter, studded tire rules, tread for snow, and fitting four."),
         ("/guides/seasonal-tire-storage/", "Seasonal tire storage", "How to store an off season set: indoor versus outdoor, stacked versus upright, ozone and sunlight risks, and checks before reinstalling."),
         ("/fitment/all-season-vs-winter-vs-summer/", "All-season vs winter vs summer tires", "How the three categories differ by climate, with a quick comparison table."),
         ("/comparisons/all-season-vs-winter/", "All-season vs winter tires", "When all-season tires may be enough, when winter tires are often considered, and 3PMSF versus M+S symbols."),
@@ -2204,6 +2373,7 @@ GUIDES_HUB_QUESTIONS = [
     ("What do 94V or 91H mean on the sidewall?", "/guides/load-index-speed-rating/", "Load index and speed rating chart"),
     ("What does a 500 AA A UTQG grade mean?", "/guides/utqg/", "UTQG guide"),
     ("What size tire fits my car?", "/fitment/choose-tire-size/", "Tire size guide"),
+    ("When should I put winter tires on?", "/guides/winter-tires/", "Winter tires guide"),
     ("How should I store my winter or summer set?", "/guides/seasonal-tire-storage/", "Seasonal storage guide"),
 ]
 
@@ -2273,7 +2443,7 @@ def _guides_hub_body() -> str:
 """
 
 
-GUIDES_HUB_DESC = "All Smart Tire Picks tire guides in one place: door placard, cold PSI, TPMS lights, tread depth, DOT date codes, load index and speed rating, UTQG, and seasonal storage, grouped by task."
+GUIDES_HUB_DESC = "All Smart Tire Picks tire guides in one place: door placard, cold PSI, TPMS lights, tread depth, DOT date codes, load index and speed rating, UTQG, winter tires, and seasonal storage, grouped by task."
 
 
 def _guides_hub_schema() -> list:
@@ -2303,7 +2473,7 @@ def _guides_hub_schema() -> list:
             "inLanguage": "en-US",
             "isPartOf": {"@id": SITE_ID},
             "publisher": ORG_REF,
-            "dateModified": "2026-10-08",
+            "dateModified": "2026-10-12",
             "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": items},
         },
     ]
@@ -2335,6 +2505,7 @@ SITEMAP_URLS = [
     ("/guides/utqg/", "monthly", "0.8"),
     ("/guides/tpms/", "monthly", "0.8"),
     ("/guides/seasonal-tire-storage/", "monthly", "0.8"),
+    ("/guides/winter-tires/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
@@ -2351,8 +2522,36 @@ SITEMAP_URLS = [
 # robots.txt, llms.txt, CNAME, contact/, contact.html, and the IndexNow key file
 # df4a0d3d21dcab6c5b5e47393747f2b2.txt.
 _lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+import datetime as _dt
+import subprocess as _sp
+
+
+def _file_for(loc: str) -> Path:
+    rel = loc.lstrip("/")
+    if rel == "" or rel.endswith("/"):
+        rel += "index.html"
+    return ROOT / rel
+
+
+def _lastmod(loc: str) -> str:
+    """Last real content change: today if the built file differs from HEAD or is new, else its last commit date."""
+    f = _file_for(loc)
+    rel = str(f.relative_to(ROOT))
+    today = _dt.date.today().isoformat()
+    try:
+        tracked = _sp.run(["git", "ls-files", "--error-unmatch", rel], cwd=ROOT, capture_output=True).returncode == 0
+        if not tracked:
+            return today
+        if _sp.run(["git", "diff", "--quiet", "HEAD", "--", rel], cwd=ROOT).returncode != 0:
+            return today
+        out = _sp.run(["git", "log", "-1", "--format=%cs", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        return out or today
+    except Exception:
+        return today
+
+
 for _loc, _freq, _pri in SITEMAP_URLS:
-    _lines.append(f'  <url><loc>{BASE}{_loc}</loc><changefreq>{_freq}</changefreq><priority>{_pri}</priority></url>')
+    _lines.append(f'  <url><loc>{BASE}{_loc}</loc><lastmod>{_lastmod(_loc)}</lastmod><changefreq>{_freq}</changefreq><priority>{_pri}</priority></url>')
 _lines.append("</urlset>")
 (ROOT / "sitemap.xml").write_text("\n".join(_lines) + "\n", encoding="utf-8")
 print("wrote sitemap.xml")
