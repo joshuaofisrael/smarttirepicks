@@ -310,6 +310,9 @@ def page(
   <meta property="og:url" content="{canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Smart Tire Picks">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{description}">
   <link rel="stylesheet" href="/css/styles.css">{head_extra}{GSC_META if canonical == BASE + "/" else ""}
 </head>
 <body>
@@ -423,7 +426,7 @@ NHTSA_UTQG_SEARCH = (
 
 page(
     path="/index.html",
-    title="Smart Tire Picks — Tire Fitment Guides, UTQG & Editorial Reviews",
+    title="Smart Tire Picks: Plain English Tire Guides and Reviews",
     description="Educational tire fitment for US drivers: door placards, UTQG grades, cold PSI, load index, and calm editorial reviews. Soft language, public citations, no fake lab tests.",
     include_disclaimer=True,
     hero=True,
@@ -688,7 +691,7 @@ CHECKLIST_FAQS = [
 
 page(
     path="/guides/tire-placard-checklist/index.html",
-    title="Tire Placard Checklist — What to Copy Before You Buy | Smart Tire Picks",
+    title="Tire Placard Checklist: What to Copy Before You Buy",
     description="A practical checklist for recording OEM tire size, cold pressures, and related specs from your vehicle door placard before shopping.",
     h1="Tire placard checklist",
     lede="Copy the right details from your door label first — then shop. This checklist is educational, not a substitute for OEM docs or a licensed installer.",
@@ -765,13 +768,13 @@ PRESSURE_FAQS = [
 
 page(
     path="/guides/tire-pressure/index.html",
-    title="Recommended Cold Tire Pressure (PSI) — Placard vs Sidewall | Smart Tire Picks",
-    description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, how spare PSI can differ from road tire PSI, and how to check inflation with soft, educational guidance.",
+    title="What PSI Should My Tires Be? Placard vs Sidewall",
+    description="Find the right cold tire pressure for your car. Why the door placard PSI beats the sidewall max, spare tire PSI, and how to check it in 2 minutes.",
     h1="Recommended cold tire pressure (PSI): placard vs sidewall",
     lede="Cold inflation pressure is vehicle specific. Start with your door placard and owner’s manual, not the big number molded on the tire sidewall. Spare pressure can differ from road tire PSI.",
     schema_objs=schema_article_breadcrumb(
         headline="Recommended cold tire pressure (PSI): placard vs sidewall",
-        description="Learn how recommended cold tire pressure (PSI) differs from sidewall maximums, why the door placard matters, how spare PSI can differ from road tire PSI, and how to check inflation with soft, educational guidance.",
+        description="Find the right cold tire pressure for your car. Why the door placard PSI beats the sidewall max, spare tire PSI, and how to check it in 2 minutes.",
         canonical=canonical_for("/guides/tire-pressure/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -871,13 +874,13 @@ LOAD_INDEX_FAQS = [
 
 page(
     path="/guides/load-index-speed-rating/index.html",
-    title="Tire Load Index &amp; Speed Rating Chart Explained | Smart Tire Picks",
-    description="Educational load index chart (common passenger indexes with approximate max load in lb) and speed rating symbols with mph. Soft XL vs standard load notes, shopping checklist, and placard-first fitment guidance for US drivers.",
+    title="Tire Load Index and Speed Rating Chart (lb and mph)",
+    description="Load index chart with max load in lb and speed rating letters in mph. What 94V or 101H means, XL vs standard load, and how to match your car.",
     h1="Load index and speed rating explained",
     lede="The numbers and letters after the size code describe capacity and rated speed under industry standards. Learn how to read them, compare common chart values, and verify replacements against your door placard.",
     schema_objs=schema_article_breadcrumb(
         headline="Load index and speed rating explained",
-        description="Educational load index chart (common passenger indexes with approximate max load in lb) and speed rating symbols with mph. Soft XL vs standard load notes, shopping checklist, and placard-first fitment guidance for US drivers.",
+        description="Load index chart with max load in lb and speed rating letters in mph. What 94V or 101H means, XL vs standard load, and how to match your car.",
         canonical=canonical_for("/guides/load-index-speed-rating/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -998,13 +1001,13 @@ page(
 
 page(
     path="/guides/dot-date-codes/index.html",
-    title="Tire DOT Date Codes: How to Read Tire Age — Smart Tire Picks",
-    description="Learn how to read the DOT tire date code (week and year of manufacture) and why tire age matters alongside tread depth.",
+    title="How Old Are My Tires? Read the DOT Date Code",
+    description="The last four digits of the DOT code show the week and year a tire was made. See examples, how to find it, and when tire age matters.",
     h1="DOT date codes and tire age",
     lede="The last four digits of a tire’s DOT code show when it was made. The first two digits are the week and the last two are the year, so 2424 would mean the 24th week of 2024. Tire age matters alongside tread depth.",
     schema_objs=schema_article_breadcrumb(
         headline="DOT date codes and tire age",
-        description="Learn how to read the DOT tire date code (week and year of manufacture) and why tire age matters alongside tread depth.",
+        description="The last four digits of the DOT code show the week and year a tire was made. See examples, how to find it, and when tire age matters.",
         canonical=canonical_for("/guides/dot-date-codes/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1038,7 +1041,7 @@ page(
 
 page(
     path="/guides/when-to-replace/index.html",
-    title="When to Replace Tires: Tread, Age & Damage — Smart Tire Picks",
+    title="When to Replace Tires: Tread Depth, Age and Damage Signs",
     description="Practical signs it may be time to replace tires: tread depth, uneven wear, damage, age, and seasonal considerations — verify with a pro.",
     h1="When to replace your tires",
     lede="It may be time to replace a tire when tread nears about 2/32 inch, when you see sidewall bulges, cuts, or irregular wear, or when an inspection flags an older tire by its DOT date code. Timing also depends on use and climate, so have a licensed installer confirm.",
@@ -1070,7 +1073,7 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -1100,13 +1103,13 @@ TREAD_FAQS = [
 
 page(
     path="/guides/tread-depth/index.html",
-    title="How to Check Tire Tread Depth — Wear Bars &amp; Gauges | Smart Tire Picks",
-    description="Learn how to check tire tread depth with wear bars, a tread gauge, and rough coin heuristics. Educational NHTSA-cited guidance with soft caveats — verify with a licensed installer.",
+    title="How to Check Tire Tread Depth: Penny Test and Gauges",
+    description="Check tread depth with the penny test, wear bars or a gauge. What 2/32 and 4/32 inch mean, and when worn tires need replacing. NHTSA cited.",
     h1="How to check tire tread depth",
     lede="Check tread depth with a tread depth gauge at several spots on each tire, and look at the molded wear bars in the grooves. Coin tests are only rough heuristics. Many public safety materials treat about 2/32 inch as a widely cited minimum, so have a licensed professional confirm low or uneven readings.",
     schema_objs=schema_article_breadcrumb(
         headline="How to check tire tread depth",
-        description="Learn how to check tire tread depth with wear bars, a tread gauge, and rough coin heuristics. Educational NHTSA-cited guidance with soft caveats — verify with a licensed installer.",
+        description="Check tread depth with the penny test, wear bars or a gauge. What 2/32 and 4/32 inch mean, and when worn tires need replacing. NHTSA cited.",
         canonical=canonical_for("/guides/tread-depth/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1182,13 +1185,13 @@ UTQG_FAQS = [
 
 page(
     path="/guides/utqg/index.html",
-    title="UTQG Tire Grades Explained: Treadwear, Traction & Temperature | Smart Tire Picks",
-    description="Plain-English UTQG guide: how treadwear numbers and traction/temperature letter grades work, what they do not mean, plus NHTSA and eCFR citations for US drivers.",
+    title="UTQG Ratings Explained: Treadwear, Traction, Temperature",
+    description="What a treadwear 600 A A rating really means. How UTQG treadwear, traction and temperature grades work, and their limits. NHTSA cited.",
     h1="UTQG explained: treadwear, traction &amp; temperature grades",
     lede="The Uniform Tire Quality Grading (UTQG) system gives comparative consumer marks on many passenger-car tires sold in the US. Use them as one informed-shopping tool — not a guarantee, and never ahead of your door placard.",
     schema_objs=schema_article_breadcrumb(
         headline="UTQG explained: treadwear, traction and temperature grades",
-        description="Plain-English UTQG guide: how treadwear numbers and traction/temperature letter grades work, what they do not mean, plus NHTSA and eCFR citations for US drivers.",
+        description="What a treadwear 600 A A rating really means. How UTQG treadwear, traction and temperature grades work, and their limits. NHTSA cited.",
         canonical=canonical_for("/guides/utqg/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1320,13 +1323,13 @@ TPMS_FAQS = [
 
 page(
     path="/guides/tpms/index.html",
-    title="TPMS Warning Light Explained — Tire Pressure Monitoring | Smart Tire Picks",
-    description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, spare tire and temporary spare caveats, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
+    title="TPMS Light On? Solid vs Flashing Tire Pressure Light",
+    description="Why your tire pressure light is on, solid vs flashing TPMS meanings, cold weather PSI drops, and how to reset it after filling. NHTSA cited.",
     h1="TPMS warning light explained",
     lede="A tire pressure monitoring system (TPMS) warning light is a prompt to investigate inflation or system health, not a full diagnosis. Learn common solid vs flash-then-solid patterns, spare tire caveats, why cold weather matters, and how TPMS relates to monthly cold-pressure checks.",
     schema_objs=schema_article_breadcrumb(
         headline="TPMS warning light explained",
-        description="Educational guide to the TPMS warning light for US drivers: solid vs flash-then-solid patterns, spare tire and temporary spare caveats, cold weather PSI drops, placard inflation, and why monthly checks still matter. NHTSA-cited, soft caveats.",
+        description="Why your tire pressure light is on, solid vs flashing TPMS meanings, cold weather PSI drops, and how to reset it after filling. NHTSA cited.",
         canonical=canonical_for("/guides/tpms/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1461,13 +1464,13 @@ STORAGE_FAQS = [
 
 page(
     path="/guides/seasonal-tire-storage/index.html",
-    title="Seasonal Tire Storage Guide — How to Store Summer & Winter Sets | Smart Tire Picks",
-    description="Educational guide to storing seasonal tires for US drivers: indoor vs outdoor, stacked vs racked unmounted sets, ozone and sunlight risks, and vehicle-storage caveats. USTMA-cited, soft language.",
+    title="How to Store Winter and Summer Tires Off Season",
+    description="Store seasonal tires the right way: stack or rack, on or off rims, cool and dark, away from ozone. A simple USTMA cited checklist.",
     h1="Seasonal tire storage guide",
     lede="When you swap to winter or summer tires, the set you take off still needs care. Cool, dry indoor storage, sensible stacking, and distance from ozone and chemicals help protect rubber until the next changeover.",
     schema_objs=schema_article_breadcrumb(
         headline="Seasonal tire storage guide",
-        description="Educational guide to storing seasonal tires for US drivers: indoor vs outdoor, stacked vs racked unmounted sets, ozone and sunlight risks, and vehicle-storage caveats. USTMA-cited, soft language.",
+        description="Store seasonal tires the right way: stack or rack, on or off rims, cool and dark, away from ozone. A simple USTMA cited checklist.",
         canonical=canonical_for("/guides/seasonal-tire-storage/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1648,13 +1651,13 @@ CC2_FAQS = [
 
 page(
     path="/reviews/michelin-crossclimate2/index.html",
-    title="Michelin CrossClimate 2 Review (Editorial) — Fitment Notes & Who It May Suit | Smart Tire Picks",
-    description="Editorial overview of the Michelin CrossClimate 2: category context, comparison points, who it may or may not suit, and retailer price-check CTAs. No independent lab test by us.",
+    title="Michelin CrossClimate 2 Review: Who It Suits",
+    description="Is the Michelin CrossClimate 2 worth it? An editorial look at this all weather tire, who it suits, who should skip it, and what to compare.",
     h1="Michelin CrossClimate 2 — editorial overview",
     lede="Michelin positions the CrossClimate 2 as an all-weather oriented grand touring tire for drivers who want stronger cold weather cues than a basic all-season while keeping one mounted set. This is an editorial summary of public positioning, not a lab test, ranking, or safety guarantee.",
     schema_objs=schema_article_breadcrumb(
         headline="Michelin CrossClimate 2 — editorial overview",
-        description="Editorial overview of the Michelin CrossClimate 2: category context, comparison points, who it may or may not suit, and retailer price-check CTAs. No independent lab test by us.",
+        description="Is the Michelin CrossClimate 2 worth it? An editorial look at this all weather tire, who it suits, who should skip it, and what to compare.",
         canonical=canonical_for("/reviews/michelin-crossclimate2/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1750,13 +1753,13 @@ QT_FAQS = [
 
 page(
     path="/reviews/bridgestone-turanza-quiettrack/index.html",
-    title="Bridgestone Turanza QuietTrack Review (Editorial) — Comfort Touring Notes | Smart Tire Picks",
-    description="Editorial overview of the Bridgestone Turanza QuietTrack: comfort-touring context, comparison points, suitability notes, and retailer price-check CTAs. No independent lab test by us.",
+    title="Bridgestone Turanza QuietTrack Review: Who It Suits",
+    description="Is the Turanza QuietTrack worth it? An editorial look at this quiet touring all season tire, who it suits, and what to compare first.",
     h1="Bridgestone Turanza QuietTrack — editorial overview",
     lede="Bridgestone presents the Turanza QuietTrack as a touring all-season tire focused on quiet, comfortable commuting and everyday wet and dry use in typical US climates. This is an editorial summary of public positioning, not an instrumented review or safety ranking.",
     schema_objs=schema_article_breadcrumb(
         headline="Bridgestone Turanza QuietTrack — editorial overview",
-        description="Editorial overview of the Bridgestone Turanza QuietTrack: comfort-touring context, comparison points, suitability notes, and retailer price-check CTAs. No independent lab test by us.",
+        description="Is the Turanza QuietTrack worth it? An editorial look at this quiet touring all season tire, who it suits, and what to compare first.",
         canonical=canonical_for("/reviews/bridgestone-turanza-quiettrack/index.html"),
         breadcrumbs=[
             ("Home", "/"),
@@ -1883,7 +1886,7 @@ page(
 
 page(
     path="/comparisons/touring-vs-performance-all-season/index.html",
-    title="Touring vs Performance All-Season Tires: Decision Framework | Smart Tire Picks",
+    title="Touring vs Performance All Season Tires: Which to Buy",
     description="Clear decision framework for touring vs performance all-season tires: ride, handling, wear, winter limits, suitability, and retailer price-check CTAs. Soft educational language only.",
     h1="Touring vs performance all-season",
     lede="Both may be labeled “all-season,” but design priorities — comfort versus sharper response — usually differ. Use this framework after you confirm placard size, load index, and speed rating.",
@@ -2021,7 +2024,7 @@ WINTER_FAQS = [
     ),
 ]
 
-_WINTER_DESC = "When to put on winter tires (about 45°F or 7°C), what the 3PMSF snowflake and M+S marks mean, all season vs all weather vs winter, studded tire rules, tread depth for snow, and why to fit four."
+_WINTER_DESC = "When to put on winter tires (about 45°F), what the snowflake and M+S marks mean, all weather vs winter, stud rules, and why to fit four."
 _winter_schema = schema_article_breadcrumb(
     headline="Winter tires: when to switch and what to buy",
     description=_WINTER_DESC,
@@ -2037,7 +2040,7 @@ _winter_schema[1]["datePublished"] = "2026-10-12"
 
 page(
     path="/guides/winter-tires/index.html",
-    title="Winter Tires Guide: When to Switch, 3PMSF vs M+S, Studs | Smart Tire Picks",
+    title="Winter Tires: When to Switch, Snowflake vs M+S",
     description=_WINTER_DESC,
     h1="Winter tires: when to switch and what to buy",
     lede="Short answer: fit winter tires once daytime temperatures stay around 45°F (7°C) or lower, choose tires with the three peak mountain snowflake (3PMSF) symbol, put them on all four wheels, and check your state’s rules before buying studs.",
