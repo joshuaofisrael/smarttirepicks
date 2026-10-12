@@ -527,7 +527,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, <a href="/guides/tire-rotation/">tire rotation patterns</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
           <li><strong>Fitment</strong> — size selection and climate-category basics, plus a free <a href="/tools/tire-size-calculator/">tire size comparison calculator</a></li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -842,6 +842,7 @@ page(
         <p class="note">Informational only. Not professional, safety, or legal advice. Always verify placard and OEM specs for your vehicle and use a licensed installer for mounting, balancing, and related service.</p>
       </div>
 """ + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
+    ("/guides/tire-rotation/", "Tire rotation patterns"),
     ("/guides/winter-tires/", "Winter tires: when to switch and what to buy"),
     ("/guides/placard/", "How to read your door placard"),
     ("/guides/tire-placard-checklist/", "Tire placard checklist"),
@@ -1085,7 +1086,7 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/tire-rotation/', 'Tire rotation patterns'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -2370,6 +2371,7 @@ GUIDES_HUB_GROUPS = [
         ("/guides/tpms/", "TPMS warning light explained", "Solid versus flash then solid lights, cold weather pressure drops, spare tire caveats, and why monthly gauge checks still matter."),
     ]),
     ("Tread, age and replacement", "hub-replace", [
+        ("/guides/tire-rotation/", "Tire rotation patterns", "How often to rotate (about 5,000 to 8,000 miles) and the pattern for FWD, RWD, AWD and 4WD, with diagrams and directional and staggered rules."),
         ("/guides/tread-depth/", "How to check tire tread depth", "Wear bars, tread depth gauges, the limits of coin tests, and when to have a licensed installer look."),
         ("/guides/dot-date-codes/", "DOT date codes and tire age", "How to read the four digit week and year code on the sidewall and why age matters alongside tread."),
         ("/tools/dot-date-code/", "DOT date code decoder", "Enter the last four digits of the DOT code to see the week and year a tire was made and its age today."),
@@ -2397,6 +2399,7 @@ GUIDES_HUB_QUESTIONS = [
     ("How old are my tires?", "/guides/dot-date-codes/", "DOT date code guide"),
     ("What does my 4 digit DOT code mean?", "/tools/dot-date-code/", "DOT date code decoder"),
     ("Do I need new tires yet?", "/guides/when-to-replace/", "When to replace guide"),
+    ("How often should I rotate my tires?", "/guides/tire-rotation/", "Tire rotation guide"),
     ("What do 94V or 91H mean on the sidewall?", "/guides/load-index-speed-rating/", "Load index and speed rating chart"),
     ("What does a 500 AA A UTQG grade mean?", "/guides/utqg/", "UTQG guide"),
     ("What size tire fits my car?", "/fitment/choose-tire-size/", "Tire size guide"),
@@ -2515,6 +2518,135 @@ page(
     lede="Plain English guides for US drivers, grouped by task, with public NHTSA, USTMA and eCFR citations on each page.",
     body=_guides_hub_body(),
     schema_objs=_guides_hub_schema(),
+)
+
+
+# ---------- TIRE ROTATION GUIDE ----------
+USTMA_ROT = ("https://www.ustires.org/system/files/files/2024-05/Care%20and%20Service%20Passenger%20and%20Light%20Truck%20Tires%20FINAL%2006%2028%2017.pdf", "USTMA, Care and Service of Passenger and Light Truck Tires", "if no rotation period is specified, rotate every 5,000 to 8,000 miles or at any sign of uneven wear; directional, asymmetrical and different front and rear sizes have restrictions; never include a temporary spare")
+MICHELIN_ROT = ("https://www.michelinman.com/auto/auto-tips-and-advice/tire-maintenance/tire-rotation", "Michelin USA, Tire rotation guide", "standard recommendation every 5,000 to 7,000 miles or every other oil change, vehicle maker’s guidance first; FWD front straight back, RWD rear straight forward, AWD and 4WD crisscross")
+TIA_ROT = ("https://www.tireindustry.org/resources/consumer-education/consumer-safety-overview/tire-rotation/", "Tire Industry Association, Tire rotation", "rotate every 5,000 to 7,000 miles; cross the free rolling axle; Double X for AWD and 4WD")
+BRIDGESTONE_ROT = ("https://tires.bridgestone.com/en-us/learn/automotive/tire-maintenance/tire-rotation", "Bridgestone, How often to rotate tires", "forward cross and rearward cross patterns as recommended by The Tire and Rim Association")
+
+def _rot_svg(title, desc, moves):
+    sid = "".join(c for c in title.lower() if c.isalnum())[:12]
+    # positions: LF, RF, LR, RR. moves: list of (from, to)
+    P = {"LF": (60, 40), "RF": (180, 40), "LR": (60, 150), "RR": (180, 150)}
+    boxes = "".join(f'<rect x="{x-18}" y="{y-26}" width="36" height="52" rx="6" fill="#333"/><text x="{x}" y="{y+44 if y>100 else y-32}" text-anchor="middle" font-size="12" fill="currentColor">{k}</text>' for k, (x, y) in P.items())
+    lines = ""
+    for a, b in moves:
+        (x1, y1), (x2, y2) = P[a], P[b]
+        if a == b:
+            continue
+        # shorten line ends
+        dx, dy = x2 - x1, y2 - y1
+        L = (dx*dx + dy*dy) ** 0.5
+        sx, sy = x1 + dx/L*30, y1 + dy/L*30
+        ex, ey = x2 - dx/L*32, y2 - dy/L*32
+        lines += f'<line x1="{sx:.0f}" y1="{sy:.0f}" x2="{ex:.0f}" y2="{ey:.0f}" stroke="#d2691e" stroke-width="3" marker-end="url(#ah{sid})"/>'
+    return (f'<figure class="rot-fig"><svg viewBox="0 0 240 200" width="240" height="200" role="img" aria-labelledby="t{sid} d{sid}">'
+            f'<title id="t{sid}">{title}</title><desc id="d{sid}">{desc}</desc>'
+            '<defs><marker id="ah{sid}" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d2691e"/></marker></defs>'
+            '<text x="120" y="100" text-anchor="middle" font-size="11" fill="currentColor">FRONT ↑</text>'
+            f'{boxes}{lines}</svg><figcaption>{title}</figcaption></figure>')
+
+ROT_FIGS = (
+    _rot_svg("Forward cross (most FWD)", "Front tires move straight back on the same side. Rear tires cross to the opposite side of the front axle.", [("LF","LR"),("RF","RR"),("LR","RF"),("RR","LF")])
+    + _rot_svg("Rearward cross (RWD, many AWD and 4WD)", "Rear tires move straight forward on the same side. Front tires cross to the opposite side of the rear axle.", [("LR","LF"),("RR","RF"),("LF","RR"),("RF","LR")])
+    + _rot_svg("X pattern (alternative for FWD, some AWD)", "All four tires move diagonally: left front swaps with right rear, right front swaps with left rear.", [("LF","RR"),("RR","LF"),("RF","LR"),("LR","RF")])
+    + _rot_svg("Front to back (directional tires)", "Each tire stays on its own side and swaps front to rear, so it keeps turning the same direction.", [("LF","LR"),("LR","LF"),("RF","RR"),("RR","RF")])
+    + _rot_svg("Side to side (staggered non directional)", "Front and rear sizes differ, so tires swap left to right on the same axle only.", [("LF","RF"),("RF","LF"),("LR","RR"),("RR","LR")])
+)
+
+ROT_DESC = "How often to rotate tires (about every 5,000 to 8,000 miles) and the right pattern for FWD, RWD, AWD and 4WD, with diagrams and directional and staggered rules."
+ROT_FAQS = [
+    ("How often should I rotate my tires?", "Follow your owner’s manual first. If it gives no interval, USTMA says every 5,000 to 8,000 miles or at any sign of uneven wear, and Michelin’s standard recommendation is every 5,000 to 7,000 miles, roughly every other oil change. Rotate sooner if you see uneven wear."),
+    ("What rotation pattern is right for front wheel drive?", "Forward cross is the common FWD pattern: front tires go straight back, rear tires cross to the opposite front positions. An X pattern is an alternative some makers allow."),
+    ("What about rear wheel drive, AWD and 4WD?", "RWD typically uses rearward cross: rear tires go straight forward, front tires cross to the rear. AWD and 4WD commonly use rearward cross or an X (Double X) pattern. Your vehicle maker’s pattern comes first."),
+    ("Can directional tires be rotated?", "Yes, but only front to back on the same side, so they keep rolling in the arrow’s direction. Swapping sides would require dismounting and remounting the tire on the wheel."),
+    ("Do I need to reset TPMS after a rotation?", "Some vehicles need a TPMS reset or sensor relearn after rotation, especially indirect systems or direct systems that show pressure by position. Check your owner’s manual. See our TPMS reset section."),
+    ("Should the spare be included?", "A matching full size spare can be included, per USTMA. Never include a temporary (T type) spare in a rotation."),
+]
+
+ROT_STEPS = [
+    ("Check the manual", "Find your vehicle maker’s rotation interval and pattern, and the lug nut torque spec, in the owner’s manual."),
+    ("Identify your tires", "Note whether the tires are directional (arrow on the sidewall) and whether front and rear sizes differ."),
+    ("Pick the pattern", "Forward cross for most FWD, rearward cross for RWD, rearward cross or X for many AWD and 4WD, front to back for directional, side to side for staggered sizes."),
+    ("Move the wheels", "Lift the vehicle safely on proper stands, or have a shop do it, and move each wheel to its new position."),
+    ("Torque the lug nuts", "Tighten in a star pattern to the torque in your owner’s manual with a torque wrench, and recheck after a short drive if the manual says so."),
+    ("Set pressures and TPMS", "Set each tire to the door placard cold PSI for its new position, then do any TPMS reset or relearn your manual calls for."),
+]
+
+ROT_BODY = """
+      <div class="content-block">
+        <p><strong>Short answer:</strong> rotate your tires as your owner’s manual says. If it gives no interval, the US Tire Manufacturers Association says every <strong>5,000 to 8,000 miles</strong>, or at any sign of uneven wear. Michelin’s standard advice is every 5,000 to 7,000 miles, roughly every other oil change. Use <strong>forward cross</strong> for most front wheel drive cars, <strong>rearward cross</strong> for rear wheel drive, and rearward cross or an <strong>X pattern</strong> for many AWD and 4WD vehicles, unless your manual says otherwise.</p>
+
+        <h2 id="why">Why rotate</h2>
+        <p>Each wheel position wears tires differently. Front tires on a front wheel drive car do the steering, most of the braking and the driving, so they wear faster. Moving tires around evens that out, so all four wear at a similar rate, last longer and keep balanced grip. USTMA notes the first rotation is the most important, and that uneven wear should be checked for alignment, balance or other mechanical causes before rotating.</p>
+
+        <h2 id="how-often">How often to rotate</h2>
+        <ul>
+          <li><strong>Owner’s manual first.</strong> Every source below says the vehicle maker’s schedule comes first.</li>
+          <li><strong>USTMA:</strong> every 5,000 to 8,000 miles if no period is specified, or at any sign of uneven wear.</li>
+          <li><strong>Michelin:</strong> every 5,000 to 7,000 miles, or every other oil change. Sooner with stop and go driving, heavy loads or rough roads, and AWD and 4WD usually need more frequent rotation.</li>
+          <li><strong>Tire Industry Association:</strong> every 5,000 to 7,000 miles, depending on the vehicle.</li>
+        </ul>
+        <p>Some tire mileage warranties require rotation at set intervals, so keep receipts.</p>
+
+        <h2 id="patterns">Rotation patterns by drivetrain</h2>
+        <p>The Tire Industry Association’s rule of thumb is to cross the free rolling axle: on FWD the rear tires cross, on RWD the front tires cross. Diagrams are viewed from above, front of the car at the top.</p>
+        <div class="rot-grid">""" + ROT_FIGS + """</div>
+        <ul>
+          <li><strong>Front wheel drive (FWD):</strong> forward cross. Fronts go straight back, rears cross to the front.</li>
+          <li><strong>Rear wheel drive (RWD):</strong> rearward cross. Rears go straight forward, fronts cross to the rear.</li>
+          <li><strong>AWD and 4WD:</strong> rearward cross or an X pattern (the Tire Industry Association calls it Double X). Keeping tread depths matched matters on these drivetrains, so follow the maker’s interval closely.</li>
+          <li><strong>Directional tires:</strong> front to back on the same side only.</li>
+          <li><strong>Staggered sizes (different front and rear):</strong> side to side on the same axle only, and only if the tires are not directional.</li>
+        </ul>
+
+        <h2 id="cannot">When you cannot rotate</h2>
+        <p>If your car has <strong>staggered sizes and directional tires</strong>, front tires cannot move to the rear and tires cannot switch sides without being dismounted and remounted on the wheel. In practice those tires are not rotated, so check pressure and wear often and expect fronts and rears to be replaced on different schedules. USTMA also notes some asymmetrical and directional tires cannot use the standard patterns. Check your owner’s manual. Never include a temporary (T type) spare in a rotation. A matching full size spare can be added, per USTMA.</p>
+
+        <h2 id="tpms">TPMS after a rotation</h2>
+        <p>Some vehicles need a TPMS reset or sensor relearn after a rotation, so the system knows which sensor is at which corner or relearns its baseline. See <a href="/guides/tpms/#reset">how to reset the TPMS light</a> and your owner’s manual.</p>
+
+        <h2 id="torque">Lug nut torque</h2>
+        <p>Lug nuts must be tightened to the torque in your <strong>owner’s manual</strong>, with a torque wrench, in a star pattern. Do not guess, and do not rely on an impact wrench alone. Many makers advise rechecking torque after the first short drive.</p>
+
+        <h2 id="steps">How to rotate, step by step</h2>
+        <ol>""" + "".join(f"<li><strong>{n}.</strong> {t}</li>" for n, t in ROT_STEPS) + """</ol>
+        <p>After rotating, set each tire to the <a href="/guides/tire-pressure/">door placard cold PSI</a> for its new position, since front and rear values can differ. While the wheels are off, check <a href="/guides/tread-depth/">tread depth</a> and the <a href="/guides/dot-date-codes/">DOT date code</a>.</p>
+        <p class="note">Informational only, not professional or safety advice. Lifting a vehicle is dangerous, so use proper jack stands on level ground or have a licensed shop do the rotation.</p>
+      </div>
+<style>.rot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1rem 0}.rot-fig{margin:0;text-align:center}.rot-fig svg{max-width:100%;height:auto}.rot-fig figcaption{font-size:.9rem;font-weight:600}</style>
+""" + faq_html(ROT_FAQS) + sources_block([USTMA_ROT, MICHELIN_ROT, TIA_ROT, BRIDGESTONE_ROT]) + related_block([
+    ("/guides/tpms/#reset", "How to reset the TPMS light"),
+    ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
+    ("/guides/tread-depth/", "How to check tread depth"),
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/tools/tire-size-calculator/", "Tire size comparison calculator"),
+    ("/guides/", "All tire guides"),
+])
+
+_rot_canon = canonical_for("/guides/tire-rotation/index.html")
+page(
+    path="/guides/tire-rotation/index.html",
+    title="Tire Rotation Patterns: How Often and Which Pattern",
+    description=ROT_DESC,
+    h1="Tire rotation: how often and which pattern",
+    lede="When to rotate, the right pattern for front, rear and all wheel drive, directional and staggered rules, and what to do about TPMS and lug nut torque.",
+    body=ROT_BODY,
+    schema_objs=schema_article_breadcrumb(
+        headline="Tire rotation: how often and which pattern",
+        description=ROT_DESC,
+        canonical=_rot_canon,
+        breadcrumbs=[("Home", "/"), ("Guides", "/guides/"), ("Tire rotation", "/guides/tire-rotation/")],
+        date_mod="2026-10-12",
+    ) + [schema_faq(ROT_FAQS), {
+        "@context": "https://schema.org", "@type": "HowTo", "name": "How to rotate your tires",
+        "description": "Rotate tires using the pattern for your drivetrain and tire type, then torque lug nuts and set pressures.",
+        "inLanguage": "en-US", "publisher": ORG_REF,
+        "step": [{"@type": "HowToStep", "position": i, "name": n, "text": t} for i, (n, t) in enumerate(ROT_STEPS, 1)],
+    }],
 )
 
 
@@ -2802,6 +2934,7 @@ SITEMAP_URLS = [
     ("/guides/tpms/", "monthly", "0.8"),
     ("/guides/seasonal-tire-storage/", "monthly", "0.8"),
     ("/guides/winter-tires/", "monthly", "0.8"),
+    ("/guides/tire-rotation/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/tools/", "monthly", "0.7"),
