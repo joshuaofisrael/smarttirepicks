@@ -492,6 +492,11 @@ page(
           <a class="card-link" href="/guides/tread-depth/">Tread depth guide →</a>
         </article>
         <article class="card">
+          <h2>Tire size calculator</h2>
+          <p>Compare two tire sizes side by side: diameter, sidewall, revs per mile, and how far your speedometer reading would shift.</p>
+          <a class="card-link" href="/tools/tire-size-calculator/">Open the calculator →</a>
+        </article>
+        <article class="card">
           <h2>TPMS warning light explained</h2>
           <p>What the tire pressure monitoring system light means, solid vs flash-then-solid patterns, and why monthly cold checks still matter.</p>
           <a class="card-link" href="/guides/tpms/">TPMS guide →</a>
@@ -518,7 +523,7 @@ page(
         <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
           <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
-          <li><strong>Fitment</strong> — size selection and climate-category basics</li>
+          <li><strong>Fitment</strong> — size selection and climate-category basics, plus a free <a href="/tools/tire-size-calculator/">tire size comparison calculator</a></li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
         <p class="note">We do not claim any tire is the “safest” or guarantee outcomes for your vehicle. Always verify specs and use a licensed installer. Full legal text: <a href="/disclaimer/">Disclaimer</a> · <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
@@ -991,6 +996,7 @@ page(
     ("/guides/tpms/", "TPMS warning light"),
     ("/guides/utqg/", "UTQG grades explained"),
     ("/fitment/choose-tire-size/", "Choose tire size"),
+    ("/tools/tire-size-calculator/", "Tire size comparison calculator"),
 ]) + """
       <div class="cta-box">
         <h2>Related reading</h2>
@@ -1370,6 +1376,15 @@ page(
         <h2>After you correct pressure</h2>
         <p>Once tires are at placard cold PSI, the warning light may not extinguish immediately. Many systems need a period of driving for sensors or monitoring logic to update. If the light stays on after a reasonable drive, or if you saw a flash-then-solid malfunction pattern, schedule system service. Do not ignore a persistent light just because pressures “looked okay” once.</p>
 
+        <h2 id="reset">How to reset the TPMS light</h2>
+        <p><strong>Short answer:</strong> on many vehicles you do not need a separate reset. Set every tire to the door placard cold PSI, then drive for a while and the light goes out once the system sees correct pressures. Some vehicles need a step from you, and the exact method is in your owner’s manual.</p>
+        <ul>
+          <li><strong>Automatic:</strong> many direct TPMS systems clear the light on their own after a short drive once pressures are corrected.</li>
+          <li><strong>Reset button or menu:</strong> some vehicles have a TPMS reset button, or a setting in the dashboard or infotainment menu. Indirect systems in particular often need this step after you adjust pressure, rotate tires, or fit new ones, so they relearn the correct baseline.</li>
+          <li><strong>Sensor relearn:</strong> after new sensors, new wheels, or a rotation on some direct systems, a shop may need a scan tool to teach the car each sensor’s position.</li>
+        </ul>
+        <p>Only reset after the tires are actually at placard pressure, since resetting on low tires can teach the system the wrong baseline. If the light flashes then stays on, or returns soon after a reset, that points to a system fault or a leak, so have a licensed shop check it.</p>
+
         <h2>Direct vs indirect TPMS (high level)</h2>
         <ul>
           <li><strong>Direct TPMS</strong> typically uses pressure sensors in each wheel/tire assembly to report inflation (and often temperature-related context) to the vehicle.</li>
@@ -1582,7 +1597,7 @@ page(
         <h2>Optional plus-sizing</h2>
         <p>Larger wheels with lower-profile tires change ride, risk of wheel damage, and gearing feel. Treat plus-sizing as an engineering change — verify clearance, load capacity, and OEM guidance rather than copying a forum setup.</p>
       </div>
-""" + sources_block([NHTSA_TIRES, USTMA_REPLACE, NHTSA_SAVINGS]) + related_block([('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/load-index-speed-rating/', 'Load index &amp; speed rating'), ('/guides/placard/', 'Door placard guide')]) + """
+""" + sources_block([NHTSA_TIRES, USTMA_REPLACE, NHTSA_SAVINGS]) + related_block([('/tools/tire-size-calculator/', 'Tire size comparison calculator'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/load-index-speed-rating/', 'Load index &amp; speed rating'), ('/guides/placard/', 'Door placard guide')]) + """
       <div class="cta-box">
         <h2>Check retailers</h2>
         <p>Purchase CTAs coming soon. Until then, compare availability at major tire retailers and confirm final specs with your installer.</p>
@@ -2357,6 +2372,7 @@ GUIDES_HUB_GROUPS = [
         ("/guides/load-index-speed-rating/", "Load index and speed rating chart", "How to read the service description, a chart of common passenger load indexes and speed symbols, and XL versus standard load notes."),
         ("/guides/utqg/", "UTQG tire grades explained", "What treadwear, traction and temperature grades do and do not tell you, with NHTSA and eCFR citations."),
         ("/fitment/choose-tire-size/", "How to choose the right tire size", "A placard first process for size, load index, speed rating and climate category before you buy."),
+        ("/tools/tire-size-calculator/", "Tire size comparison calculator", "Compare two sizes such as 225/65R17 and 235/60R18: diameter, sidewall, revs per mile, and speedometer difference."),
     ]),
     ("Seasons and storage", "hub-seasons", [
         ("/guides/winter-tires/", "Winter tires: when to switch and what to buy", "Switch around 45°F (7°C), 3PMSF versus M+S, all season versus all weather versus winter, studded tire rules, tread for snow, and fitting four."),
@@ -2376,6 +2392,7 @@ GUIDES_HUB_QUESTIONS = [
     ("What do 94V or 91H mean on the sidewall?", "/guides/load-index-speed-rating/", "Load index and speed rating chart"),
     ("What does a 500 AA A UTQG grade mean?", "/guides/utqg/", "UTQG guide"),
     ("What size tire fits my car?", "/fitment/choose-tire-size/", "Tire size guide"),
+    ("Will a different tire size change my speedometer?", "/tools/tire-size-calculator/", "Tire size calculator"),
     ("When should I put winter tires on?", "/guides/winter-tires/", "Winter tires guide"),
     ("How should I store my winter or summer set?", "/guides/seasonal-tire-storage/", "Seasonal storage guide"),
 ]
@@ -2493,6 +2510,162 @@ page(
 )
 
 
+# ---------- TOOLS ----------
+CONTI_PLUS = ("https://continentaltire.com/sites/default/files/media/file/2021-01/plus_sizing_0.pdf", "Continental Tire, PSIB 06-03 Tire Plus Sizing of Passenger and Light Truck Vehicles", "keep the original rolling circumference as closely as possible; under most circumstances a change within plus or minus 3% needs no speedometer, ABS or stability control adjustment")
+GENERAL_PLUS = ("https://generaltire.custhelp.com/app/answers/detail/a_id/445/~/plus-sizing-tires", "General Tire, Plus Sizing Tires", "the same plus or minus 3% rolling circumference guidance, and load capacity and speed rating at or above original equipment")
+CALC_DESC = "Free tire size calculator. Compare two sizes like 225/65R17 and 235/60R18 for diameter, sidewall, width, revs per mile, and speedometer difference."
+CALC_FAQS = [
+    ("What does 225/65R17 mean?", "225 is the section width in millimeters. 65 is the aspect ratio, so the sidewall height is 65 percent of the width, about 146 mm. R means radial construction. 17 is the wheel (rim) diameter in inches. The overall diameter works out to about 28.5 inches."),
+    ("How much can tire diameter change before it is a problem?", "Continental and General Tire plus sizing guidance says the original rolling circumference should be kept as closely as possible, and that under most circumstances a change within plus or minus 3 percent does not require adjustment of the speedometer, ABS or stability control. Larger changes, or any doubt, should go to the vehicle manufacturer."),
+    ("Will a bigger tire make my speedometer read wrong?", "Yes. A taller tire covers more ground per turn, so you travel faster than the speedometer shows. A shorter tire does the opposite. The calculator shows the true speed when the speedometer reads 30 and 60 mph."),
+    ("Is this calculator exact?", "No. It uses the nominal size formula. Real tires differ slightly by brand, model, tread depth and inflation, and the maker’s published revs per mile is more precise. Always confirm load index, speed rating, rim width and clearance with a licensed installer."),
+    ("Do you store what I type?", "No. The math runs entirely in your browser. Nothing you enter is sent to us or saved."),
+]
+
+CALC_BODY = r"""
+      <div class="content-block">
+        <p><strong>Short answer:</strong> a size like <strong>225/65R17</strong> means a tire <strong>225 mm wide</strong>, with a sidewall <strong>65 percent</strong> as tall as that width (about 146 mm), <strong>R</strong> for radial construction, made for a <strong>17 inch</strong> wheel. Overall diameter is the wheel plus two sidewalls, about <strong>28.5 inches</strong>. Enter your current size and a new size below to compare them.</p>
+
+        <form id="tsc" class="calc" novalidate>
+          <fieldset>
+            <legend>Current size (from your door placard)</legend>
+            <div class="calc-row">
+              <div><label for="w1">Width (mm)</label><input id="w1" type="number" inputmode="numeric" min="105" max="455" step="5" value="225" required></div>
+              <div><label for="a1">Aspect ratio (%)</label><input id="a1" type="number" inputmode="numeric" min="20" max="95" step="5" value="65" required></div>
+              <div><label for="r1">Rim (inches)</label><input id="r1" type="number" inputmode="decimal" min="10" max="26" step="0.5" value="17" required></div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>New size to compare</legend>
+            <div class="calc-row">
+              <div><label for="w2">Width (mm)</label><input id="w2" type="number" inputmode="numeric" min="105" max="455" step="5" value="235" required></div>
+              <div><label for="a2">Aspect ratio (%)</label><input id="a2" type="number" inputmode="numeric" min="20" max="95" step="5" value="60" required></div>
+              <div><label for="r2">Rim (inches)</label><input id="r2" type="number" inputmode="decimal" min="10" max="26" step="0.5" value="18" required></div>
+            </div>
+          </fieldset>
+          <p class="form-note">Or paste sizes: <label for="q1" class="sr-inline">Current size text</label><input id="q1" type="text" placeholder="225/65R17" autocomplete="off"> <label for="q2" class="sr-inline">New size text</label><input id="q2" type="text" placeholder="235/60R18" autocomplete="off"></p>
+          <button type="submit" class="btn btn-primary">Compare sizes</button>
+        </form>
+
+        <div id="tsc-out" aria-live="polite">
+          <table>
+            <caption>Size comparison</caption>
+            <thead><tr><th scope="col">Measure</th><th scope="col" id="h1c">Current</th><th scope="col" id="h2c">New</th><th scope="col">Difference</th></tr></thead>
+            <tbody id="tsc-body"></tbody>
+          </table>
+          <p id="tsc-speed"></p>
+          <p id="tsc-warn" role="alert"></p>
+        </div>
+        <noscript><p>The calculator needs JavaScript. You can still use the formula below by hand.</p></noscript>
+
+        <h2 id="read">How to read a tire size</h2>
+        <ul>
+          <li><strong>225</strong>: section width in millimeters, sidewall to sidewall.</li>
+          <li><strong>65</strong>: aspect ratio. Sidewall height is 65 percent of the width.</li>
+          <li><strong>R</strong>: radial construction, used on nearly all modern passenger tires.</li>
+          <li><strong>17</strong>: wheel (rim) diameter in inches.</li>
+          <li>After the size you will usually see a service description such as <strong>102H</strong>. That is the <a href="/guides/load-index-speed-rating/">load index and speed rating</a>, and any replacement should meet or exceed the original.</li>
+        </ul>
+
+        <h2 id="math">The math the calculator uses</h2>
+        <ul>
+          <li>Sidewall height = width × aspect ratio ÷ 100 (mm).</li>
+          <li>Overall diameter = rim inches + 2 × sidewall ÷ 25.4 (inches).</li>
+          <li>Circumference = π × diameter. Revs per mile = 63,360 ÷ circumference in inches.</li>
+          <li>True speed = speedometer reading × new diameter ÷ current diameter.</li>
+        </ul>
+        <p>Worked example: 225/65R17 has a 146.25 mm sidewall, so its diameter is 17 + 2 × 146.25 ÷ 25.4 = 28.52 inches, a circumference of 89.6 inches and about 707 revs per mile. A 235/60R18 is 29.10 inches, 2.0 percent taller, so at an indicated 60 mph you are really doing about 61.2 mph.</p>
+
+        <h2 id="three-percent">Why about 3 percent matters</h2>
+        <p>Continental Tire’s plus sizing bulletin says the original rolling circumference should be maintained as closely as possible, because a change can affect speedometer calibration, ABS and stability control. It adds that under most circumstances a change within plus or minus 3 percent does not require adjustments to those systems, and that you should contact the vehicle manufacturer if there is any question. General Tire publishes the same guidance. The same bulletins say load capacity and speed rating must be equal to or greater than the original fitment.</p>
+        <p class="note">A size that passes the diameter check can still be wrong for your car. Rim width, offset, brake and body clearance, and load capacity all matter. Start from your <a href="/guides/placard/">door placard</a>, read <a href="/fitment/choose-tire-size/">how to choose tire size</a>, and have a licensed installer confirm the fit.</p>
+      </div>
+<script>
+(function(){
+  var f=document.getElementById('tsc'); if(!f) return;
+  function g(id){return document.getElementById(id);}
+  function parse(t){var m=String(t).toUpperCase().replace(/\s+/g,'').match(/^(?:P|LT)?(\d{3})\/(\d{2})Z?R?F?(\d{2}(?:\.\d)?)/); return m?[+m[1],+m[2],+m[3]]:null;}
+  function calc(w,a,r){var sw=w*a/100, d=r+2*sw/25.4, c=Math.PI*d; return {w:w,sw:sw,d:d,c:c,rpm:63360/c};}
+  function fx(n,p){return n.toFixed(p);}
+  function sg(n,p){return (n>0?'+':'')+n.toFixed(p);}
+  function run(){
+    var p1=parse(g('q1').value), p2=parse(g('q2').value);
+    if(p1){g('w1').value=p1[0];g('a1').value=p1[1];g('r1').value=p1[2];}
+    if(p2){g('w2').value=p2[0];g('a2').value=p2[1];g('r2').value=p2[2];}
+    var v=['w1','a1','r1','w2','a2','r2'].map(function(i){return parseFloat(g(i).value);});
+    if(v.some(function(x){return !(x>0);})){g('tsc-warn').textContent='Please enter a width, aspect ratio and rim size for both tires.';return;}
+    var A=calc(v[0],v[1],v[2]), B=calc(v[3],v[4],v[5]);
+    g('h1c').textContent=v[0]+'/'+v[1]+'R'+v[2]; g('h2c').textContent=v[3]+'/'+v[4]+'R'+v[5];
+    var rows=[['Overall diameter (in)',A.d,B.d,2],['Sidewall height (mm)',A.sw,B.sw,1],['Section width (mm)',A.w,B.w,0],['Section width (in)',A.w/25.4,B.w/25.4,2],['Circumference (in)',A.c,B.c,1],['Revs per mile',A.rpm,B.rpm,0]];
+    g('tsc-body').innerHTML=rows.map(function(r){var pc=(r[2]-r[1])/r[1]*100;return '<tr><th scope="row">'+r[0]+'</th><td>'+fx(r[1],r[3])+'</td><td>'+fx(r[2],r[3])+'</td><td>'+sg(r[2]-r[1],r[3])+' ('+sg(pc,1)+'%)</td></tr>';}).join('');
+    var k=B.d/A.d, pct=(k-1)*100;
+    g('tsc-speed').innerHTML='<strong>Diameter difference: '+sg(pct,2)+'%.</strong> When your speedometer reads 30 mph you would really be doing '+fx(30*k,1)+' mph, and at 60 mph you would be doing '+fx(60*k,1)+' mph.';
+    g('tsc-warn').textContent=Math.abs(pct)>3?'Caution: this is more than about 3 percent different from your current size. Tire maker plus sizing guidance says to keep the original rolling circumference within about plus or minus 3 percent, or speedometer, ABS and stability control may be affected. Check with the vehicle maker or a licensed installer before choosing it.':'Within about 3 percent. Still confirm load index, speed rating, rim width and clearance with a licensed installer.';
+  }
+  f.addEventListener('submit',function(e){e.preventDefault();run();});
+  run();
+})();
+</script>
+<style>.calc fieldset{border:1px solid #ccd;border-radius:8px;padding:.8rem;margin:0 0 1rem}.calc-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}.calc input{width:100%;box-sizing:border-box}.sr-inline{position:absolute;left:-9999px}#q1,#q2{max-width:9rem;display:inline-block;margin:.2rem}#tsc-warn{font-weight:600}#tsc-out table{width:100%}@media(max-width:480px){.calc-row{grid-template-columns:1fr}}</style>
+""" + faq_html(CALC_FAQS) + sources_block([CONTI_PLUS, GENERAL_PLUS]) + related_block([
+    ("/fitment/choose-tire-size/", "How to choose tire size"),
+    ("/guides/load-index-speed-rating/", "Load index and speed rating chart"),
+    ("/guides/placard/", "Door placard guide"),
+    ("/guides/tpms/", "TPMS warning light"),
+    ("/tools/", "All free tire tools"),
+])
+
+_calc_canon = canonical_for("/tools/tire-size-calculator/index.html")
+page(
+    path="/tools/tire-size-calculator/index.html",
+    title="Tire Size Calculator: Compare Two Tire Sizes",
+    description=CALC_DESC,
+    h1="Tire size comparison calculator",
+    lede="Compare your current tire size with a new one: overall diameter, sidewall, width, revs per mile, and speedometer difference. Free, runs in your browser, nothing is stored.",
+    body=CALC_BODY,
+    schema_objs=[
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": BASE + "/tools/"},
+            {"@type": "ListItem", "position": 3, "name": "Tire size calculator", "item": _calc_canon},
+        ]},
+        {"@context": "https://schema.org", "@type": "WebApplication", "name": "Tire size comparison calculator",
+         "url": _calc_canon, "description": CALC_DESC, "applicationCategory": "UtilitiesApplication",
+         "operatingSystem": "Any (runs in a web browser)", "browserRequirements": "Requires JavaScript",
+         "isAccessibleForFree": True, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+         "inLanguage": "en-US", "publisher": ORG_REF, "creator": ORG_REF, "dateModified": "2026-10-12",
+         "isPartOf": {"@type": "WebSite", "@id": SITE_ID, "name": "Smart Tire Picks"}},
+        schema_faq(CALC_FAQS),
+    ],
+)
+
+page(
+    path="/tools/index.html",
+    title="Free Tire Tools and Calculators | Smart Tire Picks",
+    description="Free tire tools from Smart Tire Picks. Compare tire sizes, diameter and speedometer difference in your browser, with nothing stored.",
+    h1="Free tire tools",
+    lede="Simple calculators that run in your browser. Nothing you type is sent or saved.",
+    body="""
+      <div class="card-grid">
+        <article class="card">
+          <h2>Tire size comparison calculator</h2>
+          <p>Compare two sizes such as 225/65R17 and 235/60R18: overall diameter, sidewall, revs per mile, and how far your speedometer would be off.</p>
+          <a class="card-link" href="/tools/tire-size-calculator/">Open the calculator →</a>
+        </article>
+      </div>
+      <div class="content-block"><p>More tools are on the way. Meanwhile, see all <a href="/guides/">tire guides</a>.</p></div>
+""",
+    schema_objs=[
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": BASE + "/tools/"},
+        ]},
+        {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Free tire tools", "url": BASE + "/tools/",
+         "publisher": ORG_REF, "inLanguage": "en-US", "isPartOf": {"@id": SITE_ID}},
+    ],
+)
+
+
 SITEMAP_URLS = [
     ("/", "weekly", "1.0"),
     ("/about.html", "monthly", "0.6"),
@@ -2511,6 +2684,8 @@ SITEMAP_URLS = [
     ("/guides/winter-tires/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
+    ("/tools/", "monthly", "0.7"),
+    ("/tools/tire-size-calculator/", "monthly", "0.9"),
     ("/reviews/michelin-crossclimate2/", "monthly", "0.7"),
     ("/reviews/bridgestone-turanza-quiettrack/", "monthly", "0.7"),
     ("/comparisons/all-season-vs-winter/", "monthly", "0.7"),

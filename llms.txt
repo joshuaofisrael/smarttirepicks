@@ -19,6 +19,11 @@ Operated by Joshua Israel Ventures LLC. Smart Tire Picks is a brand of Joshua Is
 - [Winter tires: when to switch and what to buy](https://smarttirepicks.com/guides/winter-tires/): Switch once temperatures stay around 45°F (7°C), 3PMSF versus M+S markings, all season versus all weather versus winter tires, studded tire rules by state, tread depth for snow, and why to fit four. Cites Transport Canada, USTMA, TRAC, CAA, WSDOT and British Columbia.
 - [Seasonal tire storage](https://smarttirepicks.com/guides/seasonal-tire-storage/): How to store an off season set indoors, stacking versus upright, ozone and sunlight risks, and steps before reinstalling.
 
+## Tools
+
+- [Free tire tools](https://smarttirepicks.com/tools/): Hub of free in browser tire calculators.
+- [Tire size comparison calculator](https://smarttirepicks.com/tools/tire-size-calculator/): Compare two sizes such as 225/65R17 and 235/60R18 for overall diameter, sidewall height, width, circumference, revs per mile, percent diameter difference and speedometer error at 30 and 60 mph, with a caution above about 3 percent per Continental and General Tire plus sizing guidance. Explains how to read a tire size. Runs client side, stores nothing.
+
 ## Reviews
 
 - [Michelin CrossClimate 2 editorial overview](https://smarttirepicks.com/reviews/michelin-crossclimate2/): Category context, comparison points, and who it may or may not suit, based on public manufacturer positioning with no lab testing.
