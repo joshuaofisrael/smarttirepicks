@@ -391,8 +391,8 @@ NHTSA_SAVINGS = (
 )
 USTMA_REPLACE = (
     "https://www.ustires.org/tire-care-safety/replacing-tires",
-    "USTMA — Replacing tires",
-    "Industry consumer notes on matching size, load index, and speed rating when replacing tires.",
+    "USTMA, Replacing Tires",
+    "replace all four when possible; if replacing two, match size, load index and speed rating, and put the new pair on the rear axle; a single new tire should be paired with the deepest remaining tread and both put on the rear",
 )
 USTMA_CARE = (
     "https://www.ustires.org/tire-care-safety",
@@ -439,7 +439,7 @@ page(
         <p>Smart Tire Picks helps US drivers understand fitment, load and speed ratings, UTQG consumer grades, and category trade-offs — so you can verify the right size against your door placard before you buy.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/fitment/choose-tire-size/">Start with fitment</a>
-          <a class="btn btn-ghost" href="/guides/seasonal-tire-storage/">New: Seasonal tire storage</a>
+          <a class="btn btn-ghost" href="/guides/mixing-tires/">New: Mix tires / replace 2 or 4</a>
         </div>
       </div>
     </section>
@@ -463,9 +463,9 @@ page(
       <p class="section-label">Featured guide</p>
       <div class="card-grid">
         <article class="card" style="grid-column: 1 / -1; border-color:#9ec5ff;">
-          <h2>Seasonal tire storage: protect the set you took off</h2>
-          <p>Cool, dry indoor storage, stacked vs upright habits, ozone and sunlight risks, and a soft checklist before the next seasonal swap — with USTMA storage bulletin citations.</p>
-          <a class="card-link" href="/guides/seasonal-tire-storage/">Read the storage guide →</a>
+          <h2>Can you mix tires? Replace 2 or all 4</h2>
+          <p>USTMA says replace all four when you can. If you buy a pair, put the new tires on the rear axle, match size, load index and speed rating, and be careful on AWD. Cited sources and a buy checklist.</p>
+          <a class="card-link" href="/guides/mixing-tires/">Read the mixing tires guide →</a>
         </article>
       </div>
 
@@ -527,7 +527,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, <a href="/guides/tire-rotation/">tire rotation patterns</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, <a href="/guides/tire-rotation/">tire rotation patterns</a>, <a href="/guides/mixing-tires/">mixing tires / replace 2 or 4</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
           <li><strong>Fitment</strong> — size selection and climate-category basics, plus a free <a href="/tools/tire-size-calculator/">tire size comparison calculator</a></li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -1084,9 +1084,9 @@ page(
         <h2>Seasonal sets</h2>
         <p>Drivers who run dedicated winter tires typically switch when temperatures and road conditions change. All-season tires are a compromise category — they are not identical to winter-rated tires. See <a href="/fitment/all-season-vs-winter-vs-summer/">all-season vs winter vs summer</a>.</p>
         <h2>What to do next</h2>
-        <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating).</p>
+        <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating). If you are buying a pair instead of a full set, see <a href="/guides/mixing-tires/">can you mix tires / replace 2 or 4</a> for USTMA’s rear axle rule.</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/tire-rotation/', 'Tire rotation patterns'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/mixing-tires/', 'Can you mix tires? Replace 2 or 4'), ('/guides/tire-rotation/', 'Tire rotation patterns'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -2376,6 +2376,7 @@ GUIDES_HUB_GROUPS = [
         ("/guides/dot-date-codes/", "DOT date codes and tire age", "How to read the four digit week and year code on the sidewall and why age matters alongside tread."),
         ("/tools/dot-date-code/", "DOT date code decoder", "Enter the last four digits of the DOT code to see the week and year a tire was made and its age today."),
         ("/guides/when-to-replace/", "When to replace your tires", "Tread, irregular wear, damage, age, and seasonal sets as replacement signals, with soft caveats."),
+        ("/guides/mixing-tires/", "Can you mix tires? Replace 2 or 4", "USTMA and tire maker rules for replacing two vs four, putting new tires on the rear, mixing brands, and AWD diameter matching."),
     ]),
     ("Ratings and sidewall specs", "hub-ratings", [
         ("/guides/load-index-speed-rating/", "Load index and speed rating chart", "How to read the service description, a chart of common passenger load indexes and speed symbols, and XL versus standard load notes."),
@@ -2399,6 +2400,7 @@ GUIDES_HUB_QUESTIONS = [
     ("How old are my tires?", "/guides/dot-date-codes/", "DOT date code guide"),
     ("What does my 4 digit DOT code mean?", "/tools/dot-date-code/", "DOT date code decoder"),
     ("Do I need new tires yet?", "/guides/when-to-replace/", "When to replace guide"),
+    ("Can I mix tire brands or replace only two?", "/guides/mixing-tires/", "Mixing tires guide"),
     ("How often should I rotate my tires?", "/guides/tire-rotation/", "Tire rotation guide"),
     ("What do 94V or 91H mean on the sidewall?", "/guides/load-index-speed-rating/", "Load index and speed rating chart"),
     ("What does a 500 AA A UTQG grade mean?", "/guides/utqg/", "UTQG guide"),
@@ -2474,7 +2476,7 @@ def _guides_hub_body() -> str:
 """
 
 
-GUIDES_HUB_DESC = "All Smart Tire Picks tire guides in one place: door placard, cold PSI, TPMS lights, tread depth, DOT date codes, load index and speed rating, UTQG, winter tires, and seasonal storage, grouped by task."
+GUIDES_HUB_DESC = "All Smart Tire Picks tire guides in one place: door placard, cold PSI, TPMS lights, tread depth, DOT date codes, load index and speed rating, UTQG, winter tires, mixing tires (replace 2 or 4), and seasonal storage, grouped by task."
 
 
 def _guides_hub_schema() -> list:
@@ -2623,6 +2625,7 @@ ROT_BODY = """
     ("/guides/tire-pressure/", "Cold tire pressure / PSI"),
     ("/guides/tread-depth/", "How to check tread depth"),
     ("/guides/when-to-replace/", "When to replace tires"),
+    ("/guides/mixing-tires/", "Can you mix tires? Replace 2 or 4"),
     ("/tools/tire-size-calculator/", "Tire size comparison calculator"),
     ("/guides/", "All tire guides"),
 ])
@@ -2647,6 +2650,134 @@ page(
         "inLanguage": "en-US", "publisher": ORG_REF,
         "step": [{"@type": "HowToStep", "position": i, "name": n, "text": t} for i, (n, t) in enumerate(ROT_STEPS, 1)],
     }],
+)
+
+
+
+
+# ---------- MIX TIRES / REPLACE 2 OR 4 (/guides/mixing-tires/) ----------
+BFG_MIX = (
+    "https://www.bfgoodrichtires.com/auto/learn/buying-guide/mixing-tires",
+    "BFGoodrich USA, Mixing Car Tire Sizes",
+    "do not mix sizes, types or constructions; new pair on the rear axle for wet grip and to reduce oversteer risk; mixing brands not recommended; AWD and 4WD should not mix sizes when the owner’s manual is silent",
+)
+TOYO_SELECT = (
+    "https://www.toyotires.com/media/rk1jesyl/tsd-21-001-proper-selection-of-replacement-tires-052521.pdf",
+    "Toyo Tire U.S.A., TSD-21-001 Proper Selection of Replacement Tires",
+    "match size, type and construction; new pair on the rear axle; do not mix different speed ratings; winter tires in sets of four; AWD and 4WD need closely matched diameters",
+)
+
+MIX_DESC = "Can you mix tire brands, and should you replace 2 or 4 tires? USTMA and tire maker rules for matched sets, new tires on the rear, and AWD limits."
+MIX_FAQS = [
+    (
+        "Should I replace 2 tires or all 4?",
+        "USTMA recommends replacing all four at the same time for optimal performance. If that is not feasible, replace two that match the vehicle maker’s size, load index and speed rating, and install the new pair on the rear axle.",
+    ),
+    (
+        "Why do new tires go on the rear axle?",
+        "Newer tires grip better in the wet. USTMA and BFGoodrich both say putting the deeper tread on the rear helps avoid hydroplaning and an oversteer slide that is harder to recover from than front grip loss. This applies whether the car is front, rear or all wheel drive.",
+    ),
+    (
+        "Can I mix different tire brands on my car?",
+        "It is not recommended. BFGoodrich explains that brands and models differ in compound, tread pattern and construction, so grip and emergency responses can differ. If budget forces a mix, keep matched pairs on each axle and put the newer pair on the rear.",
+    ),
+    (
+        "Is it safe to replace only one tire?",
+        "USTMA says replacing a single tire can negatively affect suspension, transmission and treadwear. If it is unavoidable, pair the new tire with the tire that has the deepest remaining tread (including a matching full size spare) and put that pair on the rear axle.",
+    ),
+    (
+        "Can I mix tire sizes front and rear?",
+        "Only if the vehicle came from the factory with staggered sizes. Otherwise no. On AWD and 4WD, if the owner’s manual gives no mixing instructions, BFGoodrich says do not mix sizes at all, because rolling circumference differences can stress drivetrain parts.",
+    ),
+    (
+        "Do winter tires have to be a set of four?",
+        "Yes. Toyo’s selection bulletin says winter tires should always be fitted in matched sets of four. Transport Canada and Canadian industry guidance say the same. See our winter tires guide.",
+    ),
+]
+
+MIX_BODY = """
+      <div class="content-block">
+        <p class="note">Jump to: <a href="#four">Replace four when you can</a> · <a href="#two">Replacing two</a> · <a href="#one">Replacing one</a> · <a href="#brands">Mixing brands</a> · <a href="#sizes">Mixing sizes</a> · <a href="#awd">AWD and 4WD</a> · <a href="#checklist">Buy checklist</a></p>
+
+        <p><strong>Short answer:</strong> the US Tire Manufacturers Association (USTMA) recommends replacing <strong>all four tires at once</strong> when you can. If you replace only two, match the size, load index and speed rating on the door placard, and put the <strong>new pair on the rear axle</strong>, not the drive axle alone. Mixing brands or models is discouraged. On AWD and 4WD, keep rolling diameters closely matched or you can stress the drivetrain.</p>
+
+        <h2 id="four">Replace four when you can</h2>
+        <p>USTMA’s replacing tires page says replacing all four at the same time is best for performance. A matched set keeps grip, braking feel and electronic aids more consistent left to right and front to rear. Toyo’s selection bulletin says the same idea in practice: unless the vehicle maker specifies otherwise, all road tires should share the same size, type and speed rating, and you should not mix different speed ratings on the vehicle.</p>
+        <p>Start from your <a href="/guides/placard/">door placard</a>. Confirm size, then make sure the <a href="/guides/load-index-speed-rating/">load index and speed rating</a> meet or exceed the original. For how worn is too worn, see <a href="/guides/when-to-replace/">when to replace tires</a> and <a href="/guides/tread-depth/">tread depth</a>.</p>
+
+        <h2 id="two">Replacing two tires</h2>
+        <p>Budget sometimes means a pair, not a full set. USTMA’s rules for replacing fewer than four:</p>
+        <ul>
+          <li>Match the vehicle maker’s size, load index and speed rating.</li>
+          <li>Install the two new tires on the <strong>rear axle</strong>.</li>
+        </ul>
+        <p>Why the rear? Newer tires clear water better. USTMA says greater rear traction helps avoid hydroplaning and an oversteer slide that can cost vehicle stability. BFGoodrich (and Michelin guidance quoted on that page) makes the same point: deeper tread on the rear reduces the chance of a fishtail in the wet, and rear traction loss is harder to recover from than front traction loss. Put the new pair on the rear even on a front wheel drive car.</p>
+        <p>After the install, keep rotating on schedule so wear stays even. See our <a href="/guides/tire-rotation/">tire rotation patterns</a> guide.</p>
+
+        <h2 id="one">Replacing one tire</h2>
+        <p>USTMA warns that replacing a single tire can negatively affect suspension, transmission and treadwear. BFGoodrich adds that a lone new tire next to three worn ones changes rolling circumference, which hurts handling and can damage AWD drivetrains. If one tire must be replaced alone:</p>
+        <ul>
+          <li>Pair the new tire with the tire that has the deepest remaining tread (USTMA says include a matching full size spare when choosing that partner).</li>
+          <li>Install that matched pair on the rear axle.</li>
+        </ul>
+        <p>If the other three are already near the wear bars, replacing a pair or all four is usually the safer path. Have a licensed installer measure tread and advise.</p>
+
+        <h2 id="brands">Mixing brands and models</h2>
+        <p>BFGoodrich says mixing different brands is not recommended. Compounds, tread patterns and construction differ, so braking and cornering responses can differ when you need them most. If you must mix for cost:</p>
+        <ul>
+          <li>Keep a matched pair on each axle (same brand and model left and right).</li>
+          <li>Put the newer or deeper pair on the rear.</li>
+          <li>Do not mix radial tires with bias ply tires. All four must share the same construction.</li>
+        </ul>
+        <p>Toyo separately advises against mixing different speed ratings on any vehicle.</p>
+
+        <h2 id="sizes">Mixing tire sizes</h2>
+        <p>Tires on the same axle must be the same size. Mixing sizes front to rear is only appropriate when the vehicle shipped with a staggered fitment from the factory. Otherwise use one size all around, taken from the placard. You can compare a proposed size change with our <a href="/tools/tire-size-calculator/">tire size comparison calculator</a>, and still confirm load, speed rating, rim width and clearance with an installer.</p>
+
+        <h2 id="awd">AWD and 4WD special care</h2>
+        <p>All wheel and four wheel drive systems often rely on all four tires having nearly the same rolling diameter. Toyo’s bulletin says 4WD and AWD need closely matched diameters to avoid strain on differentials or viscous couplings, and that inflation must follow the placard because pressure also changes circumference. BFGoodrich says that if the owner’s manual gives no mixing instructions, do not mix sizes on those vehicles at all.</p>
+        <p>Many AWD makers publish a maximum tread depth difference across the set (sometimes only a few 32nds of an inch). Check your owner’s manual before replacing two on an AWD vehicle; some require all four.</p>
+
+        <h2 id="winter">Winter tires are always four</h2>
+        <p>Toyo says winter tires should always be fitted in matched sets of four. Fitting only two winter tires on the drive axle can create a large grip mismatch. Details on when to switch and why four matter are in our <a href="/guides/winter-tires/">winter tires guide</a>.</p>
+
+        <h2 id="checklist">Buy and install checklist</h2>
+        <ol>
+          <li>Copy size, load index, speed rating and cold PSI from the door placard.</li>
+          <li>Prefer four matching tires. If buying two, plan them for the rear axle.</li>
+          <li>Match construction (radial with radial). Avoid mixing brands when you can.</li>
+          <li>On AWD or 4WD, confirm the maker’s tread depth difference limit before buying only two.</li>
+          <li>Have a licensed installer mount, balance and torque the wheels, then set cold placard pressures and handle any TPMS relearn.</li>
+        </ol>
+        <p class="note">Informational only, not professional or safety advice. Your vehicle maker’s manual and a licensed installer take priority over this page.</p>
+      </div>
+""" + faq_html(MIX_FAQS) + sources_block([USTMA_REPLACE, BFG_MIX, TOYO_SELECT]) + related_block([
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/guides/tire-rotation/", "Tire rotation patterns"),
+    ("/guides/load-index-speed-rating/", "Load index and speed rating"),
+    ("/guides/winter-tires/", "Winter tires guide"),
+    ("/tools/tire-size-calculator/", "Tire size comparison calculator"),
+    ("/guides/", "All tire guides"),
+])
+
+_mix_canon = canonical_for("/guides/mixing-tires/index.html")
+_mix_schema = schema_article_breadcrumb(
+    headline="Can you mix tires? Replace 2 or 4",
+    description=MIX_DESC,
+    canonical=_mix_canon,
+    breadcrumbs=[("Home", "/"), ("Guides", "/guides/"), ("Mixing tires", "/guides/mixing-tires/")],
+    date_mod="2026-10-13",
+) + [schema_faq(MIX_FAQS)]
+_mix_schema[1]["datePublished"] = "2026-10-13"
+
+page(
+    path="/guides/mixing-tires/index.html",
+    title="Can You Mix Tires? Replace 2 or 4 Rules",
+    description=MIX_DESC,
+    h1="Can you mix tires? When to replace 2 or 4",
+    lede="Short answer: replace all four when you can. If you replace two, match size, load index and speed rating, and put the new pair on the rear axle. Mixing brands is discouraged, and AWD needs closely matched diameters.",
+    body=MIX_BODY,
+    schema_objs=_mix_schema,
 )
 
 
@@ -2935,6 +3066,7 @@ SITEMAP_URLS = [
     ("/guides/seasonal-tire-storage/", "monthly", "0.8"),
     ("/guides/winter-tires/", "monthly", "0.8"),
     ("/guides/tire-rotation/", "monthly", "0.8"),
+    ("/guides/mixing-tires/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/tools/", "monthly", "0.7"),
