@@ -439,7 +439,7 @@ page(
         <p>Smart Tire Picks helps US drivers understand fitment, load and speed ratings, UTQG consumer grades, and category trade-offs — so you can verify the right size against your door placard before you buy.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/fitment/choose-tire-size/">Start with fitment</a>
-          <a class="btn btn-ghost" href="/guides/mixing-tires/">New: Mix tires / replace 2 or 4</a>
+          <a class="btn btn-ghost" href="/guides/how-long-do-tires-last/">New: How long do tires last?</a>
         </div>
       </div>
     </section>
@@ -463,9 +463,9 @@ page(
       <p class="section-label">Featured guide</p>
       <div class="card-grid">
         <article class="card" style="grid-column: 1 / -1; border-color:#9ec5ff;">
-          <h2>Can you mix tires? Replace 2 or all 4</h2>
-          <p>USTMA says replace all four when you can. If you buy a pair, put the new tires on the rear axle, match size, load index and speed rating, and be careful on AWD. Cited sources and a buy checklist.</p>
-          <a class="card-link" href="/guides/mixing-tires/">Read the mixing tires guide →</a>
+          <h2>How long do tires last?</h2>
+          <p>Most all season tires last about 40,000 to 70,000 miles, roughly 3 to 6 years of average driving. Age limits run 6 to 10 years depending on the maker. Cited figures, a quick estimator, and what wears tires faster.</p>
+          <a class="card-link" href="/guides/how-long-do-tires-last/">Read the tire life guide →</a>
         </article>
       </div>
 
@@ -527,7 +527,7 @@ page(
         <h2>What we publish</h2>
         <p>Smart Tire Picks is an educational resource: fitment explainers, buying guides, editorial model overviews, and category comparisons. We prioritize clarity over hype.</p>
         <ul>
-          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, <a href="/guides/tire-rotation/">tire rotation patterns</a>, <a href="/guides/mixing-tires/">mixing tires / replace 2 or 4</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
+          <li><strong>Guides</strong> — placard reading, cold tire pressure / PSI, <a href="/guides/tpms/">TPMS warning light</a>, <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>, <a href="/guides/winter-tires/">winter tires</a>, <a href="/guides/tire-rotation/">tire rotation patterns</a>, <a href="/guides/mixing-tires/">mixing tires / replace 2 or 4</a>, <a href="/guides/how-long-do-tires-last/">how long tires last</a>, tread depth checks, load index &amp; speed rating, DOT date codes, replacement timing, <a href="/guides/utqg/">UTQG consumer grades</a></li>
           <li><strong>Fitment</strong> — size selection and climate-category basics, plus a free <a href="/tools/tire-size-calculator/">tire size comparison calculator</a></li>
           <li><strong>Reviews &amp; comparisons</strong> — editorial summaries from public manufacturer positioning only</li>
         </ul>
@@ -1086,7 +1086,7 @@ page(
         <h2>What to do next</h2>
         <p>Document pressures, inspect visually, then have a licensed installer measure tread, check for damage, and confirm a replacement size that meets placard and OEM requirements (including load index and speed rating). If you are buying a pair instead of a full set, see <a href="/guides/mixing-tires/">can you mix tires / replace 2 or 4</a> for USTMA’s rear axle rule.</p>
       </div>
-""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/mixing-tires/', 'Can you mix tires? Replace 2 or 4'), ('/guides/tire-rotation/', 'Tire rotation patterns'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
+""" + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/how-long-do-tires-last/', 'How long do tires last?'), ('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/mixing-tires/', 'Can you mix tires? Replace 2 or 4'), ('/guides/tire-rotation/', 'Tire rotation patterns'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
         <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
@@ -2377,6 +2377,7 @@ GUIDES_HUB_GROUPS = [
         ("/tools/dot-date-code/", "DOT date code decoder", "Enter the last four digits of the DOT code to see the week and year a tire was made and its age today."),
         ("/guides/when-to-replace/", "When to replace your tires", "Tread, irregular wear, damage, age, and seasonal sets as replacement signals, with soft caveats."),
         ("/guides/mixing-tires/", "Can you mix tires? Replace 2 or 4", "USTMA and tire maker rules for replacing two vs four, putting new tires on the rear, mixing brands, and AWD diameter matching."),
+        ("/guides/how-long-do-tires-last/", "How long do tires last?", "Typical miles (about 40,000 to 70,000 for all season tires) and years, 6 and 10 year age limits from Goodyear, Michelin and Continental, and a quick estimator."),
     ]),
     ("Ratings and sidewall specs", "hub-ratings", [
         ("/guides/load-index-speed-rating/", "Load index and speed rating chart", "How to read the service description, a chart of common passenger load indexes and speed symbols, and XL versus standard load notes."),
@@ -2401,6 +2402,7 @@ GUIDES_HUB_QUESTIONS = [
     ("What does my 4 digit DOT code mean?", "/tools/dot-date-code/", "DOT date code decoder"),
     ("Do I need new tires yet?", "/guides/when-to-replace/", "When to replace guide"),
     ("Can I mix tire brands or replace only two?", "/guides/mixing-tires/", "Mixing tires guide"),
+    ("How long do tires last?", "/guides/how-long-do-tires-last/", "Tire life guide"),
     ("How often should I rotate my tires?", "/guides/tire-rotation/", "Tire rotation guide"),
     ("What do 94V or 91H mean on the sidewall?", "/guides/load-index-speed-rating/", "Load index and speed rating chart"),
     ("What does a 500 AA A UTQG grade mean?", "/guides/utqg/", "UTQG guide"),
@@ -2626,6 +2628,7 @@ ROT_BODY = """
     ("/guides/tread-depth/", "How to check tread depth"),
     ("/guides/when-to-replace/", "When to replace tires"),
     ("/guides/mixing-tires/", "Can you mix tires? Replace 2 or 4"),
+    ("/guides/how-long-do-tires-last/", "How long do tires last?"),
     ("/tools/tire-size-calculator/", "Tire size comparison calculator"),
     ("/guides/", "All tire guides"),
 ])
@@ -2778,6 +2781,166 @@ page(
     lede="Short answer: replace all four when you can. If you replace two, match size, load index and speed rating, and put the new pair on the rear axle. Mixing brands is discouraged, and AWD needs closely matched diameters.",
     body=MIX_BODY,
     schema_objs=_mix_schema,
+)
+
+
+# ---------- HOW LONG DO TIRES LAST (/guides/how-long-do-tires-last/) ----------
+GOODYEAR_LIFE = (
+    "https://www.goodyear.com/en-us/learn/how-long-do-tires-last",
+    "Goodyear, How Long Do Tires Last?",
+    "typical all season car tires about 40,000 to 70,000 miles and 3 to 6 years, truck and SUV tires about 50,000 to 75,000 miles; cites FHWA average of 13,476 miles a year; Goodyear recommends replacing any tire in service 6 years or more, spare included, or 6 years from the DOT date if the in service date is unknown",
+)
+MICHELIN_LIFE = (
+    "https://www.michelinman.com/auto/auto-tips-and-advice/tire-buying-guide/when-do-i-need-new-tires",
+    "Michelin USA, When do I need new tires?",
+    "after five years of service, have tires inspected at least once a year by a professional; replace tires ten years after the date of manufacture regardless of tread or apparent condition",
+)
+CONTI_AGE = (
+    "https://www.continental-tires.com/tire-knowledge/tire-age/",
+    "Continental Tires, Tire age",
+    "recommends replacing all tires over 10 years old as shown on the date stamp; a properly stored unused tire up to 5 years old can be sold as new",
+)
+
+NHTSA_AGE_LIFE = ("https://www.nhtsa.gov/vehicle-safety/tires", "NHTSA, Tires (TireWise)", "some vehicle and tire manufacturers recommend replacing tires that are six to 10 years old, regardless of treadwear; the last four digits of the TIN give the week and year")
+
+LIFE_DESC = "How long do tires last? Most all season tires last 40,000 to 70,000 miles, about 3 to 6 years. Age limits, what wears tires faster, and an estimator."
+LIFE_FAQS = [
+    (
+        "How many miles do tires last?",
+        "Goodyear puts typical all season car tires at about 40,000 to 70,000 miles and truck and SUV tires at about 50,000 to 75,000 miles. Your result depends on the tire model, driving style, roads, climate, inflation, alignment and rotation.",
+    ),
+    (
+        "How many years do tires last?",
+        "At average driving of about 13,500 miles a year, most tires wear out in roughly 3 to 6 years. If you drive little, age becomes the limit: Goodyear recommends replacing tires in service 6 years or more, and Michelin and Continental say replace at 10 years from the manufacture date regardless of tread.",
+    ),
+    (
+        "Should I replace tires at 6 years or 10 years?",
+        "Makers differ. NHTSA notes that some vehicle and tire manufacturers recommend replacement between six and 10 years. Goodyear uses 6 years in service. Michelin recommends a yearly professional inspection after five years and replacement by ten years from manufacture. Follow your tire maker and vehicle manual, and replace sooner if tread, damage or cracking says so.",
+    ),
+    (
+        "Do tires expire if they are not used?",
+        "Rubber ages even on the shelf. Continental says a properly stored, unused tire up to 5 years old can still be sold as new, and its 10 year replacement guidance counts from the date stamp. Read the DOT date code before buying or fitting any tire, including a spare.",
+    ),
+    (
+        "What makes tires wear out faster?",
+        "Low inflation, poor alignment, skipping rotations, hard braking and cornering, heavy loads, hot climates and rough roads all shorten tread life. Checking cold pressure monthly against the door placard and rotating about every 5,000 to 8,000 miles (per USTMA when the manual is silent) help tires last longer.",
+    ),
+    (
+        "Does a treadwear warranty tell me how long my tires will last?",
+        "It is a guide, not a promise of your result. Goodyear notes a warranty starts on the purchase date, not the manufacture date, and coverage usually requires proper maintenance such as rotation. The UTQG treadwear grade is a relative comparison within one brand, not a mileage figure.",
+    ),
+]
+
+LIFE_BODY = r"""
+      <div class="content-block">
+        <p class="note">Jump to: <a href="#miles">Miles</a> · <a href="#years">Years and age limits</a> · <a href="#estimate">Estimator</a> · <a href="#faster">What wears tires faster</a> · <a href="#longer">Make tires last longer</a> · <a href="#signs">Signs to replace now</a></p>
+
+        <p><strong>Short answer:</strong> most all season car tires last about <strong>40,000 to 70,000 miles</strong>, which at average US driving is roughly <strong>3 to 6 years</strong>. Truck and SUV tires often run about 50,000 to 75,000 miles (Goodyear figures). Age sets an upper limit no matter how much tread is left: Goodyear recommends replacing tires in service <strong>6 years or more</strong>, and Michelin and Continental say replace by <strong>10 years from the manufacture date</strong>. Tread depth, damage and wear patterns can end a tire’s life sooner.</p>
+
+        <h2 id="miles">How many miles do tires last?</h2>
+        <table class="data-table">
+          <thead><tr><th scope="col">Tire type</th><th scope="col">Typical miles</th><th scope="col">Typical years of driving</th></tr></thead>
+          <tbody>
+            <tr><td>All season car tires</td><td>About 40,000 to 70,000</td><td>About 3 to 6</td></tr>
+            <tr><td>Truck and SUV tires</td><td>About 50,000 to 75,000</td><td>About 4 to 6</td></tr>
+            <tr><td>Temporary spare (donut)</td><td>Short term use only, at reduced speed</td><td>Age limits still apply</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Ranges from Goodyear’s tire life guide. They are typical figures, not a promise for any specific tire.</p>
+        <p>Goodyear cites a Federal Highway Administration average of 13,476 miles driven a year. At that pace, 40,000 miles takes about 3 years and 70,000 miles about 5.2 years. Drive half that and the same tread could last twice as long in calendar time, which is when the age limits below start to matter.</p>
+
+        <h2 id="years">How many years do tires last? Age limits</h2>
+        <p>Rubber compounds age with time, heat and sunlight even when the tread looks fine. Makers set different caps:</p>
+        <ul>
+          <li><strong>Goodyear:</strong> replace any tire that has been in service 6 years or more, including the spare, even if it looks serviceable. If you do not know when it went into service, count 6 years from the DOT date code.</li>
+          <li><strong>Michelin:</strong> after five years of use, have tires inspected by a professional at least once a year, and replace them ten years after the date of manufacture regardless of tread.</li>
+          <li><strong>Continental:</strong> replace all tires over 10 years old, as shown on the date stamp.</li>
+          <li><strong>NHTSA:</strong> notes that some vehicle and tire manufacturers recommend replacement between six and 10 years.</li>
+        </ul>
+        <p>Your vehicle’s owner’s manual may set its own interval. Find the age of any tire with our <a href="/tools/dot-date-code/">DOT date code decoder</a>, and read the background in <a href="/guides/dot-date-codes/">DOT date codes and tire age</a>.</p>
+
+        <h2 id="estimate">Quick tire life estimator</h2>
+        <p>Rough math only. Enter how far you drive and a typical tread life for your tire type. It runs in your browser and stores nothing.</p>
+        <form id="tle" class="calc" novalidate onsubmit="return false">
+          <div class="calc-row">
+            <label for="tle-miles">Miles you drive per year</label>
+            <input id="tle-miles" type="number" inputmode="numeric" min="500" max="100000" step="500" value="13500">
+          </div>
+          <div class="calc-row">
+            <label for="tle-life">Expected tread life in miles</label>
+            <input id="tle-life" type="number" inputmode="numeric" min="5000" max="120000" step="5000" value="55000">
+          </div>
+          <p id="tle-out" class="calc-result" aria-live="polite"></p>
+        </form>
+        <script>
+(function(){var m=document.getElementById('tle-miles'),l=document.getElementById('tle-life'),o=document.getElementById('tle-out');
+function r(){var a=parseFloat(m.value),b=parseFloat(l.value);if(!(a>0)||!(b>0)){o.textContent='Enter both numbers to see an estimate.';return;}
+var y=b/a,t='At '+Math.round(a).toLocaleString('en-US')+' miles a year, '+Math.round(b).toLocaleString('en-US')+' miles of tread lasts about '+y.toFixed(1)+' years.';
+if(y>=10){t+=' That is past the 10 year limit Michelin and Continental give, so plan on replacing by age, not tread.';}
+else if(y>=6){t+=' That passes the 6 year in service limit Goodyear uses, so age, not tread, will likely decide. Michelin and Continental cap at 10 years from manufacture.';}
+else{t+=' Tread will likely wear out before the age limits. Check tread depth and pressure monthly.';}
+o.textContent=t;}
+m.addEventListener('input',r);l.addEventListener('input',r);r();})();
+        </script>
+        <p class="note">Estimate only. Real wear depends on the tire, the vehicle, roads, climate and maintenance. Tread depth and condition always override the math.</p>
+
+        <h2 id="faster">What wears tires out faster</h2>
+        <ul>
+          <li><strong>Low pressure:</strong> underinflation adds heat and wears the shoulders. Check cold PSI against the <a href="/guides/placard/">door placard</a>, not the sidewall maximum. See <a href="/guides/tire-pressure/">cold tire pressure</a>.</li>
+          <li><strong>Skipped rotations:</strong> front tires on most cars wear faster. See <a href="/guides/tire-rotation/">tire rotation patterns</a>.</li>
+          <li><strong>Alignment and suspension problems:</strong> cause feathering, cupping or one edge wearing out early.</li>
+          <li><strong>Driving style and loads:</strong> hard launches, braking and cornering, towing and carrying near the <a href="/guides/load-index-speed-rating/">load index</a> limit.</li>
+          <li><strong>Heat, sun and roads:</strong> hot climates, rough or gravel roads, and long outdoor parking age and wear rubber faster.</li>
+          <li><strong>Tire type and season:</strong> tread life differs by model, so treat the maker’s treadwear warranty and the <a href="/guides/utqg/">UTQG treadwear grade</a> as rough guides only. For when to swap a winter set on and off, see our <a href="/guides/winter-tires/">winter tires guide</a>.</li>
+        </ul>
+
+        <h2 id="longer">How to make tires last longer</h2>
+        <ol>
+          <li>Check cold pressure monthly, spare included, and set it to the placard.</li>
+          <li>Rotate on the schedule in your owner’s manual, or about every 5,000 to 8,000 miles per USTMA when the manual is silent.</li>
+          <li>Have alignment checked after a hard pothole or curb hit, or when you see uneven wear or the car pulls.</li>
+          <li>Store an off season set clean, cool and out of sunlight. See <a href="/guides/seasonal-tire-storage/">seasonal tire storage</a>.</li>
+          <li>Look across the full tread width each month. See <a href="/guides/tread-depth/">how to check tread depth</a>.</li>
+        </ol>
+
+        <h2 id="signs">Signs you need tires now, whatever the age</h2>
+        <ul>
+          <li>Tread worn level with the built in wear bars, which mark 2/32 inch.</li>
+          <li>Bulges, blisters, cuts or cracks in the sidewall or tread.</li>
+          <li>Persistent vibration, or noticeably worse wet grip.</li>
+          <li>Repeated pressure loss, or a puncture outside the repairable tread area.</li>
+        </ul>
+        <p>Our <a href="/guides/when-to-replace/">when to replace tires</a> guide covers each signal. If you only need two, read <a href="/guides/mixing-tires/">can you mix tires / replace 2 or 4</a> first.</p>
+        <p class="note">Informational only, not professional or safety advice. Your tire maker, vehicle manual and a licensed installer take priority over this page.</p>
+      </div>
+<style>.calc-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.5rem 0}.calc-row label{min-width:14rem;font-weight:600}.calc-row input{padding:.4rem;max-width:10rem}.calc-result{font-weight:600;margin-top:.75rem}</style>
+""" + faq_html(LIFE_FAQS) + sources_block([GOODYEAR_LIFE, MICHELIN_LIFE, CONTI_AGE, NHTSA_AGE_LIFE, USTMA_ROT]) + related_block([
+    ("/tools/dot-date-code/", "DOT date code decoder"),
+    ("/guides/when-to-replace/", "When to replace tires"),
+    ("/guides/tread-depth/", "How to check tread depth"),
+    ("/guides/tire-rotation/", "Tire rotation patterns"),
+    ("/guides/mixing-tires/", "Can you mix tires? Replace 2 or 4"),
+    ("/guides/", "All tire guides"),
+])
+
+_life_canon = canonical_for("/guides/how-long-do-tires-last/index.html")
+_life_schema = schema_article_breadcrumb(
+    headline="How long do tires last? Miles, years and age limits",
+    description=LIFE_DESC,
+    canonical=_life_canon,
+    breadcrumbs=[("Home", "/"), ("Guides", "/guides/"), ("How long do tires last", "/guides/how-long-do-tires-last/")],
+    date_mod="2026-10-14",
+) + [schema_faq(LIFE_FAQS)]
+_life_schema[1]["datePublished"] = "2026-10-14"
+
+page(
+    path="/guides/how-long-do-tires-last/index.html",
+    title="How Long Do Tires Last? Miles, Years, Age Limits",
+    description=LIFE_DESC,
+    h1="How long do tires last? Miles, years and age limits",
+    lede="Short answer: about 40,000 to 70,000 miles for most all season tires, roughly 3 to 6 years of average driving. Replace by age at 6 to 10 years depending on the maker, even with tread left.",
+    body=LIFE_BODY,
+    schema_objs=_life_schema,
 )
 
 
@@ -3067,6 +3230,7 @@ SITEMAP_URLS = [
     ("/guides/winter-tires/", "monthly", "0.8"),
     ("/guides/tire-rotation/", "monthly", "0.8"),
     ("/guides/mixing-tires/", "monthly", "0.8"),
+    ("/guides/how-long-do-tires-last/", "monthly", "0.8"),
     ("/fitment/choose-tire-size/", "monthly", "0.8"),
     ("/fitment/all-season-vs-winter-vs-summer/", "monthly", "0.8"),
     ("/tools/", "monthly", "0.7"),
