@@ -394,6 +394,16 @@ USTMA_REPLACE = (
     "USTMA, Replacing Tires",
     "replace all four when possible; if replacing two, match size, load index and speed rating, and put the new pair on the rear axle; a single new tire should be paired with the deepest remaining tread and both put on the rear",
 )
+USTMA_CARE_GUIDE = (
+    "https://www.ustires.org/sites/default/files/2024-08/Tire%20Care%20and%20Safety%20Guide.pdf",
+    "USTMA, Tire Care and Safety Guide (PDF)",
+    "check inflation when tires are cold (parked at least 3 hours or driven less than one mile); never bleed hot tires; passenger and light truck tires may lose 1 to 2 psi per month and 1 to 2 psi for every 10 degrees F temperature drop",
+)
+NHTSA_PNEUMATIC = (
+    "https://www.nhtsa.gov/sites/nhtsa.gov/files/pneumatictire_hs-810-561.pdf",
+    "NHTSA, The Pneumatic Tire (DOT HS 810 561, PDF)",
+    "check pressures when tires are cold and at least monthly; every 10 degrees F drop in ambient temperature results in about one psi drop in inflation pressure",
+)
 USTMA_CARE = (
     "https://www.ustires.org/tire-care-safety",
     "USTMA — Tire care & safety",
@@ -774,18 +784,31 @@ PRESSURE_FAQS = [
         "Should I keep the spare inflated even when I am not using it?",
         "Yes, as a soft habit. Spares lose pressure over time just like road tires. A flat spare in the trunk helps nobody on the shoulder. Check it on a schedule with a quality gauge, inflate to the spare’s specified cold pressure, and inspect for obvious damage or dry rot. For TPMS behavior after a roadside change, see <a href=\"/guides/tpms/#spare-tire-tpms\">spare tires and TPMS caveats</a>.",
     ),
+    (
+        "How much does tire pressure drop per 10°F?",
+        "About 1 to 2 psi for every 10°F the air temperature falls. NHTSA’s tire technology report puts it at about 1 psi per 10°F, and the USTMA Tire Care and Safety Guide says 1 to 2 psi. So a tire set to 35 psi on a 70°F afternoon may read roughly 27 to 31 psi on a 30°F morning. Use the <a href=\"/guides/tire-pressure/#psi-drop\">PSI drop calculator</a> for a rough range, then check with a gauge.",
+    ),
+    (
+        "Why is my tire pressure light on after a cold snap?",
+        "Often because the colder air lowered the pressure in every tire at once, pushing one or more below the TPMS warning threshold. Check all four tires and the spare with a gauge while they are cold and fill to the door placard pressure. Many systems need a short drive before the light clears. If it comes back quickly or one tire keeps losing air, have a licensed professional inspect it. See the <a href=\"/guides/tpms/\">TPMS warning light guide</a>.",
+    ),
+    (
+        "Should I lower tire pressure for snow or let air out of warm tires?",
+        "No to both, as a general rule. Underinflation does not add safe snow traction on the road and can cause heat buildup and uneven wear. Warm tires normally read higher than cold ones, so the USTMA warns never to bleed air from hot tires. Set pressure to the placard value when tires are cold. For snow grip, consider <a href=\"/guides/winter-tires/\">winter tires</a> instead.",
+    ),
 ]
 
 page(
     path="/guides/tire-pressure/index.html",
-    title="What PSI Should My Tires Be? Placard vs Sidewall",
-    description="Find the right cold tire pressure for your car. Why the door placard PSI beats the sidewall max, spare tire PSI, and how to check it in 2 minutes.",
+    title="What PSI Should My Tires Be? Placard and Cold Weather",
+    description="Use the door placard cold PSI, not the sidewall max. Tires lose about 1 to 2 psi per 10°F drop. Estimate yours with our cold weather PSI calculator.",
     h1="Recommended cold tire pressure (PSI): placard vs sidewall",
-    lede="Cold inflation pressure is vehicle specific. Start with your door placard and owner’s manual, not the big number molded on the tire sidewall. Spare pressure can differ from road tire PSI.",
+    lede="Cold inflation pressure is vehicle specific. Start with your door placard and owner’s manual, not the big number molded on the tire sidewall. Spare pressure can differ from road tire PSI, and every 10°F drop in temperature takes about 1 to 2 psi out of your tires.",
     schema_objs=schema_article_breadcrumb(
         headline="Recommended cold tire pressure (PSI): placard vs sidewall",
-        description="Find the right cold tire pressure for your car. Why the door placard PSI beats the sidewall max, spare tire PSI, and how to check it in 2 minutes.",
+        description="Use the door placard cold PSI, not the sidewall max. Tires lose about 1 to 2 psi per 10°F drop. Estimate yours with our cold weather PSI calculator.",
         canonical=canonical_for("/guides/tire-pressure/index.html"),
+        date_mod="2026-10-15",
         breadcrumbs=[
             ("Home", "/"),
             ("Guides", "/guides/"),
@@ -835,13 +858,59 @@ page(
         </ol>
         <p>Record spare PSI next to road tire PSI on the <a href="/guides/tire-placard-checklist/">placard checklist</a>. Soft reminder: a temporary spare is a short term mobility tool, not a long term fifth tire.</p>
 
-        <h2>Load, temperature, and “set it and forget it”</h2>
-        <p>Pressure changes with temperature, and load (passengers, cargo, towing) can matter for how a vehicle manufacturer frames inflation guidance. Some manuals include alternate tables for heavy load. Treat brochure shortcuts and forum “run X PSI” posts cautiously. Verify against OEM materials for your exact vehicle.</p>
+        <h2 id="cold-weather">Cold weather tire pressure: how much PSI drops</h2>
+        <p>Short answer: expect about <strong>1 to 2 psi less for every 10°F the temperature falls</strong>. NHTSA’s tire technology report puts it at about 1 psi per 10°F, and the USTMA Tire Care and Safety Guide gives a range of 1 to 2 psi. Nothing is leaking. The air sealed inside the tire takes up roughly the same space, and colder air pushes on the tire walls with less force, so the gauge reads lower. Warm the air back up and the pressure comes back, which is why a reading after a long drive looks higher than a true cold reading.</p>
+        <p>That matters most in fall. Tires set to the placard on a warm September afternoon can be several psi low on the first frosty morning, even though nothing is wrong with them. Tires also lose a little air through the rubber over time (USTMA says 1 to 2 psi a month), so a cold snap on top of a skipped monthly check adds up.</p>
+        <h3>How to check and adjust when it turns cold</h3>
+        <ul>
+          <li><strong>Check when cold.</strong> USTMA defines cold as parked for at least 3 hours or driven less than one mile at moderate speed. NHTSA also says at least three hours. First thing in the morning, before you drive, is easiest.</li>
+          <li><strong>Fill to the placard, not the sidewall.</strong> Use the cold pressures on your <a href="/guides/placard/">door placard</a> or owner’s manual for front, rear, and spare.</li>
+          <li><strong>Never bleed hot tires.</strong> Warm tires normally read above the cold placard number. USTMA warns against letting air out of hot tires, and notes that a hot reading at or below the cold placard value may mean the tire is badly underinflated.</li>
+          <li><strong>Do not underinflate for snow.</strong> Letting air out does not give safe extra grip on the road and adds heat and uneven wear. For snow and ice, look at <a href="/guides/winter-tires/">winter tires and when to switch</a>.</li>
+          <li><strong>Recheck after a big swing.</strong> After a 20°F or larger drop, or when you move a car from a warm garage to a cold street, recheck. If you inflate in a heated garage, the tires will read lower once outside.</li>
+        </ul>
+        <h3>TPMS lights after a cold snap</h3>
+        <p>A <a href="/guides/tpms/">TPMS warning light</a> on the first cold morning is very common, because every tire drops at once and one may slip under the warning threshold. Check all four (and the spare) with a gauge, fill to the placard pressures, and drive a short distance so the system can update. If the light returns quickly, flashes then stays on, or one tire keeps losing air, have a licensed professional look at it.</p>
+
+        <h2 id="psi-drop">Cold weather PSI drop calculator</h2>
+        <p>Rough math only. Enter your placard cold PSI, the temperature when the tires were last set to it, and the temperature now. It shows a range using 1 and 2 psi per 10°F. It runs in your browser, stores nothing, and sends nothing.</p>
+        <form id="psi-drop-form" class="calc" novalidate onsubmit="return false">
+          <div class="calc-row">
+            <label for="psi-placard">Placard cold PSI</label>
+            <input id="psi-placard" type="number" inputmode="decimal" min="10" max="100" step="1" value="35">
+          </div>
+          <div class="calc-row">
+            <label for="psi-start">Temperature when last set (°F)</label>
+            <input id="psi-start" type="number" inputmode="numeric" min="-40" max="130" step="1" value="70">
+          </div>
+          <div class="calc-row">
+            <label for="psi-now">Temperature now (°F)</label>
+            <input id="psi-now" type="number" inputmode="numeric" min="-40" max="130" step="1" value="30">
+          </div>
+          <p id="psi-drop-out" class="calc-result" aria-live="polite"></p>
+        </form>
+        <script>
+(function(){var p=document.getElementById('psi-placard'),a=document.getElementById('psi-start'),b=document.getElementById('psi-now'),o=document.getElementById('psi-drop-out');
+function f(x){return (Math.round(x*10)/10).toString();}
+function r(){var P=parseFloat(p.value),S=parseFloat(a.value),C=parseFloat(b.value);
+if(!(P>0)||isNaN(S)||isNaN(C)){o.textContent='Enter all three numbers to see an estimate.';return;}
+var d=S-C,lo=Math.abs(d)/10,hi=Math.abs(d)/10*2,t;
+if(d>0){t='A '+f(d)+'°F drop could lower pressure by about '+f(lo)+' to '+f(hi)+' psi. Tires set to '+f(P)+' psi at '+f(S)+'°F may read about '+f(Math.max(P-hi,0))+' to '+f(Math.max(P-lo,0))+' psi cold at '+f(C)+'°F. Check with a gauge and fill back to the placard '+f(P)+' psi.';}
+else if(d<0){t='A '+f(-d)+'°F rise could raise pressure by about '+f(lo)+' to '+f(hi)+' psi, to roughly '+f(P+lo)+' to '+f(P+hi)+' psi. If the tires are cold and still above the placard '+f(P)+' psi, set them to the placard. Never let air out of tires that are hot from driving.';}
+else{t='No temperature change, so expect no temperature related change. Still check monthly with a gauge against the placard '+f(P)+' psi.';}
+o.textContent=t;}
+p.addEventListener('input',r);a.addEventListener('input',r);b.addEventListener('input',r);r();})();
+        </script>
+        <p class="note">Estimate only. Real change depends on sun, driving, altitude, and slow leaks. A quality gauge reading on cold tires, compared with your door placard, always beats the math.</p>
+<style>.calc-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.5rem 0}.calc-row label{min-width:14rem;font-weight:600}.calc-row input{padding:.4rem;max-width:10rem}.calc-result{font-weight:600;margin-top:.75rem}</style>
+
+        <h2>Load and “set it and forget it”</h2>
+        <p>Load (passengers, cargo, towing) can matter for how a vehicle manufacturer frames inflation guidance. Some manuals include alternate tables for heavy load. Treat brochure shortcuts and forum “run X PSI” posts cautiously. Verify against OEM materials for your exact vehicle.</p>
         <h2>Before you buy or remount tires</h2>
         <p>Record placard pressures alongside size, load index, and speed rating (see our <a href="/guides/tire-placard-checklist/">placard checklist</a>). Have a licensed installer mount and balance tires, confirm TPMS function, and advise if an alternate size changes any service considerations. We do not claim lab tests, and we do not label any inflation practice as the “safest” for every driver.</p>
         <p class="note">Informational only. Not professional, safety, or legal advice. Always verify placard and OEM specs for your vehicle and use a licensed installer for mounting, balancing, and related service.</p>
       </div>
-""" + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
+""" + faq_html(PRESSURE_FAQS) + sources_block([NHTSA_TIRES, NHTSA_PNEUMATIC, USTMA_CARE_GUIDE, NHTSA_SAVINGS, USTMA_CARE]) + related_block([
     ("/guides/tire-rotation/", "Tire rotation patterns"),
     ("/guides/winter-tires/", "Winter tires: when to switch and what to buy"),
     ("/guides/placard/", "How to read your door placard"),
@@ -1378,6 +1447,7 @@ page(
 
         <h2>Cold weather and sudden lights</h2>
         <p>Air pressure in tires falls as ambient temperature drops. A cold front can therefore trip a TPMS light even when the set was “fine” the day before. Soft response when it is safe: verify cold pressures with a gauge, inflate to placard values, reseat valve caps, and allow a short drive after correction — many systems need driving time before the light clears. If the light returns quickly, a tire looks damaged, or pressures will not hold, stop relying on DIY guesses and see a licensed professional.</p>
+        <p>To see roughly how much a temperature swing lowers pressure (about 1 to 2 psi per 10°F), try the <a href="/guides/tire-pressure/#psi-drop">cold weather PSI drop calculator</a>.</p>
         <p>Getting ready for cold months? Our <a href="/guides/winter-tires/">winter tires guide</a> covers when to switch, the snow symbols, and fitting a full set of four.</p>
 
         <h2>After you correct pressure</h2>
@@ -2117,7 +2187,7 @@ page(
         <p>Before you buy, copy the size, load index, and speed rating from your <a href="/guides/placard/">door placard</a> and confirm the winter tire you choose with your installer. See <a href="/guides/load-index-speed-rating/">load index and speed rating</a> for how to read the service description.</p>
 
         <h2 id="pressure">Cold weather tire pressure</h2>
-        <p>Tire pressure falls as the air gets colder, so the first cold snap often brings a <a href="/guides/tpms/">TPMS warning light</a>. Check cold pressure with a gauge at least monthly, and again after a big temperature drop, and set it to the <a href="/guides/tire-pressure/">door placard cold PSI</a>, not the maximum on the sidewall.</p>
+        <p>Tire pressure falls as the air gets colder, so the first cold snap often brings a <a href="/guides/tpms/">TPMS warning light</a>. Check cold pressure with a gauge at least monthly, and again after a big temperature drop, and set it to the <a href="/guides/tire-pressure/">door placard cold PSI</a>, not the maximum on the sidewall. Expect roughly 1 to 2 psi less for every 10°F drop; the <a href="/guides/tire-pressure/#psi-drop">cold weather PSI drop calculator</a> gives a quick range.</p>
 
         <h2 id="checklist">Seasonal swap checklist</h2>
         <ol>
@@ -2367,7 +2437,7 @@ GUIDES_HUB_GROUPS = [
     ("Pressure, placard and TPMS", "hub-pressure", [
         ("/guides/placard/", "How to read your tire door placard", "Every line of the Tire and Loading Information label: original size, cold PSI front, rear and spare, seating and load limits, and what to do if it is missing."),
         ("/guides/tire-placard-checklist/", "Tire placard checklist", "What to copy from the door label before you shop, so a quote or a store visit starts from the right size and specs."),
-        ("/guides/tire-pressure/", "Recommended cold tire pressure (PSI)", "Why the placard PSI, not the sidewall maximum, is the usual target, what cold means, and why spare PSI can differ."),
+        ("/guides/tire-pressure/", "Recommended cold tire pressure (PSI)", "Why the placard PSI, not the sidewall maximum, is the usual target, what cold means, why spare PSI can differ, and how much pressure drops in cold weather, with a PSI drop calculator."),
         ("/guides/tpms/", "TPMS warning light explained", "Solid versus flash then solid lights, cold weather pressure drops, spare tire caveats, and why monthly gauge checks still matter."),
     ]),
     ("Tread, age and replacement", "hub-replace", [
@@ -2395,6 +2465,7 @@ GUIDES_HUB_GROUPS = [
 
 GUIDES_HUB_QUESTIONS = [
     ("What PSI should my tires be?", "/guides/tire-pressure/", "Cold tire pressure guide"),
+    ("How much does tire pressure drop in cold weather?", "/guides/tire-pressure/#cold-weather", "Cold weather PSI drop calculator"),
     ("Where is the tire placard and what does each line mean?", "/guides/placard/", "Door placard guide"),
     ("My tire pressure light is on. What does it mean?", "/guides/tpms/", "TPMS warning light guide"),
     ("Is my tread too low?", "/guides/tread-depth/", "Tread depth guide"),
