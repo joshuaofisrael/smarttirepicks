@@ -103,6 +103,9 @@ ORG_ID = BASE + "/#organization"
 SITE_ID = BASE + "/#website"
 BRAND_OBJ = {"@type": "Brand", "name": "Smart Tire Picks", "url": BASE + "/"}
 ORG_REF = {"@type": "Organization", "@id": ORG_ID, "name": LEGAL_NAME, "brand": BRAND_OBJ}
+OG_IMAGE = BASE + "/assets/og-default.png"
+OG_IMAGE_ALT = "Smart Tire Picks: plain English tire guides, free tools and calm reviews"
+LOGO_OBJ = {"@type": "ImageObject", "@id": BASE + "/#logo", "url": BASE + "/assets/logo-512.png", "contentUrl": BASE + "/assets/logo-512.png", "width": 512, "height": 512, "caption": "Smart Tire Picks"}
 
 
 def schema_organization_website() -> list:
@@ -116,6 +119,8 @@ def schema_organization_website() -> list:
             "url": BASE + "/",
             "description": "Joshua Israel Ventures LLC owns and operates Smart Tire Picks, an educational tire fitment and editorial review brand for US drivers.",
             "brand": BRAND_OBJ,
+            "logo": LOGO_OBJ,
+            "image": {"@id": BASE + "/#logo"},
             "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer support",
@@ -310,9 +315,18 @@ def page(
   <meta property="og:url" content="{canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Smart Tire Picks">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="{OG_IMAGE}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{OG_IMAGE_ALT}">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="{OG_IMAGE}">
+  <meta name="twitter:image:alt" content="{OG_IMAGE_ALT}">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/styles.css">{head_extra}{GSC_META if canonical == BASE + "/" else ""}
 </head>
 <body>
