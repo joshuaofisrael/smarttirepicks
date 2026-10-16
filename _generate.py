@@ -168,8 +168,8 @@ def schema_article_breadcrumb(*, headline: str, description: str, canonical: str
 
 
 def schema_product_ref(name: str, brand: str) -> dict:
-    """Plain product identification only. No ratings, reviews, or offers."""
-    return {"@type": "Product", "name": name, "brand": {"@type": "Brand", "name": brand}}
+    """Topic reference only (not Product, to avoid Product snippet requirements)."""
+    return {"@type": "Thing", "name": f"{brand} {name}" if brand and not name.startswith(brand) else name}
 
 
 def schema_faq(faqs: list) -> dict:
