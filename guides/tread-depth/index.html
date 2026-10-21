@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How to Check Tire Tread Depth: Penny Test and Gauges</title>
-  <meta name="description" content="Check tread depth with the penny test, wear bars or a gauge. What 2/32 and 4/32 inch mean, and when worn tires need replacing. NHTSA cited.">
+  <meta name="description" content="Check tread depth with the penny test, wear bars or a gauge, plus a 32nds to mm tread depth chart and converter. What 2/32 and 4/32 inch mean. NHTSA cited.">
   <link rel="canonical" href="https://smarttirepicks.com/guides/tread-depth/">
   <meta name="robots" content="index,follow">
   <meta property="og:title" content="How to Check Tire Tread Depth: Penny Test and Gauges">
-  <meta property="og:description" content="Check tread depth with the penny test, wear bars or a gauge. What 2/32 and 4/32 inch mean, and when worn tires need replacing. NHTSA cited.">
+  <meta property="og:description" content="Check tread depth with the penny test, wear bars or a gauge, plus a 32nds to mm tread depth chart and converter. What 2/32 and 4/32 inch mean. NHTSA cited.">
   <meta property="og:url" content="https://smarttirepicks.com/guides/tread-depth/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Smart Tire Picks">
@@ -19,7 +19,7 @@
   <meta property="og:image:alt" content="Smart Tire Picks: plain English tire guides, free tools and calm reviews">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How to Check Tire Tread Depth: Penny Test and Gauges">
-  <meta name="twitter:description" content="Check tread depth with the penny test, wear bars or a gauge. What 2/32 and 4/32 inch mean, and when worn tires need replacing. NHTSA cited.">
+  <meta name="twitter:description" content="Check tread depth with the penny test, wear bars or a gauge, plus a 32nds to mm tread depth chart and converter. What 2/32 and 4/32 inch mean. NHTSA cited.">
   <meta name="twitter:image" content="https://smarttirepicks.com/assets/og-default.png">
   <meta name="twitter:image:alt" content="Smart Tire Picks: plain English tire guides, free tools and calm reviews">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
@@ -82,7 +82,7 @@
     }
   },
   "datePublished": "2026-09-08",
-  "dateModified": "2026-10-01",
+  "dateModified": "2026-10-21",
   "inLanguage": "en-US",
   "isPartOf": {
     "@type": "WebSite",
@@ -96,6 +96,14 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many millimetres is 2/32 or 4/32 inch of tread?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2/32 inch is about 1.6 mm and 4/32 inch is about 3.2 mm. One 32nd of an inch equals 0.79375 mm, so multiply the 32nds reading by 0.794 to get millimetres, or use the chart and converter on this page."
+      }
+    },
     {
       "@type": "Question",
       "name": "What are treadwear indicators (wear bars)?",
@@ -167,6 +175,30 @@
           <li>Some drivers and regions prefer replacing earlier (for example nearer 4/32 inch) for wet or winter driving confidence — that is a judgment call to discuss with a licensed professional, not a universal rule we mandate here.</li>
           <li>We do not claim a single depth is “legal everywhere” or “safest for every vehicle.” Confirm local requirements and OEM recommendations.</li>
         </ul>
+        <h2 id="tread-depth-chart">Tread depth chart: 32nds of an inch to millimetres</h2>
+        <p>US gauges read in 32nds of an inch, while most of the world uses millimetres. One 32nd of an inch is exactly 0.79375 mm (1 inch is defined as 25.4 mm), so the table below is plain arithmetic, rounded to one decimal place. The notes column only restates the benchmarks discussed above; it is not a legal rule for your state or country.</p>
+        <table class="data-table">
+          <caption>Tread depth in 32nds of an inch, decimal inches and millimetres</caption>
+          <thead><tr><th scope="col">32nds</th><th scope="col">Inches</th><th scope="col">mm</th><th scope="col">Note</th></tr></thead>
+          <tbody>
+          <tr><td>12/32</td><td>0.375</td><td>9.5</td><td></td></tr><tr><td>11/32</td><td>0.344</td><td>8.7</td><td></td></tr><tr><td>10/32</td><td>0.312</td><td>7.9</td><td></td></tr><tr><td>9/32</td><td>0.281</td><td>7.1</td><td></td></tr><tr><td>8/32</td><td>0.250</td><td>6.3</td><td></td></tr><tr><td>7/32</td><td>0.219</td><td>5.6</td><td></td></tr><tr><td>6/32</td><td>0.188</td><td>4.8</td><td></td></tr><tr><td>5/32</td><td>0.156</td><td>4.0</td><td></td></tr><tr><td>4/32</td><td>0.125</td><td>3.2</td><td>Point some drivers choose for earlier wet or winter replacement</td></tr><tr><td>3/32</td><td>0.094</td><td>2.4</td><td></td></tr><tr><td>2/32</td><td>0.062</td><td>1.6</td><td>About wear bar level; widely cited replacement point</td></tr><tr><td>1/32</td><td>0.031</td><td>0.8</td><td></td></tr>
+          </tbody>
+        </table>
+        <div class="tool-box" id="tread-convert">
+          <label for="td-in">Convert a reading (32nds of an inch)</label>
+          <input id="td-in" type="number" min="0" max="32" step="0.5" value="4" inputmode="decimal">
+          <p id="td-out" aria-live="polite"></p>
+          <label for="td-mm">Or enter millimetres</label>
+          <input id="td-mm" type="number" min="0" max="25" step="0.1" value="3.2" inputmode="decimal">
+          <p id="td-out2" aria-live="polite"></p>
+          <p class="note">Runs only in your browser. Nothing you type is sent or stored.</p>
+        </div>
+        <script>
+        (function(){var a=document.getElementById('td-in'),b=document.getElementById('td-mm'),o=document.getElementById('td-out'),o2=document.getElementById('td-out2');
+        function f(){var v=parseFloat(a.value);o.textContent=isNaN(v)?'':v+'/32 inch is '+(v*25.4/32).toFixed(2)+' mm ('+(v/32).toFixed(3)+' in)';
+        var m=parseFloat(b.value);o2.textContent=isNaN(m)?'':m+' mm is about '+(m*32/25.4).toFixed(1)+'/32 inch';}
+        a.addEventListener('input',f);b.addEventListener('input',f);f();})();
+        </script>
         <h2>How to measure (with caveats)</h2>
         <ol>
           <li><strong>Tread-depth gauge</strong> — The most practical DIY method. Insert the probe into the main grooves at several points across the tread and around the circumference. Record the lowest readings; uneven wear can matter as much as the average.</li>
@@ -197,6 +229,9 @@
         <details>
           <summary>When should I see a licensed professional about tread?</summary>
           <p>See a licensed tire installer or qualified shop if wear bars are exposed, a gauge shows low remaining depth, you notice uneven wear, cuts, bulges, vibrations, or repeated underinflation warnings, or before a long trip or seasonal change. This site cannot diagnose your vehicle remotely and does not replace professional inspection, mounting, or balancing.</p>
+        <details>
+          <summary>How many millimetres is 2/32 or 4/32 inch of tread?</summary>
+          <p>2/32 inch is about 1.6 mm and 4/32 inch is about 3.2 mm. One 32nd of an inch equals 0.79375 mm, so multiply the 32nds reading by 0.794 to get millimetres, or use the chart and converter on this page.</p>
         </details>
       </section>
       <section class="sources-block" aria-labelledby="sources-heading">
