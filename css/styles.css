@@ -459,3 +459,8 @@ textarea { min-height: 140px; resize: vertical; }
 .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .privacy-line { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; }
 @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+
+.placard-callout{margin:1rem 0;padding:.9rem 1.1rem;border-left:5px solid #b45309;background:#fff7e6;border-radius:6px;color:#3b2a00;font-size:1rem}
+.placard-callout p{margin:0}
+.last-updated{margin:.25rem 0 1rem;font-size:.9rem;color:#555}
+.method-note{margin:0 0 1rem;font-size:.95rem;color:#333}
