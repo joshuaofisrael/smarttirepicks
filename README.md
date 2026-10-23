@@ -48,3 +48,7 @@ Open `http://127.0.0.1:8080/` — root-absolute asset paths (`/css/...`) work co
 ## Affiliate CTAs
 
 Placeholders say “coming soon / check retailers” — no live affiliate URLs yet.
+
+## Photos
+
+`python3 _add_images.py` (idempotent) adds the AI generated, subject related photos in `assets/img/` to pages, sets og:image and adds image entries to `sitemap.xml`. Note: `_generate.py` is behind the hand edited HTML (newer guides and hub edits live only in the output), so do not run it over the site without diffing first.
