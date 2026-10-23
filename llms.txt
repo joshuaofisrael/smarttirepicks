@@ -2,7 +2,7 @@
 
 > Smart Tire Picks is an educational tire site for US drivers. It explains how to read the door placard, set cold tire pressure, understand load index, speed rating, UTQG grades, DOT date codes, tread depth, and TPMS warnings, and how to compare tire categories. Reviews are editorial summaries of public manufacturer positioning, not lab tests.
 
-Operated by Joshua Israel Ventures LLC. Smart Tire Picks is a brand of Joshua Israel Ventures LLC, not a separate company, and all business connected with the site is done by Joshua Israel Ventures LLC. Content is general information only and is not professional or safety advice. Always confirm tire size, load index, speed rating, and pressure against your vehicle's door placard and owner's manual, and have tires installed by a licensed professional. The site does not publish lab results, ratings, or safety rankings.
+Content is general information only and is not professional or safety advice. Always confirm tire size, load index, speed rating, and pressure against your vehicle's door placard and owner's manual, and have tires installed by a licensed professional. The site does not publish lab results, ratings, or safety rankings.
 
 ## Guides
 
@@ -49,7 +49,7 @@ Operated by Joshua Israel Ventures LLC. Smart Tire Picks is a brand of Joshua Is
 
 ## About and policies
 
-- [About Smart Tire Picks](https://smarttirepicks.com/about.html): Smart Tire Picks is a brand of Joshua Israel Ventures LLC; who runs the site, what it is not, and its editorial approach.
+- [About Smart Tire Picks](https://smarttirepicks.com/about.html): who runs the site, what it is not, and its editorial approach.
 - [Contact](https://smarttirepicks.com/contact/): A form for editorial questions, corrections, and partnership inquiries.
 - [Terms of Use](https://smarttirepicks.com/terms/): The agreement with Joshua Israel Ventures LLC, general information only, as is disclaimer, limitation of liability, and Florida governing law.
 - [Privacy Policy](https://smarttirepicks.com/privacy/): Joshua Israel Ventures LLC as data controller, what the contact form, Cloudflare Web Analytics and GitHub Pages hosting collect, how to make requests, and Florida governing law.
