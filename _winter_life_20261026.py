@@ -21,7 +21,7 @@ SOURCES = [
  ("https://www.consumerreports.org/cars/tires/make-sure-your-tires-have-enough-tread-for-winter-a6082176624","Consumer Reports, Make sure your tires have enough tread for a snowy winter","half worn tires lost about 14 percent snow traction; keep at least 4/32 inch through winter"),
  ("https://tc.canada.ca/en/road-transportation/stay-safe-when-driving/winter-driving/using-winter-tires","Transport Canada, Using winter tires","below 7°C all season tires lose elasticity; winter tires designed for cold; fit four"),
  ("https://www2.gov.bc.ca/gov/content/transportation/driving-and-cycling/traveller-information/seasonal/winter-driving/about-winter-tires","Government of British Columbia, Winter tire requirements","legal winter tire needs at least 3.5 mm of tread and M+S or 3PMSF"),
- ("https://www.bridgestonetire.com/catalog/bridgestone/blizzak-ws90/","Bridgestone, Blizzak WS90","Multicell winter compound in the upper part of the tread (about the first 55 percent), so ice grip declines as it wears"),
+ ("https://www.bridgestonetire.com/catalog/bridgestone/blizzak-ws90/","Bridgestone, Blizzak WS90","manufacturer product page for a dedicated winter tire; check the maker's own page for how its compound and tread are designed for your exact model"),
  ("https://www.nhtsa.gov/equipment/tires","NHTSA, Tires","tire aging, DOT date codes and checking tread"),
  ("https://www.ustires.org/tire-care","USTMA, Tire care","proper storage, inflation and rotation"),
 ]
@@ -57,7 +57,7 @@ BODY = f'''<main id="main">
       <section class="content-section">
         <h2>Why tread depth matters more for winter tires</h2>
         <p>Snow grip comes from deep grooves and many sipes that pack and hold snow. Consumer Reports found that all season tires worn to about half their tread lost roughly 14 percent of their snow traction and stopped about 7 percent longer in the wet. Winter tires lose the same kind of bite as they wear, which is why a winter tire can be legal for dry roads long before it is still good in snow.</p>
-        <p>Some winter tires also put their special cold weather compound only in the upper part of the tread. Bridgestone describes its Blizzak Multicell compound this way, and it is commonly cited as about the first 55 percent of the tread. Once that layer is gone, ice grip drops noticeably, which is one more reason to retire winter tires around 6/32 inch rather than running them to the 2/32 inch wear bars.</p>
+        <p>Some winter tires also put their special cold weather compound only in the upper part of the tread. Tire makers describe their compounds on each model's product page, so check the page for your exact tire. Where the softest compound is concentrated near the surface, ice grip can drop as the tread wears, which is one more reason to retire winter tires around 6/32 inch rather than running them to the 2/32 inch wear bars.</p>
         <p>As a legal benchmark, British Columbia only counts a tire as a winter tire on its signed routes if it has at least 3.5 mm of tread (about 4/32 inch) and the M+S or three peak mountain snowflake mark. See our <a href="/guides/tread-depth/">tread depth guide</a> for how to measure and a 32nds to mm chart.</p>
       </section>
       <section class="content-section">
@@ -184,7 +184,7 @@ def sitemap_llms():
     p.write_text(s)
     p=R/"llms.txt"; s=p.read_text()
     if SLUG not in s:
-        line=f"- [How long do winter tires last?]({URL}): Most winter tires last about 3 to 4 seasons (Consumer Reports guideline 2 to 3); replace for snow use near 6/32 inch and do not start a winter below 4/32 inch (BC legal minimum 3.5 mm); some compounds such as Bridgestone Multicell sit in the upper tread; age limits 6 to 10 years; fall checklist and tips. Cites Consumer Reports, Transport Canada, British Columbia, Bridgestone, NHTSA and USTMA.\n"
+        line=f"- [How long do winter tires last?]({URL}): Most winter tires last about 3 to 4 seasons (Consumer Reports guideline 2 to 3); replace for snow use near 6/32 inch and do not start a winter below 4/32 inch (BC legal minimum 3.5 mm); some winter compounds are designed for the upper tread; age limits 6 to 10 years; fall checklist and tips. Cites Consumer Reports, Transport Canada, British Columbia, Bridgestone, NHTSA and USTMA.\n"
         s=s.replace("- [Nitrogen vs air",line+"- [Nitrogen vs air",1)
         p.write_text(s)
 build(); links(); retitle(); sitemap_llms(); print("ok")
