@@ -1,0 +1,5 @@
+#!/bin/sh
+# Legal hold gate: blocks any push (the GitHub Pages publish step) containing HOLD_REVIEW content.
+cd "$(git rev-parse --show-toplevel)" || exit 1
+BASE=$(git rev-parse --verify -q origin/main || git rev-parse --verify -q origin/master)
+if [ -n "$BASE" ]; then python3 _legal_gate.py --changed "$BASE"; else python3 _legal_gate.py; fi

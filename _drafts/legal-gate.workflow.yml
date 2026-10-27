@@ -1,0 +1,9 @@
+name: legal-hold-gate
+on: [push, pull_request]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: python3 _legal_gate.py --changed "${{ github.event.before || 'HEAD~1' }}" --queue /tmp/queue.jsonl --approvals /dev/null || (echo "::error::HOLD_REVIEW content pushed"; exit 1)

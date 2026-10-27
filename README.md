@@ -52,3 +52,6 @@ Placeholders say “coming soon / check retailers” — no live affiliate URLs 
 ## Photos
 
 `python3 _add_images.py` (idempotent) adds the AI generated, subject related photos in `assets/img/` to pages, sets og:image and adds image entries to `sitemap.xml`. Note: `_generate.py` is behind the hand edited HTML (newer guides and hub edits live only in the output), so do not run it over the site without diffing first.
+
+## Legal hold gate (27 Oct 2026)
+Publish ONLY with `./publish.sh` (scheduled runs and retries too). It runs `_legal_gate.py --changed origin/main`; any HOLD_REVIEW blocks the push and logs to /workspace/content-review/queue.jsonl. The `.githooks/pre-push` hook (enable with `git config core.hooksPath .githooks`) enforces the same on any plain `git push`. Held files publish only with Joshua's approval of the exact sha256 in /workspace/content-review/approvals.jsonl. Every media asset must be listed in `_content_rights.json`.
