@@ -3,7 +3,9 @@
 Usage: python3 _legal_gate.py [--root DIR] [--queue FILE] [--approvals FILE] [--files a.html b.md ...]
 Exit 0 = PASS (publish allowed). Exit 1 = HOLD_REVIEW (do not publish); each flag appended once to queue.jsonl.
 A held file publishes only if approvals.jsonl has {"site","path","sha256"} matching that exact version,
-recorded from Joshua's explicit approval. This script never writes approvals."""
+recorded from Joshua's explicit approval. This script never writes approvals.
+Amendment (27 Oct): HIGH rules 1, 2, 6, 8 need Joshua's approval. A file with only MODERATE flags (3, 4, 5, 7) also
+publishes if moderate-clearances.jsonl has a SAFE ChatGPT verdict for {"site","path","sha256"} of that exact version."""
 import re, json, sys, hashlib, argparse, datetime, html
 from pathlib import Path
 SITE, BOT = "smarttirepicks.com", "Tire Review Bot"
@@ -12,6 +14,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--root", default=str(Path(__file__).resolve().parent))
 ap.add_argument("--queue", default=str(CR / "queue.jsonl"))
 ap.add_argument("--approvals", default=str(CR / "approvals.jsonl"))
+ap.add_argument("--clearances", default=str(CR / "moderate-clearances.jsonl"))
 ap.add_argument("--files", nargs="*")
 ap.add_argument("--changed", metavar="BASE", help="only check files changed between BASE and HEAD (pre-push / CI)")
 a = ap.parse_args(); ROOT = Path(a.root)
@@ -74,6 +77,16 @@ if Path(a.approvals).exists():
             j = json.loads(l)
             if j.get("site") == SITE and j.get("approved_by", "").lower().startswith("joshua"): approved.add((j["path"], j["sha256"]))
         except Exception: pass
+HIGH_RULES = {1, 2, 6, 8}  # Amendment 27 Oct 18:25: Joshua only
+cleared = set()  # MODERATE only: SAFE ChatGPT review logged for this exact site+path+sha256
+if Path(a.clearances).exists():
+    for l in Path(a.clearances).read_text().splitlines():
+        try:
+            j = json.loads(l)
+            v = str(j.get("verdict") or j.get("chatgpt_verdict") or "").strip().upper()
+            pth = j.get("path") or j.get("draft_path")
+            if j.get("site") == SITE and v.startswith("SAFE") and pth and j.get("sha256"): cleared.add((pth, j["sha256"]))
+        except Exception: pass
 existing = Path(a.queue).read_text() if Path(a.queue).exists() else ""
 held = 0
 for p in files():
@@ -82,6 +95,8 @@ for p in files():
     if not fl: continue
     h = hashlib.sha256(raw.encode()).hexdigest()
     if (rel, h) in approved: print(f"APPROVED (exact version) {rel}"); continue
+    if not any(n in HIGH_RULES for n, _, _ in fl) and (rel, h) in cleared:
+        print(f"MODERATE CLEARED (SAFE review, exact version) {rel}"); continue
     held += 1
     t = re.search(r"<title>(.*?)</title>", raw, re.S); title = html.unescape(t.group(1).strip()) if t else rel
     for n, flagged, why in fl:
