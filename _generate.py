@@ -40,7 +40,7 @@ FOOTER_META = (
 FOOTER_LINKS = (
     '<a href="/terms/">Terms of Use</a> · <a href="/privacy/">Privacy Policy</a> · '
     '<a href="/disclaimer/">Disclaimer</a> · <a href="/affiliate-disclosure/">Affiliate Disclosure</a> · '
-    '<a href="/contact/">Contact</a>'
+    '<a href="/editorial-disclosure/">Editorial Disclosure</a> · <a href="/contact/">Contact</a>'
 )
 
 # Cloudflare Web Analytics (site id 9edc255e29a148cdb9868ac59e7cc9f7). Exact snippet, once per page.
@@ -370,6 +370,7 @@ def page(
             <li><a href="/privacy/">Privacy Policy</a></li>
             <li><a href="/disclaimer/">Disclaimer</a></li>
             <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
+            <li><a href="/editorial-disclosure/">Editorial Disclosure</a></li>
           </ul>
         </div>
       </div>
@@ -600,7 +601,7 @@ page(
         <h2>Contact</h2>
         <p>Questions or corrections? Visit our <a href="/contact/">contact page</a> or email <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>.</p>
         <h2>Policies</h2>
-        <p>Use of this site is governed by our <a href="/terms/">Terms of Use</a>. See also our <a href="/privacy/">Privacy Policy</a>, <a href="/disclaimer/">Disclaimer</a>, and <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
+        <p>Use of this site is governed by our <a href="/terms/">Terms of Use</a>. See also our <a href="/privacy/">Privacy Policy</a>, <a href="/disclaimer/">Disclaimer</a>, <a href="/affiliate-disclosure/">Affiliate Disclosure</a>, and <a href="/editorial-disclosure/">Editorial Disclosure</a>.</p>
       </div>
     """,
 )
@@ -2261,7 +2262,7 @@ page(
         <h2>No endorsement</h2>
         <p>Brand names and model names are used for identification and nominative reference only. Mentions of manufacturers or retailers do <strong>not</strong> imply affiliation, sponsorship, or endorsement unless clearly stated.</p>
         <h2>Affiliate and advertising disclosure (FTC)</h2>
-        <p>Joshua Israel Ventures LLC may earn money from this site in the future through affiliate links or advertising. As of the date above, the site has no live affiliate links and shows no paid advertising. The retailer buttons on our pages are labeled coming soon and do not earn a commission. When we add affiliate links or ads, we will disclose them clearly and close to the link, in line with the US Federal Trade Commission guidance on endorsements. If you buy through an affiliate link, we may earn a commission at no extra cost to you. Commissions will not change our editorial standards, and they are not a recommendation that a product is right for your vehicle. Details are in our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
+        <p>Joshua Israel Ventures LLC may earn money from this site through affiliate links or advertising. The site has no live affiliate links. The retailer buttons on our pages are labeled coming soon and do not earn a commission. Display ads may be served by Google AdSense. Google and other third-party vendors may use cookies, and you can opt out of personalized ads at <a href="https://adssettings.google.com" rel="noopener">https://adssettings.google.com</a>. See our <a href="/privacy/">Privacy Policy</a> and <a href="/editorial-disclosure/">Editorial Disclosure</a>. When we add affiliate links, we will disclose them clearly and close to the link, in line with the US Federal Trade Commission guidance on endorsements. If you buy through an affiliate link, we may earn a commission at no extra cost to you. Commissions and ads do not change our editorial standards, and they are not a recommendation that a product is right for your vehicle. Details are in our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
         <h2>Governing law</h2>
         <p>This Disclaimer is governed by the laws of the State of Florida, United States, the same as our <a href="/terms/">Terms of Use</a>.</p>
         <h2>Contact</h2>
@@ -2282,8 +2283,8 @@ page(
       <div class="content-block">
         <p>This website is owned and operated by <strong>Joshua Israel Ventures LLC</strong>. Smart Tire Picks is a brand of Joshua Israel Ventures LLC.</p>
         <h2>How we may earn money</h2>
-        <p><strong>Current status:</strong> as of October 8, 2026, this site has no live affiliate links and shows no paid advertising, so no link on this site currently earns money. The retailer buttons on our pages are labeled coming soon.</p>
-        <p>In the future, some links may become <strong>affiliate links</strong>. If you click such a link and purchase a product or service, we may earn a commission at <strong>no additional cost to you</strong>. We may also participate in display advertising or similar programs in the future, and we will update this page and our <a href="/privacy/">Privacy Policy</a> when we do.</p>
+        <p><strong>Current status:</strong> this site has no live affiliate links, so no product link on this site currently earns a commission. The retailer buttons on our pages are labeled coming soon. Display ads may be served by Google AdSense. How those ads use cookies, and how to opt out of personalized ads, is in our <a href="/privacy/">Privacy Policy</a>.</p>
+        <p>In the future, some links may become <strong>affiliate links</strong>. If you click such a link and purchase a product or service, we may earn a commission at <strong>no additional cost to you</strong>.</p>
         <p>Affiliate partners may include online tire retailers and related networks (for example, programs associated with major tire retailers). Partner lists can change; when a specific page uses affiliate links, we aim to make that clear in context.</p>
         <h2>Editorial independence</h2>
         <p>Affiliate relationships do <strong>not</strong> mean a manufacturer or retailer endorses us, and they do <strong>not</strong> mean we endorse a product as safe or suitable for your vehicle. Commissions do not determine our conclusions. We may link to products we discuss critically or comparatively.</p>
@@ -2360,7 +2361,7 @@ page(
         <p>The Site links to outside websites, such as public safety agencies, manufacturers and retailers. We do not control those websites and are not responsible for their content, products, prices or privacy practices. Any purchase you make from a retailer is between you and that retailer.</p>
 
         <h2>7. Affiliate links and advertising</h2>
-        <p>The Site may include affiliate links or advertising in the future. As of the date above, it has no live affiliate links and shows no paid ads. Our <a href="/affiliate-disclosure/">Affiliate Disclosure</a> explains how this works and will be updated if that changes.</p>
+        <p>The Site has no live affiliate links. Display ads may be served by Google AdSense. Our <a href="/affiliate-disclosure/">Affiliate Disclosure</a> and <a href="/privacy/">Privacy Policy</a> explain commissions, advertising cookies, third-party vendors, and how to opt out of personalized ads at <a href="https://adssettings.google.com" rel="noopener">https://adssettings.google.com</a>. Editorial standards are described in our <a href="/editorial-disclosure/">Editorial Disclosure</a>.</p>
 
         <h2>8. “As is” and no warranties</h2>
         <p>The Site and all of its content are provided “as is” and “as available,” without warranties of any kind, whether express or implied. To the fullest extent the law allows, Joshua Israel Ventures LLC disclaims all warranties, including any implied warranties of merchantability, fitness for a particular purpose, accuracy, and non infringement. We do not promise that the Site will be error free, complete, current, secure, or always available.</p>
@@ -2414,15 +2415,19 @@ page(
         <h2>Hosting: GitHub Pages server logs</h2>
         <p>The Site is hosted on GitHub Pages, a service of GitHub, Inc. Like most web hosts, GitHub may automatically log technical information when you visit, such as your IP address, the page requested, the date and time, and your browser type, for example to keep the service secure. GitHub handles this under its own privacy statement. We do not receive these logs.</p>
 
+        <h2 id="advertising">Advertising: Google AdSense</h2>
+        <p>We use Google AdSense, an advertising service from Google LLC, to show ads on the Site. Google and other third-party advertising vendors may use cookies and similar technologies to serve ads, measure how they perform, and personalize them based on your visits to this Site and other websites. Those vendors process that data under their own policies.</p>
+        <p>You can opt out of personalized advertising at <a href="https://adssettings.google.com" rel="noopener">https://adssettings.google.com</a>. Google describes how it uses information from sites that use its services at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from sites that use its services</a>.</p>
+
         <h2>Cookies</h2>
-        <p>The Site itself does not set cookies. We do not currently use advertising cookies, Google Analytics, or Google AdSense.</p>
-        <p>The Site has no live affiliate links today. If we add affiliate links in the future, a retailer or affiliate network may set a cookie on your device when you click one of those links, so that a purchase can be credited to us. If we add affiliate links or advertising, we will update this policy and our <a href="/affiliate-disclosure/">Affiliate Disclosure</a> before or when they go live.</p>
+        <p>The Site itself does not set first-party advertising cookies. Google AdSense and other third-party advertising vendors may set cookies, as described above. You can opt out of personalized ads at <a href="https://adssettings.google.com" rel="noopener">https://adssettings.google.com</a>.</p>
+        <p>The Site has no live affiliate links today. If we add affiliate links in the future, a retailer or affiliate network may set a cookie on your device when you click one of those links, so that a purchase can be credited to us. Details are in our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
 
         <h2>Links to other websites</h2>
         <p>The Site links to outside websites such as public safety agencies, manufacturers and retailers. Their privacy practices are their own, so please read their policies when you visit them.</p>
 
         <h2>Sharing and sale of data</h2>
-        <p>We do not sell your personal information, and we do not share it for targeted advertising. We share it only with the service providers named above as needed to run the Site, or when the law requires it.</p>
+        <p>We do not sell your personal information. Advertising vendors may use cookies as described in the advertising section. We share personal information only with the service providers named above as needed to run the Site, or when the law requires it.</p>
 
         <h2>How long we keep information</h2>
         <p>We keep contact form messages for as long as we need them to respond and to keep reasonable records, and then we delete them. You can ask us to delete your messages sooner.</p>
@@ -3329,6 +3334,7 @@ SITEMAP_URLS = [
     ("/privacy/", "yearly", "0.3"),
     ("/disclaimer/", "yearly", "0.3"),
     ("/affiliate-disclosure/", "yearly", "0.3"),
+    ("/editorial-disclosure/", "yearly", "0.3"),
     ("/llms.txt", "monthly", "0.3"),
 ]
 # Static files kept by hand and never written or deleted here:

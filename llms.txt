@@ -62,6 +62,7 @@ Content is general information only and is not professional or safety advice. Al
 - [About Smart Tire Picks](https://smarttirepicks.com/about.html): who runs the site, what it is not, and its editorial approach.
 - [Contact](https://smarttirepicks.com/contact/): A form for editorial questions, corrections, and partnership inquiries.
 - [Terms of Use](https://smarttirepicks.com/terms/): The agreement with Joshua Israel Ventures LLC, general information only, as is disclaimer, limitation of liability, and Florida governing law.
-- [Privacy Policy](https://smarttirepicks.com/privacy/): Joshua Israel Ventures LLC as data controller, what the contact form, Cloudflare Web Analytics and GitHub Pages hosting collect, how to make requests, and Florida governing law.
+- [Privacy Policy](https://smarttirepicks.com/privacy/): Joshua Israel Ventures LLC as data controller, what the contact form, Cloudflare Web Analytics, GitHub Pages hosting, and Google AdSense collect, how to opt out of personalized ads, and Florida governing law.
+- [Editorial Disclosure](https://smarttirepicks.com/editorial-disclosure/): How guides and reviews are written, that illustrative photos are labeled AI generated, and that ads and commissions do not decide conclusions.
 - [Disclaimer](https://smarttirepicks.com/disclaimer/): Informational use, accuracy limits, no professional relationship, what readers must verify before buying, limitation of liability, affiliate and advertising disclosure, and Florida governing law.
 - [Affiliate Disclosure](https://smarttirepicks.com/affiliate-disclosure/): How the site may earn affiliate commissions in the future (no live affiliate links yet) and how that relates to editorial content.
