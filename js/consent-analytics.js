@@ -1,7 +1,7 @@
 /* Consent gated Google Analytics 4 loader for Smart Tire Picks. Inactive until GA_ID is set.
    Nothing loads from Google and no cookie is set until the visitor clicks Accept. Choice stored in localStorage. */
 (function () {
-  var GA_ID = ""; // set to the G- measurement ID once Joshua provides it; empty = disabled
+  var GA_ID = "G-EKQFLYCHHG"; // set to the G- measurement ID once Joshua provides it; empty = disabled
   if (!GA_ID) return;
   var KEY = "stp_analytics_consent";
   function load() {
