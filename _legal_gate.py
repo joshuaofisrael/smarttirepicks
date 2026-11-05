@@ -19,7 +19,7 @@ ap.add_argument("--files", nargs="*")
 ap.add_argument("--changed", metavar="BASE", help="only check files changed between BASE and HEAD (pre-push / CI)")
 a = ap.parse_args(); ROOT = Path(a.root)
 rights = json.loads((ROOT / "_content_rights.json").read_text()) if (ROOT / "_content_rights.json").exists() else {"assets": {}}
-LEGAL_PAGES = {"privacy/index.html", "terms/index.html", "disclaimer/index.html", "affiliate-disclosure/index.html", "contact/index.html", "contact.html", "about.html"}
+LEGAL_PAGES = {"privacy/index.html", "terms/index.html", "disclaimer/index.html", "affiliate-disclosure/index.html", "editorial-disclosure/index.html", "contact/index.html", "contact.html", "about.html"}
 W = lambda p: re.compile(p, re.I)
 TEXT_RULES = [
  (1, W(r"\b(fraud\w*|scam(med|mer|s)?|criminal|crimes?|lawsuit|sued|corrupt\w*|bribe\w*|misconduct|embezzl\w*|cheat(ed|ing)|lied|liars?|dishonest\w*|abuse[sd]?|allegedly|accused)\b"), "Possible damaging allegation"),
