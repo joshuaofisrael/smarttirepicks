@@ -328,7 +328,7 @@ def page(
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/styles.css">{head_extra}{GSC_META if canonical == BASE + "/" else ""}
-</head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script></head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
