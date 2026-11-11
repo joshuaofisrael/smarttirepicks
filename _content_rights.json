@@ -329,6 +329,27 @@
       "permission": "owned, all uses",
       "people": "gloved hand, no identifiable face",
       "recorded": "2026-11-05"
+    },
+    "assets/img/tire-size-sidewall-markings.svg": {
+      "type": "Original diagram made for Smart Tire Picks",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none",
+      "recorded": "2026-11-11"
+    },
+    "assets/img/tire-rim-width-fitment.svg": {
+      "type": "Original diagram made for Smart Tire Picks",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none",
+      "recorded": "2026-11-11"
+    },
+    "assets/img/staggered-tire-fitment.svg": {
+      "type": "Original diagram made for Smart Tire Picks",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none",
+      "recorded": "2026-11-11"
     }
   }
 }

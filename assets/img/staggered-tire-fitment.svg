@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Diagram comparing a square tire setup with the same size on all four corners to a staggered setup with different front and rear sizes">
+<style>text{font:16px sans-serif;fill:#222} .k{font:14px sans-serif;fill:#444}</style>
+<rect width="960" height="540" fill="#f4f1ea"/>
+<g transform="translate(80,70)">
+  <rect width="360" height="320" fill="#fff" stroke="#c9b8a0"/>
+  <text x="180" y="36" text-anchor="middle" font-weight="700">Square setup</text>
+  <rect x="40" y="80" width="70" height="40" fill="#1a2332"/>
+  <rect x="250" y="80" width="70" height="40" fill="#1a2332"/>
+  <rect x="40" y="200" width="70" height="40" fill="#1a2332"/>
+  <rect x="250" y="200" width="70" height="40" fill="#1a2332"/>
+  <text class="k" x="180" y="280" text-anchor="middle">Same size on all four corners</text>
+  <text class="k" x="180" y="304" text-anchor="middle">Usual rule for AWD and 4WD</text>
+</g>
+<g transform="translate(520,70)">
+  <rect width="360" height="320" fill="#fff" stroke="#c9b8a0"/>
+  <text x="180" y="36" text-anchor="middle" font-weight="700">Staggered setup</text>
+  <rect x="50" y="80" width="60" height="40" fill="#1a2332"/>
+  <rect x="250" y="80" width="60" height="40" fill="#1a2332"/>
+  <rect x="30" y="190" width="90" height="48" fill="#1a2332"/>
+  <rect x="240" y="190" width="90" height="48" fill="#1a2332"/>
+  <text class="k" x="180" y="280" text-anchor="middle">Different front and rear sizes</text>
+  <text class="k" x="180" y="304" text-anchor="middle">Only if the vehicle maker specifies it</text>
+</g>
+<text class="k" x="40" y="500">Original diagram by Smart Tire Picks, illustrating USTMA mixing guidance. Not a fitment approval for any vehicle.</text>
+</svg>
