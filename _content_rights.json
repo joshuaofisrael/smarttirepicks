@@ -350,6 +350,13 @@
       "permission": "owned, all uses",
       "people": "none",
       "recorded": "2026-11-11"
+    },
+    "assets/img/tire-valve-stems.svg": {
+      "type": "Original diagram made for Smart Tire Picks",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none",
+      "recorded": "2026-11-11"
     }
   }
 }
