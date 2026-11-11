@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Diagram of a P225/50R17 94H tire size broken into prefix, width, aspect ratio, construction, rim diameter and service description">
+<style>text{font:16px sans-serif;fill:#222} .k{font:14px sans-serif;fill:#444} .big{font:28px sans-serif;font-weight:700;fill:#1a2332}</style>
+<rect width="960" height="540" fill="#f4f1ea"/>
+<ellipse cx="210" cy="270" rx="150" ry="150" fill="none" stroke="#1a2332" stroke-width="22"/>
+<ellipse cx="210" cy="270" rx="95" ry="95" fill="none" stroke="#8a8f98" stroke-width="10"/>
+<text class="big" x="430" y="160">P 225 / 50 R 17  94H</text>
+<text class="k" x="430" y="210"><tspan font-weight="700">P</tspan>  P-metric passenger tire</text>
+<text class="k" x="430" y="245"><tspan font-weight="700">225</tspan>  section width in millimeters</text>
+<text class="k" x="430" y="280"><tspan font-weight="700">50</tspan>  aspect ratio (section height / width)</text>
+<text class="k" x="430" y="315"><tspan font-weight="700">R</tspan>  radial construction</text>
+<text class="k" x="430" y="350"><tspan font-weight="700">17</tspan>  rim diameter code, in inches</text>
+<text class="k" x="430" y="385"><tspan font-weight="700">94H</tspan>  service description: load index and speed symbol</text>
+<text class="k" x="40" y="510">Original diagram by Smart Tire Picks, following USTMA size designation examples. Not a photograph of a tire.</text>
+</svg>
