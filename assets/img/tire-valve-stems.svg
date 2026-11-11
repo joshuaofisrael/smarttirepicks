@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Diagram of a tubeless valve stem with a sealing cap, a 65 psi rating limit for a standard snap-in valve, and a note to replace snap-in valves when tires are replaced">
+<style>text{font:22px sans-serif;fill:#222} .t{font:18px sans-serif;fill:#444} .s{font:16px sans-serif;fill:#555}</style>
+<rect width="960" height="540" fill="#f4f1ea"/>
+<!-- rim hole -->
+<rect x="120" y="200" width="280" height="28" fill="#8a8a8a"/>
+<text x="120" y="180">Wheel rim</text>
+<!-- stem -->
+<rect x="240" y="80" width="36" height="160" rx="8" fill="#2c2c2c"/>
+<!-- cap -->
+<rect x="232" y="48" width="52" height="40" rx="8" fill="#4a4a4a"/>
+<ellipse cx="258" cy="48" rx="26" ry="8" fill="#333"/>
+<text x="310" y="70">Sealing valve cap</text>
+<text x="310" y="98" class="t">Keeps dirt and moisture out of the core</text>
+<text x="310" y="126" class="t">and adds a second seal</text>
+<!-- callouts -->
+<rect x="500" y="80" width="400" height="380" rx="12" fill="#fff" stroke="#c9c0b0"/>
+<text x="524" y="120">USTMA rules of thumb</text>
+<text x="524" y="170" class="t">1. Replace used snap-in valves</text>
+<text x="548" y="200" class="s">when you replace the tires. Do not reuse them.</text>
+<text x="524" y="250" class="t">2. Match the valve to max pressure</text>
+<text x="548" y="280" class="s">Do not use a 65 psi valve on an LT or ST</text>
+<text x="548" y="308" class="s">assembly rated over 65 psi (450 kPa).</text>
+<text x="524" y="358" class="t">3. Inspect the stem whenever a tire</text>
+<text x="548" y="388" class="s">is demounted, including for a repair.</text>
+<text x="524" y="430" class="t">4. TPMS valves need the replacement kit</text>
+<text x="548" y="460" class="s">when a sensor is part of the valve.</text>
+</svg>
