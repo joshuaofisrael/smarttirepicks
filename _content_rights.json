@@ -399,6 +399,20 @@
       "permission": "owned, all uses",
       "people": "none",
       "recorded": "2026-11-12"
+    },
+    "assets/img/tire-wear-patterns.svg": {
+      "type": "Original diagram made for Smart Tire Picks",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none",
+      "recorded": "2026-11-12"
+    },
+    "assets/img/st-trailer-tires.svg": {
+      "type": "Original diagram made for Smart Tire Picks",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none",
+      "recorded": "2026-11-12"
     }
   }
 }

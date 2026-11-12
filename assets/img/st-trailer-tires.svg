@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Diagram of an ST special trailer tire sidewall marking such as ST225/75R15, which should not be replaced with a passenger or light-truck tire">
+<style>text{font:16px sans-serif;fill:#2b2b2b} .t{font:14px sans-serif;fill:#444} .h{font:20px sans-serif;fill:#222} .big{font:22px sans-serif;fill:#111}</style>
+<rect width="960" height="540" fill="#f4f1ea"/>
+<text class="h" x="30" y="40">ST means special tire for trailers, not a passenger tire</text>
+<g transform="translate(40,70)">
+  <circle cx="200" cy="200" r="190" fill="#1f1f1f"/>
+  <circle cx="200" cy="200" r="118" fill="#cfcfcf" stroke="#888" stroke-width="8"/>
+  <circle cx="200" cy="200" r="70" fill="#e8e8e8"/>
+  <text class="big" x="118" y="208" fill="#111">ST225/75R15</text>
+  <text class="t" x="40" y="420">USTMA example marking: ST225/75R15</text>
+</g>
+<g transform="translate(480,90)">
+  <rect width="440" height="360" rx="10" fill="#fff" stroke="#d7d0c4"/>
+  <text x="24" y="40">What the letters mean</text>
+  <text class="t" x="24" y="84">ST = special tire for trailers in highway service</text>
+  <text class="t" x="24" y="116">P = passenger (P-metric)</text>
+  <text class="t" x="24" y="148">LT = light truck</text>
+  <text class="t" x="24" y="180">T = temporary spare</text>
+  <rect x="24" y="220" width="392" height="100" rx="6" fill="#f7efe3" stroke="#e0d3bf"/>
+  <text class="t" x="40" y="258">USTMA: ST tires have different load</text>
+  <text class="t" x="40" y="284">capacity characteristics, so they</text>
+  <text class="t" x="40" y="310">should not be replaced with any other type.</text>
+</g>
+</svg>
