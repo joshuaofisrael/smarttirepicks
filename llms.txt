@@ -78,3 +78,18 @@ Content is general information only and is not professional or safety advice. Al
 - [Disclaimer](https://smarttirepicks.com/disclaimer/): Informational use, accuracy limits, no professional relationship, what readers must verify before buying, limitation of liability, affiliate and advertising disclosure, and Florida governing law.
 - [Affiliate Disclosure](https://smarttirepicks.com/affiliate-disclosure/): How the site may earn affiliate commissions in the future (no live affiliate links yet) and how that relates to editorial content.
 - [Image policy](https://smarttirepicks.com/image-policy/): Illustrative photos are AI-generated, labeled in the figure caption, and linked to this policy. They are not photos of a real customer, shop visit, or product test.
+
+## Which tire should I get
+- [Which tire picker](https://smarttirepicks.com/which-tire/): free client side picker; choose vehicle (car, SUV, pickup, EV, minivan, sports car), climate, driving and priority to get a tire category (touring all season, all weather 3PMSF, winter, all terrain, LT load range, max performance summer, EV HL/XL fitments) with reasons and sidewall checks. No brands ranked.
+- [Which tire for an SUV or crossover](https://smarttirepicks.com/which-tire/suv/): highway or crossover touring all season for pavement, 3PMSF all weather for snow, all terrain only off pavement. Cites Tire Rack, Michelin, USTMA.
+- [Which tire for a pickup truck](https://smarttirepicks.com/which-tire/pickup-truck/): highway all season vs all terrain vs mud; LT load ranges; P tire load divided by 1.10 on light trucks. Cites USTMA, Tire Rack.
+- [Which tire for an EV](https://smarttirepicks.com/which-tire/electric-vehicle/): HL replaces HL (USTMA TISB 54 load table), low rolling resistance, noise, about 20 percent faster wear (Michelin), alignment every 6 months (Continental).
+- [Which tire for snow without winter tires](https://smarttirepicks.com/which-tire/snow-without-winter-tires/): 3PMSF all weather vs M+S; USTMA TISB 37 snow grip index; not an ice rating; when winter tires are still needed.
+- [Which tire for highway commuting](https://smarttirepicks.com/which-tire/highway-commuting/): grand vs standard touring all season; UTQG treadwear and traction meaning; speed rating rules.
+- [Which tire for towing](https://smarttirepicks.com/which-tire/towing/): load capacity first, LT load range, tow pressures per NHTSA towing guide, trailer tire matching.
+- [Which tire for a minivan](https://smarttirepicks.com/which-tire/minivan/): touring all season, load index for a full van, 3PMSF for snow.
+- [Which tire for a sports car](https://smarttirepicks.com/which-tire/sports-car/): max performance summer vs ultra high performance all season vs extreme performance; summer tires below about 45°F.
+- [Which tire for rain](https://smarttirepicks.com/which-tire/rain/): wet grip by category, UTQG traction grade limits, tread depth.
+- [Which tire for hot climates like Florida](https://smarttirepicks.com/which-tire/hot-climate/): no winter compound needed, UTQG temperature grade, pressure in heat.
+- [Which tire for gravel and dirt roads](https://smarttirepicks.com/which-tire/gravel-roads/): highway all season vs all terrain, LT durability, no mixing tread types on AWD.
+
