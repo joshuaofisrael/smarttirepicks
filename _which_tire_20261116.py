@@ -5,6 +5,7 @@ import json, html, re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PUB = "2026-11-16"; PUB_H = "November 16, 2026"; READ = "read 16 November 2026"
+PAGE_DATES = {"2026-11-16": (PUB, PUB_H, READ), "2026-11-17": ("2026-11-17", "November 17, 2026", "read 17 November 2026")}
 BASE = "https://smarttirepicks.com"
 
 SRC = {
@@ -22,6 +23,9 @@ SRC = {
  "TRC": ("https://www.tirerack.com/tires/tests/breaking-down-tire-performance-categories?ttid=333", "Tire Rack, Breaking Down Tire Performance Categories (2024 test with winter update)"),
  "TRH": ("https://www.tirerack.com/tires/tests/testDisplay.jsp?ttid=210", "Tire Rack, Highway All Season or On/Off Road All Terrain: testing the differences on paved roads (2015)"),
  "TRT": ("https://www.tirerack.com/tires/truck", "Tire Rack, Truck and SUV tires category page and FAQ"),
+ "BFG": ("https://www.bfgoodrichtires.com/auto/learn/4x4-driving-guide/tire-selection", "BFGoodrich, 4x4 driving guide: tire selection"),
+ "MCS": ("https://www.michelinman.com/auto/auto-tips-and-advice/tire-buying-guide/change-size-spec", "Michelin, Changing tire size or specifications"),
+ "NT": ("https://www.nhtsa.gov/vehicle-safety/tires", "NHTSA, Tire Safety Ratings and Awareness (TireWise)"),
  "TRA": ("https://www.tirerack.com/tires/all-season", "Tire Rack, Touring and all season tire categories"),
 }
 def a(k, text): return f'<a href="{SRC[k][0]}" rel="noopener noreferrer" target="_blank">{text}</a>'
@@ -38,7 +42,8 @@ NAV = """        <ul>
         </ul>"""
 FOOT = Path(ROOT / "guides/lug-nut-torque/index.html").read_text()
 FOOT = FOOT[FOOT.index("  <footer class=\"site-footer\">"):]
-FOOT = FOOT.replace('<li><a href="/fitment/choose-tire-size/">Fitment</a></li>', '<li><a href="/which-tire/">Which tire</a></li>\n            <li><a href="/fitment/choose-tire-size/">Fitment</a></li>', 1)
+if '/which-tire/">Which tire' not in FOOT:
+    FOOT = FOOT.replace('<li><a href="/fitment/choose-tire-size/">Fitment</a></li>', '<li><a href="/which-tire/">Which tire</a></li>\n            <li><a href="/fitment/choose-tire-size/">Fitment</a></li>', 1)
 IMG = {  # existing site images, already in _content_rights.json
  "suv": ("review-allseason", "All season tire and alloy wheel of a crossover SUV on a wet country road"),
  "sedan": ("review-touring", "Sedan front tire and alloy wheel viewed from the side, the sidewall where size markings are molded"),
@@ -49,7 +54,8 @@ IMG = {  # existing site images, already in _content_rights.json
 }
 DISC = '<aside class="disclaimer-box" role="note"><p><em>This page is for general information only and is not professional, safety, or legal advice. Always confirm tire size, load index, speed rating, and other specs against your vehicle’s door placard and owner’s manual, and have tires installed by a licensed professional. We have not lab tested products. See our <a href="/disclaimer/">Disclaimer</a>.</em></p></aside>'
 
-def page(slug, title, h1, desc, lede, img, body, faqs, srcs, related, crumb, extra_head="", extra_tail=""):
+def page(slug, title, h1, desc, lede, img, body, faqs, srcs, related, crumb, extra_head="", extra_tail="", pub=None):
+    PUB, PUB_H, READ = PAGE_DATES.get(pub or "2026-11-16")
     url = f"{BASE}/which-tire/{slug}/" if slug else f"{BASE}/which-tire/"
     stem, alt = IMG[img]
     og = f"{BASE}/assets/img/og-{stem}.jpg"
@@ -233,7 +239,7 @@ P(slug="pickup-truck", crumb="Pickup truck", img="wheel",
         ("Can I replace LT tires with P metric tires?", "USTMA says it is not recommended to replace original LT tires with P metric or Euro metric tires unless the vehicle maker specifies it."),
         ("Do mud terrain tires work on the highway?", "They are the most specialized end of the all terrain range, which Tire Rack calls max traction or mud tires. Expect the paved road trade offs of all terrain tires (noise, wet grip) to be larger, so pick them only for regular mud or rock use.")],
   srcs=[("TRT", "truck tire categories, LT construction and load ranges"), ("TRH", "highway all season vs all terrain on pavement"), ("CS", "LT markings, P to LT rules, 1.10 load reduction, mixing rules")],
-  related=[("/which-tire/", "Which tire picker"), ("/which-tire/towing/", "Which tire for towing"), ("/guides/lt-vs-p-metric-tires/", "LT vs P metric tires"), ("/guides/st-trailer-tires/", "ST trailer tires"), ("/which-tire/gravel-roads/", "Which tire for gravel roads")])
+  related=[("/which-tire/", "Which tire picker"), ("/which-tire/towing/", "Which tire for towing"), ("/guides/lt-vs-p-metric-tires/", "LT vs P metric tires"), ("/guides/st-trailer-tires/", "ST trailer tires"), ("/which-tire/gravel-roads/", "Which tire for gravel roads"), ("/which-tire/4x4-off-road/", "Which tire for a Jeep style 4x4")])
 
 # 3 EV
 P(slug="electric-vehicle", crumb="Electric vehicle", img="pressure",
@@ -562,7 +568,52 @@ P(slug="gravel-roads", crumb="Gravel and dirt roads", img="suv",
         ("Are LT tires better on gravel?", "Tire Rack says LT construction increases durability and puncture resistance. It can also make the ride firmer and needs higher pressure, so confirm fitment with USTMA's P to LT guidance."),
         ("Are all terrain tires good in snow?", "Some carry the 3PMSF symbol. In Tire Rack's 2015 test, the highway all season tire had better packed snow traction than the all terrain tire, and they were about equal on ice.")],
   srcs=[("TRH", "highway all season vs all terrain capability and trade offs, snow and ice results"), ("TRT", "all terrain subcategories, LT durability and puncture resistance"), ("CS", "mixing and P to LT rules")],
-  related=[("/which-tire/", "Which tire picker"), ("/which-tire/pickup-truck/", "Which tire for a pickup truck"), ("/which-tire/suv/", "Which tire for an SUV"), ("/guides/lt-vs-p-metric-tires/", "LT vs P metric tires"), ("/guides/tire-plug-vs-patch/", "Tire plug vs patch")])
+  related=[("/which-tire/", "Which tire picker"), ("/which-tire/pickup-truck/", "Which tire for a pickup truck"), ("/which-tire/suv/", "Which tire for an SUV"), ("/guides/lt-vs-p-metric-tires/", "LT vs P metric tires"), ("/guides/tire-plug-vs-patch/", "Tire plug vs patch"), ("/which-tire/4x4-off-road/", "Which tire for a Jeep style 4x4")])
+
+# 12 4x4 off-roader (added 17 Nov 2026)
+P(slug="4x4-off-road", crumb="4x4 off-roader", img="suv", pub="2026-11-17",
+  title="Which tire for a Jeep Wrangler style 4x4? All terrain vs mud terrain",
+  h1="Which tire should I get for a Jeep Wrangler style 4x4?",
+  desc="For a 4x4 on pavement with some trails: all terrain. Mud terrain only for regular deep mud or rock. LT vs P, upsizing, spare and 4WD mixing rules.",
+  lede="If your 4x4 spends most of its miles on pavement with weekend trails, choose an all terrain tire. Pick mud terrain only if you regularly drive deep mud, loose soil or rock, and a highway all season if you rarely leave the road.",
+  body=f"""      <section class="content-section">
+        <h2>The short answer</h2>
+        <p>Choose by where you actually drive, not by looks. BFGoodrich says all terrain tires give a quieter, more comfortable highway ride and better on road handling than mud terrain tires while still handling moderate trails, and that mud terrain tires are for deep mud, sand, loose soil and technical rock crawling, at the cost of noise, fuel economy and tread life ({a('BFG','BFGoodrich tire selection')}). Its own advice: if most of your miles are highway with occasional trails, all terrain is the better tire even though mud terrain looks tougher. If your 4x4 rarely leaves pavement, a highway all season tire in the placard size is the quieter, simpler choice (see <a href="/which-tire/suv/">which tire for an SUV</a>).</p>
+      </section>
+      <section class="content-section">
+        <h2>All terrain, mud terrain or highway: by use</h2>
+        <table>
+          <thead><tr><th>How you use the 4x4</th><th>Tire type to look at</th><th>Trade off</th></tr></thead>
+          <tbody>
+            <tr><td>Daily driver, rarely off pavement</td><td>Highway all season (or all weather with 3PMSF for snow)</td><td>Light off road use only</td></tr>
+            <tr><td>Mostly highway, weekend trails, overlanding, towing</td><td>All terrain ({a('BFG','BFGoodrich')})</td><td>Less bite than mud terrain in deep mud</td></tr>
+            <tr><td>Regular deep mud, sand, loose soil, rock crawling</td><td>Mud terrain ({a('BFG','BFGoodrich')})</td><td>Louder, lower fuel economy, shorter tread life on pavement</td></tr>
+          </tbody>
+        </table>
+        <p>NHTSA describes all terrain tires as mainly used on four wheel drive vehicles and as a good compromise between on road driving and off road capability ({a('NT','NHTSA TireWise')}).</p>
+      </section>
+      <section class="content-section">
+        <h2>Snow: check the symbol, not the tread blocks</h2>
+        <p>Many off road tires carry M+S. Michelin says M+S is based on tread geometry, not a performance test, while the three peak mountain snowflake (3PMSF) symbol requires passing a standardized traction test on medium packed snow, and it still does not cover pure ice ({a('MTY','Michelin')}). If you drive in winter, look for 3PMSF on the all terrain sizes you shortlist, or run a dedicated <a href="/guides/winter-tires/">winter tire</a>.</p>
+      </section>
+      <section class="content-section">
+        <h2>LT or P, bigger sizes and pressure</h2>
+        <ul>
+          <li><b>Keep LT if it came with LT.</b> BFGoodrich says never replace original LT tires with P metric tires because you lose load capacity and durability ({a('BFG','BFGoodrich')}). USTMA says P to LT swaps are possible on some vehicles but need a rim and inflation check, clearance check and may change handling ({a('CS','USTMA')}). See <a href="/guides/lt-vs-p-metric-tires/">LT vs P metric</a>.</li>
+          <li><b>Going bigger is a vehicle change, not just a tire change.</b> BFGoodrich says larger than stock tires often need a lift kit and changes to brake lines, steering and suspension, which can affect handling and rollover risk ({a('BFG','BFGoodrich')}). USTMA says any size change needs clearance checks at all four wheels through full suspension travel and full lock, and that diameter changes can affect the speedometer, ABS, TPMS and 4WD systems ({a('CS','USTMA')}). See <a href="/guides/plus-sizing/">plus sizing</a> and <a href="/guides/speedometer-error-tire-size/">speedometer error</a>.</li>
+          <li><b>New size, new pressure.</b> BFGoodrich says the door placard pressures no longer apply after an upsize and to have a tire professional work out the right pressure ({a('BFG','BFGoodrich')}). Air back up after airing down for a trail before you drive on pavement.</li>
+          <li><b>Do not mix tread types.</b> USTMA and Michelin both say not to mix tread pattern types such as all terrain and all season on 4WD vehicles, and to keep all four the same size; Michelin says the outside circumferences should be within 1 inch of each other ({a('CS','USTMA')}, {a('MCS','Michelin')}).</li>
+          <li><b>Match the spare.</b> BFGoodrich suggests carrying a full size spare within about 1 inch of your main tire diameter ({a('BFG','BFGoodrich')}), and a spare that matches the other four lets you rotate five (see <a href="/guides/tire-rotation/">tire rotation</a>).</li>
+        </ul>
+      </section>
+{CHECKS}""",
+  faqs=[("Are mud terrain tires bad on the highway?", "They work on the road but cost you comfort. BFGoodrich says mud terrain tires are not quiet or fuel efficient and trade road noise, on road grip and tread life for maximum bite in deep mud. If most of your miles are paved, it recommends all terrain instead."),
+        ("Do I need all terrain tires on a Jeep that never goes off road?", "No. NHTSA describes all terrain tires as a compromise between on road and off road use. If you never leave pavement, a highway all season tire in the placard size gives up nothing you use."),
+        ("Are all terrain tires good in snow?", "It depends on the tire. Look for the 3PMSF symbol, which Michelin says requires passing a packed snow traction test; M+S alone is based on tread design. Neither symbol covers pure ice."),
+        ("Can I put bigger tires on my 4x4?", "Only with the checks done. BFGoodrich says larger tires often require a lift and steering, brake line and suspension changes that can raise rollover risk, and USTMA says to check clearance at all four wheels and that a diameter change can affect the speedometer, ABS, TPMS and 4WD systems."),
+        ("Can I replace just two tires on a 4x4?", "Check the owner's manual first. USTMA says that for 4WD and AWD vehicles even small differences in outside diameter may cause drivetrain damage, and that replacing all four together is recommended and preferred.")],
+  srcs=[("BFG", "all terrain vs mud terrain uses and trade offs, LT vs P, upsizing, pressure, spare size"), ("NT", "what all terrain tires are for"), ("MTY", "M+S vs 3PMSF, ice limits"), ("MCS", "4WD mixing rules and 1 inch circumference"), ("CS", "4WD mixing, P to LT checks, diameter and clearance, replacing less than four")],
+  related=[("/which-tire/", "Which tire picker"), ("/which-tire/gravel-roads/", "Which tire for gravel roads"), ("/which-tire/pickup-truck/", "Which tire for a pickup truck"), ("/guides/lt-vs-p-metric-tires/", "LT vs P metric tires"), ("/guides/mixing-tires/", "Mixing tires"), ("/guides/plus-sizing/", "Plus sizing")])
 
 def build():
     urls = []
@@ -573,7 +624,7 @@ def build():
         <h2>Which tire picker</h2>
         <p>Answer four questions. The picker runs only in your browser, needs no login and stores or sends nothing. It suggests a tire <b>category</b>, not a brand or model.</p>
         <form id="wt-picker" onsubmit="return false">
-          <div class="calc-row"><label for="wt-veh">Vehicle</label><select id="wt-veh"><option value="car">Car or sedan</option><option value="suv">SUV or crossover</option><option value="truck">Pickup truck</option><option value="ev">Electric vehicle</option><option value="van">Minivan</option><option value="sport">Sports car</option></select></div>
+          <div class="calc-row"><label for="wt-veh">Vehicle</label><select id="wt-veh"><option value="car">Car or sedan</option><option value="suv">SUV or crossover</option><option value="truck">Pickup truck</option><option value="x4">Jeep style 4x4 or off-roader</option><option value="ev">Electric vehicle</option><option value="van">Minivan</option><option value="sport">Sports car</option></select></div>
           <div class="calc-row"><label for="wt-clim">Climate</label><select id="wt-clim"><option value="mild">Mild, little snow</option><option value="rain">Lots of rain</option><option value="snow">Snow or ice in winter</option><option value="hot">Hot, rarely below freezing</option></select></div>
           <div class="calc-row"><label for="wt-drive">Driving</label><select id="wt-drive"><option value="commute">Commuting and errands</option><option value="highway">Lots of highway miles</option><option value="offroad">Gravel, dirt or off road</option><option value="perf">Spirited or performance</option><option value="tow">Towing or heavy hauling</option></select></div>
           <div class="calc-row"><label for="wt-pri">Top priority</label><select id="wt-pri"><option value="quiet">Quiet and comfort</option><option value="life">Long tread life</option><option value="budget">Budget</option><option value="grip">Grip</option></select></div>
@@ -623,6 +674,7 @@ def build():
   function rec(v,c,d,p){
     var r={cat:'',why:[],link:'',label:'',also:[]};
     if(d==='tow'){r.cat='Load first: the load range your vehicle specifies (often LT, such as Load Range E on heavier pickups), in a highway all season tread';r.why=['Towing is about load capacity and the right pressure, which NHTSA says may need to be higher when towing.','LT tires use thicker plies and reinforced sidewalls for heavy hauling.'];r.link='/which-tire/towing/';r.label='Which tire for towing';if(v==='car'||v==='van'||v==='ev'||v==='sport')r.why.push('On a car, van or EV, stay with the placard size and load index and the tow rating in your owner\\'s manual.');return r;}
+    if(v==='x4'){if(d==='offroad'){r.cat=(p==='grip')?'Mud terrain (LT) if you face deep mud, loose soil or rock often; otherwise all terrain':'All terrain (LT if your 4x4 came with LT)';}else if(d==='commute'||d==='highway'){r.cat=(p==='quiet'||p==='life')?'Highway all season, or all terrain if you take trails on weekends':'All terrain, or highway all season if you rarely leave pavement';}else{r.cat='All terrain';}r.why=['All terrain tires are quieter and handle better on the road than mud terrain while still managing moderate trails.','Mud terrain tires trade noise, fuel economy and tread life for grip in deep mud and rock.','Do not mix all terrain and all season tread on a 4WD, and keep LT if it came with LT.'];if(c==='snow')r.why.push('For snow, look for the 3PMSF symbol; M+S alone is not a snow test.');r.link='/which-tire/4x4-off-road/';r.label='Which tire for a Jeep style 4x4';return r;}
     if(d==='offroad'){
       if(v==='truck'||v==='suv'){r.cat=(p==='grip')?'All terrain (or mud terrain if you face deep mud or rock often)':'All terrain, or highway all season if your gravel is well graded';r.why=['All terrain tires dig through loose dirt, sand, mud and rocks.','They are louder and grip less in the wet on pavement than highway tires.'];if(c==='snow')r.why.push('For snow, look for the 3PMSF symbol; it is printed on some all terrain sizes.');r.link='/which-tire/gravel-roads/';r.label='Which tire for gravel and dirt roads';return r;}
       r.cat=(c==='snow')?'All weather with the 3PMSF symbol, in your placard size':'Touring all season in your placard size';r.why=['Cars and minivans rarely offer all terrain sizes; a durable all season handles graded gravel.','Keep the original size and load index.'];r.link='/which-tire/gravel-roads/';r.label='Which tire for gravel roads';return r;}
