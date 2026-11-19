@@ -5,7 +5,7 @@ import json, html, re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PUB = "2026-11-16"; PUB_H = "November 16, 2026"; READ = "read 16 November 2026"
-PAGE_DATES = {"2026-11-16": (PUB, PUB_H, READ), "2026-11-17": ("2026-11-17", "November 17, 2026", "read 17 November 2026")}
+PAGE_DATES = {"2026-11-16": (PUB, PUB_H, READ), "2026-11-17": ("2026-11-17", "November 17, 2026", "read 17 November 2026"), "2026-11-19": ("2026-11-19", "November 19, 2026", "read 19 November 2026")}
 BASE = "https://smarttirepicks.com"
 
 SRC = {
@@ -27,6 +27,10 @@ SRC = {
  "MCS": ("https://www.michelinman.com/auto/auto-tips-and-advice/tire-buying-guide/change-size-spec", "Michelin, Changing tire size or specifications"),
  "NT": ("https://www.nhtsa.gov/vehicle-safety/tires", "NHTSA, Tire Safety Ratings and Awareness (TireWise)"),
  "TRA": ("https://www.tirerack.com/tires/all-season", "Tire Rack, Touring and all season tire categories"),
+ "MPH": ("https://www.michelinman.com/auto/auto-tips-and-advice/electric-mobility-guide/plug-in-hybrid-vehicle", "Michelin, How to select the best tires for your plug in hybrid (updated July 20, 2026)"),
+ "MOE": ("https://www.michelinman.com/auto/auto-tips-and-advice/tire-buying-guide/michelin-developed-marked-tires", "Michelin, What are Michelin developed marked tires?"),
+ "MSZ": ("https://www.michelinman.com/auto/auto-tips-and-advice/tire-buying-guide/find-your-tire-size", "Michelin, Choosing the right tire size for your vehicle"),
+ "FEG": ("https://www.fueleconomy.gov/feg/maintain.jsp", "FuelEconomy.gov (U.S. DOE and EPA), Keeping your vehicle in shape"),
 }
 def a(k, text): return f'<a href="{SRC[k][0]}" rel="noopener noreferrer" target="_blank">{text}</a>'
 def esc(s): return html.escape(s, quote=True)
@@ -279,7 +283,7 @@ P(slug="electric-vehicle", crumb="Electric vehicle", img="pressure",
         ("Why do EV tires wear out faster?", "Michelin says more weight, instant torque and regenerative braking combine to wear tires about 20 percent faster on average than a comparable gas vehicle."),
         ("Do low rolling resistance tires increase EV range?", "Continental says lower rolling resistance means increased electric range and higher efficiency. How much depends on the vehicle and driving.")],
   srcs=[("MHL", "HL vs XL, replace HL with HL, risks of under rated load"), ("T54", "HL load table and replacement recommendation"), ("MEV", "EVs wear tires about 20 percent faster on average"), ("CEV", "rolling resistance, noise, alignment every 6 months")],
-  related=[("/which-tire/", "Which tire picker"), ("/guides/xl-vs-sl-tires/", "XL vs SL tires"), ("/guides/load-index-speed-rating/", "Load index and speed rating"), ("/guides/tire-rotation/", "Tire rotation"), ("/which-tire/highway-commuting/", "Which tire for highway commuting")])
+  related=[("/which-tire/", "Which tire picker"), ("/guides/xl-vs-sl-tires/", "XL vs SL tires"), ("/guides/load-index-speed-rating/", "Load index and speed rating"), ("/guides/tire-rotation/", "Tire rotation"), ("/which-tire/highway-commuting/", "Which tire for highway commuting"), ("/which-tire/hybrid/", "Which tire for a hybrid")])
 
 # 4 Snow without winter tires
 P(slug="snow-without-winter-tires", crumb="Snow without winter tires", img="snow",
@@ -352,7 +356,7 @@ P(slug="highway-commuting", crumb="Highway commuting", img="sedan",
         ("Do I need a higher speed rating for highway driving?", "Match or exceed the speed rating the vehicle maker specifies. USTMA says a speed rating is not permission to drive at that speed."),
         ("Is a performance tire better for the highway?", "Not usually for commuting. Tire Rack found ultra high performance all season tires gave up ride comfort and winter traction compared with touring tires.")],
   srcs=[("TRC", "standard vs grand touring vs ultra high performance all season trade offs"), ("TRA", "grand touring all season focus on comfort, noise and tread life"), ("ECFR", "UTQG treadwear and traction grade definitions"), ("CS", "speed rating rules, pressure checks")],
-  related=[("/which-tire/", "Which tire picker"), ("/comparisons/touring-vs-performance-all-season/", "Touring vs performance all season"), ("/guides/utqg/", "UTQG grades"), ("/guides/how-long-do-tires-last/", "How long tires last"), ("/which-tire/rain/", "Which tire for rain")])
+  related=[("/which-tire/", "Which tire picker"), ("/comparisons/touring-vs-performance-all-season/", "Touring vs performance all season"), ("/guides/utqg/", "UTQG grades"), ("/guides/how-long-do-tires-last/", "How long tires last"), ("/which-tire/rain/", "Which tire for rain"), ("/which-tire/hybrid/", "Which tire for a hybrid")])
 
 # 6 Towing
 P(slug="towing", crumb="Towing", img="wheel",
@@ -615,6 +619,56 @@ P(slug="4x4-off-road", crumb="4x4 off-roader", img="suv", pub="2026-11-17",
   srcs=[("BFG", "all terrain vs mud terrain uses and trade offs, LT vs P, upsizing, pressure, spare size"), ("NT", "what all terrain tires are for"), ("MTY", "M+S vs 3PMSF, ice limits"), ("MCS", "4WD mixing rules and 1 inch circumference"), ("CS", "4WD mixing, P to LT checks, diameter and clearance, replacing less than four")],
   related=[("/which-tire/", "Which tire picker"), ("/which-tire/gravel-roads/", "Which tire for gravel roads"), ("/which-tire/pickup-truck/", "Which tire for a pickup truck"), ("/guides/lt-vs-p-metric-tires/", "LT vs P metric tires"), ("/guides/mixing-tires/", "Mixing tires"), ("/guides/plus-sizing/", "Plus sizing")])
 
+P(slug="hybrid", crumb="Hybrid", img="sedan", pub="2026-11-19",
+  title="Which tire for a hybrid? Low rolling resistance, at the placard load rating",
+  h1="Which tire should I get for a hybrid?",
+  desc="Hybrid tires: copy size, load index (XL or HL if listed) and speed rating from the placard, then choose low rolling resistance and a quiet touring tread.",
+  lede="For a hybrid or plug in hybrid, start with the door placard: same size, a load index at least as high (XL or HL if that is what it lists) and a speed rating at least as high. Then pick a low rolling resistance tire in a touring all season or all weather tread for your climate, and keep it at placard pressure.",
+  body=f"""      <section class="content-section">
+        <h2>The short answer</h2>
+        <p>A hybrid needs the same basics as any car plus two priorities: <b>low rolling resistance</b>, because that is what protects the fuel economy you bought the car for, and <b>enough load capacity</b>, because the battery adds weight. NHTSA says low rolling resistance replacement tires improve fuel economy and extend the range of electric and hybrid vehicles, and that carmakers increasingly fit them from the factory ({a('NT','NHTSA TireWise')}). Michelin's plug in hybrid guide says if the vehicle specifies XL or HL tires, replacements must carry the same designation ({a('MPH','Michelin plug in hybrid guide')}). Choose all season, all weather or winter by climate, as for any car.</p>
+      </section>
+      <section class="content-section">
+        <h2>Why rolling resistance matters on a hybrid</h2>
+        <p>NHTSA estimates that a 10 percent reduction in tire rolling resistance gives a 1 to 2 percent improvement in fuel economy, and says low rolling resistance tires commonly have higher inflation pressure and reduced sidewall and tread deflection ({a('NT','NHTSA')}). Michelin says that on a plug in hybrid, lower rolling resistance stretches electric range and also improves mpg when the engine is running ({a('MPH','Michelin')}).</p>
+        <p>Size matters too. Michelin says a wider tire generally improves dry grip but increases rolling resistance, and that the factory size is the vehicle maker's balance of those trade offs ({a('MSZ','Michelin tire size guide')}). On a hybrid that is one more reason to stay with the placard size rather than going wider; see <a href="/guides/plus-sizing/">plus sizing</a> before changing it.</p>
+      </section>
+      <section class="content-section">
+        <h2>How to choose</h2>
+        <ol>
+          <li><b>Copy the placard.</b> Size, load index and speed rating, plus any XL or HL marking on the current tires. Michelin says HL tires are built for heavier vehicles such as electric vehicles, hybrids and SUVs, an HL tire must be replaced with HL, and HL can replace XL for extra capacity ({a('MHL','Michelin HL guide')}).</li>
+          <li><b>Check for an automaker marking</b> on the sidewall of the original tires. Michelin says marked original equipment tires are engineered for the vehicle's handling, ride, noise and rolling resistance targets, and recommends replacing them with the same approved marking when you can ({a('MOE','Michelin marked tires')}).</li>
+          <li><b>Pick the tread for your climate:</b> touring all season for most drivers, all weather with the 3PMSF symbol if you get snow (see <a href="/which-tire/snow-without-winter-tires/">snow without winter tires</a>), dedicated winter for regular ice.</li>
+          <li><b>Within that category, prefer low rolling resistance</b> as described by the tire maker, and compare UTQG treadwear grades for tread life (<a href="/guides/utqg/">UTQG guide</a>).</li>
+          <li><b>Consider noise.</b> Michelin notes that plug in hybrids can be quieter than gas cars, so tire noise in the cabin can stand out if the tire is not designed for a quiet ride ({a('MPH','Michelin')}).</li>
+        </ol>
+      </section>
+      <section class="content-section">
+        <h2>Keep the savings: pressure and rotation</h2>
+        <ul>
+          <li><b>Pressure:</b> FuelEconomy.gov says keeping tires at the right pressure improves gas mileage by 0.6 percent on average and up to 3 percent in some cases, that under inflation lowers mileage by about 0.2 percent for every 1 psi drop in the average pressure of all tires, and that the right number is on the door jamb sticker, not the sidewall maximum ({a('FEG','FuelEconomy.gov')}). See <a href="/guides/tire-pressure/">tire pressure</a>.</li>
+          <li><b>Rotation:</b> Michelin says plug in hybrid tires wear faster than tires on equivalent gas cars because of battery weight and motor torque, and its guide suggests rotating every 6,000 to 8,000 miles or at the first sign of uneven wear, while following the vehicle maker's interval ({a('MPH','Michelin')}). See <a href="/guides/tire-rotation/">tire rotation</a>.</li>
+        </ul>
+      </section>
+      <section class="content-section">
+        <h2>What to avoid</h2>
+        <ul>
+          <li><b>Trading load or speed rating for efficiency.</b> A lower load index or speed rating than the placard does not meet the requirement, however efficient the tire is ({a('CS','USTMA')}).</li>
+          <li><b>Standard load where XL or HL is specified</b> ({a('MPH','Michelin')}, {a('MHL','Michelin')}).</li>
+          <li><b>A wider size for looks,</b> which Michelin says raises rolling resistance ({a('MSZ','Michelin')}).</li>
+        </ul>
+        <p>Full electric car? See <a href="/which-tire/electric-vehicle/">which tire for an EV</a>.</p>
+      </section>
+{CHECKS}""",
+  faqs=[("Do hybrids need special tires?", "Not a separate tire type, but they do best on low rolling resistance tires in the placard size and load rating. NHTSA says low rolling resistance replacement tires improve fuel economy and extend the range of electric and hybrid vehicles."),
+        ("How much fuel do low rolling resistance tires save?", "NHTSA estimates that a 10 percent cut in rolling resistance improves fuel economy by 1 to 2 percent. Your result depends on the tire you are replacing and how you drive."),
+        ("Do I need XL or HL tires on my hybrid?", "Only if the placard or original tires call for them. Michelin says if the vehicle specifies XL or HL, replacements must carry that designation, an HL tire must be replaced with HL, and HL can replace XL."),
+        ("Can I put regular all season tires on a hybrid?", "Yes, if they match the placard size, load index and speed rating. Prefer a model the maker describes as low rolling resistance if fuel economy matters to you."),
+        ("Does tire pressure affect hybrid mpg?", "Yes. FuelEconomy.gov says under inflation lowers gas mileage by about 0.2 percent for every 1 psi drop in average pressure, and proper inflation improves mileage by 0.6 percent on average. Use the door jamb pressure, not the sidewall maximum."),
+        ("Should I replace original equipment tires with the same model?", "Where the original tires carry an automaker marking, Michelin recommends replacing them with the same approved marking when possible, because those tires are tuned for the vehicle's handling, noise and rolling resistance targets.")],
+  srcs=[("NT", "low rolling resistance tires, fuel economy estimate, hybrids and EVs"), ("MPH", "plug in hybrid load, XL or HL, rolling resistance, noise, wear and rotation"), ("MHL", "HL tires for hybrids and EVs, HL replacement rules"), ("MOE", "automaker marked original equipment tires"), ("MSZ", "wider tires and rolling resistance, factory size"), ("FEG", "tire pressure and gas mileage"), ("CS", "size, load, speed rating and mixing rules")],
+  related=[("/which-tire/", "Which tire picker"), ("/which-tire/electric-vehicle/", "Which tire for an EV"), ("/which-tire/highway-commuting/", "Which tire for highway commuting"), ("/guides/xl-vs-sl-tires/", "XL vs SL tires"), ("/guides/tire-pressure/", "Tire pressure"), ("/guides/utqg/", "UTQG grades")])
+
 def build():
     urls = []
     for k in PAGES: urls.append(page(**k))
@@ -624,7 +678,7 @@ def build():
         <h2>Which tire picker</h2>
         <p>Answer four questions. The picker runs only in your browser, needs no login and stores or sends nothing. It suggests a tire <b>category</b>, not a brand or model.</p>
         <form id="wt-picker" onsubmit="return false">
-          <div class="calc-row"><label for="wt-veh">Vehicle</label><select id="wt-veh"><option value="car">Car or sedan</option><option value="suv">SUV or crossover</option><option value="truck">Pickup truck</option><option value="x4">Jeep style 4x4 or off-roader</option><option value="ev">Electric vehicle</option><option value="van">Minivan</option><option value="sport">Sports car</option></select></div>
+          <div class="calc-row"><label for="wt-veh">Vehicle</label><select id="wt-veh"><option value="car">Car or sedan</option><option value="suv">SUV or crossover</option><option value="truck">Pickup truck</option><option value="x4">Jeep style 4x4 or off-roader</option><option value="ev">Electric vehicle</option><option value="hyb">Hybrid or plug in hybrid</option><option value="van">Minivan</option><option value="sport">Sports car</option></select></div>
           <div class="calc-row"><label for="wt-clim">Climate</label><select id="wt-clim"><option value="mild">Mild, little snow</option><option value="rain">Lots of rain</option><option value="snow">Snow or ice in winter</option><option value="hot">Hot, rarely below freezing</option></select></div>
           <div class="calc-row"><label for="wt-drive">Driving</label><select id="wt-drive"><option value="commute">Commuting and errands</option><option value="highway">Lots of highway miles</option><option value="offroad">Gravel, dirt or off road</option><option value="perf">Spirited or performance</option><option value="tow">Towing or heavy hauling</option></select></div>
           <div class="calc-row"><label for="wt-pri">Top priority</label><select id="wt-pri"><option value="quiet">Quiet and comfort</option><option value="life">Long tread life</option><option value="budget">Budget</option><option value="grip">Grip</option></select></div>
@@ -682,6 +736,7 @@ def build():
       r.cat=(p==='grip')?'Dedicated winter tires on all four wheels (with a second set for summer)':'All weather with the 3PMSF symbol, or dedicated winter tires for regular ice';
       r.why=['3PMSF means the tire passed a packed snow traction test; M+S alone does not.','Dedicated winter tires stay flexible below about 45°F and lead on ice.'];
       if(v==='ev')r.why.push('On an EV, keep HL or XL load ratings if the placard calls for them.');
+      if(v==='hyb'){r.why.push('On a hybrid, keep XL or HL if the placard calls for it and prefer low rolling resistance.');r.also.push(['/which-tire/hybrid/','Which tire for a hybrid']);}
       if(v==='truck')r.why.push('Keep LT construction if your truck came with it.');
       r.link='/which-tire/snow-without-winter-tires/';r.label='Which tire for snow without winter tires';r.also=[['/guides/winter-tires/','Winter tires guide']];return r;}
     if(v==='sport'||d==='perf'){
@@ -689,6 +744,7 @@ def build():
       else if(p==='quiet'||p==='life'||p==='budget'){r.cat='Ultra high performance all season';r.why=['More grip than touring tires with year round use.','Expect a firmer ride than touring tires.'];}
       else{r.cat='Max performance summer';r.why=['Best wet and dry grip of the street categories in Tire Rack\\'s test.','Only for weather that stays above about 45°F.'];}
       r.link='/which-tire/sports-car/';r.label='Which tire for a sports car';return r;}
+    if(v==='hyb'){r.cat='Low rolling resistance '+(c==='hot'?'touring all season':'touring all season, or all weather with 3PMSF')+', in the placard size and load rating (XL or HL if specified)';r.why=['NHTSA says low rolling resistance tires improve fuel economy and extend hybrid and EV range.','If the placard or original tires say XL or HL, the replacement must match.','A wider size than the placard raises rolling resistance.'];r.link='/which-tire/hybrid/';r.label='Which tire for a hybrid';return r;}
     if(v==='ev'){r.cat='EV fitment: HL or XL as the placard requires, low rolling resistance, in a '+(c==='hot'?'touring all season or summer':'touring all season or all weather')+' tread';r.why=['If the original tires are HL, replacements must be HL.','Low rolling resistance helps range; quiet construction matters without engine noise.','EVs wear tires about 20 percent faster on average, per Michelin.'];r.link='/which-tire/electric-vehicle/';r.label='Which tire for an EV';return r;}
     if(v==='truck'){r.cat=(p==='life'||p==='quiet'||p==='budget')?'Highway all season (P or LT as your placard specifies)':'Highway all season, or on road all terrain';r.why=['Highway all season tires are quieter and grip better in the wet on pavement.','Never mix P and LT tires on one truck.'];r.link='/which-tire/pickup-truck/';r.label='Which tire for a pickup truck';return r;}
     if(v==='suv'){r.cat='Crossover/SUV touring or highway all season';r.why=['Built for paved commuting with a quiet, comfortable ride.','All weather versions exist if you see snow.'];r.link='/which-tire/suv/';r.label='Which tire for an SUV';return r;}

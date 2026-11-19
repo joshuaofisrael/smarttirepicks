@@ -413,6 +413,27 @@
       "permission": "owned, all uses",
       "people": "none",
       "recorded": "2026-11-12"
+    },
+    "assets/img/tire-inspection-hoist-1024.webp": {
+      "type": "AI generated photo from the JI Ventures image bank (ev-news/hoist-mechanic.png)",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none identifiable (worker seen from behind)",
+      "recorded": "2026-11-19"
+    },
+    "assets/img/tire-inspection-hoist-640.webp": {
+      "type": "AI generated photo from the JI Ventures image bank (ev-news/hoist-mechanic.png)",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none identifiable (worker seen from behind)",
+      "recorded": "2026-11-19"
+    },
+    "assets/img/og-tire-inspection-hoist.jpg": {
+      "type": "AI generated photo from the JI Ventures image bank (ev-news/hoist-mechanic.png)",
+      "owner": "Joshua Israel Ventures LLC",
+      "permission": "owned, all uses",
+      "people": "none identifiable (worker seen from behind)",
+      "recorded": "2026-11-19"
     }
   }
 }
