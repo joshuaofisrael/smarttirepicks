@@ -256,14 +256,11 @@ def retailer_cta(*, product_label: str, search_hint: str) -> str:
     return f"""
       <div class="cta-box retailer-cta" id="check-prices">
         <h2>Check current prices at retailers</h2>
-        <p>Affiliate purchase links with tracking IDs are <strong>coming soon</strong>. Until they go live, use your preferred retailer and search for <strong>{product_label}</strong> in your exact size. Confirm load index, speed rating, and DOT week/year before you buy.</p>
+        <p>Use your preferred retailer and search for <strong>{product_label}</strong> in your exact size. Confirm load index, speed rating, and DOT week/year before you buy.</p>
         <ul class="cta-list">
-          <li><span class="cta-soon">Coming soon</span> — Tire Rack product page (affiliate)</li>
-          <li><span class="cta-soon">Coming soon</span> — Discount Tire product page (affiliate)</li>
-          <li><span class="cta-soon">Coming soon</span> — Amazon tire listing (affiliate)</li>
-          <li><strong>Search intent for now:</strong> look up “{search_hint}” plus your placard size at major US tire retailers, then verify with a licensed installer.</li>
+          <li><strong>What to search:</strong> look up “{search_hint}” plus your placard size at major US tire retailers, then verify with a licensed installer.</li>
         </ul>
-        <p class="note">See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>. Commissions (when enabled) do not change fitment rules or our soft editorial language.</p>
+        <p class="note">See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>. Commissions, if ever enabled, would not change fitment rules or our soft editorial language.</p>
       </div>"""
 
 
@@ -561,7 +558,7 @@ page(
 
       <div class="cta-box retailer-cta">
         <h2>Check current prices at retailers</h2>
-        <p>Live affiliate purchase links are <strong>coming soon</strong>. Until then, search major US tire retailers for your exact placard size, compare current pricing and warranties, and confirm fitment with a licensed installer. We will not invent tracking URLs.</p>
+        <p>Search major US tire retailers for your exact placard size, compare current pricing and warranties, and confirm fitment with a licensed installer. We will not invent tracking URLs.</p>
       </div>
     """,
 )
@@ -707,7 +704,7 @@ page(
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Use the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm <a href="/guides/load-index-speed-rating/">load index &amp; speed rating</a>. Retailer links coming soon. Check retailers and confirm with your installer.</p>
+        <p>Use the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm <a href="/guides/load-index-speed-rating/">load index &amp; speed rating</a>. Then check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -768,7 +765,7 @@ page(
 ]) + """
       <div class="cta-box">
         <h2>Related tools</h2>
-        <p>Continue with <a href="/guides/placard/">placard reading</a> and <a href="/fitment/choose-tire-size/">size selection</a>. Retailer CTAs coming soon.</p>
+        <p>Continue with <a href="/guides/placard/">placard reading</a> and <a href="/fitment/choose-tire-size/">size selection</a>.</p>
       </div>
     """,
 )
@@ -939,7 +936,7 @@ p.addEventListener('input',r);a.addEventListener('input',r);b.addEventListener('
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Copy pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm size and ratings via <a href="/fitment/choose-tire-size/">choose tire size</a>. Retailer links coming soon. Check retailers and confirm with your installer.</p>
+        <p>Copy pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>, then confirm size and ratings via <a href="/fitment/choose-tire-size/">choose tire size</a>. Then check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1090,7 +1087,7 @@ page(
 ]) + """
       <div class="cta-box">
         <h2>Related reading</h2>
-        <p><a href="/guides/placard/">Door placard guide</a> · <a href="/fitment/choose-tire-size/">Choose tire size</a>. Affiliate CTAs coming soon. Check retailers and confirm with your installer.</p>
+        <p><a href="/guides/placard/">Door placard guide</a> · <a href="/fitment/choose-tire-size/">Choose tire size</a>. Check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1131,7 +1128,7 @@ page(
 """ + sources_block([NHTSA_TIRES, NHTSA_SAVINGS, USTMA_CARE]) + related_block([('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/when-to-replace/', 'When to replace tires'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Also see</h2>
-        <p><a href="/guides/when-to-replace/">When to replace tires</a>. Retailer links coming soon.</p>
+        <p><a href="/guides/when-to-replace/">When to replace tires</a>.</p>
       </div>
     """,
 )
@@ -1173,7 +1170,7 @@ page(
 """ + sources_block([USTMA_REPLACE, NHTSA_TIRES, USTMA_CARE]) + related_block([('/guides/how-long-do-tires-last/', 'How long do tires last?'), ('/tools/dot-date-code/', 'DOT date code decoder'), ('/guides/mixing-tires/', 'Can you mix tires? Replace 2 or 4'), ('/guides/tire-rotation/', 'Tire rotation patterns'), ('/guides/tread-depth/', 'How to check tread depth'), ('/guides/dot-date-codes/', 'DOT date codes'), ('/reviews/bridgestone-turanza-quiettrack/', 'Turanza QuietTrack review'), ('/guides/winter-tires/', 'Winter tires guide'), ('/guides/seasonal-tire-storage/', 'Seasonal tire storage'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/tpms/', 'TPMS warning light'), ('/fitment/choose-tire-size/', 'Choose tire size')]) + """
       <div class="cta-box">
         <h2>Shopping note</h2>
-        <p>Affiliate links coming soon — check major retailers and confirm mounting with a licensed installer.</p>
+        <p>Check major retailers and confirm mounting with a licensed installer.</p>
       </div>
     """,
 )
@@ -1249,7 +1246,7 @@ page(
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Measure tread, then review <a href="/guides/when-to-replace/">when to replace</a> and confirm cold pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>. Retailer links coming soon — check retailers and confirm with your installer.</p>
+        <p>Measure tread, then review <a href="/guides/when-to-replace/">when to replace</a> and confirm cold pressures with the <a href="/guides/tire-placard-checklist/">placard checklist</a>. Then check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1376,7 +1373,7 @@ page(
 ]) + """
       <div class="cta-box retailer-cta">
         <h2>Check current prices at retailers</h2>
-        <p>When you compare candidate tires, look up each model’s current UTQG marks and pricing at major retailers. Affiliate tracking links are <strong>coming soon</strong> — we will not invent URLs. Confirm placard specs with a licensed installer before purchase.</p>
+        <p>When you compare candidate tires, look up each model’s current UTQG marks and pricing at major retailers. Confirm placard specs with a licensed installer before purchase.</p>
       </div>
     """,
 )
@@ -1539,7 +1536,7 @@ page(
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Confirm cold pressures with the <a href="/guides/tire-pressure/#spare-psi">PSI guide (including spare notes)</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer address sensors or persistent lights. Retailer links coming soon — check retailers and confirm with your installer.</p>
+        <p>Confirm cold pressures with the <a href="/guides/tire-pressure/#spare-psi">PSI guide (including spare notes)</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer address sensors or persistent lights. Then check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1651,7 +1648,7 @@ page(
 ]) + """
       <div class="cta-box">
         <h2>Next steps</h2>
-        <p>Plan the next changeover with the <a href="/fitment/all-season-vs-winter-vs-summer/">category guide</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer mount and balance. Retailer links coming soon — check retailers and confirm with your installer.</p>
+        <p>Plan the next changeover with the <a href="/fitment/all-season-vs-winter-vs-summer/">category guide</a> and <a href="/guides/tire-placard-checklist/">placard checklist</a>, then have a licensed installer mount and balance. Then check retailers and confirm with your installer.</p>
       </div>
     """,
 )
@@ -1692,7 +1689,7 @@ page(
 """ + sources_block([NHTSA_TIRES, USTMA_REPLACE, NHTSA_SAVINGS]) + related_block([('/tools/tire-size-calculator/', 'Tire size comparison calculator'), ('/guides/tire-placard-checklist/', 'Placard checklist'), ('/guides/tire-pressure/', 'Cold tire pressure / PSI'), ('/guides/load-index-speed-rating/', 'Load index &amp; speed rating'), ('/guides/placard/', 'Door placard guide')]) + """
       <div class="cta-box">
         <h2>Check retailers</h2>
-        <p>Purchase CTAs coming soon. Until then, compare availability at major tire retailers and confirm final specs with your installer.</p>
+        <p>Compare availability at major tire retailers and confirm final specs with your installer.</p>
       </div>
     """,
 )
@@ -1735,7 +1732,7 @@ page(
       </div>
       <div class="cta-box">
         <h2>Deeper comparison</h2>
-        <p>See <a href="/comparisons/all-season-vs-winter/">all-season vs winter</a>. Retailer links coming soon.</p>
+        <p>See <a href="/comparisons/all-season-vs-winter/">all-season vs winter</a>.</p>
       </div>
     """,
 )
@@ -1986,7 +1983,7 @@ page(
       </div>
       <div class="cta-box">
         <h2>Next</h2>
-        <p>Affiliate links coming soon. Check retailers for sizes that meet your placard requirements.</p>
+        <p>Check retailers for sizes that meet your placard requirements.</p>
       </div>
     """,
 )
@@ -2262,7 +2259,7 @@ page(
         <h2>No endorsement</h2>
         <p>Brand names and model names are used for identification and nominative reference only. Mentions of manufacturers or retailers do <strong>not</strong> imply affiliation, sponsorship, or endorsement unless clearly stated.</p>
         <h2>Affiliate and advertising disclosure (FTC)</h2>
-        <p>Joshua Israel Ventures LLC may earn money from this site through affiliate links or advertising. The site has no live affiliate links. The retailer buttons on our pages are labeled coming soon and do not earn a commission. Display ads may be served by Google AdSense. Google and other third-party vendors may use cookies, and you can opt out of personalized ads at <a href="https://adssettings.google.com" rel="noopener">https://adssettings.google.com</a>. See our <a href="/privacy/">Privacy Policy</a> and <a href="/editorial-disclosure/">Editorial Disclosure</a>. When we add affiliate links, we will disclose them clearly and close to the link, in line with the US Federal Trade Commission guidance on endorsements. If you buy through an affiliate link, we may earn a commission at no extra cost to you. Commissions and ads do not change our editorial standards, and they are not a recommendation that a product is right for your vehicle. Details are in our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
+        <p>Joshua Israel Ventures LLC may earn money from this site through affiliate links or advertising. The site has no live affiliate links. Display ads may be served by Google AdSense. Google and other third-party vendors may use cookies, and you can opt out of personalized ads at <a href="https://adssettings.google.com" rel="noopener">https://adssettings.google.com</a>. See our <a href="/privacy/">Privacy Policy</a> and <a href="/editorial-disclosure/">Editorial Disclosure</a>. When we add affiliate links, we will disclose them clearly and close to the link, in line with the US Federal Trade Commission guidance on endorsements. If you buy through an affiliate link, we may earn a commission at no extra cost to you. Commissions and ads do not change our editorial standards, and they are not a recommendation that a product is right for your vehicle. Details are in our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
         <h2>Governing law</h2>
         <p>This Disclaimer is governed by the laws of the State of Florida, United States, the same as our <a href="/terms/">Terms of Use</a>.</p>
         <h2>Contact</h2>
@@ -2283,7 +2280,7 @@ page(
       <div class="content-block">
         <p>This website is owned and operated by <strong>Joshua Israel Ventures LLC</strong>. Smart Tire Picks is a brand of Joshua Israel Ventures LLC.</p>
         <h2>How we may earn money</h2>
-        <p><strong>Current status:</strong> this site has no live affiliate links, so no product link on this site currently earns a commission. The retailer buttons on our pages are labeled coming soon. Display ads may be served by Google AdSense. How those ads use cookies, and how to opt out of personalized ads, is in our <a href="/privacy/">Privacy Policy</a>.</p>
+        <p><strong>Current status:</strong> this site has no live affiliate links, so no product link on this site currently earns a commission. Display ads may be served by Google AdSense. How those ads use cookies, and how to opt out of personalized ads, is in our <a href="/privacy/">Privacy Policy</a>.</p>
         <p>In the future, some links may become <strong>affiliate links</strong>. If you click such a link and purchase a product or service, we may earn a commission at <strong>no additional cost to you</strong>.</p>
         <p>Affiliate partners may include online tire retailers and related networks (for example, programs associated with major tire retailers). Partner lists can change; when a specific page uses affiliate links, we aim to make that clear in context.</p>
         <h2>Editorial independence</h2>
@@ -2292,7 +2289,7 @@ page(
         <p>Affiliate links do not change the responsibilities in our <a href="/disclaimer/">Disclaimer</a>. You must still verify fitment, load/speed ratings, OEM specs, and have tires installed by a licensed professional.</p>
         <h2>FTC note</h2>
         <p>This disclosure is provided in accordance with applicable guidance on endorsements and affiliate marketing (including FTC guidelines in the United States). We aim to be transparent whenever compensation may be involved.</p>
-        <p class="note">Retailer CTAs on content pages are currently labeled coming soon / check retailers — no live affiliate URLs yet.</p>
+        <p class="note">Content pages have no live affiliate URLs.</p>
       </div>
     """,
 )
@@ -2417,6 +2414,7 @@ page(
 
         <h2 id="advertising">Advertising: Google AdSense</h2>
         <p>We use Google AdSense, an advertising service from Google LLC, to show ads on the Site. Google and other third-party advertising vendors may use cookies and similar technologies to serve ads, measure how they perform, and personalize them based on your visits to this Site and other websites. Those vendors process that data under their own policies.</p>
+<h2>Google advertising cookies and your choices</h2><p>Third-party vendors, including Google, use cookies to serve ads based on a user’s prior visits to this website or other websites. Google’s use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet. You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" rel="nofollow noopener">Google Ads Settings</a>. Alternatively, you can opt out of a third-party vendor’s use of cookies for personalized advertising at <a href="https://www.aboutads.info/choices/" rel="nofollow noopener">aboutads.info/choices</a>. For more information, see <a href="https://policies.google.com/technologies/partner-sites" rel="nofollow noopener">how Google uses information from sites or apps that use its services</a>.</p>
         <p>You can opt out of personalized advertising at <a href="https://adssettings.google.com" rel="noopener">https://adssettings.google.com</a>. Google describes how it uses information from sites that use its services at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from sites that use its services</a>.</p>
 
         <h2>Cookies</h2>
