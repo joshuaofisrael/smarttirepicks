@@ -8,13 +8,13 @@ Content is general information only and is not professional or safety advice. Al
 
 - [All tire guides](https://smarttirepicks.com/guides/): Hub listing every guide grouped by task (pressure and placard, tread and age, ratings, seasons and storage), a question to guide lookup table, and a simple tire check routine.
 - [How to read your tire door placard](https://smarttirepicks.com/guides/placard/): Where the placard is, what each line means including the spare tire line, how it differs from the certification label, and what to do if it is missing.
-- [Tire placard checklist](https://smarttirepicks.com/guides/tire-placard-checklist/): A checklist of what to copy from your door label before shopping for tires.
+- [What to copy from your tire placard before you buy](https://smarttirepicks.com/guides/tire-placard-checklist/): Size, front and rear cold pressures, spare line, and load index. NHTSA: the label is on the driver door jamb, and cold means parked at least three hours.
 - [Recommended cold tire pressure (PSI)](https://smarttirepicks.com/guides/tire-pressure/): Why the placard PSI, not the sidewall maximum, is the target, what cold pressure means, how spare PSI can differ from road tire PSI, and how much pressure drops in cold weather (about 1 to 2 psi per 10°F, per NHTSA and USTMA) with a client side PSI drop calculator.
 - [Load index and speed rating explained](https://smarttirepicks.com/guides/load-index-speed-rating/): How to read the service description, a chart of common passenger load indexes and speed symbols, and XL versus standard load notes.
 - [DOT date codes and tire age](https://smarttirepicks.com/guides/dot-date-codes/): How the four digit DOT date code shows the week and year a tire was made, and why age matters alongside tread.
-- [When to replace your tires](https://smarttirepicks.com/guides/when-to-replace/): Replacement signals including tread depth, damage, irregular wear, age, and seasonal sets.
+- [When to replace tires: at 2/32 inch, or after 6 to 10 years](https://smarttirepicks.com/guides/when-to-replace/): NHTSA tread floor, penny check, wear bars, age guidance, spare tires, and the USTMA rear axle rule.
 - [How to check tire tread depth](https://smarttirepicks.com/guides/tread-depth/): Wear bars, tread depth gauges, the limits of coin tests, a 32nds to mm tread depth chart and converter, and when to see a licensed professional.
-- [UTQG tire grades explained](https://smarttirepicks.com/guides/utqg/): What UTQG treadwear, traction, and temperature grades mean and what they do not mean, with NHTSA and eCFR citations.
+- [UTQG grades: a treadwear 200 should last twice a grade 100](https://smarttirepicks.com/guides/utqg/): Control tire is 100. NHTSA shares of current tires. Exclusions include deep tread winter tires and rims of 12 inches or less. eCFR 575.104.
 - [Tire plug vs patch](https://smarttirepicks.com/guides/tire-plug-vs-patch/): Why a plug alone or a patch alone is not a proper repair, the USTMA and TIA rules (tire off the wheel, tread area only, 1/4 inch or 6 mm maximum, no overlapping repairs, not at 2/32 inch tread), roadside string plugs and sealant kits as temporary fixes, with a client side repairable checker.
 - [Tire sidewall bulge: is it safe to drive?](https://smarttirepicks.com/guides/sidewall-bulge/): Why an outward sidewall bulge or bubble signals internal damage (usually pothole or curb impact) and needs replacement, never repair; how to tell it from a cosmetic radial sidewall indentation per USTMA; what to do now; warranty and road hazard notes from Bridgestone, Uniroyal and Hankook; client side bulge or dent checker.
 - [Plus sizing tires: can I put bigger tires on my car?](https://smarttirepicks.com/guides/plus-sizing/): Continental PSIB 06-03 six checks (load capacity and speed rating at least stock, never below placard pressure, rolling circumference within about plus or minus 3%, approved rim widths, clearance); plus one and plus two example table; Standard Load to Extra Load pressure chart; AWD and staggered notes; client side plus size finder.
@@ -63,12 +63,12 @@ Content is general information only and is not professional or safety advice. Al
 ## Comparisons
 
 - [All-season vs winter tires](https://smarttirepicks.com/comparisons/all-season-vs-winter/): When all-season tires may be enough, when winter tires are often considered, cost and logistics of a second set, and 3PMSF versus M+S symbols.
-- [Touring vs performance all-season tires](https://smarttirepicks.com/comparisons/touring-vs-performance-all-season/): A decision framework comparing ride, noise, handling, wear, and winter limits, with suitability notes.
+- [Touring vs performance all season](https://smarttirepicks.com/comparisons/touring-vs-performance-all-season/): Comfort and wear versus a sharper warm response. Neither is a winter tire. Compare UTQG only after the placard matches.
 
 ## Fitment
 
-- [How to choose the right tire size](https://smarttirepicks.com/fitment/choose-tire-size/): A step by step process starting with the door placard, then load index, speed rating, climate category, and installation.
-- [All-season vs winter vs summer tires](https://smarttirepicks.com/fitment/all-season-vs-winter-vs-summer/): How the three tire categories differ by climate, with a quick comparison table.
+- [How to choose tire size: copy the placard, not the old sidewall](https://smarttirepicks.com/fitment/choose-tire-size/): NHTSA says buy the original size or a size the vehicle maker recommends. USTMA says not to mix sizes on all wheel drive.
+- [All season vs winter vs summer: winter tires win in deep snow](https://smarttirepicks.com/fitment/all-season-vs-winter-vs-summer/): NHTSA category split, USTMA rule that winter tires on the front require winter tires on the rear, and where all weather fits.
 
 ## About and policies
 
