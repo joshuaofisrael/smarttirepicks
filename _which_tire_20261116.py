@@ -102,7 +102,7 @@ def page(slug, title, h1, desc, lede, img, body, faqs, srcs, related, crumb, ext
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/styles.css">
 {ld({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumbs})}{ld(art)}{ld(faq)}{extra_head}<script src="/js/consent-analytics.js" defer></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script></head>
+</head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
