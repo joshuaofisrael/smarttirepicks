@@ -669,6 +669,10 @@ P(slug="hybrid", crumb="Hybrid", img="sedan", pub="2026-11-19",
   srcs=[("NT", "low rolling resistance tires, fuel economy estimate, hybrids and EVs"), ("MPH", "plug in hybrid load, XL or HL, rolling resistance, noise, wear and rotation"), ("MHL", "HL tires for hybrids and EVs, HL replacement rules"), ("MOE", "automaker marked original equipment tires"), ("MSZ", "wider tires and rolling resistance, factory size"), ("FEG", "tire pressure and gas mileage"), ("CS", "size, load, speed rating and mixing rules")],
   related=[("/which-tire/", "Which tire picker"), ("/which-tire/electric-vehicle/", "Which tire for an EV"), ("/which-tire/highway-commuting/", "Which tire for highway commuting"), ("/guides/xl-vs-sl-tires/", "XL vs SL tires"), ("/guides/tire-pressure/", "Tire pressure"), ("/guides/utqg/", "UTQG grades")])
 
+# 20 Nov 2026: /which-tire/awd/ and /which-tire/ice/ are hand written HTML.
+# The live picker (which-tire/index.html) has the AWD vehicle option and the ice branch.
+# Do not run this script until those branches are copied into the picker string below,
+# or a rebuild will drop them and overwrite the hand written pages.
 def build():
     urls = []
     for k in PAGES: urls.append(page(**k))
